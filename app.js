@@ -1,6 +1,9 @@
 /*jslint node: true */
 /* eslint-env node */
+
 //kommentar
+//hej
+  
 'use strict';
 
 // Require express, socket.io, and vue
@@ -34,6 +37,7 @@ app.get('/kitchen', function (req, res) {
 
 // Store data in an object to keep the global namespace clean
 function Data() {
+ 
   this.data = {};
   this.orders = {};
 }
