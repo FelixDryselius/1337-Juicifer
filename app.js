@@ -1,6 +1,9 @@
 /*jslint node: true */
 /* eslint-env node */
+
+//kommentar
 //hej
+  
 'use strict';
 
 // Require express, socket.io, and vue
