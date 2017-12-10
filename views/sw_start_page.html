@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Staff View</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" type="text/css" href="C:\Users\IM laptop\Documents\Skola\UU\Gränsnittsprogrammering\staffwiew\css\sw_style.css">
+    </head>
+    <body>
+        <!-- <div id=whiteOnTopPage>
+            vit text
+        </div> -->
+        
+        <div class="menu">
+            <button class="menuLinks" id="newOrderTab" onclick="showTab(event, 'newOrder')">New Order</button>
+            <button class="menulinks" id="orderQueueTab" onclick="showTab(event, 'orderQueue')">Order Queue</button>
+            <button class="menulinks"  id="orderHistoryTab" onclick="showTab(event, 'orderHistory')">Order History</button>
+            <button class="menulinks"  id="inventoryTab" onclick="showTab(event, 'inventory')"> Inventory</button>
+            <button class="menulinks"  id="statisticsTab" onclick="showTab(event, 'statistics')">Statistics</button>
+        </div>
+
+        <div id="newOrder" class="menuContent">
+            <h3>New Order</h3>
+            <p>beställ.</p>
+        </div>
+
+        <div id="orderQueue" class="menuContent">
+            <h3>Order queue</h3>
+            <p>här kan du se rdrarna ni behöver göra.</p> 
+        </div>
+
+        <div id="orderHistory" class="menuContent">
+            <h3>Order History</h3>
+            <p>ordrar som är färdiga/cncelled</p>
+        </div>
+        
+        <div id="inventory" class="menuContent">
+            <h3>Inventory</h3>
+            <p>här syns inventoryt.</p>
+        </div>
+        
+        <div id="statistics" class="menuContent">
+            <h3>Statistics</h3>
+            <p>här finns statistics.</p>
+        </div>
+        
+        <script>
+            function showTab(evt, menuName) {
+                var i, ContentInSelectedTab;
+                ContentInSelectedTab = document.getElementsByClassName("menuContent");
+                for (i = 0; i < ContentInSelectedTab.length; i++) {
+                    ContentInSelectedTab[i].style.display = "none";
+                }
+                document.getElementById(menuName).style.display = "block";
+            }
+        </script>
+        
+    </body>
+
+</html>
