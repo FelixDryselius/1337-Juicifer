@@ -10,10 +10,12 @@ header{
 }
 #language{
     width: 2em;
-    height: 2em;
-    background-image: url("https://image.freepik.com/free-vector/grunge-union-jack-background_1048-1167.jpg");
-    background-size: 100%
+    height: 1.75em;
+    background-image: url(gb_flagga.png);
+    background-size: 100%;
+    
 }
+
 
 
 .startPageButtonContainer{
@@ -33,8 +35,12 @@ header{
     width: 10em;
 }
 
-footer {
-    text-align: center;
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
 }
 
 /* Slut på css för start page*/
@@ -60,6 +66,7 @@ footer {
 .abortButton button{
     height: 2em;
     width: 2em;
+}
 
 /*add_drink_page slutar*/
 
