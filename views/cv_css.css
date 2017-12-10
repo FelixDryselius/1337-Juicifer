@@ -27,7 +27,6 @@ header{
     margin: 0px 25px 0px 25px;
 }
 
-
 .chooseDrinkTypeButton button{
     height: 10em;
     width: 10em;
@@ -37,3 +36,30 @@ footer {
     /*hej*/
     text-align: center;
 }
+
+/*add_drink_page startar*/
+
+.topBarContainer{
+    text-align: center;
+    /*margin-top: .5em;
+    margin-bottom: .5em;*/
+    height: 3 em;
+    width: 100%;
+}
+
+.topBarButton{
+    margin-top: .5em;
+    margin-bottom; .5em;
+}
+
+.topBarButton button{
+    height: 2em;
+    width: 10em;
+}
+
+.abortButton button{
+    height: 2em;
+    width: 2em;
+
+/*add_drink_page slutar*/
+
