@@ -15,10 +15,11 @@ header{
     background-size: 100%
 }
 
-.buttonContainer{
+
+.startPageButtonContainer{
     text-align: center;
     margin-top: 8em;
-    margin-bottom: 20em;
+    margin-bottom: 12em;
     width: 100%;
 }   
 
@@ -34,6 +35,31 @@ header{
 }
 
 footer {
-    /*hej*/
     text-align: center;
+}
+
+/* Slut på css för start page*/
+
+/* Start på css för choose size page*/
+
+.chooseSize {
+    text-align: center;
+    padding-top: 4em;
+}
+
+.buttonSizeContainer{
+    text-align: center;
+    margin-top: 6em;
+    margin-bottom: 5em;
+    width: 100%;
+}   
+
+.chooseSizeButton {
+    display: inline-block;
+    margin: 0px 25px 0px 25px;
+}
+
+.chooseSizeButton button {
+    height: 10em;
+    width: 10em;
 }
