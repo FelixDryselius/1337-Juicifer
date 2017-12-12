@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }*/
 
+#testdiv{
+    border: 2px solid #ccc;
+}
+
 div.menu {
     overflow: hidden;
     border: 1px solid #ccc;
@@ -125,6 +129,7 @@ div.menu button.active {
     background-color: rgb(210,210,210);
     border: 2px solid rgb(125,124,127);
 }
+
 
 
 

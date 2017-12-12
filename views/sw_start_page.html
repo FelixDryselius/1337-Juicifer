@@ -3,30 +3,27 @@
 <html lang="en">
 
     <head>
-        <title>Staff View - start</title>
+        <title>Staff View - start page</title>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="sw_css.css">
-
-        <!-- <script src="C:\Users\Ingrid\Documents\GitHub\1337-Jucifer\views\sw_script.js"></script> -->
+        <script src="sw_script.js"></script>
         
     </head>
     <body>
-        <!-- <div id=whiteOnTopPage>
-            vit text
-        </div> -->
-        
+
+<!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->     
         <div class="menu">
-            <button class="menuLinks" id="newOrderTab" onclick="showTab(event, 'newOrder')">New Order</button>
-            <button class="menulinks" id="orderQueueTab" onclick="showTab(event, 'orderQueue')">Order Queue</button>
-            <button class="menulinks"  id="orderHistoryTab" onclick="showTab(event, 'orderHistory')">Order History</button>
-            <button class="menulinks"  id="inventoryTab" onclick="showTab(event, 'inventory')"> Inventory</button>
-            <button class="menulinks"  id="statisticsTab" onclick="showTab(event, 'statistics')">Statistics</button>
+            <button class="menuLinks" id="newOrderTab" onclick="showTab('sw_new_order.html')">New Order</button>
+            <button class="menulinks" id="orderQueueTab" onclick="showTab('sw_order_queue.html')">Order Queue</button>
+            <button class="menulinks"  id="orderHistoryTab" onclick="showTab('sw_order_history.html')">Order History</button>
+            <button class="menulinks"  id="inventoryTab" onclick="showTab('sw_inventory.html')"> Inventory</button>
+            <button class="menulinks"  id="statisticsTab" onclick="showTab('sw_statistics.html')">Statistics</button>
         </div>
 
-        
+<!--        
         <div id="newOrder" class="menuContent">
             <h3>New Order</h3>
-            <p>beställ.</p>
+            <p>Denna flikknapp .</p>
         </div>
 
         <div id="orderQueue" class="menuContent">
@@ -48,17 +45,15 @@
             <h3>Statistics</h3>
             <p>här finns statistics.</p>
         </div>
+-->
         
-        <script>
-            function showTab(evt, menuName) {
-                var i, ContentInSelectedTab;
-                ContentInSelectedTab = document.getElementsByClassName("menuContent");
-                for (i = 0; i < ContentInSelectedTab.length; i++) {
-                    ContentInSelectedTab[i].style.display = "none";
-                }
-                document.getElementById(menuName).style.display = "block";
-            }
-        </script>
+        <!-- TESTGREJER HÄR UNDER -->
+        <br>
+        <div id="testdiv">
+            Det här är en testruta för knapparna under. Jag testade det här med att ändra en div.
+        </div>
+        <button onclick="functionTextTillDiv()">Lägg till text i testDiv</button>
+        <button onclick="functionTömDiv()">Töm testDiv-rutan</button>
         
     </body>
 
