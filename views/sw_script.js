@@ -6,6 +6,7 @@ function showTab(link) {
     window.location.href = link;
 }
 
+
 /* function showTab2(evt, menuName) {
     var i, ContentInSelectedTab;
     ContentInSelectedTab = document.getElementsByClassName("menuContent");
