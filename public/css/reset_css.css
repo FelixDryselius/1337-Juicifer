@@ -3,6 +3,8 @@
    License: none (public domain)
 
 Include this file as a stylesheet and it will reset.
+ex to put in html:
+    <link rel="stylesheet" type="text/css" href="reset.css">
 */
 
 html, body, div, span, applet, object, iframe,
