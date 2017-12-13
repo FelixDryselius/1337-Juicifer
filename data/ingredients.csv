@@ -7,7 +7,7 @@ ingredient_id,ingredient_sv,ingredient_en,ingredient_cat,JU_volume,JU_unit,selli
 6,vanilla ice cream,vanilla ice cream,base,125,ml,5,10,litre
 7,sodavatten,soda water,base,125,ml,4,10,litre
 8,vatten,water,base,125,ml,0,>,litre
-9,is,ice,topping,5pcs,1,>,litre
+9,is,ice,topping,5,pcs,1,>,litre
 10,guava,guava,fruit,2,pcs,10,100,pcs
 11,grönkål,kale,vegetable,50,gram,5,10,kg
 12,morot,carrot,vegetable,50,gram,5,10,kg
