@@ -70,6 +70,14 @@ div.menu button.active {
     border-top: none;
 }
 
+h3{
+    font: bold; 
+}
+
+h4{
+
+}
+
 /*SLUT KOD SOM RÖR ALLT*/
 
 /*Start css för NEW ORDER*/
@@ -80,7 +88,7 @@ div.menu button.active {
 
 /*Start css för ORDER HISTORY*/
 
-#oHBoxes{
+#oHBoxContainer{
     position: relative;
     height:90vh;
     background-color: lightcoral;
@@ -130,8 +138,18 @@ div.menu button.active {
     border: 2px solid rgb(125,124,127);
 }
 
+.oneOrder{
+    position: relative;
+    width: 90%;
+    height: 10vh;
+    left: 5px;
+    margin: 7px;
+    background-color: rgb(210,210,210);
+    border: 2px solid rgb(125,124,127);
+}
 
-
+#order1{
+}
 
 /*Slut ORDER HISTORY*/
 
