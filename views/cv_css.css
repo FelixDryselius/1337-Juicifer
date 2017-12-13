@@ -12,10 +12,12 @@ header{
 }
 #language{
     width: 2em;
+  
     height: 2em;
     background-image: url("data/pictures/union_jack_small.png");
     background-size: 100%
 }
+
 
 
 .startPageButtonContainer{
@@ -35,8 +37,12 @@ header{
     width: 10em;
 }
 
-footer {
-    text-align: center;
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
 }
 
 /* Slut på css för start page*/
