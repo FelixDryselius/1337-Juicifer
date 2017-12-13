@@ -41,30 +41,53 @@ div.menu button {
     background-color:lightcoral;
 }
 
+/*INVENTORY*/
+
 #inventoryTab{
-    background-color:mediumpurple;
+    background-color: #cc99ff;
     /*dra ner transparity*/
 }
 
+#inventoryContainer {
+    background-color: #cc99ff
+;
+    position: relative;
+    height:90vh;
+    font-size: 0;
+    
+}
+#inventoryInformation{
+    background-color: #e6e6e6;
+    border: 5px solid #bfbfbf;
+    width: 75%;
+    height: 75%;
+    top: -1000;
+}
 
 
 /* STATISTIKDELEN */
-#statisticsTab{
-    background-color:#ffccff  ;
+
+#statisticsTab {
+    background-color: #ffccff;
 }
-#stats{
+
+#stats {
     position: relative;
-    height:90vh;
+    height: 90vh;
     background-color: #ffccff;
     font-size: 0;
 
 }
-#piechart_3d{
+
+#piechart_3d {
+    position: relative;
     border: 25px solid purple;
-    width: 900px; 
+    width: 900px;
     height: 500px;
     display: table;
     margin: 0 auto;
+    bottom: -57px;
+
     
 
     
@@ -104,7 +127,7 @@ div.menu button.active {
 
 /*Start css för ORDER HISTORY*/
 
-#oHBoxes{
+#oHBoxContainer{
     position: relative;
     height:90vh;
     background-color: lightcoral;
