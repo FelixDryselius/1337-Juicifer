@@ -1,3 +1,5 @@
+/*Start på css för start page*/
+
 header{
     text-align: center;
     position: relative;
@@ -39,7 +41,7 @@ footer {
 
 /* Slut på css för start page*/
 
-/*add_drink_page startar*/
+/*cv_add_drink_page startar*/
 
 .topBarContainer{
     text-align: center;
@@ -48,6 +50,7 @@ footer {
 }
 
 .topBarButton{
+    display: inline-block;
     margin-top: .5em;
     margin-bottom; .5em;
     display: inline-block;
@@ -62,7 +65,8 @@ footer {
     height: 2em;
     width: 2em;
 }
-/*add_drink_page slutar*/
+
+/*cv_add_drink_page slutar*/
 
 /* Start på css for choose size page*/
 
@@ -88,9 +92,6 @@ footer {
     width: 10em;
 }
 
-
-
-
 /*Start css for smoothie choose ingredients */
 .mug{
     position: absolute;
@@ -111,4 +112,8 @@ footer {
 }
 /*End css for smoothie choose ingredients */
 
-
+/* cv_cart_page börjar*/
+cart_page_header{
+    text-align: left;
+    position: absolute;   
+}
