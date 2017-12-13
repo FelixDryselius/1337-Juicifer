@@ -1,6 +1,23 @@
 /* kommentarer ser ut så här ctrl shift i*/
 @media screen and (aspect-ratio: 16/9){}
 
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
 /*{
     box-sizing: border-box;
 }*/
@@ -49,8 +66,8 @@ div.menu button {
 }
 
 #inventoryContainer {
-    background-color: #cc99ff
-;
+    background-color: #cc99ff;
+    opacity: 0.8;
     position: relative;
     height:90vh;
     font-size: 0;
@@ -61,7 +78,11 @@ div.menu button {
     border: 5px solid #bfbfbf;
     width: 75%;
     height: 75%;
-    top: -1000;
+    top: 50px;
+    left: 15px;
+    position: relative;
+    text-align: center;
+    
 }
 
 
