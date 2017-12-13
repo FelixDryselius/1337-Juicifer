@@ -12,10 +12,12 @@ header{
 }
 #language{
     width: 2em;
+  
     height: 2em;
-    background-image: url("data/pictures/union_jack_small.png");
+    background-image: url("union_jack_small.png");
     background-size: 100%
 }
+
 
 
 .startPageButtonContainer{
@@ -35,8 +37,12 @@ header{
     width: 10em;
 }
 
-footer {
-    text-align: center;
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
 }
 
 /* Slut på css för start page*/
@@ -86,23 +92,50 @@ footer {
 }
 
 /*Start css for smoothie choose ingredients */
+
+
+
+.mugContainer{
+    position: relative;
+}
 .mug{
     position: absolute;
-    top:50vh;
-    right: 5em; 
-    background-color: #DCDCDC;
+    right: 8em;
+    top: 15em;
+    height: 368px;
+    width: 250px;
+    background-image: url(mug.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
 
-    /*making the shaps*/
-    width: 0; 
-    height: 0;
-    border-top: 120px solid blue;
-    border-left: 60px solid transparent; 
-    border-right: 60px solid transparent; 
+.toppingButton{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
 }
+.mugButtons{
+   flex: 3;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .mugButtons button{
-    margin: 1em;
-    width: 10em;
+   align-self: center;
+    flex-basis: 2em;
+    min-width: 10em;
 }
+
+#topping {
+    align-self: center;
+    flex-basis: 2em;
+    min-width: 13em;
 /*End css for smoothie choose ingredients */
 /* cv_cart_page börjar*/
 .cartBox{
