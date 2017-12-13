@@ -3,7 +3,7 @@
 header{
     text-align: center;
     position: relative;
-    
+
 }
 .helpLangContainer{
     position: absolute;
@@ -46,34 +46,27 @@ header{
 }
 
 /* Slut på css för start page*/
-
 /*cv_add_drink_page startar*/
-
 .topBarContainer{
     text-align: center;
     height: 3em;
     width: 100%;
 }
-
 .topBarButton{
     display: inline-block;
     margin-top: .5em;
     margin-bottom; .5em;
     display: inline-block;
 }
-
 .topBarButton button{
     height: 2em;
     width: 10em;
 }
-
 .abortButton button{
     height: 2em;
     width: 2em;
 }
-
 /*cv_add_drink_page slutar*/
-
 /* Start på css for choose size page*/
 
 .chooseSize {
@@ -144,9 +137,28 @@ header{
     flex-basis: 2em;
     min-width: 13em;
 /*End css for smoothie choose ingredients */
-
 /* cv_cart_page börjar*/
-cart_page_header{
-    text-align: left;
-    position: absolute;   
+.cartBox{
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #ccc; /*Skall tas bort när sidan fungerar*/
+/*    overflow: hidden;*/
 }
+.cartOverviewBox{
+    flex: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
+    border: 1px solid #ccc;
+    overflow: auto;
+}
+.cartRecipeBox{
+    flex-basis: 25em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    overflow: auto;
+}
+/* cv_cart_page börjar*/
