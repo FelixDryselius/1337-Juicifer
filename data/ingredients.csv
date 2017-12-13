@@ -1,9 +1,9 @@
 ingredient_id,ingredient_sv,ingredient_en,JU,selling_price,ingredient_cat
-1,banan, banana,0.5,8,fruit
-2,citron,lemon,0.5,8,fruit
-3,lime,lime,1,8,fruit
-4,apelsin,orange,0.5,7,fruit
-5,kaffe,coffee,125,5,base
+1,banan, banana,0.5 pcs,8,fruit
+2,citron,lemon,0.5 pcs,8,fruit
+3,lime,lime,1 pcs,8,fruit
+4,apelsin,orange,0.5 pcs,7,fruit
+5,kaffe,coffee,125 ml,5,base
 6,vanilla ice cream,vanilla ice cream,125,5,base
 7,sodavatten,soda water,125,4,base
 8,vatten,water,125,0,base
