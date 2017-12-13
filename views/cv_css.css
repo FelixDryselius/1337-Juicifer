@@ -13,7 +13,7 @@ header{
 #language{
     width: 2em;
     height: 2em;
-    background-image: url("https://image.freepik.com/free-vector/grunge-union-jack-background_1048-1167.jpg");
+    background-image: url("data/pictures/union_jack_small.png");
     background-size: 100%
 }
 
@@ -53,6 +53,7 @@ footer {
     display: inline-block;
     margin-top: .5em;
     margin-bottom; .5em;
+    display: inline-block;
 }
 
 .topBarButton button{
@@ -67,7 +68,7 @@ footer {
 
 /*cv_add_drink_page slutar*/
 
-/* Start på css för choose size page*/
+/* Start på css for choose size page*/
 
 .chooseSize {
     text-align: center;
@@ -90,7 +91,26 @@ footer {
     height: 10em;
     width: 10em;
 }
-/* Slut på css för choose size page*/ 
+
+/*Start css for smoothie choose ingredients */
+.mug{
+    position: absolute;
+    top:50vh;
+    right: 5em; 
+    background-color: #DCDCDC;
+    
+    /*making the shaps*/
+    width: 0; 
+    height: 0;
+    border-top: 120px solid blue;
+    border-left: 60px solid transparent; 
+    border-right: 60px solid transparent; 
+}
+.mugButtons button{
+    margin: 1em;
+    width: 10em;
+}
+/*End css for smoothie choose ingredients */
 
 /* cv_cart_page börjar*/
 cart_page_header{

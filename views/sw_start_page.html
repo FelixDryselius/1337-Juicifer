@@ -1,0 +1,60 @@
+<!-- kommentar -->
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Staff View - start page</title>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="sw_css.css">
+        <script src="sw_script.js"></script>
+        
+    </head>
+    <body>
+
+<!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->     
+        <div class="menu">
+            <button class="menuLinks" id="newOrderTab" onclick="showTab('sw_new_order.html')">New Order</button>
+            <button class="menulinks" id="orderQueueTab" onclick="showTab('sw_order_queue.html')">Order Queue</button>
+            <button class="menulinks"  id="orderHistoryTab" onclick="showTab('sw_order_history.html')">Order History</button>
+            <button class="menulinks"  id="inventoryTab" onclick="showTab('sw_inventory.html')"> Inventory</button>
+            <button class="menulinks"  id="statisticsTab" onclick="showTab('sw_statistics.html')">Statistics</button>
+        </div>
+
+<!--        
+        <div id="newOrder" class="menuContent">
+            <h3>New Order</h3>
+            <p>Denna flikknapp .</p>
+        </div>
+
+        <div id="orderQueue" class="menuContent">
+            <h3>Order queue</h3>
+            <p>här kan du se rdrarna ni behöver göra.</p> 
+        </div>
+
+        <div id="orderHistory" class="menuContent">
+            <h3>Order History</h3>
+            <p>ordrar som är färdiga/cncelled</p>
+        </div>
+        
+        <div id="inventory" class="menuContent">
+            <h3>Inventory</h3>
+            <p>här syns inventoryt.</p>
+        </div>
+        
+        <div id="statistics" class="menuContent">
+            <h3>Statistics</h3>
+            <p>här finns statistics.</p>
+        </div>
+-->
+        
+        <!-- TESTGREJER HÄR UNDER -->
+        <br>
+        <div id="testdiv">
+            Det här är en testruta för knapparna under. Jag testade det här med att ändra en div.
+        </div>
+        <button onclick="functionTextTillDiv()">Lägg till text i testDiv</button>
+        <button onclick="functionTömDiv()">Töm testDiv-rutan</button>
+        
+    </body>
+
+</html>
