@@ -92,6 +92,9 @@ footer {
 
 
 /*Start css for smoothie choose ingredients */
+
+
+
 .mugContainer{
     position: relative;
 }
@@ -99,28 +102,40 @@ footer {
     position: absolute;
     right: 8em;
     top: 15em;
+    height: 368px;
+    width: 250px;
+    background-image: url(mug.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
 }
 
-    
+.toppingButton{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-flow: column;
+}
 .mugButtons{
-    position: absolute;
-    /*left: 3px;*/
-    bottom: 0.1em;
-    text-align: center;
-    width: 256px;
-    height: 368px;
+   flex: 3;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .mugButtons button{
-    margin: 1.5em;
-    width: 10em;
+   align-self: center;
+    flex-basis: 2em;
+    min-width: 10em;
 }
 
 #topping {
-    width: 15em;
-    margin-bottom: 2em;
-    margin-top: 0.2em;
-}
+    align-self: center;
+    flex-basis: 2em;
+    min-width: 13em;
 /*End css for smoothie choose ingredients */
 
 
