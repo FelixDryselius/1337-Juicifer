@@ -46,9 +46,33 @@ div.menu button {
     /*dra ner transparity*/
 }
 
+
+
+/* STATISTIKDELEN */
 #statisticsTab{
-    background-color:lightpink  ;
+    background-color:#ffccff  ;
 }
+#stats{
+    position: relative;
+    height:90vh;
+    background-color: #ffccff;
+    font-size: 0;
+
+}
+#piechart_3d{
+    border: 25px solid purple;
+    width: 900px; 
+    height: 500px;
+    display: table;
+    margin: 0 auto;
+    
+
+    
+}
+
+
+
+
 
 /* Change background color of buttons on hover */
 div.menu button:hover {
