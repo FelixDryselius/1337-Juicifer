@@ -57,6 +57,7 @@ div.menu button:hover {
 }
 
 /* Create an active/current tablink class */
+    /*DENNA GÖR INGET VA?*/
 div.menu button.active {
     background-color: #ccc;
     font-weight: bold;
@@ -72,10 +73,11 @@ div.menu button.active {
 
 h3{
     font: bold; 
+    text-align:center;
 }
 
 h4{
-
+    
 }
 
 /*SLUT KOD SOM RÖR ALLT*/
@@ -129,11 +131,12 @@ h4{
 
 
 #oHTimeInfo{
-    position: absolute;
+    position: relative;
     width: 30%;
-    height:25vh;
-    left: 35%;
-    bottom: 10px;
+    height: 25vh;
+    /*left: 35%;*/
+    margin: auto;
+    top: 400px;
     background-color: rgb(210,210,210);
     border: 2px solid rgb(125,124,127);
 }
@@ -142,8 +145,8 @@ h4{
     position: relative;
     width: 90%;
     height: 10vh;
-    left: 5px;
-    margin: 7px;
+    margin: 7px auto;
+    top: 13px;
     background-color: rgb(210,210,210);
     border: 2px solid rgb(125,124,127);
 }
