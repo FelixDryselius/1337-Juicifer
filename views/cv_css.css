@@ -107,27 +107,25 @@ footer {
 /* cv_cart_page börjar*/
 .cartBox{
     display: flex;
-    height; 100%;
-    width: 100%;
-    overflow: hidden;
+    flex: 1;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px solid #ccc; /*Skall tas bort när sidan fungerar*/
+/*    overflow: hidden;*/
 }
 .cartOverviewBox{
-    display: flex;
-    flex-flow: row;
-    height: 300px;
-    width: 80%;
+    flex: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 10px;
     border: 1px solid #ccc;
     overflow: auto;
-    float: left;
 }
 .cartRecipeBox{
-    display: flex;
-    flex-flow: row;
-    height: 300px;
-    width: 250px;
+    flex-basis: 25em;
+    padding: 10px;
     border: 1px solid #ccc;
     overflow: auto;
-    float: right"
 }
-
 /* cv_cart_page börjar*/
