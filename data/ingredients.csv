@@ -1,7 +1,7 @@
 ingredient_id,ingredient_sv,ingredient_en,ingredient_cat,JU_volume,JU_unit,selling_price
 1,banan,banana,fruit,0.5,pcs,8
 2,citron,lemon,fruit,0.5,pcs,8
-3,lime,lime,fruit,1,pcs,8,
+3,lime,lime,fruit,1,pcs,8
 4,apelsin,orange,fruit,0.5,pcs,7
 5,kaffe,coffee,base,125,ml,5
 6,vanilla ice cream,vanilla ice cream,base,125,ml,5
