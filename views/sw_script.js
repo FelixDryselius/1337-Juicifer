@@ -2,25 +2,70 @@
 /*längre kommentar*/
 
 
+// GEMENSAMMA
+
 function showTab(link) {
     window.location.href = link;
 }
 
+function createButton(buttonName) {
+    var btn = document.createElement();
+    document.body.appendChild(btn);
+}
 
-/* function showTab2(evt, menuName) {
-    var i, ContentInSelectedTab;
-    ContentInSelectedTab = document.getElementsByClassName("menuContent");
-    for (i = 0; i < ContentInSelectedTab.length; i++) {
-        ContentInSelectedTab[i].style.display = "none";
-    }
-    document.getElementById(menuName).style.display = "block";
-} */
+// SLUT GEMENSAMMA FUNKTIONER
+
+// NEW ORDER START
+// SLUT NEW ORDER FUNKTIONER
+
+// ORDER QUEUE START
+// SLUT ORDER QUEUE FUNKTIONER
+
+// ORDER HISTORY START
+
+//document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()};
 
 
-// TESTFUNKTIONER
+function pressedOHJuicesInOrder(){
+    typeTextToDiv('1 x L Applejuice', 'oHJuicesInOrder');
+    
+}
+
+function typeTextToDiv(text, div_id) {
+    var aVariable = document.getElementById(div_id);
+    aVariable.innerHTML+=text;
+}
+
+function putDivIntoDiv(){
+
+}
+
+/* TEST FÖR JQUERY; TOGGLE -Ingrid
+$(document).ready(function(){
+    $("button").click(function(){
+        $(getElementById("oHTimeInfo")).hide();
+    });
+});*/
+    
+
+
+// SLUT ORDER HISTORY
+
+// INVENTORY START
+//SLUT INVENTORY
+
+//STATISTICS START
+//STATISTICS SLUT
+
+
+
+
+// INGRIDS TESTFUNKTIONER
+// testar div
 
 function functionTextTillDiv() {
     var variabelNamn = document.getElementById('testdiv');
+    console.log(variabelNamn);
     variabelNamn.innerHTML+="Text som ploppar upp för att jag tryck på knappen. ";
 }
 

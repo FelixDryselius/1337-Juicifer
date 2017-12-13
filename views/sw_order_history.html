@@ -7,6 +7,8 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="sw_css.css">
         <script src="sw_script.js"></script>
+        <!-- DETTA ÄR ETT TEST FÖR JQUERY, toggle - INGRID
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
     </head>
     
     <body id=oHBody>
@@ -22,9 +24,18 @@
         
 <!-- HÄR SKAPAS SIDSPECIFIKA GREJER -->        
         
-        <div id="oHBoxes">
+        <div id="oHBoxContainer">
             <div class="leftSideMenuBox" id="oHMenu">
-                <h3>orderHistoryMenu</h3>
+                <!-- <h3>orderHistoryMenu</h3> -->
+                <div class="oneOrder" id="order1">
+                    <h3>3, 12:01, 23</h3>
+                </div>
+                <div class="oneOrder" id="order2">
+                    <h3>1, 12:04, 24</h3>
+                </div>
+                <div class="oneOrder" id="order3">
+                    <h3>5, 12:06, 25</h3>
+                </div>                
             </div>
             
             <div class="rightSideBox" id="oHIngridients">
@@ -32,7 +43,7 @@
                 Recipie L Apple juice
             </div>
             
-            <div class="juicesInTheOrder" id="oHJuicesInOrder">
+            <div class="juicesInTheOrder" id="oHJuicesInOrder" onclick=          "pressedOHJuicesInOrder('1 x L Applejuice', 'oHJuicesInOrder')">
                 orderHistoryJuicesInOrder
             </div>
             
@@ -41,12 +52,7 @@
                 Order placed: 2017-11-21 12:01 <br><br> Order placed: 2017-11-21 12:05
                 
             </div>
-        </div>
-        
-
-        
-        <script>
-        </script>
+        </div>        
         
     </body>
 
