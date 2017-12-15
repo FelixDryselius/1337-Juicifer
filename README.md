@@ -1,4 +1,4 @@
-<h1>1337-Jucifer</h1>
+<h1>1337-Juicifer</h1>
 <p>This is a creation of <b>1337 - Leet Force</b> please observe the license and use the code in a friendly manner. We wish to thank creator @laaksoharju. 
 </p>
 
