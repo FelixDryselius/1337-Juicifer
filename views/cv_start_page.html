@@ -2,53 +2,86 @@
 <html lang="en">
     <head>
         <meta charset="utf-8"/>
-        <!--<link rel="stylesheet" type="text/css" href="reset_css.css">-->
+
         <link rel="stylesheet" href="cv_css.css">
+        <script src="test.js" defer></script>
         <script src="https://vuejs.org/js/vue.js"></script>
-        <script href="cv_script.js"></script>
         <title>Jucifer</title>
     </head>
     <body>
-        <main>
-            <header>
-                <div class="helpLangContainer">
-                    <button id="language"></button>
-                    <button id="helpButton">?</button>
-                </div>
-                <h1 class="header">Välkommen till Jucifer</h1>
-                <h2 class="subHeader"> Välj din dryck:</h2>
-            </header>
-            <div class="startPageButtonContainer">
-                <div class="chooseDrinkTypeButton">
-                    <button id="juiceButton" type="button" onclick="hideStartView">Juice</button>
-                </div>
+        <div id="start" v-if="seen">
+            <main>
+                <header>
+                    <div class="helpLangContainer"  >
+                        <button id="language"></button>
+                        <button id="helpButton">?</button>
+                    </div>
+                    <h1 class="header">Välkommen till Jucifer</h1>
+                    <h2 class="subHeader"> Välj din dryck:</h2>
+                </header>
+                <div class="startPageButtonContainer">
+                    <div class="chooseDrinkTypeButton">
+                        <button id="juiceButton" type="button" onclick="typeItem('juice')">Juice</button>
+                    </div>
 
-                <div class="chooseDrinkTypeButton">
-                    <button id="smoothieButton" type="button">Smoothie</button>
-                </div>      
-            </div>
-            <header>
-                <div class="helpLangContainer">
-                    <button id="helpButton">?</button>
+                    <div class="chooseDrinkTypeButton">
+                        <button id="smoothieButton" type="button" onclick="typeItem('smoothie')">Smoothie</button>
+                    </div>      
                 </div>
-                <h1 class="chooseSize">Välj storlek:</h1>
-            </header>
-            <div class="buttonSizeContainer">
-                <div class="chooseSizeButton">
-                    <button id="smallButton" type="button">Small</button>
-                </div>
-
-                <div class="chooseSizeButton">
-                    <button id="mediumButton" type="button">Medium</button>
-                </div>  
-
-                <div class="chooseSizeButton">
-                    <button id="largeButton" type="button">Large</button>
-                </div>
-            </div>
-        </main>
-        <footer class="footer">
-            <p>&copy;1337-Leet Force</p>
-        </footer>
+            </main>
+            <footer class="footer">
+                <p>&copy;1337-Leet Force</p>
+            </footer>
+        </div>
     </body>
-</html
+
+    <div id="size" v-if="seen">
+        <header>
+            <div class="helpLangContainer">
+                <button id="helpButton">?</button>
+            </div>
+            <h1 class="chooseSize">Välj storlek:</h1>
+        </header>
+        <div class="buttonSizeContainer">
+            <div class="chooseSizeButton">
+                <button id="smallButton" type="button" onclick="sizeItem('small')">Small</button>
+            </div>
+
+            <div class="chooseSizeButton">
+                <button id="mediumButton" type="button" onclick="sizeItem('medium')">Medium</button>
+            </div>  
+
+            <div class="chooseSizeButton">
+                <button id="largeButton" type="button" onclick="sizeItem('large')">Large</button>
+            </div>
+        </div>
+    </div>
+
+     <div id="ingredients" v-if="seen">
+        <main>
+            <div class="banner">
+                <div class="bannerButtons">
+                    <button id="base">?</button>
+                    <button id="ingredient1">?</button>
+                    <button id="ingredient2">?</button>
+                
+                </div>
+            </div>
+            <div class="ingredientsButton">
+                <br>
+                <button id="base">?</button>
+                <br>
+                <button id="ingredient1">?</button>
+                <br>
+                <button id="ingredient2">?</button>
+                <br>
+                <button id="ingredient3">?</button>
+                <br>
+                <button id="topping">?</button>
+                
+            </div>
+
+        </main>
+    </div>
+</html>
+

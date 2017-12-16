@@ -12,10 +12,13 @@ header{
 #language{
     width: 2em;
 
+
     height: 2em;
     background-image: url("union_jack_small.png");
     background-size: 100%
 }
+
+
 
 .startPageButtonContainer{
     text-align: center;
@@ -87,6 +90,7 @@ header{
     height: 10em;
     width: 10em;
 }
+
 
 /*Start css for smoothie choose ingredients */
 
@@ -160,3 +164,4 @@ header{
     overflow: auto;
 }
 /* cv_cart_page slutar*/
+
