@@ -1,5 +1,4 @@
 /*Start på css för start page*/
-
 header{
     text-align: center;
     position: relative;
@@ -17,8 +16,6 @@ header{
     background-image: url("union_jack_small.png");
     background-size: 100%
 }
-
-
 
 .startPageButtonContainer{
     text-align: center;
@@ -162,4 +159,4 @@ header{
     border: 1px solid #ccc;
     overflow: auto;
 }
-/* cv_cart_page börjar*/
+/* cv_cart_page slutar*/

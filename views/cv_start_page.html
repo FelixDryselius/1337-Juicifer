@@ -1,32 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8"/>
+    <head>
+        <meta charset="utf-8"/>
+        <!--<link rel="stylesheet" type="text/css" href="reset_css.css">-->
         <link rel="stylesheet" href="cv_css.css">
-		<title>Jucifer</title>
-	</head>
-	<body>
-		<main>
-			<header>
-                <div class="helpLangContainer"  >
-                <button id="language"></button>
-                <button id="helpButton">?</button>
+        <script src="https://vuejs.org/js/vue.js"></script>
+        <script href="cv_script.js"></script>
+        <title>Jucifer</title>
+    </head>
+    <body>
+        <main>
+            <header>
+                <div class="helpLangContainer">
+                    <button id="language"></button>
+                    <button id="helpButton">?</button>
                 </div>
                 <h1 class="header">Välkommen till Jucifer</h1>
                 <h2 class="subHeader"> Välj din dryck:</h2>
             </header>
             <div class="startPageButtonContainer">
                 <div class="chooseDrinkTypeButton">
-                    <button id="juiceButton" type="button">Juice</button>
+                    <button id="juiceButton" type="button" onclick="hideStartView">Juice</button>
                 </div>
 
                 <div class="chooseDrinkTypeButton">
                     <button id="smoothieButton" type="button">Smoothie</button>
                 </div>      
             </div>
-		</main>
-		<footer class="footer">
-		<p>&copy;1337-Leet Force</p>
-		</footer>
-	</body>
+            <header>
+                <div class="helpLangContainer">
+                    <button id="helpButton">?</button>
+                </div>
+                <h1 class="chooseSize">Välj storlek:</h1>
+            </header>
+            <div class="buttonSizeContainer">
+                <div class="chooseSizeButton">
+                    <button id="smallButton" type="button">Small</button>
+                </div>
+
+                <div class="chooseSizeButton">
+                    <button id="mediumButton" type="button">Medium</button>
+                </div>  
+
+                <div class="chooseSizeButton">
+                    <button id="largeButton" type="button">Large</button>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <p>&copy;1337-Leet Force</p>
+        </footer>
+    </body>
 </html
