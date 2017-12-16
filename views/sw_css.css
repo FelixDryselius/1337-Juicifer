@@ -34,7 +34,7 @@ div.menu button {
 }
 
 #orderQueueTab{
-    background-color:gainsboro;
+    background-color:rgb(234, 234, 225);;
 }
 
 #orderHistoryTab{
@@ -87,6 +87,11 @@ h4{
 /*Slut NEW ORDER*/
 
 /*Start css för ORDER QUEUE*/
+#oQBoxContainer{
+    position: relative;
+    height:90vh;
+    background-color: 
+}
 
 /*Slut ORDER QUEUE*/
 

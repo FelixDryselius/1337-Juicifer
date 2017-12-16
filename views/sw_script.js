@@ -26,10 +26,16 @@ function createButton(buttonName) {
 //document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()};
 
 
-function pressedOHJuicesInOrder(){
+function pressedOHJuicesInOrder(tabSelector){
     // typeTextToDiv('1 x L Applejuice', 'oHJuicesInOrder');
-   document.getElementById("oHIngridients").classList.toggle("hide");
+   if (tabSelector == "orderHistory"){
+       document.getElementById("oHIngridients").classList.toggle("hide");
    document.getElementById("oHJuicesInOrder").classList.toggle("pressedJucesInTheOrder"); 
+       } else if (tabSelector == "orderQueue"){
+           document.getElementById("oQIngridients").classList.toggle("hide");
+   document.getElementById("oQJuicesInOrder").classList.toggle("pressedJucesInTheOrder");
+       }
+       
 }
 
 
