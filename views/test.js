@@ -22,7 +22,9 @@ var drink = {
 
 function typeItem(type) {
     this.drink.type = type;
+    orderDrinksArray.push(drink);
     console.log(drink.type + " new drink type");
+    console.log(orderDrinksArray[0].type + " content array");
     startPage.seen = false;
     sizePage.seen = true;
 }
@@ -31,6 +33,7 @@ function sizeItem(size) {
     drink.size = size;
     console.log(drink.size + " new size");
     console.log(drink.type + " current drink type");
+    console.log(orderDrinksArray[0].type + " " + orderDrinksArray[0].size + " content array");
 }
 
 console.log(drink.type + " innan");
