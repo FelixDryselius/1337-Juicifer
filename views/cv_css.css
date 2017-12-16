@@ -1,3 +1,4 @@
+
 header{
     text-align: center;
     position: relative;
@@ -15,7 +16,6 @@ header{
     background-size: 100%;
     
 }
-
 
 
 .startPageButtonContainer{
@@ -92,4 +92,8 @@ header{
 .chooseSizeButton button {
     height: 10em;
     width: 10em;
+}
+
+.hide {
+    display: none;
 }
