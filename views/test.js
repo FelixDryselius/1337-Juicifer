@@ -1,5 +1,6 @@
 var orderDrinksArray = [];
 
+//Start of vue-views
 var startPage = new Vue({
   el: '#start',
   data: {
@@ -14,11 +15,21 @@ var sizePage = new Vue({
   }
 })
 
+var sizePage = new Vue({
+  el: '#smoothieIngredients',
+  data: {
+    seen: false
+
+var sizePage = new Vue({
+  el: '#juiceIngredients',
+  data: {
+    seen: false
+
 var drink = {
     type : "none", 
     size : "0", 
 };
-
+//End of vue-views
 
 function typeItem(type) {
     this.drink.type = type;
