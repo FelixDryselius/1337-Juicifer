@@ -92,23 +92,25 @@ h4{
 .oQButton{
     position: absolute;
     align-content: center;
-    bottom: 20px;
-    height: 15vh;
+    bottom: 23px;
+    height: 14vh;
     text-align: center;
     border: 2px solid;
     cursor: pointer;
+    border-radius: 12px;
     /* font-size:; */
 }
 
 #cancelOrderButton{
-    left: 29%;
-    *background-color: rgb(255, 179, 179);*/
+    left: 30%;
+    width: 12%;
+    background-color: rgb(255, 179, 179);
 }
 
 #finishOrderButton{
-    left: 45%;
+    left: 46%;
     background-color: rgb(51, 204, 51);
-    padding: 30px;
+    width: 24%
 }
 
 /*Slut ORDER QUEUE*/
