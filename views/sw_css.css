@@ -87,9 +87,9 @@ h4{
     height:85vh;
     bottom: 6px;
     left: 6px;
-    background-color: rgb(175,174,187);
+    background-color: rgb(165,170,170);
     border: 2px solid rgb(125,124,127);
-    overflow: scroll;
+    overflow: auto;
 }
 
 .rightSideBox{
@@ -98,7 +98,7 @@ h4{
     height:85vh;
     bottom: 6px;
     right: 6px;
-    background-color: rgb(185,184,197);
+    background-color: rgb(165,170,170);
     border: 2px solid rgb(125,124,127);
 }
 
@@ -107,12 +107,14 @@ h4{
     width: 40%;
     left: 30%;
     top: 60px;
-    background-color: rgb(175,174,187);
+    background-color: rgb(165,170,170);
     border: 2px solid rgb(125,124,127);
+    cursor: pointer;
 }
 
 .pressedJucesInTheOrder{
     filter: brightness(85%);
+    cursor: pointer;
 }
 
 .oneOrder{
@@ -123,6 +125,7 @@ h4{
     top: 13px;
     background-color: rgb(210,210,210);
     border: 2px solid rgb(125,124,127);
+    cursor: pointer;
 }
 
 #order1{
@@ -136,15 +139,15 @@ h4{
     background-color: rgb(234, 234, 225);
 }
 
-.oQButton{
+.oQButtons{
     position: absolute;
     align-content: center;
     bottom: 23px;
     height: 14vh;
     text-align: center;
-    border: 2px solid;
-    cursor: pointer;
+    border: 2px solid rgb(125,124,127);
     border-radius: 12px;
+    cursor: pointer;
     /* font-size:; */
 }
 
