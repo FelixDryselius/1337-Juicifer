@@ -12,7 +12,7 @@ header{
 }
 #language{
     width: 2em;
-  
+
     height: 2em;
     background-image: url("union_jack_small.png");
     background-size: 100%
@@ -38,11 +38,11 @@ header{
 }
 
 .footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
 
 /* Slut på css för start page*/
@@ -119,7 +119,7 @@ header{
     flex-flow: column;
 }
 .mugButtons{
-   flex: 3;
+    flex: 3;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -127,7 +127,7 @@ header{
 }
 
 .mugButtons button{
-   align-self: center;
+    align-self: center;
     flex-basis: 2em;
     min-width: 10em;
 }
@@ -136,6 +136,7 @@ header{
     align-self: center;
     flex-basis: 2em;
     min-width: 13em;
+}
 /*End css for smoothie choose ingredients */
 /* cv_cart_page börjar*/
 .cartBox{
@@ -144,10 +145,10 @@ header{
     flex-direction: row;
     justify-content: space-between;
     border: 1px solid #ccc; /*Skall tas bort när sidan fungerar*/
-/*    overflow: hidden;*/
+    /*    overflow: hidden;*/
 }
 .cartOverviewBox{
-    flex: auto;
+    flex: 1;
     flex-direction: row;
     justify-content: flex-start;
     flex-wrap: wrap;
