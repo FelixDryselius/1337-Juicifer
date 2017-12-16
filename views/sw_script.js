@@ -28,7 +28,7 @@ function createButton(buttonName) {
 
 function pressedOHJuicesInOrder(){
     // typeTextToDiv('1 x L Applejuice', 'oHJuicesInOrder');
-   document.getElementById("oHIngridients").classList.toggle("show");
+   document.getElementById("oHIngridients").classList.toggle("hide");
    document.getElementById("oHJuicesInOrder").classList.toggle("pressedJucesInTheOrder"); 
 }
 
@@ -43,7 +43,7 @@ function putDivIntoDiv(){
 }
 
 function pressedButton(){
-    document.getElementById("oHIngridients").classList.toggle("show");
+    document.getElementById("oHIngridients").classList.toggle("hide");
 }
 
 /* TEST FÖR JQUERY; TOGGLE -Ingrid

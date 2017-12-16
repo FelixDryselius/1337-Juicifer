@@ -87,11 +87,7 @@ h4{
 /*Slut NEW ORDER*/
 
 /*Start css för ORDER QUEUE*/
-/*#oQBoxContainer{
-    position: relative;
-    height:90vh;
-    background-color: gainsboro;
-}*/
+
 /*Slut ORDER QUEUE*/
 
 /*Start css för ORDER HISTORY*/
@@ -174,6 +170,6 @@ h4{
 /*Start css för STATISTICS*/
 /*Slut STATISTICS*/
 
-.show{
+.hide{
     display: none;
 }
