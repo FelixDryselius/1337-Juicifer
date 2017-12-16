@@ -1,4 +1,8 @@
-# juicifer-skeleton
+<h1>1337-Juicifer</h1>
+<p>This is a creation of <b>1337 - Leet Force</b> please observe the license and use the code in a friendly manner. We wish to thank creator @laaksoharju. 
+</p>
+
+## juicifer-skeleton
 This project skeleton gives a folder structure and a basic communication pattern to quickly build prototypes of real-time apps. 
 
 With only fundamental pattern matching abilities and basic HTML/CSS/JS knowledge you will be able to create functional prototypes of web apps. The skeleton code makes use of the modules/frameworks [express js](https://expressjs.com), [socket.io](http://socket.io), and [vue js](https://vuejs.org/) but for prototyping purposes you will most likely not need to understand these libraries very well.
