@@ -75,12 +75,59 @@ h3{
 h4{
 
 }
-
-
 /*SLUT KOD SOM RÖR ALLT*/
 
 /*Start css för NEW ORDER*/
 /*Slut NEW ORDER*/
+
+/*start GEMENSAMMA för ORDER QUEUE och ORDER HISTORY*/
+.leftSideMenuBox{
+    position:absolute;
+    width: 25%;
+    height:85vh;
+    bottom: 6px;
+    left: 6px;
+    background-color: rgb(175,174,187);
+    border: 2px solid rgb(125,124,127);
+    overflow: scroll;
+}
+
+.rightSideBox{
+    position:absolute;
+    width: 25%;
+    height:85vh;
+    bottom: 6px;
+    right: 6px;
+    background-color: rgb(185,184,197);
+    border: 2px solid rgb(125,124,127);
+}
+
+.juicesInTheOrder{
+    position:absolute;
+    width: 40%;
+    left: 30%;
+    top: 60px;
+    background-color: rgb(175,174,187);
+    border: 2px solid rgb(125,124,127);
+}
+
+.pressedJucesInTheOrder{
+    filter: brightness(85%);
+}
+
+.oneOrder{
+    position: relative;
+    width: 90%;
+    height: 10vh;
+    margin: 7px auto;
+    top: 13px;
+    background-color: rgb(210,210,210);
+    border: 2px solid rgb(125,124,127);
+}
+
+#order1{
+}
+/*slut gemensamma ORDER QUEUE och ORDER HISTORY*/
 
 /*Start css för ORDER QUEUE*/
 #oQBoxContainer{
@@ -116,52 +163,15 @@ h4{
 /*Slut ORDER QUEUE*/
 
 /*Start css för ORDER HISTORY*/
-
 #oHBoxContainer{
     position: relative;
     height:90vh;
     background-color: lightcoral;
 }
 
-.leftSideMenuBox{
-    position:absolute;
-    width: 25%;
-    height:80vh;
-    bottom: 4px;
-    left: 4px;
-    background-color: rgb(175,174,187);
-    border: 2px solid rgb(125,124,127);
-}
-
 #oHMenu{}
 
-.rightSideBox{
-    position:absolute;
-    width: 25%;
-    height:80vh;
-    bottom: 4px;
-    right: 4px;
-    background-color: rgb(185,184,197);
-    border: 2px solid rgb(125,124,127);
-}
-
-
-
 #oHIngridients{}
-
-.juicesInTheOrder{
-    position:absolute;
-    width: 40%;
-    left: 30%;
-    top: 60px;
-    background-color: rgb(175,174,187);
-    border: 2px solid rgb(125,124,127);
-}
-
-.pressedJucesInTheOrder{
-    filter: brightness(85%);
-}
-
 
 #oHTimeInfo{
     position: relative;
@@ -173,20 +183,6 @@ h4{
     background-color: rgb(210,210,210);
     border: 2px solid rgb(125,124,127);
 }
-
-.oneOrder{
-    position: relative;
-    width: 90%;
-    height: 10vh;
-    margin: 7px auto;
-    top: 13px;
-    background-color: rgb(210,210,210);
-    border: 2px solid rgb(125,124,127);
-}
-
-#order1{
-}
-
 /*Slut ORDER HISTORY*/
 
 /*Start css för INVENTORY*/
