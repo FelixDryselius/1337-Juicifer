@@ -8,6 +8,14 @@ function showTab(link) {
     window.location.href = link;
 }
 
+function openInNewTab(link){
+    //var win = window.open(link, '_blank');
+    window.location.href = "sw_new_order.html";
+    var tab = window.open(link);
+    //raden under sätter nya taben i fokus.
+    tab.focus();
+}
+
 function createButton(buttonName) {
     var btn = document.createElement();
     document.body.appendChild(btn);
@@ -19,6 +27,14 @@ function createButton(buttonName) {
 // SLUT NEW ORDER FUNKTIONER
 
 // ORDER QUEUE START
+function pressedCancelOrder(){
+    window.alert("du har tryckt på Cancel order");
+}
+
+function pressedFinishOrder(){
+    window.alert("du har tryckt på Finish order");
+}
+
 // SLUT ORDER QUEUE FUNKTIONER
 
 // ORDER HISTORY START
@@ -28,16 +44,18 @@ function createButton(buttonName) {
 
 function pressedOHJuicesInOrder(tabSelector){
     // typeTextToDiv('1 x L Applejuice', 'oHJuicesInOrder');
-   if (tabSelector == "orderHistory"){
-       document.getElementById("oHIngridients").classList.toggle("hide");
-   document.getElementById("oHJuicesInOrder").classList.toggle("pressedJucesInTheOrder"); 
-       } else if (tabSelector == "orderQueue"){
-           document.getElementById("oQIngridients").classList.toggle("hide");
-   document.getElementById("oQJuicesInOrder").classList.toggle("pressedJucesInTheOrder");
-       }
-       
-}
+    if (tabSelector == "orderHistory"){
+        console.log("tryckt på juicesinorder från history");
+        document.getElementById("oHJuicesInOrder").classList.toggle("pressedJucesInTheOrder");
+        document.getElementById("oHIngridients").classList.toggle("hide");
 
+    } 
+    else if (tabSelector == "orderQueue"){
+        console.log("tryckt på juices från queue");
+        document.getElementById("oQJuicesInOrder").classList.toggle("pressedJucesInTheOrder");
+        document.getElementById("oQIngridients").classList.toggle("hide");
+    }       
+}
 
 function typeTextToDiv(text, div_id) {
     var aVariable = document.getElementById(div_id);
@@ -51,14 +69,6 @@ function putDivIntoDiv(){
 function pressedButton(){
     document.getElementById("oHIngridients").classList.toggle("hide");
 }
-
-/* TEST FÖR JQUERY; TOGGLE -Ingrid
-$(document).ready(function(){
-    $("button").click(function(){
-        $(getElementById("oHTimeInfo")).hide();
-    });
-});*/
-    
 
 
 // SLUT ORDER HISTORY
