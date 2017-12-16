@@ -165,3 +165,13 @@ header{
 }
 /* cv_cart_page slutar*/
 
+/* cv_base_ingred börjar*/
+
+#container {
+    flex: 1;
+    display: flex;
+    border: 1em solid black;
+    width: 50%;
+}
+
+/* cv_base_ingred slutar*/

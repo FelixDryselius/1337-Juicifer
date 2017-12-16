@@ -15,21 +15,35 @@ var sizePage = new Vue({
     }
 })
 
-var sizePage = new Vue({
+var juiceIngredientsPage = new Vue({
+  el: '#juiceIngredients',
+  data: {
+    seen: false
+  }
+})
+
+var smoothieIngredientsPage = new Vue({
     el: '#smoothieIngredients',
     data: {
-        seen: false
+    seen: false
+  }
+})
 
-        var sizePage = new Vue({
-        el: '#juiceIngredients',
-        data: {
-        seen: false
+var cartPage = new Vue({
+  el: '#cart',
+  data: {
+    seen: false
+  }
+})
 
-        var drink = {
-        type : "none", 
-        size : "0", 
-    };
-    //End of vue-views
+var orderDrinksArray = [];
+
+var drink = {
+    type : "none", 
+    size : "0", 
+    inCart : false,
+};
+//End of vue-views
 
 function typeItem(type) {
     this.drink.type = type;
@@ -41,10 +55,19 @@ function typeItem(type) {
 }
 
 function sizeItem(size) {
-    drink.size = size;
+    this.drink.size = size;
     console.log(drink.size + " new size");
     console.log(drink.type + " current drink type");
     console.log(orderDrinksArray[0].type + " " + orderDrinksArray[0].size + " content array");
+    sizePage.seen = false;
+    ingredientsPage.seen = true;
+}
+
+function sendToCart() {
+    this.drink.inCart = true;
+    ingredientsPage.seen = false;
+    cartPage.seen = true;
+    console.log(orderDrinksArray[0].type + " " + orderDrinksArray[0].size + " " + orderDrinksArray[0].inCart + " content array");
 }
 
 console.log(drink.type + " innan");

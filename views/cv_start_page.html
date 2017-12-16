@@ -94,6 +94,75 @@
             <!--End of mug interface-->
         </main>
         </div>
+customer_view
+    </div>
+
+    <div id="ingredients" v-if="seen">
+        <!--Start of topbar-->
+        <div class="topBarContainer">
+            <div class="topBarButton">
+                <button id="makeDrinkButton" type="button">Skapa dryck</button>
+                <button id="cartButton" type="button" onclick="sendToCart()">Varukorg</button>
+                <button id="payButton" type="button">Betalning</button>
+            </div>
+        </div>
+        <div class="helpLangContainer"  >
+            <button id="abortButton button">Avbryt beställning</button>
+            <button id="helpButton">?</button>
+        </div>
+
+        <!--End of topbar-->
+
+        <!--Start of mug interface-->
+        <div class="mugContainer">
+            <div class="mug">
+                <div class="toppingButton">
+                    <button id="topping">Topping</button>
+                </div>
+                <div class="mugButtons">
+                    <button id="ingredient3">Ingredient 3</button>
+                    <br>
+                    <button id="ingredient2">Ingredient 2</button>
+                    <br>
+                    <button id="ingredient1">Ingredient 1</button>
+                    <br>
+                    <button id="base">base</button>    
+                </div>
+            </div>
+        </div>
+        <!--End of mug interface-->
+    </div>
+
+    <div id="cart" v-if="seen">
+        <div class="topBarContainer">
+            <div class="topBarButton">
+                <button id="makeDrinkButton" type="button">Skapa dryck</button>
+            </div>
+            <div class="topBarButton">
+                <button id="cartButton" type="button">Varukorg</button>
+            </div>
+            <div class="topBarButton">
+                <button id="payButton" type="button">Betala</button>
+            </div>
+        </div>
+        <header>
+            <div class="helpLangContainer"  >
+                <button id="abortButton button">Avbryt beställning</button>
+                <button id="helpButton">?</button>
+            </div>
+            <h1 class="header" align="left">Varukorg</h1>
+        </header>
+        <div class="cartBox">
+            <div class="cartOverviewBox">
+
+            </div>
+            <div class="cartRecipeBox">
+
+            </div>
+        </div>
+    </div>
+
+=======
         <!--End of smoothie ingredients view-->
         <!--Start of juice ingredients view-->
         <div id="ingredients" v-if="seen">
@@ -135,5 +204,8 @@
         </div>
         <!--End of juice ingredients view-->
     </body>
+cv_juice_ingrediets
 </html>
+
+
 
