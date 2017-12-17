@@ -28,13 +28,13 @@ var juiceIngredientsPage = new Vue({
   }
 })
 
-var smoothieIngredientsPage = new Vue({
-    el: '#smoothieIngredients',
-    data: {
+var ingredientsPage = new Vue({
+  el: '#ingredPage',
+  data: {
     seen: false
   }
 })
-
+      
 var cartPage = new Vue({
   el: '#cart',
   data: {
@@ -45,6 +45,7 @@ var cartPage = new Vue({
 var drink = {
     type : "none", 
     size : "0", 
+    baseIngred : "none",
     inCart : false,
 };
 
@@ -69,6 +70,15 @@ function sizeItem(size) {
         smoothieIngredientsPage.seen = true;
     } else {
         juiceIngredientsPage.seen = true;
+    }
+}
+
+function baseIngred() {
+    var x = document.getElementById("baseIngred");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
     }
 }
 
