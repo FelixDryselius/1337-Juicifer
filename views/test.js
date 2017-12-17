@@ -28,13 +28,6 @@ var ingredientsPage = new Vue({
     seen: false
   }
 })
-
-/*var baseIngredPage = new Vue({
-  el: '#baseIngred',
-  data: {
-      seen: false
-  }
-})*/
       
 var cartPage = new Vue({
   el: '#cart',
