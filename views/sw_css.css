@@ -85,6 +85,38 @@ div.menu button {
     
 }
 
+/*KNAPPEN I INVENTORY*/
+
+#SubmitChange{
+    position: absolute;
+    left: 80%;
+    bottom: 80%;
+}
+
+.SubmitButton {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #a6a6a6;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px grey;
+}
+
+.SubmitButton:hover {background-color: #999999}
+
+.SubmitButton:active {
+  background-color: #999999;
+  box-shadow: 0 5px #404040;
+  transform: translateY(4px);
+}
+
+
 
 /* STATISTIKDELEN */
 
