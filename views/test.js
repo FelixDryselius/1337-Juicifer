@@ -1,6 +1,5 @@
 var orderDrinksArray = [];
 
-//Start of vue-views
 var startPage = new Vue({
     el: '#start',
     data: {
@@ -10,6 +9,13 @@ var startPage = new Vue({
 
 var sizePage = new Vue({
     el: '#size',
+    data: {
+        seen: false
+    }
+})
+
+var topbar = new Vue({
+    el: '#topbar',
     data: {
         seen: false
     }
@@ -36,15 +42,12 @@ var cartPage = new Vue({
   }
 })
 
-var orderDrinksArray = [];
-
 var drink = {
     type : "none", 
     size : "0", 
     baseIngred : "none",
     inCart : false,
 };
-//End of vue-views
 
 function typeItem(type) {
     this.drink.type = type;
@@ -52,6 +55,7 @@ function typeItem(type) {
     console.log(drink.type + " new drink type");
     console.log(orderDrinksArray[0].type + " content array");
     startPage.seen = false;
+    topbar.seen = false;
     sizePage.seen = true;
 }
 
@@ -61,7 +65,12 @@ function sizeItem(size) {
     console.log(drink.type + " current drink type");
     console.log(orderDrinksArray[0].type + " " + orderDrinksArray[0].size + " content array");
     sizePage.seen = false;
-    ingredientsPage.seen = true;
+    topbar.seen = true;
+    if (drink.type === "smoothie"){
+        smoothieIngredientsPage.seen = true;
+    } else {
+        juiceIngredientsPage.seen = true;
+    }
 }
 
 function baseIngred() {

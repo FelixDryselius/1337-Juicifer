@@ -1,13 +1,26 @@
 /* kommentarer ser ut så här ctrl shift i*/
 @media screen and (aspect-ratio: 16/9){}
 
-/*{
-    box-sizing: border-box;
-}*/
 
-#testdiv{
-    border: 2px solid #ccc;
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
 }
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+/*{
+box-sizing: border-box;
+}*/
 
 div.menu {
     overflow: hidden;
@@ -41,14 +54,97 @@ div.menu button {
     background-color:lightcoral;
 }
 
+/*INVENTORY*/
+
 #inventoryTab{
-    background-color:mediumpurple;
+    background-color: #cc99ff;
     /*dra ner transparity*/
 }
 
-#statisticsTab{
-    background-color:lightpink  ;
+#inventoryContainer {
+    background-color: #cc99ff;
+    opacity: 0.8;
+    position: relative;
+    height:90vh;
+
+    
 }
+#inventoryInformation{ /* Detta är då min DIV som jag har problem med */
+    background-color: #e6e6e6;
+    border: 5px solid #bfbfbf;
+    width: 75%;
+    height: 75%;
+    top: 50px;
+    left: 15px;
+    position: relative;
+    overflow-y: scroll;
+    
+}
+
+/*KNAPPEN I INVENTORY*/
+
+#SubmitChange{
+    position: absolute;
+    left: 80%;
+    bottom: 80%;
+}
+
+.SubmitButton {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #a6a6a6;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px grey;
+}
+
+.SubmitButton:hover {background-color: #999999}
+
+.SubmitButton:active {
+  background-color: #999999;
+  box-shadow: 0 5px #404040;
+  transform: translateY(4px);
+}
+
+
+
+/* STATISTIKDELEN */
+
+#statisticsTab {
+    background-color: #ffccff;
+}
+
+#stats {
+    position: relative;
+    height: 90vh;
+    background-color: #ffccff;
+    font-size: 0;
+
+}
+
+#piechart_3d {
+    position: relative;
+    border: 25px solid purple;
+    width: 900px;
+    height: 500px;
+    display: table;
+    margin: 0 auto;
+    bottom: -57px;
+
+    
+
+    
+}
+
+
+
+
 
 /* Change background color of buttons on hover */
 div.menu button:hover {
@@ -57,7 +153,7 @@ div.menu button:hover {
 }
 
 /* Create an active/current tablink class */
-    /*DENNA GÖR INGET VA?*/
+/*DENNA GÖR INGET VA?*/
 div.menu button.active {
     /*background-color: #ccc;*/
     font-weight: bold;
@@ -77,25 +173,105 @@ h3{
 }
 
 h4{
-    
+
 }
-
-
 /*SLUT KOD SOM RÖR ALLT*/
 
 /*Start css för NEW ORDER*/
 /*Slut NEW ORDER*/
 
+
+
+/*start GEMENSAMMA för ORDER QUEUE och ORDER HISTORY*/
+.leftSideMenuBox{
+    position:absolute;
+    width: 25%;
+    height:85vh;
+    bottom: 6px;
+    left: 6px;
+    background-color: rgb(165,170,170);
+    border: 2px solid rgb(125,124,127);
+    overflow: auto;
+}
+
+.rightSideBox{
+    position:absolute;
+    width: 25%;
+    height:85vh;
+    bottom: 6px;
+    right: 6px;
+    background-color: rgb(165,170,170);
+    border: 2px solid rgb(125,124,127);
+}
+
+.juicesInTheOrder{
+    position:absolute;
+    width: 40%;
+    left: 30%;
+    top: 60px;
+    background-color: rgb(165,170,170);
+    border: 2px solid rgb(125,124,127);
+    cursor: pointer;
+}
+
+.pressedJucesInTheOrder{
+    filter: brightness(85%);
+    cursor: pointer;
+}
+
+.oneOrder{
+    position: relative;
+    width: 90%;
+    height: 10vh;
+    margin: 7px auto;
+    top: 13px;
+    background-color: rgb(210,210,210);
+    border: 2px solid rgb(125,124,127);
+    cursor: pointer;
+}
+
+#order1{
+}
+/*slut gemensamma ORDER QUEUE och ORDER HISTORY*/
+
 /*Start css för ORDER QUEUE*/
 #oQBoxContainer{
     position: relative;
     height:90vh;
-    background-color: 
+    background-color: rgb(234, 234, 225);
+}
+
+.oQButtons{
+    position: absolute;
+    align-content: center;
+    bottom: 23px;
+    height: 14vh;
+    text-align: center;
+    border: 2px solid rgb(125,124,127);
+    border-radius: 12px;
+    cursor: pointer;
+    /* font-size:; */
+}
+
+#cancelOrderButton{
+    left: 30%;
+    width: 12%;
+    background-color: rgb(255, 179, 179);
+}
+
+#finishOrderButton{
+    left: 46%;
+    background-color: rgb(51, 204, 51);
+    width: 24%
 }
 
 /*Slut ORDER QUEUE*/
 
 /*Start css för ORDER HISTORY*/
+
+
+/*Start css för ORDER HISTORY*/
+
 
 #oHBoxContainer{
     position: relative;
@@ -103,45 +279,9 @@ h4{
     background-color: lightcoral;
 }
 
-.leftSideMenuBox{
-    position:absolute;
-    width: 25%;
-    height:80vh;
-    bottom: 4px;
-    left: 4px;
-    background-color: rgb(175,174,187);
-    border: 2px solid rgb(125,124,127);
-}
-
 #oHMenu{}
 
-.rightSideBox{
-    position:absolute;
-    width: 25%;
-    height:80vh;
-    bottom: 4px;
-    right: 4px;
-    background-color: rgb(185,184,197);
-    border: 2px solid rgb(125,124,127);
-}
-
-
-            
 #oHIngridients{}
-
-.juicesInTheOrder{
-    position:absolute;
-    width: 40%;
-    left: 30%;
-    top: 60px;
-    background-color: rgb(175,174,187);
-    border: 2px solid rgb(125,124,127);
-}
-
-.pressedJucesInTheOrder{
-    filter: brightness(85%);
-}
-
 
 #oHTimeInfo{
     position: relative;
@@ -153,20 +293,6 @@ h4{
     background-color: rgb(210,210,210);
     border: 2px solid rgb(125,124,127);
 }
-
-.oneOrder{
-    position: relative;
-    width: 90%;
-    height: 10vh;
-    margin: 7px auto;
-    top: 13px;
-    background-color: rgb(210,210,210);
-    border: 2px solid rgb(125,124,127);
-}
-
-#order1{
-}
-
 /*Slut ORDER HISTORY*/
 
 /*Start css för INVENTORY*/
