@@ -19,12 +19,8 @@ tr:nth-child(even) {
 }
 
 /*{
-    box-sizing: border-box;
+box-sizing: border-box;
 }*/
-
-#testdiv{
-    border: 2px solid #ccc;
-}
 
 div.menu {
     overflow: hidden;
@@ -51,7 +47,7 @@ div.menu button {
 }
 
 #orderQueueTab{
-    background-color:gainsboro;
+    background-color:rgb(234, 234, 225);;
 }
 
 #orderHistoryTab{
@@ -152,13 +148,14 @@ div.menu button {
 
 /* Change background color of buttons on hover */
 div.menu button:hover {
-    background-color: #ddd;
+    /*background-color: #ddd;*/
     font-weight: bold;
 }
 
 /* Create an active/current tablink class */
+/*DENNA GÖR INGET VA?*/
 div.menu button.active {
-    background-color: #ccc;
+    /*background-color: #ccc;*/
     font-weight: bold;
 }
 
@@ -170,15 +167,111 @@ div.menu button.active {
     border-top: none;
 }
 
+h3{
+    /*font: bold; */
+    text-align:center;
+}
+
+h4{
+
+}
 /*SLUT KOD SOM RÖR ALLT*/
 
 /*Start css för NEW ORDER*/
 /*Slut NEW ORDER*/
 
+
+
+/*start GEMENSAMMA för ORDER QUEUE och ORDER HISTORY*/
+.leftSideMenuBox{
+    position:absolute;
+    width: 25%;
+    height:85vh;
+    bottom: 6px;
+    left: 6px;
+    background-color: rgb(165,170,170);
+    border: 2px solid rgb(125,124,127);
+    overflow: auto;
+}
+
+.rightSideBox{
+    position:absolute;
+    width: 25%;
+    height:85vh;
+    bottom: 6px;
+    right: 6px;
+    background-color: rgb(165,170,170);
+    border: 2px solid rgb(125,124,127);
+}
+
+.juicesInTheOrder{
+    position:absolute;
+    width: 40%;
+    left: 30%;
+    top: 60px;
+    background-color: rgb(165,170,170);
+    border: 2px solid rgb(125,124,127);
+    cursor: pointer;
+}
+
+.pressedJucesInTheOrder{
+    filter: brightness(85%);
+    cursor: pointer;
+}
+
+.oneOrder{
+    position: relative;
+    width: 90%;
+    height: 10vh;
+    margin: 7px auto;
+    top: 13px;
+    background-color: rgb(210,210,210);
+    border: 2px solid rgb(125,124,127);
+    cursor: pointer;
+}
+
+#order1{
+}
+/*slut gemensamma ORDER QUEUE och ORDER HISTORY*/
+
 /*Start css för ORDER QUEUE*/
+#oQBoxContainer{
+    position: relative;
+    height:90vh;
+    background-color: rgb(234, 234, 225);
+}
+
+.oQButtons{
+    position: absolute;
+    align-content: center;
+    bottom: 23px;
+    height: 14vh;
+    text-align: center;
+    border: 2px solid rgb(125,124,127);
+    border-radius: 12px;
+    cursor: pointer;
+    /* font-size:; */
+}
+
+#cancelOrderButton{
+    left: 30%;
+    width: 12%;
+    background-color: rgb(255, 179, 179);
+}
+
+#finishOrderButton{
+    left: 46%;
+    background-color: rgb(51, 204, 51);
+    width: 24%
+}
+
 /*Slut ORDER QUEUE*/
 
 /*Start css för ORDER HISTORY*/
+
+
+/*Start css för ORDER HISTORY*/
+
 
 #oHBoxContainer{
     position: relative;
@@ -186,53 +279,20 @@ div.menu button.active {
     background-color: lightcoral;
 }
 
-.leftSideMenuBox{
-    position:absolute;
-    width: 25%;
-    height:80vh;
-    bottom: 4px;
-    left: 4px;
-    background-color: rgb(175,174,187);
-    border: 2px solid rgb(125,124,127);
-}
-
 #oHMenu{}
 
-.rightSideBox{
-    position:absolute;
-    width: 25%;
-    height:80vh;
-    bottom: 4px;
-    right: 4px;
-    background-color: rgb(185,184,197);
-    border: 2px solid rgb(125,124,127);
-}
-            
 #oHIngridients{}
 
-.juicesInTheOrder{
-    position:absolute;
-    width: 40%;
-    left: 30%;
-    top: 60px;
-    background-color: rgb(175,174,187);
-    border: 2px solid rgb(125,124,127);
-}
-
-
 #oHTimeInfo{
-    position: absolute;
+    position: relative;
     width: 30%;
-    height:25vh;
-    left: 35%;
-    bottom: 10px;
+    height: 25vh;
+    /*left: 35%;*/
+    margin: auto;
+    top: 400px;
     background-color: rgb(210,210,210);
     border: 2px solid rgb(125,124,127);
 }
-
-
-
-
 /*Slut ORDER HISTORY*/
 
 /*Start css för INVENTORY*/
@@ -240,3 +300,7 @@ div.menu button.active {
 
 /*Start css för STATISTICS*/
 /*Slut STATISTICS*/
+
+.hide{
+    display: none;
+}
