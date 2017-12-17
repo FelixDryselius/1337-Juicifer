@@ -95,3 +95,8 @@ function functionTömDiv() {
     var variabelNamn = document.getElementById('testdiv');
     variabelNamn.innerHTML=" ";
 }
+
+
+
+
+

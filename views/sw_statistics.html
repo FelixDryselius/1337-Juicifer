@@ -7,6 +7,31 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="sw_css.css">
         <script src="sw_script.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     
+        
+        <script type="text/javascript">
+            google.charts.load("current", {packages:["corechart"]});
+            google.charts.setOnLoadCallback(drawChart);
+            function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work',     11],
+                ['Eat',      2],
+                ['Commute',  2],
+                ['Watch TV', 2],
+                ['Sleep',    7]
+            ]);
+
+            var options = {
+                title: 'Popular ingredients',
+                is3D: true,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+            chart.draw(data, options);
+        }
+    </script>
     </head>
     <body>
         
@@ -17,11 +42,16 @@
             <button class="menulinks"  id="orderHistoryTab" onclick="showTab('sw_order_history.html')">Order History</button>
             <button class="menulinks"  id="inventoryTab" onclick="showTab('sw_inventory.html')"> Inventory</button>
             <button class="menulinks"  id="statisticsTab" onclick="showTab('sw_statistics.html')">Statistics</button>
-        </div>
+        </div><div id= "stats"><div id="piechart_3d"></div></div>
+
         
 <!-- HÄR SKAPAS SIDSPECIFIKA GREJER -->        
           
-        statistics
+        statistics farangis
+
     </body>
     
 </html>
+
+
+
