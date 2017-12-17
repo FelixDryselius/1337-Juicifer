@@ -99,4 +99,6 @@ function functionTömDiv() {
 
 
 
-
+function sumbit() {
+    document.getElementById.innerHTML = "Hello";
+}
