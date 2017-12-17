@@ -1,3 +1,0 @@
-//kommentar
-/*längre kommentar*/
-
