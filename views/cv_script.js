@@ -21,6 +21,13 @@ var topbar = new Vue({
     }
 })
 
+var smoothieIngredientsPage = new Vue({
+  el: '#smoothieIngredients',
+  data: {
+    seen: false
+  }
+})
+
 var juiceIngredientsPage = new Vue({
   el: '#juiceIngredients',
   data: {
@@ -76,6 +83,7 @@ function sizeItem(size) {
 function baseIngred() {
     var x = document.getElementById("baseIngred");
     if (x.style.display === "none") {
+        console.log("Ska vara none")
         x.style.display = "block";
     } else {
         x.style.display = "none";
