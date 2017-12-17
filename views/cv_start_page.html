@@ -62,7 +62,6 @@
             </footer>
         </div>
         <!--End of size view-->
-
         <!--Start of smoothie ingredients view-->
         <div id ="smoothieIngredients" v-if="seen">
             <div id="ingredTop">
@@ -80,12 +79,8 @@
                     <button id="helpButton">?</button>
                 </div>
             </div>
-
             <!--End of topbar-->
-
-            <!--Start of mug interface-->
             <div class="mainContent">
-
                 <div id="baseIngred">
                     <div class="flex-container">
                         <button id="ingredYoghurt">Yoghurt</button>
@@ -94,7 +89,6 @@
                         <button id="ingredOatMilk">Havremjölk</button>
                     </div>
                 </div>
-
                 <!--Start of mug interface-->
                 <div class="mugContainer">
                     <div class="mug">
@@ -112,10 +106,11 @@
                         </div>
                     </div>
                 </div>
+                <!--End of mug interface-->
             </div>
         </div>
-        <!--End of mug interface-->
-
+        <!--End of smoothie ingredients view-->
+        <!--Start of cart view-->
         <div id="cart" v-if="seen">
             <div class="topBarContainer">
                 <div class="topBarButton">
@@ -144,9 +139,7 @@
                 </div>
             </div>
         </div>
-
-   
-        <!--End of smoothie ingredients view-->
+        <!--End of cart view-->
         <!--Start of juice ingredients view-->
         <div id="juiceIngredients" v-if="seen">
             <!--Start of mug interface-->
@@ -171,7 +164,6 @@
             <!--End of mug interface-->
         </div>
         <!--End of juice ingredients view-->
-
     </body>
 </html>
 
