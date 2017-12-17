@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8"/>
+    <head>
+        <meta charset="utf-8"/>
         <link rel="stylesheet" href="cv_css.css">
-		<title>Jucifer</title>
-	</head>
-	<body>
-		<main>
-            
-        <!--Start of topbar-->
-             <div class="topBarContainer">
+        <title>Jucifer</title>
+    </head>
+    <body>
+        <main>
+
+            <!--Start of topbar-->
+            <div class="topBarContainer">
                 <div class="topBarButton">
                     <button id="makeDrinkButton" type="button">Skapa dryck</button>
                     <button id="cartButton" type="button">Varukorg</button>
@@ -20,35 +20,39 @@
                 <button id="abortButton button">Avbryt beställning</button>
                 <button id="helpButton">?</button>
             </div>
-            
-        <!--End of topbar-->
-            
-        <!--Start of mug interface-->
-            <div class="mugContainer">
-                <div class="mug">
-                    <div class="toppingButton">
-                    <button id="topping">Topping</button>
+
+            <!--End of topbar-->
+            <div class="mainContent">
+                <div id="baseIngredients">
+                    <div class="flex-container">
+                        <button id="ingredYoghurt">Yoghurt</button>
+                        <button id="ingredVanillaIceCream">Vaniljglass</button>
+                        <button id="ingredMilk">Mjölk</button>
+                        <button id="ingredOatMilk">Havremjölk</button>
                     </div>
-                    <div class="mugButtons">
-                        <button id="ingredient3">Ingredient 3</button>
-                        <br>
-                        <button id="ingredient2">Ingredient 2</button>
-                        <br>
-                        <button id="ingredient1">Ingredient 1</button>
-                        <br>
-                        <button id="base">base</button>    
+                </div>
+
+                <!--Start of mug interface-->
+                <div class="mugContainer">
+                    <div class="mug">
+                        <div class="toppingButton">
+                            <button id="topping">Topping</button>
+                        </div>
+                        <div class="mugButtons">
+                            <button id="ingredient3">Ingredient 3</button>
+                            <br>
+                            <button id="ingredient2">Ingredient 2</button>
+                            <br>
+                            <button id="ingredient1">Ingredient 1</button>
+                            <br>
+                            <button id="base">base</button>    
+                        </div>
                     </div>
                 </div>
             </div>
-        <!--End of mug interface-->
-            
-            <div id="baseIngredients">
-                <div id="container">
-                
-                    <p>hej på dig</p>    
-            
-                </div>
-            </div>
+            <!--End of mug interface-->
+
+
         </main>
     </body>
 </html>

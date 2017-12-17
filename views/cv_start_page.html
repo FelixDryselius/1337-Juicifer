@@ -57,7 +57,7 @@
         </div>
     </div>
 
-    <div id="ingredients" v-if="seen">
+    <div id="ingredTop" v-if="seen">
         <!--Start of topbar-->
         <div class="topBarContainer">
             <div class="topBarButton">
@@ -70,11 +70,24 @@
             <button id="abortButton button">Avbryt beställning</button>
             <button id="helpButton">?</button>
         </div>
+    </div>
 
-        <!--End of topbar-->
+    <!--End of topbar-->
+
+    <!--Start of mug interface-->
+    <div class="mainContent" v-if="seen">
+        
+        <div id="baseIngred" v-if="seen">
+            <div class="flex-container">
+                <button id="ingredYoghurt">Yoghurt</button>
+                <button id="ingredVanillaIceCream">Vaniljglass</button>
+                <button id="ingredMilk">Mjölk</button>
+                <button id="ingredOatMilk">Havremjölk</button>
+            </div>
+        </div>
 
         <!--Start of mug interface-->
-        <div class="mugContainer">
+        <div>
             <div class="mug">
                 <div class="toppingButton">
                     <button id="topping">Topping</button>
@@ -86,12 +99,12 @@
                     <br>
                     <button id="ingredient1">Ingredient 1</button>
                     <br>
-                    <button id="base">base</button>    
+                    <button id="base" onclick="baseIngred()">base</button>    
                 </div>
             </div>
         </div>
-        <!--End of mug interface-->
     </div>
+    <!--End of mug interface-->
 
     <div id="cart" v-if="seen">
         <div class="topBarContainer">

@@ -12,8 +12,22 @@ var sizePage = new Vue({
   }
 })
 
-var ingredientsPage = new Vue({
-  el: '#ingredients',
+var ingredientsPageTop = new Vue({
+  el: '#ingredTop',
+  data: {
+    seen: false
+  }
+})
+
+var ingredientsPageContent = new Vue({
+  el: '.mainContent',
+  data: {
+    seen: false
+  }
+})
+
+var baseIngredPage = new Vue({
+  el: '#baseIngred',
   data: {
     seen: false
   }
@@ -31,6 +45,7 @@ var orderDrinksArray = [];
 var drink = {
     type : "none", 
     size : "0", 
+    baseIngred : "none",
     inCart : false,
 };
 
@@ -50,7 +65,12 @@ function sizeItem(size) {
     console.log(drink.type + " current drink type");
     console.log(orderDrinksArray[0].type + " " + orderDrinksArray[0].size + " content array");
     sizePage.seen = false;
-    ingredientsPage.seen = true;
+    ingredientsPageTop.seen = true;
+    ingredientsPageContent.seen = true;
+}
+
+function baseIngred() {
+    baseIngredPage.seen = true;
 }
 
 function sendToCart() {

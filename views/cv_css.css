@@ -94,15 +94,21 @@ header{
 
 /*Start css for smoothie choose ingredients */
 
-
-
-.mugContainer{
-    position: relative;
+.mainContent {
+    border-style: solid;
+    display: flex;
+    align-content: center;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
 }
+
+.mugContainer {
+    border-style: solid;
+    display: flex;
+}
+
 .mug{
-    position: absolute;
-    right: 8em;
-    top: 15em;
     height: 368px;
     width: 250px;
     background-image: url(mug.jpg);
@@ -167,11 +173,24 @@ header{
 
 /* cv_base_ingred börjar*/
 
-#container {
-    flex: 1;
+.flex-container {
+    border-style: solid;
     display: flex;
-    border: 1em solid black;
-    width: 50%;
+    flex-wrap: wrap;
+    background-color: deepskyblue;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-container>button {
+    background-color: #f1f1f1;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 1.5em;
 }
 
 /* cv_base_ingred slutar*/
