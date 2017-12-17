@@ -39,6 +39,7 @@
             <main>
                 <header>
                     <div class="helpLangContainer">
+                        <button id="abortButton">Avbryt beställning</button>
                         <button id="helpButton">?</button>
                     </div>
                     <h1 class="chooseSize">Välj storlek:</h1>
@@ -47,7 +48,6 @@
                     <div class="chooseSizeButton">
                         <button id="smallButton" type="button" onclick="sizeItem('small')">Small</button>
                     </div>
-
                     <div class="chooseSizeButton">
                         <button id="mediumButton" type="button" onclick="sizeItem('medium')">Medium</button>
                     </div>  
@@ -72,55 +72,55 @@
                 </div>
             </div>
             <div class="helpLangContainer"  >
-                <button id="abortButton button">Avbryt beställning</button>
+                <button id="abortButton">Avbryt beställning</button>
                 <button id="helpButton">?</button>
             </div>
         </div>
         <!--End of topbar-->
         <!--Start of smoothie ingredients view-->
         <div id="smoothieIngredients" v-if="seen">
-                <!--Start of mug interface-->
-                <div class="mugContainer">
-                    <div class="mug">
-                        <div class="toppingButton">
-                            <button id="topping">Topping</button>
-                        </div>
-                        <div class="mugButtons">
-                            <button id="ingredient3">Ingredient 3</button>
-                            <br>
-                            <button id="ingredient2">Ingredient 2</button>
-                            <br>
-                            <button id="ingredient1">Ingredient 1</button>
-                            <br>
-                            <button id="base">base</button>    
-                        </div>
+            <!--Start of mug interface-->
+            <div class="mugContainer">
+                <div class="mug">
+                    <div class="toppingButton">
+                        <button id="topping">Topping</button>
+                    </div>
+                    <div class="mugButtons">
+                        <button id="ingredient3">Ingredient 3</button>
+                        <br>
+                        <button id="ingredient2">Ingredient 2</button>
+                        <br>
+                        <button id="ingredient1">Ingredient 1</button>
+                        <br>
+                        <button id="base">base</button>    
                     </div>
                 </div>
-                <!--End of mug interface-->
+            </div>
+            <!--End of mug interface-->
         </div>
         <!--End of smoothie ingredients view-->
         <!--Start of juice ingredients view-->
         <div id="juiceIngredients" v-if="seen">
-                <!--Start of mug interface-->
-                <div class="mugContainer">
-                    <div class="mug">
-                        <div class="toppingButton">
-                            <button id="topping">Topping</button>
-                        </div>
-                        <div class="mugButtons">
-                            <button id="ingredient5">Ingredient 5</button>
-                            <br>
-                            <button id="ingredient6">Ingredient 4</button>
-                            <br>
-                            <button id="ingredient3">Ingredient 3</button>
-                            <br>
-                            <button id="ingredient2">Ingredient 2</button>
-                            <br>
-                            <button id="ingredient1">Ingredient 1</button>    
-                        </div>
+            <!--Start of mug interface-->
+            <div class="mugContainer">
+                <div class="mug">
+                    <div class="toppingButton">
+                        <button id="topping">Topping</button>
+                    </div>
+                    <div class="mugButtons">
+                        <button id="ingredient5">Ingredient 5</button>
+                        <br>
+                        <button id="ingredient6">Ingredient 4</button>
+                        <br>
+                        <button id="ingredient3">Ingredient 3</button>
+                        <br>
+                        <button id="ingredient2">Ingredient 2</button>
+                        <br>
+                        <button id="ingredient1">Ingredient 1</button>    
                     </div>
                 </div>
-                <!--End of mug interface-->
+            </div>
+            <!--End of mug interface-->
         </div>
         <!--End of juice ingredients view-->
         <!--Start of cart view-->
