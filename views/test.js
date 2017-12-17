@@ -1,17 +1,28 @@
+var orderDrinksArray = [];
+
+//Start of vue-views
 var startPage = new Vue({
-  el: '#start',
-  data: {
-    seen: true
-  }
+    el: '#start',
+    data: {
+        seen: true
+    }
 })
 
 var sizePage = new Vue({
-  el: '#size',
+    el: '#size',
+    data: {
+        seen: false
+    }
+})
+
+var juiceIngredientsPage = new Vue({
+  el: '#juiceIngredients',
   data: {
     seen: false
   }
 })
 
+<<<<<<< HEAD
 var ingredientsPageTop = new Vue({
   el: '#ingredTop',
   data: {
@@ -29,6 +40,11 @@ var ingredientsPageContent = new Vue({
 var baseIngredPage = new Vue({
   el: '#baseIngred',
   data: {
+=======
+var smoothieIngredientsPage = new Vue({
+    el: '#smoothieIngredients',
+    data: {
+>>>>>>> 7b1d963aaa25b38e0bef8b85cc6e33f39778ffd3
     seen: false
   }
 })
@@ -48,7 +64,7 @@ var drink = {
     baseIngred : "none",
     inCart : false,
 };
-
+//End of vue-views
 
 function typeItem(type) {
     this.drink.type = type;
@@ -82,6 +98,3 @@ function sendToCart() {
 
 console.log(drink.type + " innan");
 console.log(drink.size + " innan");
-
-
-
