@@ -99,13 +99,14 @@ header{
     display: flex;
     align-content: center;
     height: 90vh;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .mugContainer {
     border-style: solid;
     display: flex;
+    margin-right: 3em;
 }
 
 .mug{
@@ -117,6 +118,7 @@ header{
     display: flex;
     flex-flow: column;
     justify-content: space-around;
+
 }
 
 .toppingButton{
@@ -172,6 +174,10 @@ header{
 /* cv_cart_page slutar*/
 
 /* cv_base_ingred börjar*/
+
+#baseIngred {
+    display: none;
+}
 
 .flex-container {
     border-style: solid;

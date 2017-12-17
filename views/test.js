@@ -22,33 +22,20 @@ var juiceIngredientsPage = new Vue({
   }
 })
 
-<<<<<<< HEAD
-var ingredientsPageTop = new Vue({
-  el: '#ingredTop',
+var ingredientsPage = new Vue({
+  el: '#ingredPage',
   data: {
     seen: false
   }
 })
 
-var ingredientsPageContent = new Vue({
-  el: '.mainContent',
-  data: {
-    seen: false
-  }
-})
-
-var baseIngredPage = new Vue({
+/*var baseIngredPage = new Vue({
   el: '#baseIngred',
   data: {
-=======
-var smoothieIngredientsPage = new Vue({
-    el: '#smoothieIngredients',
-    data: {
->>>>>>> 7b1d963aaa25b38e0bef8b85cc6e33f39778ffd3
-    seen: false
+      seen: false
   }
-})
-
+})*/
+      
 var cartPage = new Vue({
   el: '#cart',
   data: {
@@ -81,12 +68,16 @@ function sizeItem(size) {
     console.log(drink.type + " current drink type");
     console.log(orderDrinksArray[0].type + " " + orderDrinksArray[0].size + " content array");
     sizePage.seen = false;
-    ingredientsPageTop.seen = true;
-    ingredientsPageContent.seen = true;
+    ingredientsPage.seen = true;
 }
 
 function baseIngred() {
-    baseIngredPage.seen = true;
+    var x = document.getElementById("baseIngred");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
 }
 
 function sendToCart() {
