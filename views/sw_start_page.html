@@ -2,35 +2,67 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <title>Staff View - start page</title>
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" href="css/sw_css.css">
-        <script src="js/sw_script.js"></script>
+<head>
+    <title>Staff View - start page</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/sw_css.css">
+    <script src="/vue/vue.js" defer></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="js/juicifer-main.js" defer></script>
+    <script src="js/sw_script.js" defer></script>
 
-    </head>
-    <body>
+</head>
 
-        <!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->     
-        <div class="menu">
-            <button class="menuLinks" id="newOrderTab" onclick="openInNewTab('cv_start_page.html')"> New Order</button>
-            <button class="menulinks" id="orderQueueTab" onclick="showTab('sw_order_queue.html')"> Order Queue</button>
-            <button class="menulinks" id="orderHistoryTab" onclick="showTab('sw_order_history.html')"> Order History</button>
-            <button class="menulinks" id="inventoryTab" onclick="showTab('sw_inventory.html')"> Inventory</button>
-            <button class="menulinks" id="statisticsTab" onclick="showTab('sw_statistics.html')"> Statistics</button>
-        </div>
+<body>
 
-
-        <!-- TESTGREJER HÄR UNDER.-->
-        <!-- testar att ändra divs -->
-        <br>
-        <div id="testdiv">
-            Det här är en testruta för knapparna under. Jag testade det här med att ändra en div.
-        </div>
-        <button onclick="functionTextTillDiv()">Lägg till text i testDiv</button>
-        <button onclick="functionTömDiv()">Töm testDiv-rutan</button>
+    <!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->
+    <div class="menu">
+        <button class="menuLinks" id="newOrderTab" onclick="openInNewTab('cv_start_page.html')"> New Order</button>
+        <button class="menulinks" id="orderQueueTab" onclick="showTab('sw_order_queue.html')"> Order Queue</button>
+        <button class="menulinks" id="orderHistoryTab" onclick="showTab('sw_order_history.html')"> Order History</button>
+        <button class="menulinks" id="inventoryTab" onclick="showTab('sw_inventory.html')"> Inventory</button>
+        <button class="menulinks" id="statisticsTab" onclick="showTab('sw_statistics.html')"> Statistics</button>
+    </div>
 
 
-    </body>
+    <!-- TESTGREJER HÄR UNDER.-->
+    <!-- testar att ändra divs -->
+    <br>
+    <div id="testdiv">
+        Det här är en testruta för knapparna under. Jag testade det här med att ändra en div.
+    </div>
+    <button onclick="functionTextTillDiv()">Lägg till text i testDiv</button>
+    <button onclick="functionTömDiv()">Töm testDiv-rutan</button>
+    
+    <div id="oQBoxContainer">
+            <div class="leftSideMenuBox" id="oQMenu">
+                <!-- <h3>orderHistoryMenu</h3> -->
+                <div v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div>
+            <div class="oneOrder" id="oQorder1">
+                <h3><strong>3</strong> 12:01, 23</h3>
+            </div>
+                <div class="oneOrder" id="oQorder2">
+                <h3><strong>1</strong> 12:04, 24</h3>
+            </div>
+                <div class="oneOrder" id="oQorder3">
+                    <h3><strong>5</strong> 12:06, 25</h3>
+                </div>                
+            </div>
+            
+            <div class="rightSideBox" id="oQIngridients">
+                <h3>orderHistoryIngridients</h3>
+                Recipie L Apple juice
+            </div>
+            
+            <div class="juicesInTheOrder" id="oQJuicesInOrder" onclick=          "pressedOHJuicesInOrder('orderQueue')">
+                JuicesIn the selected Order
+            </div>
+            <button class="oQButtons"  id="cancelOrderButton" onclick="pressedCancelOrder()">Cancel order</button>
+            <button class="oQButtons"  id="finishOrderButton" onclick="pressedFinishOrder()">Finish order</button>
+            
+    </div> 
+
+
+</body>
 
 </html>

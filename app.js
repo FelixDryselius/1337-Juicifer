@@ -84,6 +84,7 @@ Data.prototype.initializeData = function (table) {
     })
     .on("end", function () {
       console.log("Data for", table, "done");
+      console.log(d);
     });
 };
 
