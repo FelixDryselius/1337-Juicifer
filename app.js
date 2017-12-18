@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public/')));
 app.use('/vue', express.static(path.join(__dirname, '/node_modules/vue/dist/')));
 // Serve diner.html as root page
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'views/ordering.html'));
+  res.sendFile(path.join(__dirname, 'views/cv_start_page.html'));
 });
 // Serve kitchen.html as subpage
 app.get('/kitchen', function (req, res) {
