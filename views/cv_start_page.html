@@ -62,7 +62,6 @@
             </footer>
         </div>
         <!--End of size view-->
-
         <!--Start of smoothie ingredients view-->
         <div id ="smoothieIngredients" v-if="seen">
             <div id="ingredTop">
@@ -80,14 +79,15 @@
                     <button id="helpButton">?</button>
                 </div>
             </div>
-
             <!--End of topbar-->
-
-            <!--Start of mug interface-->
             <div class="mainContent">
+<<<<<<< HEAD
 
                 <div id="ingredBase">
                     <h2 class="head">Bas</h2>
+=======
+                <div id="baseIngred">
+>>>>>>> ab606fcc63b9bfe597ffe00050c3a6e7b50b5bbb
                     <div class="flex-container">
                         <button id="ingredYoghurt">Yoghurt</button>
                         <button id="ingredVanillaIceCream">Vaniljglass</button>
@@ -95,6 +95,7 @@
                         <button id="ingredOatMilk">Havremjölk</button>
                     </div>
                 </div>
+<<<<<<< HEAD
                 
                 <div id="ingredCat">
                     <h2 class="head">Ingredienser kategorier</h2>
@@ -106,6 +107,8 @@
                     </div>
                 </div>
 
+=======
+>>>>>>> ab606fcc63b9bfe597ffe00050c3a6e7b50b5bbb
                 <!--Start of mug interface-->
                 <div class="mugContainer">
                     <div class="mug">
@@ -123,10 +126,11 @@
                         </div>
                     </div>
                 </div>
+                <!--End of mug interface-->
             </div>
         </div>
-        <!--End of mug interface-->
-
+        <!--End of smoothie ingredients view-->
+        <!--Start of cart view-->
         <div id="cart" v-if="seen">
             <div class="topBarContainer">
                 <div class="topBarButton">
@@ -155,9 +159,7 @@
                 </div>
             </div>
         </div>
-
-   
-        <!--End of smoothie ingredients view-->
+        <!--End of cart view-->
         <!--Start of juice ingredients view-->
         <div id="juiceIngredients" v-if="seen">
             <!--Start of mug interface-->
@@ -182,7 +184,6 @@
             <!--End of mug interface-->
         </div>
         <!--End of juice ingredients view-->
-
     </body>
 </html>
 
