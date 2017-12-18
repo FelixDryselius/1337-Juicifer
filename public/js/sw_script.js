@@ -1,4 +1,3 @@
-
 /*jslint es5:true, indent: 2 */
 /*global sharedVueStuff, Vue, socket */
 'use strict';
@@ -6,46 +5,7 @@
 //kommentar
 /*längre kommentar*/
 //newOrder
-var newOrderPage = new Vue ({
-    el: '#newOrder',
-    data: {
-        seen: false
-    }
-    
-})
-//orderQueue
-var orderQueuePage = new Vue ({
-    el: '#orderQueue',
-    data: {
-        seen: true
-    }
-    
-})
 
-//Order History
-var orderHistoryPage = new Vue ({
-    el: '#orderHistory',
-    data: {
-        seen: false
-    }
-    
-})
-
-var inventoryPage = new Vue ({
-    el: '#inventory',
-    data: {
-        seen: true
-    }
-    
-})
-
-var statisticsPage = new Vue ({
-    el: '#statistics',
-    data: {
-        seen: false
-    }
-    
-})
 
 
 // GEMENSAMMA
@@ -54,7 +14,7 @@ function showTab(link) {
     window.location.href = link;
 }
 
-function openInNewTab(link){
+function openInNewTab(link) {
     //var win = window.open(link, '_blank');
     window.location.href = "sw_new_order.html";
     var tab = window.open(link);
@@ -73,11 +33,11 @@ function createButton(buttonName) {
 // SLUT NEW ORDER FUNKTIONER
 
 // ORDER QUEUE START
-function pressedCancelOrder(){
+function pressedCancelOrder() {
     window.alert("du har tryckt på Cancel order");
 }
 
-function pressedFinishOrder(){
+function pressedFinishOrder() {
     window.alert("du har tryckt på Finish order");
 }
 
@@ -88,31 +48,30 @@ function pressedFinishOrder(){
 //document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()};
 
 
-function pressedOHJuicesInOrder(tabSelector){
+function pressedOHJuicesInOrder(tabSelector) {
     // typeTextToDiv('1 x L Applejuice', 'oHJuicesInOrder');
-    if (tabSelector == "orderHistory"){
+    if (tabSelector == "orderHistory") {
         console.log("tryckt på juicesinorder från history");
         document.getElementById("oHJuicesInOrder").classList.toggle("pressedJucesInTheOrder");
         document.getElementById("oHIngridients").classList.toggle("hide");
 
-    } 
-    else if (tabSelector == "orderQueue"){
+    } else if (tabSelector == "orderQueue") {
         console.log("tryckt på juices från queue");
         document.getElementById("oQJuicesInOrder").classList.toggle("pressedJucesInTheOrder");
         document.getElementById("oQIngridients").classList.toggle("hide");
-    }       
+    }
 }
 
 function typeTextToDiv(text, div_id) {
     var aVariable = document.getElementById(div_id);
-    aVariable.innerHTML+=text;
+    aVariable.innerHTML += text;
 }
 
-function putDivIntoDiv(){
+function putDivIntoDiv() {
 
 }
 
-function pressedButton(){
+function pressedButton() {
     document.getElementById("oHIngridients").classList.toggle("hide");
 }
 
@@ -134,12 +93,12 @@ function pressedButton(){
 function functionTextTillDiv() {
     var variabelNamn = document.getElementById('testdiv');
     console.log(variabelNamn);
-    variabelNamn.innerHTML+="Text som ploppar upp för att jag tryck på knappen. ";
+    variabelNamn.innerHTML += "Text som ploppar upp för att jag tryck på knappen. ";
 }
 
 function functionTömDiv() {
     var variabelNamn = document.getElementById('testdiv');
-    variabelNamn.innerHTML=" ";
+    variabelNamn.innerHTML = " ";
 }
 
 
@@ -151,8 +110,8 @@ function sumbit() {
 }
 
 Vue.component('order-item-to-prepare', {
-  props: ['uiLabels', 'order', 'orderId', 'lang'],
-  template: '<div>\
+    props: ['uiLabels', 'order', 'orderId', 'lang'],
+    template: '<div>\
           <order-item\
             :ui-labels="uiLabels"\
             :lang="lang"\
@@ -163,24 +122,57 @@ Vue.component('order-item-to-prepare', {
             {{uiLabels.ready}}\
           </button>\
          </div>',
-  methods: {
-    orderDone: function () {
-      this.$emit('done');
-    },
-    cancelOrder: function () {
+    methods: {
+        orderDone: function () {
+            this.$emit('done');
+        },
+        cancelOrder: function () {
 
+        }
     }
-  }
 });
 
 
 var vm = new Vue({
-  el: '#main',
-  mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
-  methods: {
-    markDone: function (orderid) {
-      socket.emit("orderDone", orderid);
-    }
-  }
-});
+    el: '#main',
+    mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
+    data: {
+        newOrderShow: false,
+        orderQueueShow: false,
+        orderHistoryShow: true,
+        inventoryShow: false,
+        statisticsShow: false,
 
+    },
+    methods: {
+        markDone: function (orderid) {
+            socket.emit("orderDone", orderid);
+        },
+        hideAllTabs: function () {
+            this.newOrderShow = false;
+            this.orderQueueShow = false;
+            this.orderHistoryShow = false;
+            this.inventoryShow = false;
+            this.statisticsShow = false;
+        },
+        showTab: function (tab) {
+            this.hideAllTabs();
+            if (tab === "newOrder") {
+                this.newOrderShow = true;
+            }
+            else if (tab === "orderQueue") {
+                this.orderQueueShow = true;
+            }
+            else if (tab === "orderHistory") {
+                this.orderHistoryShow = true;
+            }
+            else if (tab === "inventory") {
+                this.inventoryShow = true;
+            }
+            else if (tab === "statistics") {
+                this.statisticsShow = true;
+            }
+
+        }
+    }
+});
