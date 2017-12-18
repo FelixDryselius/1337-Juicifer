@@ -35,6 +35,10 @@ app.get('/kitchen', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/kitchen.html'));
 });
 
+app.get('/sw', function (req, res) {
+  res.sendFile(path.join(__dirname, 'views/sw_start_page.html'));
+});
+
 // Store data in an object to keep the global namespace clean
 function Data() {
  
@@ -80,6 +84,7 @@ Data.prototype.initializeData = function (table) {
     })
     .on("end", function () {
       console.log("Data for", table, "done");
+      console.log(d);
     });
 };
 

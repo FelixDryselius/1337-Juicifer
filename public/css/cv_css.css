@@ -18,6 +18,7 @@ header{
     background-size: 100%
 }
 
+
 .startPageButtonContainer{
     text-align: center;
     margin-top: 8em;
@@ -92,6 +93,7 @@ header{
 
 /*Start css for smoothie choose ingredients */
 
+
 .mainContent {
     border-style: solid;
     display: flex;
@@ -108,6 +110,7 @@ header{
 }
 
 .mug{
+
     height: 368px;
     width: 250px;
     background-image: url(mug.jpg);
@@ -116,7 +119,6 @@ header{
     display: flex;
     flex-flow: column;
     justify-content: space-around;
-
 }
 
 .toppingButton{
