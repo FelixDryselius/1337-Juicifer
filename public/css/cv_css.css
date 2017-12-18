@@ -175,13 +175,6 @@ header{
 
 /* cv_base_ingred börjar*/
 
-#ingredBase {
-    display: none;
-}
-
-#ingredCat {
-    display: none;
-}
 
 .head {
     border-style: solid;
@@ -197,6 +190,10 @@ header{
     width: 70%;
     justify-content: center;
     align-items: center;
+    
+    flex: 1 1 auto;
+    overflow-y: auto;
+    height: 60vh;
 }
 
 .flex-container>button {
