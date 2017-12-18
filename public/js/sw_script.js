@@ -5,6 +5,47 @@
 
 //kommentar
 /*längre kommentar*/
+//newOrder
+var newOrderPage = new Vue ({
+    el: '#newOrder',
+    data: {
+        seen: false
+    }
+    
+})
+//orderQueue
+var orderQueuePage = new Vue ({
+    el: '#orderQueue',
+    data: {
+        seen: true
+    }
+    
+})
+
+//Order History
+var orderHistoryPage = new Vue ({
+    el: '#orderHistory',
+    data: {
+        seen: false
+    }
+    
+})
+
+var inventoryPage = new Vue ({
+    el: '#inventory',
+    data: {
+        seen: true
+    }
+    
+})
+
+var statisticsPage = new Vue ({
+    el: '#statistics',
+    data: {
+        seen: false
+    }
+    
+})
 
 
 // GEMENSAMMA
@@ -134,7 +175,7 @@ Vue.component('order-item-to-prepare', {
 
 
 var vm = new Vue({
-  el: '#oQBoxContainer',
+  el: '#main',
   mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
   methods: {
     markDone: function (orderid) {
