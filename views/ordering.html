@@ -19,7 +19,6 @@
       ref="ingredient"
       type="smoothie"
       v-for="item in ingredients"
-      v-if="item.vol_smoothie > 0"
       v-on:increment="addToOrder(item, 'smoothie')"  
       :item="item" 
       :lang="lang"

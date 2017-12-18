@@ -116,3 +116,4 @@ function sendToCart() {
 
 console.log(drink.type + " innan");
 console.log(drink.size + " innan");
+
