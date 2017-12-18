@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="chooseDrinkTypeButton">
-                            <button id="smoothieButton" type="button" v-on:click="showTab('smoothieIngredPage')">Smoothie</button>
+                            <button id="smoothieButton" type="button" v-on:click="showTab('sizePage'); addType('smoothie')">Smoothie</button>
                         </div>      
                     </div>
                 </main>
@@ -49,14 +49,14 @@
                     </header>
                     <div class="buttonSizeContainer">
                         <div class="chooseSizeButton">
-                            <button id="smallButton" type="button" onclick="sizeItem('small')">Small</button>
+                            <button id="smallButton" type="button" v-on:click="showTab('smoothieIngredPage')">Small</button>
                         </div>
                         <div class="chooseSizeButton">
-                            <button id="mediumButton" type="button" onclick="sizeItem('medium')">Medium</button>
+                            <button id="mediumButton" type="button" v-on:click="showTab('smoothieIngredPage')">Medium</button>
                         </div>  
 
                         <div class="chooseSizeButton">
-                            <button id="largeButton" type="button" onclick="sizeItem('large')">Large</button>
+                            <button id="largeButton" type="button" v-on:click="showTab('smoothieIngredPage')">Large</button>
                         </div>
                     </div>
                 </main>
@@ -89,29 +89,37 @@
                     <div id="ingredBase" v-if="showIngredPage">
                         <h2 class="head">Bas</h2>
 
-
+ 
                         <div class="flex-container">
                             <ingredient
-                                        ref="ingredient"
-                                        type="smoothie"
-                                        v-for="item in ingredients" 
-                                        :item="item" 
-                                        :lang="lang"
-                                        :key="item.ingredient_id">
+                            ref="ingredient"
+                            v-for="item in filtered_ingredients('base')"
+                            v-on:addIngredient="addToOrder(item)"  
+                            :item="item" 
+                            :lang="lang"
+                            :key="item.ingredient_id"> 
                             </ingredient>
+                            
                             <button id="ingredYoghurt">Yoghurt</button>
                             <button id="ingredVanillaIceCream">Vaniljglass</button>
                             <button id="ingredMilk">Mjölk</button>
                             <button id="ingredOatMilk">Havremjölk</button>
+                            <button id="ingredOatMilk">Havremjölk</button>
+                            <button id="ingredOatMilk">Havremjölk</button>
+                            <button id="ingredOatMilk">Havremjölk</button>
                         </div>
                     </div>
 
-                    <div id="ingredCat">
+                    <div id="ingredCat" v-if="showIngredCat">
                         <h2 class="head">Ingredienser kategorier</h2>
                         <div class="flex-container">
                             <button id="ingredYoghurt">Alla ingredienser</button>
                             <button id="ingredVanillaIceCream">Frukt</button>
                             <button id="ingredMilk">Bär</button>
+                            <button id="ingredOatMilk">Grönsaker</button>
+                            <button id="ingredOatMilk">Grönsaker</button>
+                            <button id="ingredOatMilk">Grönsaker</button>
+                            <button id="ingredOatMilk">Grönsaker</button>
                             <button id="ingredOatMilk">Grönsaker</button>
                         </div>
                     </div>
@@ -120,16 +128,16 @@
                     <div class="mugContainer">
                         <div class="mug">
                             <div class="toppingButton">
-                                <button id="topping">Topping</button>
+                                <button id="topping"  v-on:click="showIngredients">Topping</button>
                             </div>
                             <div class="mugButtons">
-                                <button id="ingredient3" onclick="ingredCat()">Ingredient 3</button>
+                                <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
                                 <br>
-                                <button id="ingredient2" onclick="ingredCat()">Ingredient 2</button>
+                                <button id="ingredient2" v-on:click="showIngredients('ingredCat')">Ingredient 2</button>
                                 <br>
-                                <button id="ingredient1" onclick="ingredCat()">Ingredient 1</button>
+                                <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>
                                 <br>
-                                <button id="base">base
+                                <button id="base" v-on:click="showIngredients('base')">base
 
                                 </button> 
 
@@ -196,38 +204,5 @@
             </div>
             <!--End of juice ingredients view-->
         </div>
-                <div class="cartOverviewBox">
-
-                </div>
-                <div class="cartRecipeBox">
-
-                </div>
-            </div>
-        </div>
-        <!--End of cart view-->
-        <!--Start of juice ingredients view-->
-        <div id="juiceIngredients" v-if="seen">
-            <!--Start of mug interface-->
-            <div class="mugContainer">
-                <div class="mug">
-                    <div class="toppingButton">
-                        <button id="topping">Topping</button>
-                    </div>
-                    <div class="mugButtons">
-                        <button id="ingredient5">Ingredient 5</button>
-                        <br>
-                        <button id="ingredient6">Ingredient 4</button>
-                        <br>
-                        <button id="ingredient3">Ingredient 3</button>
-                        <br>
-                        <button id="ingredient2">Ingredient 2</button>
-                        <br>
-                        <button id="ingredient1">Ingredient 1</button>    
-                    </div>
-                </div>
-            </div>
-            <!--End of mug interface-->
-        </div>
-        <!--End of juice ingredients view-->
     </body>
 </html>

@@ -2,53 +2,8 @@
 
 var orderDrinksArray = [];
 
-var all_cv = new Vue({
-    el:'#all_cv',
-    mixins: [sharedVueStuff],
-    data: {
-        showStartPage: true,
-        showSizePage: false,
-        showTopBar: false,
-        showSmoothieIngredPage: false,
-        showJuiceIngredPage: false,
-        showIngredPage: false,
-        showCartPage: false
-    },
-    
-   
-    methods: {
-        hideAllTabs: function () {
-            this.showStartPage = false;
-            this.showSizePage = false;
-            this.showTopBar = false;
-            this.showSmoothieIngredPage = false;
-            this.showJuiceIngredPage = false;
-            this.showIngredPage = false;
-            this.showCartPage = false;
-        },
-        showTab: function (tab) {
-            console.log("test");
-            this.hideAllTabs();
-            if (tab === "smoothieIngredPage") {
-                this.showSmoothieIngredPage = true;
-            }
-            else if (tab === "juiceIngredPage") {
-                this.showJuiceIngredPage = true;
-            }
-            else if (tab === "orderHistory") {
-                this.orderHistoryShow = true;
-            }
-            else if (tab === "inventory") {
-                this.inventoryShow = true;
-            }
-            else if (tab === "statistics") {
-                this.statisticsShow = true;
-            }
 
-        }
-    }
-});
-    
+
 
 
 /*var startPage = new Vue({
@@ -92,7 +47,7 @@ var ingredientsPage = new Vue({
     seen: false
   }
 })
-      
+
 var cartPage = new Vue({
   el: '#cart',
   data: {
@@ -100,14 +55,9 @@ var cartPage = new Vue({
   }
 })*/
 
-var drink = {
-    type : "none", 
-    size : "0", 
-    ingredBase : "none",
-    inCart : false,
-};
 
-function typeItem(type) {
+
+/*function typeItem(type) {
     this.drink.type = type;
     orderDrinksArray.push(drink);
     console.log(drink.type + " new drink type");
@@ -157,7 +107,7 @@ function closeAllIngred() {
     var iC = document.getElementById("ingredCat");
     iB.style.display = "none";
     iC.style.display = "none";
-    }
+}
 
 function sendToCart() {
     this.drink.inCart = true;
@@ -169,6 +119,8 @@ function sendToCart() {
 console.log(drink.type + " innan");
 console.log(drink.size + " innan");
 
+
+
 /*ordering.js
 ------------------------------*/
 
@@ -176,81 +128,166 @@ console.log(drink.size + " innan");
 /*global sharedVueStuff, Vue, socket */
 
 
-Vue.component('ingredient', {
-  props: ['item', 'type', 'lang'],
-  template: ' <div class="ingredient">\
-                  <label>\
-                    <button v-on:click="incrementCounter">{{ counter }}</button>\
-                    {{item["ingredient_"+ lang]}} ({{ (type=="smoothie") ? item.vol_smoothie : item.vol_juice }} ml), {{item.selling_price}}:-, {{item.stock}} pcs\
-                  </label>\
-              </div>',
-  data: function () {
-    return {
-      counter: 0
-    };
-  },
-  methods: {
-    incrementCounter: function () {
-      this.counter += 1;
-      this.$emit('increment');
-    },
-    resetCounter: function () {
-      this.counter = 0;
-    }
-  }
-});
+
+
+var drink = {
+    type : "none", 
+    size : "0", 
+    ingredBase : "none",
+    inCart : false,
+};
+
+
 
 function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
 }
+
+
 
 function getOrderNumber() {
-  // It's probably not a good idea to generate a random order number, client-side. 
-  // A better idea would be to let the server decide.
-  return "#" + getRandomInt(1, 1000000);
+    // It's probably not a good idea to generate a random order number, client-side. 
+    // A better idea would be to let the server decide.
+    return "#" + getRandomInt(1, 1000000);
 }
 
-var vm = new Vue({
-  el: '#all_cv',
-  mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
-  data: {
-    type: '',
-    chosenIngredients: [],
-    volume: 0,
-    price: 0
-  },
-  methods: {
-    addToOrder: function (item, type) {
-      this.chosenIngredients.push(item);
-      this.type = type;
-      if (type === "smoothie") {
-        this.volume += +item.vol_smoothie;
-      } else if (type === "juice") {
-        this.volume += +item.vol_juice;
-      }
-      this.price += +item.selling_price;
-    },
-    placeOrder: function () {
-      var i,
-      //Wrap the order in an object
-        order = {
-          ingredients: this.chosenIngredients,
-          volume: this.volume,
-          type: this.type,
-          price: this.price
-        };
-      // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-      socket.emit('order', {orderId: getOrderNumber(), order: order});
-      //set all counters to 0. Notice the use of $refs
-      for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-        this.$refs.ingredient[i].resetCounter();
-      }
-      this.volume = 0;
-      this.price = 0;
-      this.type = '';
-      this.chosenIngredients = [];
+
+
+
+// Start Vue:
+Vue.component('ingredient', {
+    props: ['item', 'lang'],
+    template: ' <button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
+    methods: {
+        addIngredientToDrink: function () {
+            this.$emit('addIngredient');
+        },
     }
-  }
+});
+
+
+
+var vm = new Vue({
+    el: '#all_cv',
+    mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
+    data: {
+        type: '',
+        chosenIngredients: [],
+        volume: 0,
+        price: 0,
+
+        showStartPage: true,
+        showSizePage: false,
+        showTopBar: false,
+        showSmoothieIngredPage: false,
+        showJuiceIngredPage: false,
+        showIngredPage: false,
+        showIngredCat: false,
+        showCartPage: false,
+
+    },
+    
+    
+    methods: {
+        hideAllTabs: function () {
+            this.showStartPage = false;
+            this.showSizePage = false;
+            this.showTopBar = false;
+            this.showSmoothieIngredPage = false;
+            this.showJuiceIngredPage = false;
+            this.showIngredPage = false;
+            this.showIngredCat = false;
+            this.showCartPage = false;
+        },
+        
+    filtered_ingredients: function(cat) {
+    return this.ingredients.filter(function(item) {
+      return item["ingredient_cat"] === cat;
+    })
+    },
+
+        addType: function(drinkType) {
+            drink.type = drinkType;
+        },
+
+        addSize: function(drinkSize) {
+            drink.size = drinkSize;
+        },
+
+        showTab: function (tab) {
+            console.log(tab)
+            this.showSizePage = false;
+            this.hideAllTabs();
+            if (tab === "sizePage") {
+                this.showSizePage = true;
+            }
+            else if (tab === "smoothieIngredPage") {
+                this.showSmoothieIngredPage = true;
+                this.showTopBar = true;
+            }
+            else if (tab === "orderHistory") {
+                this.orderHistoryShow = true;
+            }
+            else if (tab === "inventory") {
+                this.inventoryShow = true;
+            }
+            else if (tab === "statistics") {
+                this.statisticsShow = true;
+            }
+
+        },
+
+        showIngredients: function(ingredTyp) {
+            if (ingredTyp === "base") {
+                this.showIngredPage = true;
+                
+                for (var index in this.ingredients){
+                if(this.ingredients[index].ingredient_cat === "base") { console.log(this.ingredients[index].ingredient_sv);
+                    }
+                }
+            }
+            else if (ingredTyp === "ingredCat") {
+
+            }
+            else {
+                //this is for topping ingred
+            }
+        },
+
+        /* for use in next step
+         else if (ingredTyp === "berry") {
+            }
+            else if (ingredTyp === "fruit") {
+
+            }
+            else if (ingredTyp === "vegetable") {
+            }
+        */
+        addToOrder: function (item) {
+            this.chosenIngredients.push(item);
+        },
+
+        placeOrder: function () {
+            var i,
+                //Wrap the order in an object
+                order = {
+                    ingredients: this.chosenIngredients,
+                    volume: this.volume,
+                    type: this.type,
+                    price: this.price
+                };
+            // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+            socket.emit('order', {orderId: getOrderNumber(), order: order});
+            //set all counters to 0. Notice the use of $refs
+            for (i = 0; i < this.$refs.ingredient.length; i += 1) {
+                this.$refs.ingredient[i].resetCounter();
+            }
+            this.volume = 0;
+            this.price = 0;
+            this.type = '';
+            this.chosenIngredients = [];
+        },
+    }
 });
