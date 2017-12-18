@@ -10,17 +10,19 @@
 
 // GEMENSAMMA
 
-function showTab(link) {
+// Detta är tidigare funktion för tabarna
+/*function showTab(link) {
     window.location.href = link;
-}
+}/*/
 
-function openInNewTab(link) {
+//Detta är tidigare funktion för "new order tab"
+/*function openInNewTab(link) {
     //var win = window.open(link, '_blank');
     window.location.href = "sw_new_order.html";
     var tab = window.open(link);
     //raden under sätter nya taben i fokus.
     tab.focus();
-}
+}*/
 
 function createButton(buttonName) {
     var btn = document.createElement();
@@ -112,24 +114,24 @@ function sumbit() {
 Vue.component('order-item-to-prepare', {
     props: ['uiLabels', 'order', 'orderId', 'lang'],
     template: '<div>\
-          <order-item\
-            :ui-labels="uiLabels"\
-            :lang="lang"\
-            :order-id="orderId"\
-            :order="order">\
-          </order-item>\
-          <button v-on:click="orderDone">\
-            {{uiLabels.ready}}\
-          </button>\
-         </div>',
+<order-item\
+:ui-labels="uiLabels"\
+:lang="lang"\
+:order-id="orderId"\
+:order="order">\
+</order-item>\
+<button v-on:click="orderDone">\
+{{uiLabels.ready}}\
+</button>\
+</div>',
     methods: {
-        orderDone: function () {
-            this.$emit('done');
-        },
-        cancelOrder: function () {
+    orderDone: function () {
+    this.$emit('done');
+},
+              cancelOrder: function () {
 
-        }
-    }
+}
+}
 });
 
 
@@ -159,6 +161,9 @@ var vm = new Vue({
             this.hideAllTabs();
             if (tab === "newOrder") {
                 this.newOrderShow = true;
+                var newTab = window.open("localhost:3000/");
+                //raden under sätter nya taben i fokus.
+                tab.focus();
             }
             else if (tab === "orderQueue") {
                 this.orderQueueShow = true;

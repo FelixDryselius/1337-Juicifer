@@ -39,6 +39,10 @@ app.get('/sw', function (req, res) {
   res.sendFile(path.join(__dirname, 'views/sw_start_page.html'));
 });
 
+app.get('/ordering', function (req, res) {
+  res.sendFile(path.join(__dirname, 'views/ordering.html'));
+});
+
 // Store data in an object to keep the global namespace clean
 function Data() {
  
