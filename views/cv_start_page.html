@@ -86,12 +86,23 @@
             <!--Start of mug interface-->
             <div class="mainContent">
 
-                <div id="baseIngred">
+                <div id="ingredBase">
+                    <h2 class="head">Bas</h2>
                     <div class="flex-container">
                         <button id="ingredYoghurt">Yoghurt</button>
                         <button id="ingredVanillaIceCream">Vaniljglass</button>
                         <button id="ingredMilk">Mjölk</button>
                         <button id="ingredOatMilk">Havremjölk</button>
+                    </div>
+                </div>
+                
+                <div id="ingredCat">
+                    <h2 class="head">Ingredienser kategorier</h2>
+                    <div class="flex-container">
+                        <button id="ingredYoghurt">Alla ingredienser</button>
+                        <button id="ingredVanillaIceCream">Frukt</button>
+                        <button id="ingredMilk">Bär</button>
+                        <button id="ingredOatMilk">Grönsaker</button>
                     </div>
                 </div>
 
@@ -102,13 +113,13 @@
                             <button id="topping">Topping</button>
                         </div>
                         <div class="mugButtons">
-                            <button id="ingredient3">Ingredient 3</button>
+                            <button id="ingredient3" onclick="ingredCat()">Ingredient 3</button>
                             <br>
-                            <button id="ingredient2">Ingredient 2</button>
+                            <button id="ingredient2" onclick="ingredCat()">Ingredient 2</button>
                             <br>
-                            <button id="ingredient1">Ingredient 1</button>
+                            <button id="ingredient1" onclick="ingredCat()">Ingredient 1</button>
                             <br>
-                            <button id="base" onclick="baseIngred()">base</button>    
+                            <button id="base" onclick="ingredBase()">base</button>    
                         </div>
                     </div>
                 </div>

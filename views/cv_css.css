@@ -173,8 +173,18 @@ header{
 
 /* cv_base_ingred börjar*/
 
-#baseIngred {
+#ingredBase {
     display: none;
+}
+
+#ingredCat {
+    display: none;
+}
+
+.head {
+    border-style: solid;
+    width: 70%;
+    text-align: center;
 }
 
 .flex-container {

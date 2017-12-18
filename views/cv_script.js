@@ -80,15 +80,32 @@ function sizeItem(size) {
     }
 }
 
-function baseIngred() {
-    var x = document.getElementById("baseIngred");
+function ingredBase() {
+    closeAllIngred();
+    var x = document.getElementById("ingredBase");
     if (x.style.display === "none") {
-        console.log("Ska vara none")
         x.style.display = "block";
     } else {
         x.style.display = "none";
     }
 }
+
+function ingredCat() {
+    closeAllIngred();
+    var x = document.getElementById("ingredCat");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+
+function closeAllIngred() {
+    var iB = document.getElementById("ingredBase");
+    var iC = document.getElementById("ingredCat");
+    iB.style.display = "none";
+    iC.style.display = "none";
+    }
 
 function sendToCart() {
     this.drink.inCart = true;
