@@ -19,7 +19,6 @@ header{
 }
 
 
-
 .startPageButtonContainer{
     text-align: center;
     margin-top: 8em;
@@ -95,14 +94,23 @@ header{
 /*Start css for smoothie choose ingredients */
 
 
-
-.mugContainer{
-    position: relative;
+.mainContent {
+    border-style: solid;
+    display: flex;
+    align-content: center;
+    height: 90vh;
+    justify-content: flex-end;
+    align-items: center;
 }
+
+.mugContainer {
+    border-style: solid;
+    display: flex;
+    margin-right: 3em;
+}
+
 .mug{
-    position: absolute;
-    right: 8em;
-    top: 15em;
+
     height: 368px;
     width: 250px;
     background-image: url(mug.jpg);
@@ -165,3 +173,40 @@ header{
 }
 /* cv_cart_page slutar*/
 
+/* cv_base_ingred börjar*/
+
+#ingredBase {
+    display: none;
+}
+
+#ingredCat {
+    display: none;
+}
+
+.head {
+    border-style: solid;
+    width: 70%;
+    text-align: center;
+}
+
+.flex-container {
+    border-style: solid;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: deepskyblue;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-container>button {
+    background-color: #f1f1f1;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 1.5em;
+}
+
+/* cv_base_ingred slutar*/

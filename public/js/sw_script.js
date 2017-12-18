@@ -1,3 +1,4 @@
+
 /*jslint es5:true, indent: 2 */
 /*global sharedVueStuff, Vue, socket */
 'use strict';
@@ -103,6 +104,7 @@ function functionTömDiv() {
 
 
 
+
 function sumbit() {
     document.getElementById("demo").innerHTML = "Hello";
 }
@@ -140,3 +142,4 @@ var vm = new Vue({
     }
   }
 });
+
