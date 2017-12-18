@@ -103,7 +103,7 @@ var cartPage = new Vue({
 var drink = {
     type : "none", 
     size : "0", 
-    baseIngred : "none",
+    ingredBase : "none",
     inCart : false,
 };
 
