@@ -100,5 +100,5 @@ function functionTömDiv() {
 
 
 function sumbit() {
-    document.getElementById.innerHTML = "Hello";
+    document.getElementById("demo").innerHTML = "Hello";
 }
