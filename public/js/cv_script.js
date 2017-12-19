@@ -154,19 +154,16 @@ function getOrderNumber() {
 }
 
 
-
-
 // Start Vue:
 Vue.component('ingredient', {
     props: ['item', 'lang'],
     template: ' <button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
     methods: {
         addIngredientToDrink: function () {
-            this.$emit('addIngredient');
+            this.$emit('add-ingredient');
         },
     }
 });
-
 
 
 var vm = new Vue({
@@ -208,6 +205,7 @@ var vm = new Vue({
                 return item["ingredient_cat"] === cat;
             })
         },
+
         
         showIngredButton: function(catName){
             this.chosenCatName = catName;
@@ -217,6 +215,7 @@ var vm = new Vue({
             
         },
         
+
 
         addType: function(drinkType) {
             drink.type = drinkType;
@@ -249,11 +248,26 @@ var vm = new Vue({
 
         },
 
+        closeIngredMenu: function(ingredType) {
+            if (ingredType === "base") {
+                this.showIngredPage = false;
+                console.log("Close ingredients menu: base");
+            }
+            else if (ingredType === "ingredCat") {
+                //CLOSE SOMTHING
+            }
+            else {
+                //CLOSE SOMETHING
+            }
+        },
+
         showIngredients: function(ingredTyp) {
             if (ingredTyp === "base") {
                 this.showIngredPage = true;
+
                 this.chosenCatName = "base";
                 console.log(this.ingredients);
+
 
                 for (var index in this.ingredients){
                     if(this.ingredients[index].ingredient_cat === "base") { console.log(this.ingredients[index].ingredient_sv);
@@ -293,6 +307,7 @@ var vm = new Vue({
         
         addToOrder: function (item) {
             this.chosenIngredients.push(item);
+            console.log("entered addtoorder");
         },
 
         placeOrder: function () {
