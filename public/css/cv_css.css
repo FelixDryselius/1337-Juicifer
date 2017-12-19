@@ -110,10 +110,9 @@ header{
 }
 
 .mug{
-
     height: 368px;
     width: 250px;
-    background-image: url(mug.jpg);
+    background-image: url(/img/mug.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     display: flex;
