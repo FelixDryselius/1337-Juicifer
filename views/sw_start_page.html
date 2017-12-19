@@ -152,9 +152,16 @@
                                 <th>JU balance</th>
                                 <th>Balance</th>
                                 <th>New balance</th>
-                            </tr> <!-- v-for="ingred in this.ingredients"--> 
-                            <tr> 
-                                <td> :( </td>
+                            </tr> 
+                            <tr v-for="ingred in this.ingredients"> 
+                                <td> <ingredient
+                                                ref="ingredient"
+                                                v-for="item in ingredients"
+                                                :item="item" 
+                                                :lang="lang"
+                                                :key="item.ingredient_id"> 
+
+                                    </ingredient> </td>
                                 <td>20</td>
                                 <td>125</td>
                                 <td>10</td>

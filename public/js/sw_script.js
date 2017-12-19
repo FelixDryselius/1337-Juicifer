@@ -91,6 +91,11 @@ function pressedButton() {
 // SLUT ORDER HISTORY
 
 // INVENTORY START
+
+Vue.component('ingredient', {
+  props: ['item', 'lang'],
+  template: '<div> {{item["ingredient_"+ lang]}}, {{item.stock}} </div>'
+});
 //SLUT INVENTORY
 
 //STATISTICS START
