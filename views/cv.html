@@ -88,27 +88,43 @@
                 <div class="mainContent">
                     <!--Start of base ingredient menu-->
                     <div id="ingredBase" v-if="showIngredPage">
-                        <h2 class="head">Bas</h2>
+                        <h2 class="head">{{chosenCatName}}</h2>
 
                         <div class="flex-container">
                             <button class="ingredient" v-on:click="closeIngredMenu('base')">
                                 Return</button>
                             <ingredient
-                                        ref="ingredient"
-                                        v-for="item in filtered_ingredients('base')"
-                                        v-on:add-ingredient="addToOrder(item),closeIngredMenu('base')" 
-                                        :item="item" 
-                                        :lang="lang"
-                                        :key="item.ingredient_id">
+
+                            ref="ingredient"
+                            v-for="item in filtered_ingredients(chosenCatName)"
+                            v-on:addIngredient="addToOrder(item),closeIngredMenu('base')"  
+                            :item="item" 
+                            :lang="lang"
+                            :key="item.ingredient_id"> 
+
                             </ingredient>
                         </div>
                     </div>
                     <!--End of base menu-->
                     <!--Start of standard ingredient menu-->
                     <div id="ingredCat" v-if="showIngredCat">
-                        <h2 class="head">Ingredienser kategorier</h2>
+                        <h2 class="head">Ingredienskategorier</h2>
                         <div class="flex-container">
+
+                        <button class = "categoryButton" v-for= "catName in this.categories" v-on:click="showIngredButton(catName)">
+                            {{catName}}
+                            </button>
+                       <!--     <button id="ingredYoghurt">Alla ingredienser</button>
+                            <button id="ingredVanillaIceCream">Frukt</button>
+                            <button id="ingredMilk">Bär</button>
+                            <button id="ingredOatMilk">Grönsaker</button>
+                            <button id="ingredOatMilk">Grönsaker</button>
+                            <button id="ingredOatMilk">Grönsaker</button>
+                            <button id="ingredOatMilk">Grönsaker</button>
+                            <button id="ingredOatMilk">Grönsaker</button> -->
+
                             <!--INGREDIENTS HERE-->
+
                         </div>
                     </div>
                     <!--End of standard ingredients menu-->
