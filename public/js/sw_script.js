@@ -135,13 +135,25 @@ Vue.component('order-item-to-prepare', {
 });
 
 
+// Start Vue: DETTA KAN NOG TAS BORT
+/* Vue.component('ingredient', {
+    props: ['item', 'lang'],
+    template: ' <button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
+    methods: {
+        addIngredientToDrink: function () {
+            this.$emit('addIngredient');
+        },
+    }
+}); */
+
+
 var vm = new Vue({
     el: '#main',
     mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
     data: {
         newOrderShow: false,
-        orderQueueShow: false,
-        orderHistoryShow: true,
+        orderQueueShow: true,
+        orderHistoryShow: false,
         inventoryShow: false,
         statisticsShow: false,
 

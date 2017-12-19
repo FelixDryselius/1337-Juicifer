@@ -67,7 +67,7 @@ div.menu button {
     position: relative;
     height:90vh;
 
-    
+
 }
 #inventoryInformation{ /* Detta är då min DIV som jag har problem med */
     background-color: #e6e6e6;
@@ -78,7 +78,7 @@ div.menu button {
     left: 15px;
     position: relative;
     overflow-y: scroll;
-    
+
 }
 
 /*KNAPPEN I INVENTORY*/
@@ -90,26 +90,26 @@ div.menu button {
 }
 
 .SubmitButton {
-  display: inline-block;
-  padding: 15px 25px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #a6a6a6;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px grey;
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #a6a6a6;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px grey;
 }
 
 .SubmitButton:hover {background-color: #999999}
 
 .SubmitButton:active {
-  background-color: #999999;
-  box-shadow: 0 5px #404040;
-  transform: translateY(4px);
+    background-color: #999999;
+    box-shadow: 0 5px #404040;
+    transform: translateY(4px);
 }
 
 
@@ -137,9 +137,9 @@ div.menu button {
     margin: 0 auto;
     bottom: -57px;
 
-    
 
-    
+
+
 }
 
 
@@ -183,6 +183,7 @@ h4{
 
 
 /*start GEMENSAMMA för ORDER QUEUE och ORDER HISTORY*/
+
 .leftSideMenuBox{
     position:absolute;
     width: 25%;
@@ -191,6 +192,10 @@ h4{
     left: 6px;
     background-color: rgb(165,170,170);
     border: 2px solid rgb(125,124,127);
+    overflow: auto;
+}
+
+.oneOrder{
     overflow: auto;
 }
 
