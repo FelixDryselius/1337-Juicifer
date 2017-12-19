@@ -125,50 +125,6 @@
                     </div>
                     
                     
-                    <!--
-                    <div id="ingredBase" v-if="showIngredPage">
-                        <div class="headContainer">
-                        <div class="head">{{chosenCatName}}</div>
-                        <input class="head" placeholder="Search" v-model="searchTerm">
-                            </div>
-
-                        <div class="flex-container">
-                            <button class="ingredient" v-on:click="closeIngredMenus()">
-                                Return</button>
-                            <ingredient
-                            ref="ingredient"
-                            v-for="item in filtered_ingredients(chosenCatName)"
-                            v-on:addIngredient="addToOrder(item),closeIngredMenus()"  
-                            :item="item" 
-                            :lang="lang"
-                            :key="item.ingredient_id"> 
-
-                            </ingredient>
-                        </div>
-                    </div>
-                    <!--End of base menu-->
-                    <!--Start of standard ingredient menu-->
-                   <!-- <div id="ingredCat" v-if="showIngredCat">
-                        <div class="headContainer">
-                        <h2 class="head">Ingredienskategorier</h2>
-                        </div>
-                            <div class="flex-container">
-                            
-                        <button class="ingredient" v-on:click="closeIngredMenus()">
-                            Return</button>
-                        <button class = "categoryButton" v-for= "catName in this.categories" v-on:click="showIngredButton(catName)">
-                            {{catName}}
-                            </button>
-                            
-                            
-                        </div>
-                    </div>
-                    -->
-                    
-                    
-                    
-                    
-                    
                     
                     <!--End of standard ingredients menu-->
                     <!--End of ingredient menus-->
