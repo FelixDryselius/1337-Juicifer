@@ -47,6 +47,7 @@ var vm = new Vue({
     volume: 0,
     price: 0
   },
+
   methods: {
     addToOrder: function (item, type) {
       this.chosenIngredients.push(item);
