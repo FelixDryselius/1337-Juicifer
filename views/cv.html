@@ -134,20 +134,39 @@
                         </a>
                     </div>
                 </div>
+                
+                
+                
+                
+                
+                
                 <!--End of topbar-->
                 <!--Start of ingredient menus-->
                 <div class="mainContent">
+                    
+                    
                     <!--Start of base ingredient menu-->
-                    <div id="ingredBase" v-if="showIngredPage">
-                        <h2 class="head">{{chosenCatName}}</h2>
-
-                        <div class="flex-container">
-                            <button class="ingredient" v-on:click="closeIngredMenus()">
-                                Return</button>
+                    <div id=chooseIngredientsBox v-if="showButtonBox">
+                        <div class="headContainer">
+                        <div class="head">{{chosenCatName}}</div>
+                        <input class="head" placeholder="Search" v-model="searchTerm">
+                            </div>
+                        
+                            <div class="flex-container">
+                            <button class="chooseIngredientsButton" v-on:click="closeIngredMenus()">
+                            Return</button>
+                            <button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
+                            Our Favorites</button>
+                            <button class="chooseIngredientsButton" v-on:click="showAllIngredients()">All ingredients</button>
+                                
+                            <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">
+                            {{catName}}</button>
+                                
                             <ingredient
 
                             ref="ingredient"
-                            v-for="item in filtered_ingredients(chosenCatName)"
+                            v-if="showIngredientsButtons"
+                            v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
                             v-on:addIngredient="addToOrder(item),closeIngredMenus()"  
                             :item="item" 
                             :lang="lang"
@@ -156,31 +175,7 @@
                             </ingredient>
                         </div>
                     </div>
-                    <!--End of base menu-->
-                    <!--Start of standard ingredient menu-->
-                    <div id="ingredCat" v-if="showIngredCat">
-                        <h2 class="head">Ingredienskategorier</h2>
-                        <div class="flex-container">
 
-                        <button class="ingredient" v-on:click="closeIngredMenus()">
-                            Return</button>
-                        <button class = "categoryButton" v-for= "catName in this.categories" v-on:click="showIngredButton(catName)">
-                            {{catName}}
-                            </button>
-                       <!--     <button id="ingredYoghurt">Alla ingredienser</button>
-                            <button id="ingredVanillaIceCream">Frukt</button>
-                            <button id="ingredMilk">Bär</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button> -->
-
-                            <!--INGREDIENTS HERE-->
-
-
-                        </div>
-                    </div>
                     <!--End of standard ingredients menu-->
                     <!--End of ingredient menus-->
                     <!--Start of mug interface-->
