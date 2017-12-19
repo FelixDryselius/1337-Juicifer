@@ -96,6 +96,7 @@
                             v-for="item in filtered_ingredients('base')"
                             v-on:addIngredient="addToOrder(item)"  
                             :item="item" 
+                            :item="item" 
                             :lang="lang"
                             :key="item.ingredient_id"> 
                             </ingredient>

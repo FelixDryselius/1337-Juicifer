@@ -188,8 +188,8 @@ var vm = new Vue({
         showCartPage: false,
 
     },
-    
-    
+
+
     methods: {
         hideAllTabs: function () {
             this.showStartPage = false;
@@ -201,12 +201,12 @@ var vm = new Vue({
             this.showIngredCat = false;
             this.showCartPage = false;
         },
-        
-    filtered_ingredients: function(cat) {
-    return this.ingredients.filter(function(item) {
-      return item["ingredient_cat"] === cat;
-    })
-    },
+
+        filtered_ingredients: function(cat) {
+            return this.ingredients.filter(function(item) {
+                return item["ingredient_cat"] === cat;
+            })
+        },
 
         addType: function(drinkType) {
             drink.type = drinkType;
@@ -242,10 +242,10 @@ var vm = new Vue({
         showIngredients: function(ingredTyp) {
             if (ingredTyp === "base") {
                 this.showIngredPage = true;
-                
+
                 for (var index in this.ingredients){
-                if(this.ingredients[index].ingredient_cat === "base") { console.log(this.ingredients[index].ingredient_sv);
-                    }
+                    if(this.ingredients[index].ingredient_cat === "base") { console.log(this.ingredients[index].ingredient_sv);
+                                                                          }
                 }
             }
             else if (ingredTyp === "ingredCat") {

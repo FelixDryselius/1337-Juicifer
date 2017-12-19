@@ -122,6 +122,7 @@ Data.prototype.markOrderDone = function (orderId) {
     this.orders[orderId].done = true;
 };
 
+
 var data = new Data();
 // Load initial ingredients. If you want to add columns, do it in the CSV file.
 data.initializeData(ingredientsDataName);
@@ -137,7 +138,7 @@ io.on('connection', function (socket) {
     // When someone orders something
     socket.on('order', function (order) {
         data.addOrder(order);
-        // send updated info to all connected clients, note the use of io instead of socket
+        // send updated info to all connected clients, note the use of io instead of socket     
         io.emit('currentQueue', { orders: data.getAllOrders(),
                                  ingredients: data.getIngredients() });
     });

@@ -219,7 +219,7 @@ h4{
     cursor: pointer;
 }
 
-.pressedJucesInTheOrder{
+.pressedDiv{
     filter: brightness(85%);
     cursor: pointer;
 }
