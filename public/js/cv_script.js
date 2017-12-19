@@ -181,10 +181,12 @@ var vm = new Vue({
         showTopBar: false,
         showSmoothieIngredPage: false,
         showJuiceIngredPage: false,
-        showIngredPage: false,
-        showIngredCat: false,
+        showButtonBox: false,
+        showCatButtons: false,
+        showIngredientsButtons: false,
         showCartPage: false,
-        chosenCatName: ''
+        chosenCatName: '',
+        searchTerm: ''
 
     },
 
@@ -197,35 +199,45 @@ var vm = new Vue({
             this.showTopBar = false;
             this.showSmoothieIngredPage = false;
             this.showJuiceIngredPage = false;
-            this.showIngredPage = false;
-            this.showIngredCat = false;
+            this.showIngredientsButtons = false;
             this.showCartPage = false;
         },
 
         filtered_ingredients: function(cat) {
             return this.ingredients.filter(function(item) {
-                return item["ingredient_cat"] === cat;
+                if(cat ===''){
+                    return item }
+                else {
+                    return item["ingredient_cat"] === cat;
+                }
             })
         },
-
         
-        showIngredButton: function(catName){
+        searched_ingredients: function(ingred){
+                if(this.searchTerm === ''){
+                    return ingred }
+                else if( ingred['ingredient_'+ this.lang].indexOf(this.searchTerm) !==-1){
+                    return ingred;
+                
+                }
+            }, 
+        
+        showAllIngredients: function(){
+            this.chosenCatName='';
+        },
+        
+
+
+        doShowIngredientsButtons: function(catName){
             this.chosenCatName = catName;
-            this.showIngredCat = false;
-            this.showIngredPage = true;
-            
-            
-        },
-        
-
-
-        addType: function(drinkType) {
-            drink.type = drinkType;
+            this.showCatButtons = false;
+            this.showIngredientsButtons = true;
         },
 
-        addSize: function(drinkSize) {
-            drink.size = drinkSize;
+        choosePreMadeDrinks: function(){
+
         },
+
 
         showTab: function (tab) {
             console.log(tab)
@@ -254,21 +266,26 @@ var vm = new Vue({
         },
 
         closeIngredMenus: function() {
-                this.showIngredPage = false;
-                this.showIngredCat = false;
-                console.log("Closed menus");
+            this.showButtonBox = false;
+            console.log("Closed menus");
         },
 
         showIngredients: function(ingredTyp) {
+            this.showButtonBox = true;
             if (ingredTyp === "base") {
-                this.showIngredPage = true;
-                this.chosenCatName = "base";                       }
+                this.chosenCatName = "base"; 
+                this.showIngredientsButtons = true;
+                this.showCatButtons = false;
+            }
             else if (ingredTyp === "ingredCat") {
-                this.showIngredCat = true;
-                this.chosenCatName = ""
+                this.chosenCatName = "";
+                this.showCatButtons = true;
+                this.showIngredientsButtons =false;
             }
             else {
-                //this is for topping ingred
+                this.chosenCatName = "topping"; 
+                this.showIngredientsButtons = true;
+                this.showCatButtons = false;
             }
         },
 
@@ -281,8 +298,8 @@ var vm = new Vue({
             else if (ingredTyp === "vegetable") {
             }
         */
-        
-     /*   createIngredButton: function(catName){
+
+        /*   createIngredButton: function(catName){
             var ingred_html = document.createElement("ingredient");
             ref="ingredient"
                 v-for="item in filtered_ingredients('catName')"
@@ -293,7 +310,20 @@ var vm = new Vue({
             th.appendChild(anObj);
             return th;
             }*/
-        
+
+
+        addType: function(drinkType) {
+            drink.type = drinkType;
+        },
+
+        addSize: function(drinkSize) {
+            drink.size = drinkSize;
+        },
+
+
+
+
+
         addToOrder: function (item) {
             this.chosenIngredients.push(item);
             console.log("entered addtoorder");

@@ -160,6 +160,7 @@ header{
     align-items: center;
 }
 
+
 .mugContainer {
     border-style: solid;
     display: flex;
@@ -231,11 +232,25 @@ header{
 
 /* cv_base_ingred börjar*/
 
+.headContainer{
+    display: flex;  
+    width: 70%;
+    flex-direction: row;
+   
+}
 
 .head {
     border-style: solid;
-    width: 70%;
     text-align: center;
+    flex: 3 ;
+    font-size: 1.5em;
+    
+}
+input.head {
+    flex: 1 ;
+    border-style: solid;
+    text-align: left;
+    
 }
 
 .flex-container {
