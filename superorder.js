@@ -1,12 +1,19 @@
-var superorder = [
-    null /*Här placeras orderid när det genererats*/,
-    "drink1",
-    "drink2" /*osv.*/
-]
-
-var drink = {
-    ingredients: [],
-    volume: 0, /*Domän {1,2,3}*/
-    type : "",
-    prize : 0,
+var superorder = {
+    done: false,            //boolean
+    orderId : 1,            //int
+    numberOfDrinks : 2,     //int
+    drink1 : {                   //object
+        ingredients: [],    //array med id för ingredienser
+        volume: 0,          //int
+        type : "",          //string
+        prize : 0,          //int
+        aborted: false      //boolean
+    },
+    drink2 : {                   //object
+        ingredients: [],    //array med id för ingredienser
+        volume: 0,          //int
+        type : "",          //string
+        prize : 0,          //int
+        aborted: false      //boolean
+    }
 }
