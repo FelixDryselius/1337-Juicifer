@@ -11,17 +11,52 @@
     </head>
     <body>
         <div id="all_cv">
+            <!--Byta flagga-->
+            
+            <!--Slutpå byta flagga-->
+            <!-- Hjälptab-->
+            <div>
+                <div id="help" class="popUpContent">Här får du hjälp
+                    <br>
+                    <br>
+                    <a onclick="document.getElementById('help').style.display='none';
+                                document.getElementById('fade').style.display='none'">
+                        <button>Tillbaka</button>
+                    </a>
+                </div>
+                <div id="fade" class="blackOverlay"></div>
+            </div>
+            <!-- Slut på hjälptab-->
+            <!-- Avbryttab-->
+            <div>
+                <div id="confirmAbort" class="popUpContent">
+                    <h2>Vill du verkligen avbryta din order?</h2>
+                    <a onclick="document.getElementById('confirmAbort').style.display='none';
+                                document.getElementById('fade').style.display='none'">
+                        <div class="flexAbort">
+                            <button v-on:click="showTab('abortOrder')">Ja</button>
+                            <button>Nej</button>
+                        </div>
+                    </a>
+                </div>
+                <div id="fade" class="blackOverlay"></div>
+            </div>
+            <!-- Slut på avbryttab-->
             <!--Start of start view-->
             <div id="start" v-if="showStartPage">
                 <main>
                     <header>
-                        <div class="helpLangContainer"  >
-                            <button id="language"></button>
-                            <button id="helpButton">?</button>
+                        <div class="helpLangContainer">
+                            <input type="image" src="images/gb_flagga.png" name="questionButton" id="langButton">
+                            <a onclick="document.getElementById('help').style.display='block';
+                                        document.getElementById('fade').style.display='block'"> 
+                                <img src="images/info.png" name="languageButton" id="helpButton"/>
+                            </a>
                         </div>
                         <h1 class="header">Välkommen till Jucifer</h1>
                         <h2 class="subHeader"> Välj din dryck:</h2>
                     </header>
+
                     <div class="startPageButtonContainer">
                         <div class="chooseDrinkTypeButton">
                             <button id="juiceButton" type="button" v-on:click="showTab('juiceIngredPage')">Juice</button>
@@ -36,14 +71,23 @@
                     <p>&copy;1337-Leet Force</p>
                 </footer>
             </div>
+
             <!--End of start view-->
             <!--Start of size view-->
             <div id="size" v-if="showSizePage">
                 <main>
                     <header>
-                        <div class="helpLangContainer">
-                            <button id="abortButton">Avbryt beställning</button>
-                            <button id="helpButton">?</button>
+                        <div class="helpAbortContainer">
+                            <button>
+                                <a onclick="document.getElementById('confirmAbort').style.display='block';
+                                            document.getElementById('fade').style.display='block'"> 
+                                    Avbryt beställning
+                                </a>
+                            </button>
+                            <a onclick="document.getElementById('help').style.display='block';
+                                        document.getElementById('fade').style.display='block'"> 
+                                <img src="images/info.png" name="languageButton" class="helpLangButton"/>
+                            </a>
                         </div>
                         <h1 class="chooseSize">Välj storlek:</h1>
                     </header>
@@ -78,9 +122,17 @@
 
                         </div>
                     </div>
-                    <div class="helpLangContainer"  >
-                        <button id="abortButton button">Avbryt beställning</button>
-                        <button id="helpButton">?</button>
+                    <div class="helpAbortContainer">
+                        <button>
+                            <a onclick="document.getElementById('confirmAbort').style.display='block';
+                                        document.getElementById('fade').style.display='block'"> 
+                                Avbryt beställning
+                            </a>
+                        </button>
+                        <a onclick="document.getElementById('help').style.display='block';
+                                    document.getElementById('fade').style.display='block'"> 
+                            <img src="images/info.png" name="languageButton" class="helpLangButton"/>
+                        </a>
                     </div>
                 </div>
                 <!--End of topbar-->
@@ -89,38 +141,38 @@
                     <div id="ingredBase" v-if="showIngredPage">
                         <h2 class="head">Bas</h2>
 
- 
+
                         <div class="flex-container">
                             <ingredient
-                            ref="ingredient"
-                            v-for="item in filtered_ingredients('base')"
-                            v-on:addIngredient="addToOrder(item)"  
-                            :item="item" 
-                            :lang="lang"
-                            :key="item.ingredient_id"> 
+                                        ref="ingredient"
+                                        v-for="item in filtered_ingredients('base')"
+                                        v-on:addIngredient="addToOrder(item)"  
+                                        :item="item" 
+                                        :lang="lang"
+                                        :key="item.ingredient_id"> 
                             </ingredient>
-                            
-                           <!-- <button id="ingredYoghurt">Yoghurt</button>
-                            <button id="ingredVanillaIceCream">Vaniljglass</button>
-                            <button id="ingredMilk">Mjölk</button>
-                            <button id="ingredOatMilk">Havremjölk</button>
-                            <button id="ingredOatMilk">Havremjölk</button>
-                            <button id="ingredOatMilk">Havremjölk</button>
-                            <button id="ingredOatMilk">Havremjölk</button> -->
+
+                            <!-- <button id="ingredYoghurt">Yoghurt</button>
+<button id="ingredVanillaIceCream">Vaniljglass</button>
+<button id="ingredMilk">Mjölk</button>
+<button id="ingredOatMilk">Havremjölk</button>
+<button id="ingredOatMilk">Havremjölk</button>
+<button id="ingredOatMilk">Havremjölk</button>
+<button id="ingredOatMilk">Havremjölk</button> -->
                         </div>
                     </div>
 
                     <div id="ingredCat" v-if="showIngredCat">
                         <h2 class="head">Ingredienser kategorier</h2>
                         <div class="flex-container">
-                       <!--     <button id="ingredYoghurt">Alla ingredienser</button>
-                            <button id="ingredVanillaIceCream">Frukt</button>
-                            <button id="ingredMilk">Bär</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button> -->
+                            <!--     <button id="ingredYoghurt">Alla ingredienser</button>
+<button id="ingredVanillaIceCream">Frukt</button>
+<button id="ingredMilk">Bär</button>
+<button id="ingredOatMilk">Grönsaker</button>
+<button id="ingredOatMilk">Grönsaker</button>
+<button id="ingredOatMilk">Grönsaker</button>
+<button id="ingredOatMilk">Grönsaker</button>
+<button id="ingredOatMilk">Grönsaker</button> -->
                         </div>
                     </div>
 
@@ -163,9 +215,17 @@
                     </div>
                 </div>
                 <header>
-                    <div class="helpLangContainer"  >
-                        <button id="abortButton button">Avbryt beställning</button>
-                        <button id="helpButton">?</button>
+                    <div class="helpAbortContainer">
+                        <button>
+                            <a onclick="document.getElementById('confirmAbort').style.display='block';
+                                        document.getElementById('fade').style.display='block'"> 
+                                Avbryt beställning
+                            </a>
+                        </button>
+                        <a onclick="document.getElementById('help').style.display='block';
+                                    document.getElementById('fade').style.display='block'"> 
+                            <img src="images/info.png" name="languageButton" class="helpLangButton"/>
+                        </a>
                     </div>
                     <h1 class="header" align="left">Varukorg</h1>
                 </header>

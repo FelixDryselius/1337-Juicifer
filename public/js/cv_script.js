@@ -179,6 +179,7 @@ var vm = new Vue({
         price: 0,
 
         showStartPage: true,
+        showHelp: true,
         showSizePage: false,
         showTopBar: false,
         showSmoothieIngredPage: false,
@@ -193,6 +194,7 @@ var vm = new Vue({
     methods: {
         hideAllTabs: function () {
             this.showStartPage = false;
+            this.showHelp = true;
             this.showSizePage = false;
             this.showTopBar = false;
             this.showSmoothieIngredPage = false;
@@ -222,6 +224,9 @@ var vm = new Vue({
             this.hideAllTabs();
             if (tab === "sizePage") {
                 this.showSizePage = true;
+            }
+            else if (tab === "abortOrder") {
+                this.showStartPage = true;
             }
             else if (tab === "smoothieIngredPage") {
                 this.showSmoothieIngredPage = true;
@@ -291,3 +296,7 @@ var vm = new Vue({
         },
     }
 });
+
+// End Vue
+
+
