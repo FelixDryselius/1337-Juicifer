@@ -2,223 +2,243 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <title>Staff View - start page</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/sw_css.css">
-    <script src="/vue/vue.js" defer></script>
-    <script src="/socket.io/socket.io.js" defer></script>
-    <script src="js/juicifer-main.js" defer></script>
-    <script src="js/sw_script.js" defer></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <head>
+        <title>Staff View - start page</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/sw_css.css">
+        <script src="/vue/vue.js" defer></script>
+        <script src="/socket.io/socket.io.js" defer></script>
+        <script src="js/juicifer-main.js" defer></script>
+        <script src="js/sw_script.js" defer></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
-</head>
+    </head>
 
-<body>
-<div id="main">
-    
-    <!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->
-    <div class="menu">
-        <button class="menuLinks" id="newOrderTab" v-on:click="showTab('newOrder')"> New Order</button>
-        <button class="menulinks" id="orderQueueTab" v-on:click="showTab('orderQueue')"> Order Queue</button>
-        <button class="menulinks" id="orderHistoryTab" v-on:click="showTab('orderHistory')"> Order History</button>
-        <button class="menulinks" id="inventoryTab" v-on:click="showTab('inventory')"> Inventory</button>
-        <button class="menulinks" id="statisticsTab" v-on:click="showTab('statistics')"> Statistics</button>
-    </div>
+    <body>
+        <div id="main">
 
-    <!-- här skrivs sidorna -->
+            <!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->
+            <div class="menu">
+                <button class="menuLinks" id="newOrderTab" v-on:click="showTab('newOrder')"> New Order</button>
+                <button class="menulinks" id="orderQueueTab" v-on:click="showTab('orderQueue')"> Order Queue</button>
+                <button class="menulinks" id="orderHistoryTab" v-on:click="showTab('orderHistory')"> Order History</button>
+                <button class="menulinks" id="inventoryTab" v-on:click="showTab('inventory')"> Inventory</button>
+                <button class="menulinks" id="statisticsTab" v-on:click="showTab('statistics')"> Statistics</button>
+            </div>
 
-    <!--NEW ORDER-->
-    <div id="newOrder" v-if = "newOrderShow">
-        new order
-        <br> Här på denna sida händer inget, men jag har öppnat new order - sidan i en ny flik åt dig.
-        <br> Ha en fantastisk dag!
+            <!-- här skrivs sidorna -->
 
-    </div>
+            <!--NEW ORDER-->
+            <div id="newOrder" v-if = "newOrderShow">
+                new order
+                <br> Här på denna sida händer inget, men jag har öppnat new order - sidan i en ny flik åt dig.
+                <br> Ha en fantastisk dag!
 
-    <div id="orderQueue" v-if ="orderQueueShow">
+            </div>
+
+            <div id="orderQueue" v-if ="orderQueueShow">
 
 
-        <div id="oQBoxContainer">
-            <div class="leftSideMenuBox" id="oQMenu">
-                <!-- <h3>orderHistoryMenu</h3> -->
-                <div v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div>
-                <div class="oneOrder" id="oQorder1">
-                    <h3><strong>3</strong> 12:01, 23</h3>
-                </div>
-                <div class="oneOrder" id="oQorder2">
-                    <h3><strong>1</strong> 12:04, 24</h3>
-                </div>
-                <div class="oneOrder" id="oQorder3">
-                    <h3><strong>5</strong> 12:06, 25</h3>
+                <div id="oQBoxContainer">
+                    <div class="leftSideMenuBox" id="oQMenu">
+
+
+                        <!-- <h3>orderHistoryMenu</h3> -->
+                        <!-- <script>showOrders()</script> -->
+                        
+                        <div class="oneOrder" v-for="order in orders" onclick=pressedOneOrder()>
+                            <h3> Antal drycker, beställningstid, ordernummer, {{order.type}} {{order.ingredients} </h3>
+                        </div>
+
+                        
+
+                        <!-- detta är koden Mikael skrev -->
+                        <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
+
+
+                        <div class="oneOrder" id="oQorder1">
+                            <h3><strong>3</strong> 12:01, 23</h3>
+                        </div>
+                        <div class="oneOrder" id="oQorder2">
+                            <h3>1 12:04, 24</h3>
+                        </div>
+                        <div class="oneOrder" id="oQorder3">
+                            <h3><strong>5</strong> 12:06, 25</h3>
+                        </div>
+                    </div>
+
+                    <div class="rightSideBox" id="oQIngridients">
+                        <h3>orderHistoryIngridients</h3>
+                        Recipie L Apple juice
+                    </div>
+
+                    <div class="juicesInTheOrder" id="oQJuicesInOrder" onclick="pressedOHJuicesInOrder('orderQueue')">
+                        JuicesIn the selected Order
+                    </div>
+                    <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">Cancel order</button>
+                    <button class="oQButtons" id="finishOrderButton" onclick="pressedFinishOrder()">Finish order</button>
+
                 </div>
             </div>
 
-            <div class="rightSideBox" id="oQIngridients">
-                <h3>orderHistoryIngridients</h3>
-                Recipie L Apple juice
-            </div>
+            <!-- ORDER HISTORY--> 
 
-            <div class="juicesInTheOrder" id="oQJuicesInOrder" onclick="pressedOHJuicesInOrder('orderQueue')">
-                JuicesIn the selected Order
-            </div>
-            <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">Cancel order</button>
-            <button class="oQButtons" id="finishOrderButton" onclick="pressedFinishOrder()">Finish order</button>
 
-        </div>
-    </div>
-    
-    <!-- ORDER HISTORY--> 
-    
-    
-    <div id= "orderHistory" v-if = "orderHistoryShow">
-    
-        <div id="oHBoxContainer">
+            <div id= "orderHistory" v-if = "orderHistoryShow">
 
-            <div class="leftSideMenuBox" id="oHMenu">
-                <!-- <h3>orderHistoryMenu</h3> --> 
-                <div class="oneOrder" id="order1">
-                    <h3><strong>3</strong> 12:01, 23</h3>
-                </div>
-                <div class="oneOrder" id="order2">
-                    <h3><strong>1</strong> 12:04, 24</h3>
-                </div>
-                <div class="oneOrder" id="order3">
-                    <h3><strong>5</strong> 12:06, 25</h3>
+                <div id="oHBoxContainer">
+
+                    <div class="leftSideMenuBox" id="oHMenu">
+                        <!-- <h3>orderHistoryMenu</h3> --> 
+                        <div class="oneOrder" id="order1">
+                            <h3><strong>3</strong> 12:01, 23</h3>
+                        </div>
+                        <div class="oneOrder" id="order2">
+                            <h3><strong>1</strong> 12:04, 24</h3>
+                        </div>
+                        <div class="oneOrder" id="order3">
+                            <h3><strong>5</strong> 12:06, 25</h3>
+                        </div>                
+
+                        <div class="oneOrder" >
+                            <h3> den här rutan är för att fylla ut så scrollern kan testas </h3>
+                        </div>
+                        <div class="oneOrder" >
+                            <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
+                        </div>               
+                        <div class="oneOrder">
+                            <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
+                        </div> 
+                        <div class="oneOrder" >
+                            <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
+                        </div>
+                        <div class="oneOrder" >
+                            <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
+                        </div>
+                        <div class="oneOrder">
+                            <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
+                        </div> 
+
+                    </div>
+
+                    <div class="rightSideBox" id="oHIngridients">
+                        <h3>orderHistoryIngridients</h3>
+                        Recipie L Apple juice
+                    </div>
+
+                    <div class="juicesInTheOrder" id="oHJuicesInOrder" onclick=          "pressedOHJuicesInOrder('orderHistory')">
+                        orderHistoryJuicesInOrder
+                    </div>
+
+                    <div id="oHTimeInfo">
+                        <h3>orderHistoryTimeInfo</h3>
+                        Order placed: 2017-11-21 12:01 <br><br> Order placed: 2017-11-21 12:05
+
+                    </div>
                 </div>                
+            </div>
 
-                <div class="oneOrder" >
-                    <h3> den här rutan är för att fylla ut så scrollern kan testas </h3>
+            <!--INVENTORY -->
+
+            <div id="inventory" v-if = "inventoryShow">
+                <!-- HÄR SKAPAS SIDSPECIFIKA GREJER -->
+                <div id="inventoryContainer">
+                    <div id="inventoryInformation">
+                        <table >
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>Size of JU</th>
+                                <th>JU balance</th>
+                                <th>Balance</th>
+                                <th>New balance</th>
+                            </tr> 
+                            <tr v-for="ingred in this.ingredients"> 
+                                <td> <ingredient
+                                                ref="ingredient"
+                                                v-for="item in ingredients"
+                                                :item="item" 
+                                                :lang="lang"
+                                                :key="item.ingredient_id"> 
+
+                                    </ingredient> </td>
+                                <td>20</td>
+                                <td>125</td>
+                                <td>10</td>
+                                <td><input type="text" name="balance"></td>
+                            </tr>
+                            <tr>
+                                <td>Centro comercial Moctezuma</td>
+                                <td>Francisco Chang</td>
+                                <td>Mexico</td>
+                                <td><p id="demo"></p></td>
+                            </tr>
+                            <tr>
+                                <td>Ernst Handel</td>
+                                <td>Roland Mendel</td>
+                                <td>Austria</td>
+                            </tr>
+                            <tr>
+                                <td>Island Trading</td>
+                                <td>Helen Bennett</td>
+                                <td>UK</td>
+                            </tr>
+                            <tr>
+                                <td>Laughing Bacchus Winecellars</td>
+                                <td>Yoshi Tannamuri</td>
+                                <td>Canada</td>
+                            </tr>
+                            <tr>
+                                <td>Magazzini Alimentari Riuniti</td>
+                                <td>Giovanni Rovelli</td>
+                                <td>Italy</td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div id="SubmitChange">
+                        <button onclick="submit()" class = "SubmitButton">Save new balance </button> </div>
+
+
                 </div>
-                <div class="oneOrder" >
-                    <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
-                </div>               
-                <div class="oneOrder">
-                    <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
-                </div> 
-                <div class="oneOrder" >
-                    <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
-                </div>
-                <div class="oneOrder" >
-                    <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
-                </div>
-                <div class="oneOrder">
-                    <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
-                </div> 
-   
             </div>
 
-            <div class="rightSideBox" id="oHIngridients">
-                <h3>orderHistoryIngridients</h3>
-                Recipie L Apple juice
+
+            <!--- statistics-->
+            <div id="statistics" v-if = "statisticsShow">
+                detta är statisticssidan - tillfälligt nere
+                <!-- <head>
+<script type="text/javascript">
+google.charts.load("current", {packages:["corechart"]});
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+var data = google.visualization.arrayToDataTable([
+['Task', 'Hours per Day'],
+['Work',     11],
+['Eat',      2],
+['Commute',  2],
+['Watch TV', 2],
+['Sleep',    7]
+]);
+
+var options = {
+title: 'Popular ingredients',
+is3D: true,
+};
+
+var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+chart.draw(data, options);
+}
+</script>
+</head> -->
             </div>
 
-            <div class="juicesInTheOrder" id="oHJuicesInOrder" onclick=          "pressedOHJuicesInOrder('orderHistory')">
-                orderHistoryJuicesInOrder
-            </div>
 
-            <div id="oHTimeInfo">
-                <h3>orderHistoryTimeInfo</h3>
-                Order placed: 2017-11-21 12:01 <br><br> Order placed: 2017-11-21 12:05
-
-            </div>
-        </div>                
-    </div>
-    
-    <!--INVENTORY -->
-    
-    <div id="inventory" v-if = "inventoryShow">
-     <!-- HÄR SKAPAS SIDSPECIFIKA GREJER -->
-    <div id="inventoryContainer">
-        <div id="inventoryInformation">
-            <table>
-                <tr>
-                    <th>Ingredient</th>
-                    <th>Size of JU</th>
-                    <th>JU balance</th>
-                    <th>Balance</th>
-                    <th>New balance</th>
-                </tr>
-                <tr>
-                    <td>Milk</td>
-                    <td>20</td>
-                    <td>125</td>
-                    <td>10</td>
-                    <td><input type="text" name="balance"></td>
-                </tr>
-                <tr>
-                    <td>Centro comercial Moctezuma</td>
-                    <td>Francisco Chang</td>
-                    <td>Mexico</td>
-                    <td><p id="demo"></p></td>
-                </tr>
-                <tr>
-                    <td>Ernst Handel</td>
-                    <td>Roland Mendel</td>
-                    <td>Austria</td>
-                </tr>
-                <tr>
-                    <td>Island Trading</td>
-                    <td>Helen Bennett</td>
-                    <td>UK</td>
-                </tr>
-                <tr>
-                    <td>Laughing Bacchus Winecellars</td>
-                    <td>Yoshi Tannamuri</td>
-                    <td>Canada</td>
-                </tr>
-                <tr>
-                    <td>Magazzini Alimentari Riuniti</td>
-                    <td>Giovanni Rovelli</td>
-                    <td>Italy</td>
-                </tr>
-            </table>
 
         </div>
 
-        <div id="SubmitChange">
-            <button onclick="submit()" class = "SubmitButton">Save new balance </button> </div>
 
-
-    </div>
-    </div>
-    
-    
-    <!--- statistics-->
-    <div id="statistics" v-if = "statisticsShow">
-        detta är statisticssidan - tillfälligt nere
-    <!-- <head>
-        <script type="text/javascript">
-            google.charts.load("current", {packages:["corechart"]});
-            google.charts.setOnLoadCallback(drawChart);
-            function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
-                ['Work',     11],
-                ['Eat',      2],
-                ['Commute',  2],
-                ['Watch TV', 2],
-                ['Sleep',    7]
-            ]);
-
-            var options = {
-                title: 'Popular ingredients',
-                is3D: true,
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
-            chart.draw(data, options);
-        }
-    </script>
-        </head> -->
-    </div>
-    
-    
-    
-    </div>
-
-
-</body>
+    </body>
 
 </html>
