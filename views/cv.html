@@ -91,13 +91,12 @@
                         <h2 class="head">{{chosenCatName}}</h2>
 
                         <div class="flex-container">
-                            <button class="ingredient" v-on:click="closeIngredMenu('base')">
+                            <button class="ingredient" v-on:click="closeIngredMenus()">
                                 Return</button>
                             <ingredient
-
                             ref="ingredient"
                             v-for="item in filtered_ingredients(chosenCatName)"
-                            v-on:addIngredient="addToOrder(item),closeIngredMenu('base')"  
+                            v-on:addIngredient="addToOrder(item),closeIngredMenus()"  
                             :item="item" 
                             :lang="lang"
                             :key="item.ingredient_id"> 
@@ -110,7 +109,8 @@
                     <div id="ingredCat" v-if="showIngredCat">
                         <h2 class="head">Ingredienskategorier</h2>
                         <div class="flex-container">
-
+                        <button class="ingredient" v-on:click="closeIngredMenus()">
+                            Return</button>
                         <button class = "categoryButton" v-for= "catName in this.categories" v-on:click="showIngredButton(catName)">
                             {{catName}}
                             </button>

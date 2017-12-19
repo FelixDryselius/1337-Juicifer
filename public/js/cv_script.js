@@ -248,32 +248,16 @@ var vm = new Vue({
 
         },
 
-        closeIngredMenu: function(ingredType) {
-            if (ingredType === "base") {
+        closeIngredMenus: function() {
                 this.showIngredPage = false;
-                console.log("Close ingredients menu: base");
-            }
-            else if (ingredType === "ingredCat") {
-                //CLOSE SOMTHING
-            }
-            else {
-                //CLOSE SOMETHING
-            }
+                this.showIngredCat = false;
+                console.log("Closed menus");
         },
 
         showIngredients: function(ingredTyp) {
             if (ingredTyp === "base") {
                 this.showIngredPage = true;
-
-                this.chosenCatName = "base";
-                console.log(this.ingredients);
-
-
-                for (var index in this.ingredients){
-                    if(this.ingredients[index].ingredient_cat === "base") { console.log(this.ingredients[index].ingredient_sv);
-                                                                          }
-                }
-            }
+                this.chosenCatName = "base";                       }
             else if (ingredTyp === "ingredCat") {
                 this.showIngredCat = true;
                 this.chosenCatName = ""
