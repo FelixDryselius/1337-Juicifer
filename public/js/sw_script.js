@@ -47,12 +47,18 @@ function pressedFinishOrder() {
 
 // ORDER HISTORY START
 
+
 //document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()};
  function pressedOneOrder(){
-     window.alert("du har tryckt på en order");
-     document.getElementById("").classList.toggle("pressedDiv");
+     window.alert("du har tryckt på en order. den känner inte av vilken");
+     addJuiceToMiddle();
 
  }
+
+function addJuiceToMiddle(){
+    var variabelNamn = document.getElementById('oQJuicesInOrder');
+    variabelNamn.innerHTML += "skriv ut specifika juicen";    
+}
 
 function pressedOHJuicesInOrder(tabSelector) {
     // typeTextToDiv('1 x L Applejuice', 'oHJuicesInOrder');
@@ -107,7 +113,18 @@ function functionTömDiv() {
     variabelNamn.innerHTML = " ";
 }
 
-
+// Test för att skapa divar dynamiskt
+/*function showOrders(){
+    window.alert("test");
+    var ordersRutan = document.createElement("oQMenu");
+    ordersRutan.id='block';
+    document.getElementsById('body')[0].appendChild(iDiv);
+    
+    var innerDiv = document.createElement('div');
+    innerDiv.clasName = 'oneOrder';
+    
+    ordersRutan.appendChild(innerDiv);
+}*/
 
 
 
