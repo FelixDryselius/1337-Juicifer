@@ -4,20 +4,77 @@ header{
     position: relative;
 
 }
-.helpLangContainer{
+
+.helpLangContainer {
+    display: flex;
+    justify-content: space-between;
     position: absolute;
     top:1em;
     right: 1em; 
+    width: 6vw;
 }
-#language{
+/*Går det att ärva från andra klasser?*/
+.helpAbortContainer {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top:1em;
+    right: 1em; 
+    width: 13vw;
+}
+
+#langButton{
+    width: 2.5em;
+    height: 2.5em;
+}
+
+#helpButton{
     width: 2em;
-
-
     height: 2em;
-    background-image: url("union_jack_small.png");
-    background-size: 100%
 }
 
+.blackOverlay {
+    display: none;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+    opacity: .80;
+    filter: alpha(opacity=80); /*För att det ska fungera på samtliga browsers (tror jag)*/
+}
+.popUpContent {
+    display: none;
+    position: absolute;
+    top: 25%;
+    left: 32.5%;
+    width: 25%;
+    height: 25%;
+    padding: 2em;
+    border: 2em solid deepskyblue;
+    background-color: white;
+    margin:0 auto;
+    z-index: 2;
+}
+
+.flexAbort {
+    display: flex;
+    justify-content: space-between;
+}
+
+.popUpContent button {
+    background-color: deepskyblue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 
 .startPageButtonContainer{
     text-align: center;
@@ -111,10 +168,9 @@ header{
 }
 
 .mug{
-
     height: 368px;
     width: 250px;
-    background-image: url(mug.jpg);
+    background-image: url(/img/mug.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     display: flex;
@@ -205,7 +261,7 @@ input.head {
     width: 70%;
     justify-content: center;
     align-items: center;
-    
+
     flex: 1 1 auto;
     overflow-y: auto;
     height: 60vh;
