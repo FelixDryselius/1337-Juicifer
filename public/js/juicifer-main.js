@@ -25,8 +25,7 @@ var sharedVueStuff = {
     this.uiLabels = data.uiLabels;
     this.ingredients = data.ingredients;
     for(var index in this.ingredients){
-        if (this.categories.indexOf(this.ingredients[index].ingredient_cat) === -1){
-           this.categories.push(this.ingredients[index].ingredient_cat);
+        if ((this.categories.indexOf(this.ingredients[index].ingredient_cat) === -1) && ["base","topping"].indexOf(this.ingredients[index].ingredient_cat) === -1) {           this.categories.push(this.ingredients[index].ingredient_cat);
     } }
     }.bind(this));
 
