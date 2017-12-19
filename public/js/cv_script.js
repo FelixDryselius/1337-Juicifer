@@ -154,19 +154,16 @@ function getOrderNumber() {
 }
 
 
-
-
 // Start Vue:
 Vue.component('ingredient', {
     props: ['item', 'lang'],
     template: ' <button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
     methods: {
         addIngredientToDrink: function () {
-            this.$emit('addIngredient');
+            this.$emit('add-ingredient');
         },
     }
 });
-
 
 
 var vm = new Vue({
@@ -186,6 +183,7 @@ var vm = new Vue({
         showIngredPage: false,
         showIngredCat: false,
         showCartPage: false,
+        chosenCatName: ''
 
     },
 
@@ -207,6 +205,17 @@ var vm = new Vue({
                 return item["ingredient_cat"] === cat;
             })
         },
+
+        
+        showIngredButton: function(catName){
+            this.chosenCatName = catName;
+            this.showIngredCat = false;
+            this.showIngredPage = true;
+            
+            
+        },
+        
+
 
         addType: function(drinkType) {
             drink.type = drinkType;
@@ -239,9 +248,26 @@ var vm = new Vue({
 
         },
 
+        closeIngredMenu: function(ingredType) {
+            if (ingredType === "base") {
+                this.showIngredPage = false;
+                console.log("Close ingredients menu: base");
+            }
+            else if (ingredType === "ingredCat") {
+                //CLOSE SOMTHING
+            }
+            else {
+                //CLOSE SOMETHING
+            }
+        },
+
         showIngredients: function(ingredTyp) {
             if (ingredTyp === "base") {
                 this.showIngredPage = true;
+
+                this.chosenCatName = "base";
+                console.log(this.ingredients);
+
 
                 for (var index in this.ingredients){
                     if(this.ingredients[index].ingredient_cat === "base") { console.log(this.ingredients[index].ingredient_sv);
@@ -249,7 +275,8 @@ var vm = new Vue({
                 }
             }
             else if (ingredTyp === "ingredCat") {
-
+                this.showIngredCat = true;
+                this.chosenCatName = ""
             }
             else {
                 //this is for topping ingred
@@ -265,8 +292,22 @@ var vm = new Vue({
             else if (ingredTyp === "vegetable") {
             }
         */
+        
+     /*   createIngredButton: function(catName){
+            var ingred_html = document.createElement("ingredient");
+            ref="ingredient"
+                v-for="item in filtered_ingredients('catName')"
+                v-on:addIngredient="addToOrder(item)"  
+                :item="item" 
+                :lang="lang"
+                :key="item.ingredient_id"> 
+            th.appendChild(anObj);
+            return th;
+            }*/
+        
         addToOrder: function (item) {
             this.chosenIngredients.push(item);
+            console.log("entered addtoorder");
         },
 
         placeOrder: function () {
@@ -291,3 +332,5 @@ var vm = new Vue({
         },
     }
 });
+
+//vm.test=vm.get_categories();
