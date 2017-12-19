@@ -64,7 +64,7 @@ header{
     justify-content: space-between;
 }
 
-.flexAbort button {
+.popUpContent button {
     background-color: deepskyblue;
     border: none;
     color: white;
