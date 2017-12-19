@@ -16,13 +16,18 @@ var sharedVueStuff = {
     orders: {},
     uiLabels: {},
     ingredients: {},
-    lang: "en"
+    lang: "en",
+    categories: []
   },
   created: function () {
     socket.on('initialize', function (data) {
-      this.orders = data.orders;
-      this.uiLabels = data.uiLabels;
-      this.ingredients = data.ingredients;
+    this.orders = data.orders;
+    this.uiLabels = data.uiLabels;
+    this.ingredients = data.ingredients;
+    for(var index in this.ingredients){
+        if (this.categories.indexOf(this.ingredients[index].ingredient_cat) === -1){
+           this.categories.push(this.ingredients[index].ingredient_cat);
+    } }
     }.bind(this));
 
     socket.on('switchLang', function (data) {
@@ -45,5 +50,7 @@ var sharedVueStuff = {
       }
       socket.emit('switchLang', this.lang);
     }
+
+
   }
 };
