@@ -154,19 +154,16 @@ function getOrderNumber() {
 }
 
 
-
-
 // Start Vue:
 Vue.component('ingredient', {
     props: ['item', 'lang'],
     template: ' <button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
     methods: {
         addIngredientToDrink: function () {
-            this.$emit('addIngredient');
+            this.$emit('add-ingredient');
         },
     }
 });
-
 
 
 var vm = new Vue({
@@ -188,8 +185,8 @@ var vm = new Vue({
         showCartPage: false,
 
     },
-    
-    
+
+
     methods: {
         hideAllTabs: function () {
             this.showStartPage = false;
@@ -201,12 +198,12 @@ var vm = new Vue({
             this.showIngredCat = false;
             this.showCartPage = false;
         },
-        
-    filtered_ingredients: function(cat) {
-    return this.ingredients.filter(function(item) {
-      return item["ingredient_cat"] === cat;
-    })
-    },
+
+        filtered_ingredients: function(cat) {
+            return this.ingredients.filter(function(item) {
+                return item["ingredient_cat"] === cat;
+            })
+        },
 
         addType: function(drinkType) {
             drink.type = drinkType;
@@ -239,13 +236,26 @@ var vm = new Vue({
 
         },
 
+        closeIngredMenu: function(ingredType) {
+            if (ingredType === "base") {
+                this.showIngredPage = false;
+                console.log("Close ingredients menu: base");
+            }
+            else if (ingredType === "ingredCat") {
+                //CLOSE SOMTHING
+            }
+            else {
+                //CLOSE SOMETHING
+            }
+        },
+
         showIngredients: function(ingredTyp) {
             if (ingredTyp === "base") {
                 this.showIngredPage = true;
-                
+
                 for (var index in this.ingredients){
-                if(this.ingredients[index].ingredient_cat === "base") { console.log(this.ingredients[index].ingredient_sv);
-                    }
+                    if(this.ingredients[index].ingredient_cat === "base") { console.log(this.ingredients[index].ingredient_sv);
+                                                                          }
                 }
             }
             else if (ingredTyp === "ingredCat") {
@@ -267,6 +277,7 @@ var vm = new Vue({
         */
         addToOrder: function (item) {
             this.chosenIngredients.push(item);
+            console.log("entered addtoorder");
         },
 
         placeOrder: function () {
