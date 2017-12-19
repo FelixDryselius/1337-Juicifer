@@ -11,7 +11,7 @@
     </head>
     <body>
         <div id="all_cv">
-            <!--Start of start view-->
+            <!--Start of start page-->
             <div id="start" v-if="showStartPage">
                 <main>
                     <header>
@@ -36,8 +36,8 @@
                     <p>&copy;1337-Leet Force</p>
                 </footer>
             </div>
-            <!--End of start view-->
-            <!--Start of size view-->
+            <!--End of start page-->
+            <!--Start of size page-->
             <div id="size" v-if="showSizePage">
                 <main>
                     <header>
@@ -64,8 +64,8 @@
                     <p>&copy;1337-Leet Force</p>
                 </footer>
             </div>
-            <!--End of size view-->
-            <!--Start of smoothie ingredients view-->
+            <!--End of size page-->
+            <!--Start of smoothie ingredients page-->
             <div id ="smoothieIngredients" v-if="showSmoothieIngredPage">
                 <div id="ingredTop">
                     <!--Start of topbar-->
@@ -89,7 +89,6 @@
                     <div id="ingredBase" v-if="showIngredPage">
                         <h2 class="head">Bas</h2>
 
- 
                         <div class="flex-container">
                             <ingredient
                             ref="ingredient"
@@ -100,14 +99,15 @@
                             :lang="lang"
                             :key="item.ingredient_id"> 
                             </ingredient>
-                            
-                           <!-- <button id="ingredYoghurt">Yoghurt</button>
+<!--
+                            <button id="ingredYoghurt">Yoghurt</button>
                             <button id="ingredVanillaIceCream">Vaniljglass</button>
                             <button id="ingredMilk">Mjölk</button>
                             <button id="ingredOatMilk">Havremjölk</button>
                             <button id="ingredOatMilk">Havremjölk</button>
                             <button id="ingredOatMilk">Havremjölk</button>
-                            <button id="ingredOatMilk">Havremjölk</button> -->
+                            <button id="ingredOatMilk">Havremjölk</button> 
+-->
                         </div>
                     </div>
 
@@ -124,7 +124,7 @@
                             <button id="ingredOatMilk">Grönsaker</button> -->
                         </div>
                     </div>
-
+                    
                     <!--Start of mug interface-->
                     <div class="mugContainer">
                         <div class="mug">
@@ -139,9 +139,7 @@
                                 <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>
                                 <br>
                                 <button id="base" v-on:click="showIngredients('base')">base
-
                                 </button> 
-
                             </div>
                         </div>
                     </div>
@@ -149,8 +147,32 @@
 
                 </div>
             </div>
-            <!--End of smoothie ingredients view-->
-            <!--Start of cart view-->
+            <!--End of smoothie ingredients page-->
+            <!--Start of juice ingredients page-->
+            <div id="juiceIngredients" v-if="showJuiceIngredPage">
+                <!--Start of mug interface-->
+                <div class="mugContainer">
+                    <div class="mug">
+                        <div class="toppingButton">
+                            <button id="topping">Topping</button>
+                        </div>
+                        <div class="mugButtons">
+                            <button id="ingredient5">Ingredient 5</button>
+                            <br>
+                            <button id="ingredient6">Ingredient 4</button>
+                            <br>
+                            <button id="ingredient3">Ingredient 3</button>
+                            <br>
+                            <button id="ingredient2">Ingredient 2</button>
+                            <br>
+                            <button id="ingredient1">Ingredient 1</button>    
+                        </div>
+                    </div>
+                </div>
+                <!--End of mug interface-->
+            </div>
+            <!--End of juice ingredients page-->
+            <!--Start of cart page-->
             <div id="cart" v-if="showCartPage">
                 <div class="topBarContainer">
                     <div class="topBarButton">
@@ -179,31 +201,7 @@
                     </div>
                 </div>
             </div>
-            <!--End of cart view-->
-            <!--Start of juice ingredients view-->
-            <div id="juiceIngredients" v-if="showJuiceIngredPage">
-                <!--Start of mug interface-->
-                <div class="mugContainer">
-                    <div class="mug">
-                        <div class="toppingButton">
-                            <button id="topping">Topping</button>
-                        </div>
-                        <div class="mugButtons">
-                            <button id="ingredient5">Ingredient 5</button>
-                            <br>
-                            <button id="ingredient6">Ingredient 4</button>
-                            <br>
-                            <button id="ingredient3">Ingredient 3</button>
-                            <br>
-                            <button id="ingredient2">Ingredient 2</button>
-                            <br>
-                            <button id="ingredient1">Ingredient 1</button>    
-                        </div>
-                    </div>
-                </div>
-                <!--End of mug interface-->
-            </div>
-            <!--End of juice ingredients view-->
+            <!--End of cart page-->
         </div>
     </body>
 </html>
