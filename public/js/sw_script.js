@@ -49,11 +49,11 @@ function pressedFinishOrder() {
 
 
 //document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()};
- function pressedOneOrder(){
-     window.alert("du har tryckt på en order. den känner inte av vilken");
-     addJuiceToMiddle();
+function pressedOneOrder(){
+    window.alert("du har tryckt på en order. den känner inte av vilken");
+    addJuiceToMiddle();
 
- }
+}
 
 function addJuiceToMiddle(){
     var variabelNamn = document.getElementById('oQJuicesInOrder');
@@ -119,10 +119,10 @@ function functionTömDiv() {
     var ordersRutan = document.createElement("oQMenu");
     ordersRutan.id='block';
     document.getElementsById('body')[0].appendChild(iDiv);
-    
+
     var innerDiv = document.createElement('div');
     innerDiv.clasName = 'oneOrder';
-    
+
     ordersRutan.appendChild(innerDiv);
 }*/
 
@@ -156,17 +156,28 @@ Vue.component('order-item-to-prepare', {
 });
 
 
-// Start Vue: DETTA KAN NOG TAS BORT
+// Start Vue:
 /* Vue.component('ingredient', {
     props: ['item', 'lang'],
-    template: ' <button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
+    template: ' < {{item["ingredient_"+ lang]}} >',
     methods: {
         addIngredientToDrink: function () {
-            this.$emit('addIngredient');
+            this.$emit('add-ingredient');
         },
     }
 }); */
 
+Vue.component('ingredient', {
+  props: ['item', 'lang'],
+  template: '<div> {{item["ingredient_"+ lang]}} </div>'
+});
+/*Vue.component('inventoryIngredient', {
+  props: ['item', 'lang'],
+  template: '<div> {{item["ingredient_"+ lang]}}, {{item.stock}} </div>'
+});*/
+/*Vue.component('inventoryStock', {
+  template: '<div> text  </div>'
+});*/
 
 var vm = new Vue({
     el: '#main',
@@ -211,6 +222,12 @@ var vm = new Vue({
                 this.statisticsShow = true;
             }
 
+        },
+
+        filtered_ingredients: function(cat) {
+            return this.ingredients.filter(function(item) {
+                return item["ingredient_cat"] === cat;
+            })
         }
     }
 });

@@ -46,12 +46,21 @@
 
                         <!-- <h3>orderHistoryMenu</h3> -->
                         <!-- <script>showOrders()</script> -->
-                        
+
+                        <div class="oneOrder">
+                            <ingredient
+                                        ref="ingredient"
+                                        v-for="item in ingredients"
+                                        :item="item" 
+                                        :lang="lang"
+                                        :key="item.ingredient_id"> 
+                            </ingredient>  
+                        </div>                        
+
                         <div class="oneOrder" v-for="order in orders" onclick=pressedOneOrder()>
                             <h3> Antal drycker, beställningstid, ordernummer, {{order.type}} {{order.ingredients} </h3>
                         </div>
 
-                        
 
                         <!-- detta är koden Mikael skrev -->
                         <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
@@ -152,12 +161,23 @@
                                 <th>JU balance</th>
                                 <th>Balance</th>
                                 <th>New balance</th>
-                            </tr> <!-- v-for="ingred in this.ingredients"--> 
-                            <tr> 
-                                <td> :( </td>
+                            </tr> 
+                            <tr v-for="ingred in this.ingredients">
+                                <td>
+                                    <ingredient
+                                                ref="inventoryIngredient"
+                                                v-for="item in ingredients"
+                                                :item="item" 
+                                                :lang="lang"
+                                                :key="item.ingredient_id"> 
+
+                                    </ingredient>    
+                                </td>
                                 <td>20</td>
                                 <td>125</td>
-                                <td>10</td>
+                                <td>
+                                    7 
+                                </td>
                                 <td><input type="text" name="balance"></td>
                             </tr>
                             <tr>
