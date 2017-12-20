@@ -165,7 +165,6 @@ Vue.component('ingredient', {
     }
 });
 
-
 var vm = new Vue({
     el: '#all_cv',
     mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
@@ -341,10 +340,6 @@ var vm = new Vue({
         addSize: function(drinkSize) {
             drink.size = drinkSize;
         },
-
-
-
-
 
         addToOrder: function (item) {
             this.chosenIngredients.push(item);

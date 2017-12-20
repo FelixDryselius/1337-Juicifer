@@ -27,6 +27,10 @@
     width: 13vw;
 }
 
+a button {
+    height: 2.5em;
+}
+
 #langButton{
     width: 2.5em;
     height: 2.5em;
