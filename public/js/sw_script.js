@@ -43,6 +43,7 @@ function pressedFinishOrder() {
     window.alert("du har tryckt på Finish order");
 }
 
+
 // SLUT ORDER QUEUE FUNKTIONER
 
 // ORDER HISTORY START

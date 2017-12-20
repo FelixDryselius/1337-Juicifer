@@ -23,8 +23,9 @@
                 <button class="menuLinks" id="newOrderTab" v-on:click="showTab('newOrder')"> {{ uiLabels.buttonNewOrder }}</button>
                 <button class="menulinks" id="orderQueueTab" v-on:click="showTab('orderQueue')"> {{ uiLabels.buttonOrderQueue }}</button>
                 <button class="menulinks" id="orderHistoryTab" v-on:click="showTab('orderHistory')"> {{ uiLabels.buttonOrderHistory }}</button>
-                <button class="menulinks" id="inventoryTab" v-on:click="showTab('inventory')"> Inventory</button>
-                <button class="menulinks" id="statisticsTab" v-on:click="showTab('statistics')"> Statistics</button>
+                <button class="menulinks" id="inventoryTab" v-on:click="showTab('inventory')"> {{ uiLabels.buttonInventory }}</button>
+                <button class="menulinks" id="statisticsTab" v-on:click="showTab('statistics')"> {{ uiLabels.buttonStatistics }}</button>
+                <button class="menulinks" id="languageTab" v-on:click="switchLang()"> {{ uiLabels.buttonLanguage }}</button>
             </div>
 
             <!-- här skrivs sidorna -->
@@ -82,7 +83,7 @@
                     </div>
 
                     <div class="rightSideBox" id="oQIngridients">
-                        <h3>orderQueue{{uiLabels.ingredients}}</h3>
+                        <h3>orderQueue-{{uiLabels.ingredients}}</h3>
                         Recipie L Apple juice
                     </div>
 
@@ -143,7 +144,7 @@
                     </div>
 
                     <div class="rightSideBox" id="oHIngridients">
-                        <h3>orderHistory{{uiLabels.ingredients}}</h3>
+                        <h3>orderHistory-{{uiLabels.ingredients}}</h3>
                         Recipie L Apple juice
                     </div>
 
@@ -152,8 +153,7 @@
                     </div>
 
                     <div id="oHTimeInfo">
-                        <h3>orderHistoryTimeInfo</h3>
-                        Order placed: 2017-11-21 12:01 <br><br> Order placed: 2017-11-21 12:05
+                        Order placed: 2017-11-21 12:01 <br><br> Order finihed: 2017-11-21 12:05
 
                     </div>
                 </div>                
