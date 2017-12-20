@@ -4,7 +4,7 @@ ingredient_id,ingredient_sv,ingredient_en,ingredient_cat,JU_volume,JU_unit,balan
 3,lime,lime,fruit,1,pcs,100,pcs
 4,apelsin,orange,fruit,0.5,pcs,100,pcs
 5,kaffe,coffee,base,125,ml,10,kg
-6,vanilla ice cream,vanilla ice cream,base,125,ml,10,litre
+6,vaniljglass,vanilla ice cream,base,125,ml,10,litre
 7,sodavatten,soda water,base,125,ml,10,litre
 8,vatten,water,base,125,ml,>,litre
 9,is,ice,topping,5,pcs,>,litre

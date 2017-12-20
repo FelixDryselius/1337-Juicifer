@@ -1,14 +1,21 @@
 {
-  "ordersFinished" : "Finished orders",
-  "ordersInQueue" : "Order queue",
-  "ordersTrending" : "Trending orders",
-  "placeOrder" : "Place order",
-  "sideorders" : "Side orders",
-  "juice" : "Juice or Coffee Drink",
-  "smoothie" : "Smoothie",
-  "ingredients" : "Ingredients",
-  "with" : "with",
-  "ready" : "Done",
-  "order" : "My order",
-  "language" : "Svenska"
+    "ordersFinished" : "Finished orders",
+    "ordersInQueue" : "Order queue",
+    "ordersTrending" : "Trending orders",
+    "placeOrder" : "Place order",
+    "sideorders" : "Side orders",
+    "juice" : "Juice or Coffee Drink",
+    "smoothie" : "Smoothie",
+    "ingredients" : "Ingredients",
+    "with" : "with",
+    "ready" : "Order done",
+    "cancel" : "Cancel order",
+    "order" : "My order",
+    "language" : "Svenska",
+
+    "buttonNewOrder": "New Order",
+    "buttonOrderQueue": "Order Queue",
+    "buttonOrderHistory": "Order History",
+    "buttonInventory": "Inventory",
+    "buttonStatistics": "Statistics"
 }

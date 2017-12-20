@@ -1,14 +1,21 @@
 {
-  "ordersFinished" : "Färdiga beställningar",
-  "ordersInQueue" : "Beställningar att förbereda",
-  "ordersTrending" : "Populära beställningar",
-  "placeOrder" : "Beställ",
-  "sideorders" : "Tillbehör",
-  "juice" : "Juice eller kaffedryck",
-  "smoothie" : "Smoothie",
-  "ingredients" : "Ingredienser",
-  "with" : "med",
-  "ready" : "Klart",
-  "order" : "Min beställning",
-  "language" : "English"
+    "ordersFinished" : "Färdiga beställningar",
+    "ordersInQueue" : "Beställningar att förbereda",
+    "ordersTrending" : "Populära beställningar",
+    "placeOrder" : "Beställ",
+    "sideorders" : "Tillbehör",
+    "juice" : "Juice eller kaffedryck",
+    "smoothie" : "Smoothie",
+    "ingredients" : "Ingredienser",
+    "with" : "med",
+    "ready" : "Order klar",
+    "cancel" : "Avbryt order",
+    "order" : "Min beställning",
+    "language" : "English",
+
+    "buttonNewOrder": "Ny Beställning",
+    "buttonOrderQueue": "Beställningskö",
+    "buttonOrderHistory": "Beställningshistorik",
+    "buttonInventory": "Lagersaldo",
+    "buttonStatistics": "Statistik"
 }

@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public/')));
 // Serve vue from node_modules as vue/
 app.use('/vue', express.static(path.join(__dirname, '/node_modules/vue/dist/')));
 // Serve cv.html as root page
+
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, 'views/cv.html'));
 });
