@@ -57,12 +57,13 @@
 
                 <!--Buttons to abort and get help-->
                 <div class="helpAbortContainer" v-if="showHelpAbortContainer">
-                    <button>
-                        <a onclick="document.getElementById('confirmAbort').style.display='block';
-                                    document.getElementById('fade').style.display='block'"> 
+
+                    <a id="abortButton" onclick="document.getElementById('confirmAbort').style.display='block';
+                                document.getElementById('fade').style.display='block'"> 
+                        <button>
                             Avbryt beställning
-                        </a>
-                    </button>
+                        </button>
+                    </a>
                     <a onclick="document.getElementById('help').style.display='block';
                                 document.getElementById('fade').style.display='block'"> 
                         <img src="images/info.png" name="languageButton" class="helpLangButton"/>
@@ -174,7 +175,7 @@
                         <div class="mugContainer">
                             <div class="mug">
                                 <div class="toppingButton">
-                                    <button id="topping"  v-on:click="showIngredients">Topping</button>
+                                    <button id="topping" v-on:click="showIngredients">Topping</button>
                                 </div>
                                 <div class="mugButtons">
                                     <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
@@ -194,18 +195,18 @@
                         <div class="mugContainer">
                             <div class="mug">
                                 <div class="toppingButton">
-                                    <button id="topping">Topping</button>
+                                    <button id="topping" v-on:click="showIngredients">Topping</button>
                                 </div>
                                 <div class="mugButtons">
-                                    <button id="ingredient5">Ingredient 5</button>
+                                    <button id="ingredient5" v-on:click="showIngredients('ingredCat')">Ingredient 5</button>
                                     <br>
-                                    <button id="ingredient6">Ingredient 4</button>
+                                    <button id="ingredient6" v-on:click="showIngredients('ingredCat')">Ingredient 4</button>
                                     <br>
-                                    <button id="ingredient3">Ingredient 3</button>
+                                    <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
                                     <br>
-                                    <button id="ingredient2">Ingredient 2</button>
+                                    <button id="ingredient2" v-on:click="showIngredients('ingredCat')">Ingredient 2</button>
                                     <br>
-                                    <button id="ingredient1">Ingredient 1</button>    
+                                    <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>    
                                 </div>
                             </div>
                         </div>
