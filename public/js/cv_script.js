@@ -131,11 +131,11 @@ var currentSuperOrder = new superOrder();
 
 function superOrder() {
     this.drinks = [],
-    this.activeDrink = 0,
-    this.orderId = -1,
-    this.done = false,
-    this.orderTime = null,
-    this.finishTime = null
+        this.activeDrink = 0,
+        this.orderId = -1,
+        this.done = false,
+        this.orderTime = null,
+        this.finishTime = null
 };
 
 function drink() {
@@ -173,6 +173,11 @@ function deleteActiveDrink() {
 //funk: markera som avbruten 
 
 //The function that is activated when "cart" is pressed    
+
+
+function addIngredientToActiveDrink(ingred) {
+       var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient; currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[tempActiveIngred]=ingred; 
+};
 
 
 function getRandomInt(min, max) {
@@ -330,9 +335,14 @@ var vm = new Vue({
             this.showButtonBox = false;
             console.log("Closed menus");
         },
+        
+        vueAddIngredientToActiveDrink: function(item){
+            addIngredientToActiveDrink(item);
+        },
 
-        showIngredients: function(ingredTyp) {
+        showIngredients: function(ingredTyp,pos) {
             this.showButtonBox = true;
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient=pos; 
             if (ingredTyp === "base") {
                 this.chosenCatName = "base"; 
                 this.showIngredientsButtons = true;
@@ -381,10 +391,7 @@ var vm = new Vue({
             drink.size = drinkSize;
         },
 
-        addToOrder: function (item) {
-            this.chosenIngredients.push(item);
-            console.log("entered addtoorder");
-        },
+
 
         placeOrder: function () {
             var i,
