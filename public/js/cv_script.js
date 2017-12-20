@@ -5,7 +5,6 @@ var currentSuperOrder = new superOrder();
 function superOrder() {
     this.drinks = [],
         this.activeDrink = 0,
-        this.orderId = -1,
         this.done = false,
         this.orderTime = null,
         this.finishTime = null
@@ -13,12 +12,24 @@ function superOrder() {
 
 function drink() {
     this.type = "",
-    this.size = 0,
-    this.ingredients = [0,0,0,0,0,0],
-    this.prize = 0,
-    this.aborted = false,
-    this.tempId = -1
+        this.size = 0,
+        this.ingredients = [0,0,0,0,0,0],
+        this.prize = 0,
+        this.aborted = false,
+        this.tempId = -1
 };
+
+
+//Att göra:
+//funk: välja aktiv drink
+//funk: markera order som done (gör i staff view)
+//funk: sätta ordertid
+//funk: sätta sluttid
+//funk: lägga till ingrediens
+//funk: sätta pris
+//funk: markera som avbruten 
+//The function that is activated when "cart" is pressed 
+
 
 function createNewDrink(drinkType) { 
     var mydrink = new drink();
@@ -37,7 +48,7 @@ function deleteActiveDrink() {
 
 
 function addIngredientToActiveDrink(ingred) {
-       var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient; currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[tempActiveIngred]=ingred; 
+    var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient; currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[tempActiveIngred]=ingred; 
 };
 
 
@@ -60,22 +71,6 @@ function getFlagSrc(){
     console.log(flagSrc);
     return 'images/gb_flagga.png';
 }
-
-
-
-
-
-//funk: välja aktiv drink
-//funk: sätta orderid
-//funk: markera order som done
-//funk: sätta ordertid
-//funk: sätta sluttid
-//funk: lägga till ingrediens
-//funk: sätta pris
-//funk: markera som avbruten 
-
-//The function that is activated when "cart" is pressed    
-
 
 
 // Start Vue:
@@ -213,7 +208,7 @@ var vm = new Vue({
             this.showButtonBox = false;
             console.log("Closed menus");
         },
-        
+
         vueAddIngredientToActiveDrink: function(item){
             addIngredientToActiveDrink(item);
         },
@@ -240,31 +235,16 @@ var vm = new Vue({
 
 
         placeOrder: function () {
-            var i,
-                //Wrap the order in an object
-                order = {
-                    ingredients: this.chosenIngredients,
-                    volume: this.volume,
-                    type: this.type,
-                    price: this.price
-                };
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-            socket.emit('sentSuperOrder', {orderId: getOrderNumber(), order: order});
-            //set all counters to 0. Notice the use of $refs
-            for (i = 0; i < this.$refs.ingredient.length; i += 1) {
-                this.$refs.ingredient[i].resetCounter();
-            }
-            this.volume = 0;
-            this.price = 0;
-            this.type = '';
-            this.chosenIngredients = [];
+            socket.emit('sentSuperOrder', {orderId: getOrderNumber(), superOrderProperties: currentSuperOrder});
+            
+            console.log(skickade superOrder)
+            
+            currentSuperOrder = new superOrder();
         },
     }
 });
 
-
 // End Vue
 
-
 //vm.test=vm.get_categories();
-
