@@ -94,6 +94,7 @@ function pressedButton() {
 //SLUT INVENTORY
 
 //STATISTICS START
+
 //STATISTICS SLUT
 
 
@@ -168,8 +169,8 @@ Vue.component('order-item-to-prepare', {
 }); */
 
 Vue.component('ingredient', {
-  props: ['item', 'lang'],
-  template: '<div> {{item["ingredient_"+ lang]}} </div>'
+    props: ['item', 'lang'],
+    template: '<div> {{item["ingredient_"+ lang]}} </div>'
 });
 /*Vue.component('inventoryIngredient', {
   props: ['item', 'lang'],

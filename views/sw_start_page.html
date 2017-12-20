@@ -20,9 +20,9 @@
 
             <!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->
             <div class="menu">
-                <button class="menuLinks" id="newOrderTab" v-on:click="showTab('newOrder')"> New Order</button>
-                <button class="menulinks" id="orderQueueTab" v-on:click="showTab('orderQueue')"> Order Queue</button>
-                <button class="menulinks" id="orderHistoryTab" v-on:click="showTab('orderHistory')"> Order History</button>
+                <button class="menuLinks" id="newOrderTab" v-on:click="showTab('newOrder')"> {{ uiLabels.buttonNewOrder }}</button>
+                <button class="menulinks" id="orderQueueTab" v-on:click="showTab('orderQueue')"> {{ uiLabels.buttonOrderQueue }}</button>
+                <button class="menulinks" id="orderHistoryTab" v-on:click="showTab('orderHistory')"> {{ uiLabels.buttonOrderHistory }}</button>
                 <button class="menulinks" id="inventoryTab" v-on:click="showTab('inventory')"> Inventory</button>
                 <button class="menulinks" id="statisticsTab" v-on:click="showTab('statistics')"> Statistics</button>
             </div>
@@ -39,13 +39,22 @@
 
             <div id="orderQueue" v-if ="orderQueueShow">
 
-
                 <div id="oQBoxContainer">
+
                     <div class="leftSideMenuBox" id="oQMenu">
 
 
                         <!-- <h3>orderHistoryMenu</h3> -->
                         <!-- <script>showOrders()</script> -->
+                    
+
+                        <div class="oneOrder" 
+                             v-for="order in orders" 
+                             v-if="!order.done"
+                             onclick=pressedOneOrder()>
+                            <h3> Antal drycker, beställningstid, ordernummer, {{order.type}} {{order.ingredients}
+                            </h3>
+                        </div>
 
                         <div class="oneOrder">
                             <ingredient
@@ -55,12 +64,7 @@
                                         :lang="lang"
                                         :key="item.ingredient_id"> 
                             </ingredient>  
-                        </div>                        
-
-                        <div class="oneOrder" v-for="order in orders" onclick=pressedOneOrder()>
-                            <h3> Antal drycker, beställningstid, ordernummer, {{order.type}} {{order.ingredients} </h3>
-                        </div>
-
+                        </div>                            
 
                         <!-- detta är koden Mikael skrev -->
                         <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
@@ -78,15 +82,15 @@
                     </div>
 
                     <div class="rightSideBox" id="oQIngridients">
-                        <h3>orderHistoryIngridients</h3>
+                        <h3>orderQueue{{uiLabels.ingredients}}</h3>
                         Recipie L Apple juice
                     </div>
 
                     <div class="juicesInTheOrder" id="oQJuicesInOrder" onclick="pressedOHJuicesInOrder('orderQueue')">
                         JuicesIn the selected Order
                     </div>
-                    <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">Cancel order</button>
-                    <button class="oQButtons" id="finishOrderButton" onclick="pressedFinishOrder()">Finish order</button>
+                    <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">{{ uiLabels.cancel }}</button>
+                    <button class="oQButtons" id="finishOrderButton" onclick="pressedFinishOrder()">{{ uiLabels.ready }}</button>
 
                 </div>
             </div>
@@ -100,6 +104,13 @@
 
                     <div class="leftSideMenuBox" id="oHMenu">
                         <!-- <h3>orderHistoryMenu</h3> --> 
+                        <div class="oneOrder" 
+                             v-for="order in orders"
+                             v-if="order.done"
+                             onclick=pressedOneOrder()>
+                            <h3> Antal drycker, beställningstid, ordernummer, {{order.type}} {{order.ingredients} </h3>
+                        </div>                        
+
                         <div class="oneOrder" id="order1">
                             <h3><strong>3</strong> 12:01, 23</h3>
                         </div>
@@ -132,7 +143,7 @@
                     </div>
 
                     <div class="rightSideBox" id="oHIngridients">
-                        <h3>orderHistoryIngridients</h3>
+                        <h3>orderHistory{{uiLabels.ingredients}}</h3>
                         Recipie L Apple juice
                     </div>
 
