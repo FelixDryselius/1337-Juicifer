@@ -16,7 +16,7 @@ var csv = require("csvtojson");
 
 var ingredientsDataName = "ingredients";
 var transactionsDataName = "transactions";
-var defaultLanguage = "en";
+var defaultLanguage = "sv";
 
 // Pick arbitrary port for server
 var port = 3000;
