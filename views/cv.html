@@ -57,7 +57,7 @@
 
                     <div class="startPageButtonContainer">
                         <div class="chooseDrinkTypeButton">
-                            <button id="juiceButton" type="button" v-on:click="showTab('juiceIngredPage')">Juice</button>
+                            <button id="juiceButton" type="button" v-on:click="showTab('sizePage'); addType('juice')">Juice</button>
                         </div>
 
                         <div class="chooseDrinkTypeButton">
@@ -92,14 +92,13 @@
                     </header>
                     <div class="buttonSizeContainer">
                         <div class="chooseSizeButton">
-                            <button id="smallButton" type="button" v-on:click="showTab('smoothieIngredPage')">Small</button>
+                            <button id="smallButton" type="button" v-on:click="showTab('ingredPage'); addSize('small')">Small</button>
                         </div>
                         <div class="chooseSizeButton">
-                            <button id="mediumButton" type="button" v-on:click="showTab('smoothieIngredPage')">Medium</button>
+                            <button id="mediumButton" type="button" v-on:click="showTab('ingredPage'); addSize('medium')">Medium</button>
                         </div>  
-
                         <div class="chooseSizeButton">
-                            <button id="largeButton" type="button" v-on:click="showTab('smoothieIngredPage')">Large</button>
+                            <button id="largeButton" type="button" v-on:click="showTab('ingredPage'); addSize('large')">Large</button>
                         </div>
                     </div>
                 </main>
@@ -134,43 +133,43 @@
                         </a>
                     </div>
                 </div>
-                
-                
-                
-                
-                
-                
+
+
+
+
+
+
                 <!--End of topbar-->
                 <!--Start of ingredient menus-->
                 <div class="mainContent">
-                    
-                    
+
+
                     <!--Start of base ingredient menu-->
                     <div id=chooseIngredientsBox v-if="showButtonBox">
                         <div class="headContainer">
-                        <div class="head">{{chosenCatName}}</div>
-                        <input class="head" placeholder="Search" v-model="searchTerm">
-                            </div>
-                        
-                            <div class="flex-container">
+                            <div class="head">{{chosenCatName}}</div>
+                            <input class="head" placeholder="Search" v-model="searchTerm">
+                        </div>
+
+                        <div class="flex-container">
                             <button class="chooseIngredientsButton" v-on:click="closeIngredMenus()">
-                            Return</button>
+                                Return</button>
                             <button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
-                            Our Favorites</button>
+                                Our Favorites</button>
                             <button class="chooseIngredientsButton" v-on:click="showAllIngredients()">All ingredients</button>
-                                
+
                             <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">
-                            {{catName}}</button>
-                                
+                                {{catName}}</button>
+
                             <ingredient
 
-                            ref="ingredient"
-                            v-if="showIngredientsButtons"
-                            v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
-                            v-on:addIngredient="addToOrder(item),closeIngredMenus()"  
-                            :item="item" 
-                            :lang="lang"
-                            :key="item.ingredient_id"> 
+                                        ref="ingredient"
+                                        v-if="showIngredientsButtons"
+                                        v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
+                                        v-on:addIngredient="addToOrder(item),closeIngredMenus()"  
+                                        :item="item" 
+                                        :lang="lang"
+                                        :key="item.ingredient_id"> 
 
                             </ingredient>
                         </div>
