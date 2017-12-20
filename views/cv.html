@@ -45,7 +45,9 @@
 
                 <!--Buttons to get help or switch language-->
                 <div class="helpLangContainer" v-if="showHelpLangContainer">
-                    <input type="image" src="images/gb_flagga.png" v-on:click="switchLang()" name="questionButton" id="langButton">
+                    <!-- antingen visas engelsk eller svensk flagga -->
+                    <input type="image" v-if= this.chosenLangIsSv src='images/gb_flagga.png' v-on:click="switchLang()" name="questionButton" id="langButton">
+                    <input type="image" v-if= !this.chosenLangIsSv src='images/sv_flagga.png' v-on:click="switchLang()" name="questionButton" id="langButton">
                     <a onclick="document.getElementById('help').style.display='block';
                                 document.getElementById('fade').style.display='block'"> 
                         <img src="images/info.png" name="languageButton" id="helpButton"/>

@@ -153,6 +153,12 @@ function getOrderNumber() {
     return "#" + getRandomInt(1, 1000000);
 }
 
+function getFlagSrc(){
+    var flagSrc = 'images/gb_flagga.png';
+    console.log(flagSrc);
+    return 'images/gb_flagga.png';
+}
+
 
 // Start Vue:
 Vue.component('ingredient', {
