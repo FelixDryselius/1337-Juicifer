@@ -140,8 +140,8 @@ function superOrder() {
 
 function drink() {
     this.type = "",
-    this.volume = 0,
-    this.ingredients = [0,0,0,0,0],
+    this.size = 0,
+    this.ingredients = [0,0,0,0,0,0],
     this.prize = 0,
     this.aborted = false,
     this.tempId = -1
@@ -154,7 +154,12 @@ function createNewDrink(drinkType) {
     console.log("skapade drinken av typ " + drinkType);
 };
 
-function selectDrinkSize(size) {}
+function selectDrinkSize(inputSize) {
+    currentSuperOrder.drinks[currentSuperOrder.activeDrink].size = inputSize;
+    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].size)
+};
+
+
 
 //funk: lägga till en drink extra
 //funk: ta bort drink
