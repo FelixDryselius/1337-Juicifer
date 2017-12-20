@@ -131,20 +131,21 @@ var currentSuperOrder = new superOrder();
 
 function superOrder() {
     this.drinks = [],
-    this.activeDrink = 0,
-    this.orderId = -1,
-    this.done = false,
-    this.orderTime = null,
-    this.finishTime = null
+        this.activeDrink = 0,
+        this.orderId = -1,
+        this.done = false,
+        this.orderTime = null,
+        this.finishTime = null
 };
 
 function drink() {
     this.type = "",
-    this.volume = 0,
-    this.ingredients = [0,0,0,0,0],
-    this.prize = 0,
-    this.aborted = false,
-    this.tempId = -1
+        this.size = 0,
+        this.ingredients = [0,0,0,0,0,0],
+        this.activeIngredient = 0,
+        this.prize = 0,
+        this.aborted = false,
+        this.tempId = -1
 };
 
 function createNewDrink(drinkType) { 
@@ -154,7 +155,7 @@ function createNewDrink(drinkType) {
     console.log("skapade drinken av typ " + drinkType);
 };
 
-function selectDrinkSize(size) {}
+function selectDrinkSize(size) {};
 
 //funk: lägga till en drink extra
 //funk: ta bort drink
@@ -173,6 +174,13 @@ function selectDrinkSize(size) {}
 //The function that is activated when "cart" is pressed    
 
 
+
+
+
+
+function addIngredientToActiveDrink(ingred) {
+       var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient; currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[tempActiveIngred]=ingred; 
+};
 
 
 
@@ -321,9 +329,14 @@ var vm = new Vue({
             this.showButtonBox = false;
             console.log("Closed menus");
         },
+        
+        vueAddIngredientToActiveDrink: function(item){
+            addIngredientToActiveDrink(item);
+        },
 
-        showIngredients: function(ingredTyp) {
+        showIngredients: function(ingredTyp,pos) {
             this.showButtonBox = true;
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient=pos; 
             if (ingredTyp === "base") {
                 this.chosenCatName = "base"; 
                 this.showIngredientsButtons = true;
@@ -373,13 +386,6 @@ var vm = new Vue({
         },
 
 
-
-
-
-        addToOrder: function (item) {
-            this.chosenIngredients.push(item);
-            console.log("entered addtoorder");
-        },
 
         placeOrder: function () {
             var i,
