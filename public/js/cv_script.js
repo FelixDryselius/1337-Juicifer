@@ -202,6 +202,14 @@ var vm = new Vue({
             this.showIngredientsButtons = false;
             this.showCartPage = false;
         },
+        
+    //The function that is activated when "cart" is pressed    
+    goToCart: function() {
+    this.hideAllTabs();
+    this.showTopBar = true;
+    this.showCartPage =true;
+    },
+        
 
         filtered_ingredients: function(cat) {
             return this.ingredients.filter(function(item) {

@@ -155,7 +155,7 @@ header{
     border-style: solid;
     display: flex;
     align-content: center;
-    height: 90vh;
+    height: 80vh;
     justify-content: flex-end;
     align-items: center;
 }
@@ -170,7 +170,7 @@ header{
 .mug{
     height: 368px;
     width: 250px;
-    background-image: url(/img/mug.jpg);
+    background-image: url(/images/mug.jpg);
     background-size: contain;
     background-repeat: no-repeat;
     display: flex;
@@ -208,25 +208,28 @@ header{
 .cartBox{
     display: flex;
     flex: 1;
+    height: 90vh;
     flex-direction: row;
     justify-content: space-between;
     border: 1px solid #ccc; /*Skall tas bort när sidan fungerar*/
     /*    overflow: hidden;*/
 }
 .cartOverviewBox{
-    flex: 1;
+    flex: 4;
     flex-direction: row;
-    justify-content: flex-start;
     flex-wrap: wrap;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid;
     overflow: auto;
+    align-self: stretch;
 }
 .cartRecipeBox{
-    flex-basis: 25em;
+    flex: 2;
     padding: 10px;
-    border: 1px solid #ccc;
+    align-content: center;
+    border: 1px solid;
     overflow: auto;
+    align-self: stretch;
 }
 /* cv_cart_page slutar*/
 

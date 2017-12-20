@@ -108,19 +108,19 @@
                 </footer>
             </div>
             <!--End of size page-->
-            <!--Start of smoothie ingredients page-->
-            <div id ="smoothieIngredients" v-if="showSmoothieIngredPage">
-                <div id="ingredTop">
+           
+
+                   
                     <!--Start of topbar-->
                     <div class="topBarContainer" v-if="showTopBar">
                         <div class="topBarButton">
 
                             <button id="makeDrinkButton" type="button">Skapa dryck</button>
-                            <button id="cartButton" type="button" onclick="sendToCart()">Varukorg</button>
+                            <button id="cartButton" type="button" v-on:click="goToCart()">Varukorg</button>
                             <button id="payButton" type="button">Betalning</button>
 
                         </div>
-                    </div>
+                    
                     <div class="helpAbortContainer">
                         <button>
                             <a onclick="document.getElementById('confirmAbort').style.display='block';
@@ -133,18 +133,17 @@
                             <img src="images/info.png" name="languageButton" class="helpLangButton"/>
                         </a>
                     </div>
-                </div>
+            </div>             <!--End of topbar-->
                 
                 
                 
+                 <!--Start of smoothie ingredients page-->
+            <div id ="smoothieIngredients" v-if="showSmoothieIngredPage">
                 
-                
-                
-                <!--End of topbar-->
+              
                 <!--Start of ingredient menus-->
-                <div class="mainContent">
-                    
-                    
+            <h1 class="header" align="left">Skapa dryck</h1>
+                <div class="mainContent">                    
                     <!--Start of base ingredient menu-->
                     <div id=chooseIngredientsBox v-if="showButtonBox">
                         <div class="headContainer">
@@ -224,9 +223,11 @@
                 <!--End of mug interface-->
             </div>
             <!--End of juice ingredients page-->
-            <!--Start of cart page-->
-            <div id="cart" v-if="showCartPage">
-                <div class="topBarContainer">
+          
+            
+           <!--LEFTOVER I DON'T DARE TO REMOVE YET-->
+            
+             <!--   <div class="topBarContainer">
                     <div class="topBarButton">
                         <button id="makeDrinkButton" type="button">Skapa dryck</button>
                     </div>
@@ -235,9 +236,9 @@
                     </div>
                     <div class="topBarButton">
                         <button id="payButton" type="button">Betala</button>
-                    </div>
-                </div>
-                <header>
+                    </div> 
+                </div> -->
+             <!--   <header>
                     <div class="helpAbortContainer">
                         <button>
                             <a onclick="document.getElementById('confirmAbort').style.display='block';
@@ -250,18 +251,30 @@
                             <img src="images/info.png" name="languageButton" class="helpLangButton"/>
                         </a>
                     </div>
-                    <h1 class="header" align="left">Varukorg</h1>
-                </header>
-                <div class="cartBox">
+                    
+                </header>-->
+                
+            
+             <!--Start of cart page-->
+            <div id="cart" v-if="showCartPage">
+                <h1 class="header" align="left">Varukorg</h1>
+                <div class="mainContent">
+                
                     <div class="cartOverviewBox">
-
+                        <h2>Dina drycker</h2>
                     </div>
                     <div class="cartRecipeBox">
+                        <h2>Din order</h2>
 
-                    </div>
+                    
                 </div>
-            </div>
-            <!--End of cart page-->
+            </div>    
+        </div><!--End of cart page--> 
+            
+            
+            
+           
+            
         </div>
     </body>
 </html>
