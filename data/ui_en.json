@@ -1,5 +1,5 @@
 {
-    "KOMMENTAR_TILL_ER_ANDRA_1337_Force": "stycke1: gemensamma termer, stycke2: SW-termer, stycke3:  CV-termer",
+    "KOMMENTAR_TILL_ER_ANDRA_1337_Force": "stycke 1: gemensamma termer, stycke 2: SW-termer, stycke 3:  CV-termer",
     
     "ordersFinished" : "Finished orders",
     "ordersInQueue" : "Order queue",
@@ -18,8 +18,8 @@
     "order" : "My order",
     "language" : "Svenska",
     "yes": "Yes",
-    "no": "no",
-    "return": "Gå tillbaka",
+    "no": "No",
+    "return": "Return",
 
     "buttonNewOrder": "New Order",
     "buttonOrderQueue": "Order Queue",
@@ -39,5 +39,5 @@
     "ourFavorites": "Our Favorites",
     "allIngredients": "All ingredients",
     "yourDrinks": "Your drinks",
-    "yourOrder": "your order"
+    "yourOrder": "Your order"
 }
