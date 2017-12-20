@@ -9,8 +9,8 @@
   "author": "Mikael Laaksoharju",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.2",
     "csvtojson": "^1.1.9",
+    "express": "^4.16.2",
     "socket.io": "^2.0.4",
     "vue": "^2.5.2"
   }

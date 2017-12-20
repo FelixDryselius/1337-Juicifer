@@ -45,7 +45,6 @@ var sharedVueStuff = {
         switchLang: function () {
             if (this.lang === "en") {
                 this.lang = "sv";
-
                 this.chosenLangIsSv = true;
                 /*window.alert("du har bytt till svenska. Denna ruta och text skrivs ut från jucifer-main om du vill ta bort den.");*/
             } else {
