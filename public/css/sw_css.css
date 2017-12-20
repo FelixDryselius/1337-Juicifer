@@ -306,11 +306,19 @@ h4{
 /*Start css för STATISTICS*/
 /*Slut STATISTICS*/
 
-.hide{
+.hide {
     display: none;
 }
 
 .database {
-	border: 1px solid #cdc;
-	padding: 1em;
+   font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
+ font-weight: normal;
+        font-size: 1.2em;
+ letter-spacing: .2em;
+ line-height: 1.1em;
+ margin:0px;
+     text-transform: capitalize;
+
+    border: 3px solid #cdc;
+    padding: 1em;
 }
