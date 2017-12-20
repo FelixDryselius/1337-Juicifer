@@ -72,6 +72,10 @@ function getFlagSrc(){
     return 'images/gb_flagga.png';
 }
 
+function sendCurrentSuperOrderToVue() {
+    vm.vueSuperOrder = currentSuperOrder;
+    currentSuperOrder = new superOrder();
+}
 
 // Start Vue:
 Vue.component('ingredient', {
@@ -109,6 +113,7 @@ var vm = new Vue({
         chosenCatName: '',
         searchTerm: '',
         vueSuperOrder: {}
+
     },
 
 
@@ -236,11 +241,10 @@ var vm = new Vue({
 
         placeOrder: function () {
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
-            socket.emit('sentSuperOrder', {orderId: getOrderNumber(), superOrderProperties: currentSuperOrder});
-            
-            console.log(skickade superOrder)
-            
-            currentSuperOrder = new superOrder();
+
+            socket.emit('sentSuperOrder', {orderId: getOrderNumber(), superOrderProperties: vueSuperOrder});
+
+            console.log(skickade superOrder);
         },
     }
 });
