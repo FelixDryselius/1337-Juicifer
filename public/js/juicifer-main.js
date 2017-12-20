@@ -44,10 +44,10 @@ var sharedVueStuff = {
         switchLang: function () {
             if (this.lang === "en") {
                 this.lang = "sv";
-                window.alert("du har bytt till svenska. Denna ruta och text skrivs ut från jucifer-main om du vill ta bort den.");
+                /*window.alert("du har bytt till svenska. Denna ruta och text skrivs ut från jucifer-main om du vill ta bort den.");*/
             } else {
                 this.lang = "en";
-                window.alert("du har bytt till ENGELSKA. Denna ruta och text skrivs ut från jucifer-main om du vill ta bort den.");
+                /*window.alert("du har bytt till ENGELSKA. Denna ruta och text skrivs ut från jucifer-main om du vill ta bort den.");*/
             }
             socket.emit('switchLang', this.lang);
         }
