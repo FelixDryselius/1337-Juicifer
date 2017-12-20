@@ -48,7 +48,7 @@ app.get('/ordering', function (req, res) {
 function Data() {
 
     this.data = {};
-    this.orders = {};
+    this.superOrders = {};
 }
 
 Data.prototype.getUILabels = function (lang) {
@@ -98,13 +98,16 @@ Data.prototype.initializeData = function (table) {
   stock. If you have time, you should think a bit about whether
   this is the right moment to do this.
 */
-Data.prototype.addOrder = function (order) {
-    this.orders[order.orderId] = order.order;
-    this.orders[order.orderId].done = false;
+Data.prototype.addSuperOrder = function (recievedSuperOrder) {
+    this.superOrders[recievedSuperOrder.orderId] = recievedSuperOrder.superOrderProperties;
+    
+    this.superOrders[recievedSuperOrder.orderId].done = false;
     var transactions = this.data[transactionsDataName],
-        //find out the currently highest transaction id
-        transId =  transactions[transactions.length - 1].transaction_id,
-        i = order.order.ingredients,
+//ALERT ALERT ALERT ALERT THIS SHOULD NOT BE REMOVED BUT MUST BE WORKED WITH IN ODER TO FUNCTION      
+// THIS IS COMMENTED BECAUSE WE DON'T WANT THE PROGRAM TO CRASH
+// DATE OF THIS COMMENT IS 20/12-17
+     /*   transId =  transactions[transactions.length - 1].transaction_id,
+        i = recievedSuperOrder.superOrderProperties.ingredients,
         k;
 
     for (k = 0; k < i.length; k += 1) {
@@ -112,15 +115,15 @@ Data.prototype.addOrder = function (order) {
         transactions.push({transaction_id: transId,
                            ingredient_id: i[k].ingredient_id,
                            change: -1});
-    }
+    }*/
 };
 
-Data.prototype.getAllOrders = function () {
-    return this.orders;
+Data.prototype.getAllSuperOrders = function () {
+    return this.superOrders;
 };
 
-Data.prototype.markOrderDone = function (orderId) {
-    this.orders[orderId].done = true;
+Data.prototype.markOrderDone = function (superOrderId) {
+    this.superOrders[superOrderId].done = true;
 };
 
 
@@ -132,15 +135,15 @@ data.initializeData(transactionsDataName);
 
 io.on('connection', function (socket) {
     // Send list of orders and text labels when a client connects
-    socket.emit('initialize', { orders: data.getAllOrders(),
+    socket.emit('initialize', { orders: data.getAllSuperOrders(),
                                uiLabels: data.getUILabels(),
                                ingredients: data.getIngredients() });
 
     // When someone orders something
-    socket.on('order', function (order) {
-        data.addOrder(order);
+    socket.on('sentSuperOrder', function (recievedSuperOrder) {
+        data.addSuperOrder(recievedSuperOrder);
         // send updated info to all connected clients, note the use of io instead of socket     
-        io.emit('currentQueue', { orders: data.getAllOrders(),
+        io.emit('currentQueue', { superOrders: data.getAllSuperOrders(),
                                  ingredients: data.getIngredients() });
     });
     // send UI labels in the chosen language
@@ -150,7 +153,7 @@ io.on('connection', function (socket) {
     // when order is marked as done, send updated queue to all connected clients
     socket.on('orderDone', function (orderId) {
         data.markOrderDone(orderId);
-        io.emit('currentQueue', {orders: data.getAllOrders() });
+        io.emit('currentQueue', {superOrders: data.getAllSuperOrders() });
     });
 });
 
