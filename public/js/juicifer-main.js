@@ -45,19 +45,13 @@ var sharedVueStuff = {
         switchLang: function () {
             if (this.lang === "en") {
                 this.lang = "sv";
-<<<<<<< HEAD
+
+                this.chosenLangIsSv = true;
                 /*window.alert("du har bytt till svenska. Denna ruta och text skrivs ut från jucifer-main om du vill ta bort den.");*/
             } else {
                 this.lang = "en";
-                /*window.alert("du har bytt till ENGELSKA. Denna ruta och text skrivs ut från jucifer-main om du vill ta bort den.");*/
-=======
-                this.chosenLangIsSv = true;
-                window.alert("du har bytt till svenska. Denna ruta och text skrivs ut från jucifer-main om du vill ta bort den.");
-            } else {
-                this.lang = "en";
                 this.chosenLangIsSv = false;
-                window.alert("du har bytt till ENGELSKA. Denna ruta och text skrivs ut från jucifer-main om du vill ta bort den.");
->>>>>>> ca6925c8bf6cb706667da74119e8176845126c93
+                /*window.alert("du har bytt till ENGELSKA. Denna ruta och text skrivs ut från jucifer-main om du vill ta bort den.");*/
             }
             socket.emit('switchLang', this.lang);
         }
