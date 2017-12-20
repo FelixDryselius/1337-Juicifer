@@ -144,57 +144,16 @@
             <div id="inventory" v-if = "inventoryShow">
                 <!-- HÄR SKAPAS SIDSPECIFIKA GREJER -->
                 <div id="inventoryContainer">
-                    <div id="inventoryInformation">
-                        <table >
-                            <tr>
-                                <th>Ingredient</th>
-                                <th>Size of JU</th>
-                                <th>JU balance</th>
-                                <th>Balance</th>
-                                <th>New balance</th>
-                            </tr> 
-                            <tr v-for="ingred in this.ingredients"> 
-                                <td> <ingredient
+                    <div class = "database" id="inventoryInformation">
+                        <h1> {{uiLabels.ingredients}} </h1>
+                        <ingredient
                                                 ref="ingredient"
                                                 v-for="item in ingredients"
                                                 :item="item" 
                                                 :lang="lang"
                                                 :key="item.ingredient_id"> 
 
-                                    </ingredient> </td>
-                                <td>20</td>
-                                <td>125</td>
-                                <td>10</td>
-                                <td><input type="text" name="balance"></td>
-                            </tr>
-                            <tr>
-                                <td>Centro comercial Moctezuma</td>
-                                <td>Francisco Chang</td>
-                                <td>Mexico</td>
-                                <td><p id="demo"></p></td>
-                            </tr>
-                            <tr>
-                                <td>Ernst Handel</td>
-                                <td>Roland Mendel</td>
-                                <td>Austria</td>
-                            </tr>
-                            <tr>
-                                <td>Island Trading</td>
-                                <td>Helen Bennett</td>
-                                <td>UK</td>
-                            </tr>
-                            <tr>
-                                <td>Laughing Bacchus Winecellars</td>
-                                <td>Yoshi Tannamuri</td>
-                                <td>Canada</td>
-                            </tr>
-                            <tr>
-                                <td>Magazzini Alimentari Riuniti</td>
-                                <td>Giovanni Rovelli</td>
-                                <td>Italy</td>
-                            </tr>
-                        </table>
-
+                        </ingredient>
                     </div>
 
                     <div id="SubmitChange">
@@ -202,7 +161,7 @@
 
 
                 </div>
-            </div>
+        
 
 
             <!--- statistics-->
