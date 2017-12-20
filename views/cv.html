@@ -11,20 +11,53 @@
     </head>
     <body>
         <div id="all_cv">
+            <!-- Hjälptab-->
+            <div>
+                <div id="help" class="popUpContent">
+                    <h2>Här får du hjälp</h2>
+                    <a onclick="document.getElementById('help').style.display='none';
+                                document.getElementById('fade').style.display='none'">
+                        <button>Tillbaka</button>
+                    </a>
+                </div>
+                <div id="fade" class="blackOverlay"></div>
+            </div>
+            <!-- Slut på hjälptab-->
+            <!-- Avbryttab-->
+            <div>
+                <div id="confirmAbort" class="popUpContent">
+                    <h2>Vill du verkligen avbryta din order?</h2>
+                    <a onclick="document.getElementById('confirmAbort').style.display='none';
+                                document.getElementById('fade').style.display='none'">
+                        <div class="flexAbort">
+                            <button v-on:click="showTab('abortOrder')">Ja</button>
+                            <button>Nej</button>
+                        </div>
+                    </a>
+                </div>
+                <div id="fade" class="blackOverlay"></div>
+            </div>
+            <!-- Slut på avbryttab-->
+
             <!--Start of start page-->
+
             <div id="start" v-if="showStartPage">
                 <main>
                     <header>
-                        <div class="helpLangContainer"  >
-                            <button id="language"></button>
-                            <button id="helpButton">?</button>
+                        <div class="helpLangContainer">
+                            <input type="image" src="images/gb_flagga.png" name="questionButton" id="langButton">
+                            <a onclick="document.getElementById('help').style.display='block';
+                                        document.getElementById('fade').style.display='block'"> 
+                                <img src="images/info.png" name="languageButton" id="helpButton"/>
+                            </a>
                         </div>
                         <h1 class="header">Välkommen till Jucifer</h1>
                         <h2 class="subHeader"> Välj din dryck:</h2>
                     </header>
+
                     <div class="startPageButtonContainer">
                         <div class="chooseDrinkTypeButton">
-                            <button id="juiceButton" type="button" v-on:click="showTab('juiceIngredPage')">Juice</button>
+                            <button id="juiceButton" type="button" v-on:click="showTab('sizePage'); addType('juice')">Juice</button>
                         </div>
 
                         <div class="chooseDrinkTypeButton">
@@ -36,27 +69,36 @@
                     <p>&copy;1337-Leet Force</p>
                 </footer>
             </div>
+
             <!--End of start page-->
             <!--Start of size page-->
+
             <div id="size" v-if="showSizePage">
                 <main>
                     <header>
-                        <div class="helpLangContainer">
-                            <button id="abortButton">Avbryt beställning</button>
-                            <button id="helpButton">?</button>
+                        <div class="helpAbortContainer">
+                            <button>
+                                <a onclick="document.getElementById('confirmAbort').style.display='block';
+                                            document.getElementById('fade').style.display='block'"> 
+                                    Avbryt beställning
+                                </a>
+                            </button>
+                            <a onclick="document.getElementById('help').style.display='block';
+                                        document.getElementById('fade').style.display='block'"> 
+                                <img src="images/info.png" name="languageButton" class="helpLangButton"/>
+                            </a>
                         </div>
                         <h1 class="chooseSize">Välj storlek:</h1>
                     </header>
                     <div class="buttonSizeContainer">
                         <div class="chooseSizeButton">
-                            <button id="smallButton" type="button" v-on:click="showTab('smoothieIngredPage')">Small</button>
+                            <button id="smallButton" type="button" v-on:click="showTab('ingredPage'); addSize('small')">Small</button>
                         </div>
                         <div class="chooseSizeButton">
-                            <button id="mediumButton" type="button" v-on:click="showTab('smoothieIngredPage')">Medium</button>
+                            <button id="mediumButton" type="button" v-on:click="showTab('ingredPage'); addSize('medium')">Medium</button>
                         </div>  
-
                         <div class="chooseSizeButton">
-                            <button id="largeButton" type="button" v-on:click="showTab('smoothieIngredPage')">Large</button>
+                            <button id="largeButton" type="button" v-on:click="showTab('ingredPage'); addSize('large')">Large</button>
                         </div>
                     </div>
                 </main>
@@ -65,68 +107,75 @@
                 </footer>
             </div>
             <!--End of size page-->
-            <!--Start of smoothie ingredients page-->
-            <div id ="smoothieIngredients" v-if="showSmoothieIngredPage">
-                <div id="ingredTop">
+           
+
+                   
                     <!--Start of topbar-->
                     <div class="topBarContainer" v-if="showTopBar">
                         <div class="topBarButton">
 
                             <button id="makeDrinkButton" type="button">Skapa dryck</button>
-                            <button id="cartButton" type="button" onclick="sendToCart()">Varukorg</button>
+                            <button id="cartButton" type="button" v-on:click="goToCart()">Varukorg</button>
                             <button id="payButton" type="button">Betalning</button>
 
                         </div>
+                    
+                    <div class="helpAbortContainer">
+                        <button>
+                            <a onclick="document.getElementById('confirmAbort').style.display='block';
+                                        document.getElementById('fade').style.display='block'"> 
+                                Avbryt beställning
+                            </a>
+                        </button>
+                        <a onclick="document.getElementById('help').style.display='block';
+                                    document.getElementById('fade').style.display='block'"> 
+                            <img src="images/info.png" name="languageButton" class="helpLangButton"/>
+                        </a>
                     </div>
-                    <div class="helpLangContainer"  >
-                        <button id="abortButton button">Avbryt beställning</button>
-                        <button id="helpButton">?</button>
-                    </div>
-                </div>
-                <!--End of topbar-->
+
+            </div>             <!--End of topbar-->
+                
+                
+                
+                 <!--Start of smoothie ingredients page-->
+            <div id ="smoothieIngredients" v-if="showSmoothieIngredPage">
+                
+              
                 <!--Start of ingredient menus-->
-                <div class="mainContent">
+            <h1 class="header" align="left">Skapa dryck</h1>
+                <div class="mainContent">                    
+
                     <!--Start of base ingredient menu-->
-                    <div id="ingredBase" v-if="showIngredPage">
-                        <h2 class="head">{{chosenCatName}}</h2>
+                    <div id=chooseIngredientsBox v-if="showButtonBox">
+                        <div class="headContainer">
+                            <div class="head">{{chosenCatName}}</div>
+                            <input class="head" placeholder="Search" v-model="searchTerm">
+                        </div>
 
                         <div class="flex-container">
-                            <button class="ingredient" v-on:click="closeIngredMenu('base')">
+                            <button class="chooseIngredientsButton" v-on:click="closeIngredMenus()">
                                 Return</button>
+                            <button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
+                                Our Favorites</button>
+                            <button class="chooseIngredientsButton" v-on:click="showAllIngredients()">All ingredients</button>
+
+                            <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">
+                                {{catName}}</button>
+
                             <ingredient
 
-                            ref="ingredient"
-                            v-for="item in filtered_ingredients(chosenCatName)"
-                            v-on:addIngredient="addToOrder(item),closeIngredMenu('base')"  
-                            :item="item" 
-                            :lang="lang"
-                            :key="item.ingredient_id"> 
+                                        ref="ingredient"
+                                        v-if="showIngredientsButtons"
+                                        v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
+                                        v-on:addIngredient="addToOrder(item),closeIngredMenus()"  
+                                        :item="item" 
+                                        :lang="lang"
+                                        :key="item.ingredient_id"> 
 
                             </ingredient>
                         </div>
                     </div>
-                    <!--End of base menu-->
-                    <!--Start of standard ingredient menu-->
-                    <div id="ingredCat" v-if="showIngredCat">
-                        <h2 class="head">Ingredienskategorier</h2>
-                        <div class="flex-container">
 
-                        <button class = "categoryButton" v-for= "catName in this.categories" v-on:click="showIngredButton(catName)">
-                            {{catName}}
-                            </button>
-                       <!--     <button id="ingredYoghurt">Alla ingredienser</button>
-                            <button id="ingredVanillaIceCream">Frukt</button>
-                            <button id="ingredMilk">Bär</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button>
-                            <button id="ingredOatMilk">Grönsaker</button> -->
-
-                            <!--INGREDIENTS HERE-->
-
-                        </div>
-                    </div>
                     <!--End of standard ingredients menu-->
                     <!--End of ingredient menus-->
                     <!--Start of mug interface-->
@@ -175,9 +224,11 @@
                 <!--End of mug interface-->
             </div>
             <!--End of juice ingredients page-->
-            <!--Start of cart page-->
-            <div id="cart" v-if="showCartPage">
-                <div class="topBarContainer">
+          
+            
+           <!--LEFTOVER I DON'T DARE TO REMOVE YET-->
+            
+             <!--   <div class="topBarContainer">
                     <div class="topBarButton">
                         <button id="makeDrinkButton" type="button">Skapa dryck</button>
                     </div>
@@ -186,25 +237,45 @@
                     </div>
                     <div class="topBarButton">
                         <button id="payButton" type="button">Betala</button>
+                    </div> 
+                </div> -->
+             <!--   <header>
+                    <div class="helpAbortContainer">
+                        <button>
+                            <a onclick="document.getElementById('confirmAbort').style.display='block';
+                                        document.getElementById('fade').style.display='block'"> 
+                                Avbryt beställning
+                            </a>
+                        </button>
+                        <a onclick="document.getElementById('help').style.display='block';
+                                    document.getElementById('fade').style.display='block'"> 
+                            <img src="images/info.png" name="languageButton" class="helpLangButton"/>
+                        </a>
                     </div>
-                </div>
-                <header>
-                    <div class="helpLangContainer"  >
-                        <button id="abortButton button">Avbryt beställning</button>
-                        <button id="helpButton">?</button>
-                    </div>
-                    <h1 class="header" align="left">Varukorg</h1>
-                </header>
-                <div class="cartBox">
+                    
+                </header>-->
+                
+            
+             <!--Start of cart page-->
+            <div id="cart" v-if="showCartPage">
+                <h1 class="header" align="left">Varukorg</h1>
+                <div class="mainContent">
+                
                     <div class="cartOverviewBox">
-
+                        <h2>Dina drycker</h2>
                     </div>
                     <div class="cartRecipeBox">
+                        <h2>Din order</h2>
 
-                    </div>
+                    
                 </div>
-            </div>
-            <!--End of cart page-->
+            </div>    
+        </div><!--End of cart page--> 
+            
+            
+            
+           
+            
         </div>
     </body>
 </html>
