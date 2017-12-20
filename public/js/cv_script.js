@@ -151,43 +151,33 @@ function createNewDrink(drinkType) {
     var mydrink = new drink();
     mydrink.type = drinkType;
     currentSuperOrder.drinks.push(mydrink);
-    console.log("skapade drinken av typ " + drinkType);
+    currentSuperOrder.activeDrink = currentSuperOrder.drinks.length-1;
 };
 
 function selectDrinkSize(inputSize) {
     currentSuperOrder.drinks[currentSuperOrder.activeDrink].size = inputSize;
-    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].size)
 };
 
+function deleteActiveDrink() {
+    currentSuperOrder.drinks.splice(currentSuperOrder.activeDrink, 1);
+}
 
-//funk: lägga till en drink extra
-//funk: ta bort drink
+
 //funk: välja aktiv drink
 //funk: sätta orderid
-//funk:markera order som done
+//funk: markera order som done
 //funk: sätta ordertid
 //funk: sätta sluttid
-//funk: välja drinktyp
-//funk: välja drinkstorlek
 //funk: lägga till ingrediens
-//funk: ta bort ingrediens
 //funk: sätta pris
 //funk: markera som avbruten 
 
 //The function that is activated when "cart" is pressed    
 
 
-
-
-
-
 function addIngredientToActiveDrink(ingred) {
        var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient; currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[tempActiveIngred]=ingred; 
 };
-
-
-
-
 
 
 function getRandomInt(min, max) {
@@ -313,10 +303,10 @@ var vm = new Vue({
                 this.showHelpLangContainer = true;
             }
             else if (tab === "ingredPage") {
-                if (drink.type == "smoothie") {
+                if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "smoothie") {
                     this.showSmoothieMug = true;
                 }
-                else if (drink.type == "juice") {
+                else if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "juice") {
                     this.showJuiceMug = true;
                 }
                 this.showIngredPage = true;
