@@ -48,42 +48,6 @@ var sharedVueStuff = {
                 this.lang = "en";
             }
             socket.emit('switchLang', this.lang);
-        },
-
-        superOrder: function() {
-            this.drinks = [];
-            this.activeDrink = 0;
-            this.orderId = -1;
-            this.done = false;
-            this.orderTime = null;
-            this.finishTime = null;
-        },
-
-        drink: function() {
-            this.type = "";
-            this.volume = 0;
-            this.ingredients= [0,0,0,0,0];
-            this.prize  = 0;
-            this.aborted = false;
-            this.tempId = -1;
-        },
-        
-        //funk: lägga till en drink
-        //funk: ta bort drink
-        //funk: välja aktiv drink
-        //funk: sätta orderid
-        //funk:markera order som done
-        //funk: sätta ordertid
-        //funk: sätta sluttid
-        //funk: välja drinktyp
-        //funk: välja drinkstorlek
-        //funk: lägga till ingrediens
-        //funk: ta bort ingrediens
-        //funk: sätta pris
-        //funk: markera som avbruten 
-
-
-
-
-    }
+        }
+    },
 };

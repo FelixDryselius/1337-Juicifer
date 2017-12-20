@@ -89,11 +89,11 @@
 
                     <div class="startPageButtonContainer">
                         <div class="chooseDrinkTypeButton">
-                            <button id="juiceButton" type="button" v-on:click="showTab('juiceIngredPage')">Juice</button>
+                            <button id="juiceButton" type="button" v-on:click="showTab('juiceIngredPage')" onclick="createNewDrink('juice')">Juice</button>
                         </div>
 
                         <div class="chooseDrinkTypeButton">
-                            <button id="smoothieButton" type="button" v-on:click="showTab('sizePage'); addType('smoothie')">Smoothie</button>
+                            <button id="smoothieButton" type="button" v-on:click="showTab('sizePage')" onclick="createNewDrink('smoothie')">Smoothie</button>
                         </div>      
                     </div>
                 </main>

@@ -127,15 +127,55 @@ console.log(drink.size + " innan");
 /*jslint es5:true, indent: 2 */
 /*global sharedVueStuff, Vue, socket */
 
+var currentSuperOrder = new superOrder();
 
-
-
-var drink = {
-    type : "none", 
-    size : "0", 
-    ingredBase : "none",
-    inCart : false,
+function superOrder() {
+    this.drinks = [],
+    this.activeDrink = 0,
+    this.orderId = -1,
+    this.done = false,
+    this.orderTime = null,
+    this.finishTime = null
 };
+
+function drink() {
+    this.type = "",
+    this.volume = 0,
+    this.ingredients = [0,0,0,0,0],
+    this.prize = 0,
+    this.aborted = false,
+    this.tempId = -1
+};
+
+function createNewDrink(drinkType) { 
+    var mydrink = new drink();
+    mydrink.type = drinkType;
+    currentSuperOrder.drinks.push(mydrink);
+    console.log("skapade drinken av typ " + drinkType);
+};
+
+function selectDrinkSize(size) {}
+
+//funk: lägga till en drink extra
+//funk: ta bort drink
+//funk: välja aktiv drink
+//funk: sätta orderid
+//funk:markera order som done
+//funk: sätta ordertid
+//funk: sätta sluttid
+//funk: välja drinktyp
+//funk: välja drinkstorlek
+//funk: lägga till ingrediens
+//funk: ta bort ingrediens
+//funk: sätta pris
+//funk: markera som avbruten 
+
+//The function that is activated when "cart" is pressed    
+
+
+
+
+
 
 
 
@@ -189,15 +229,9 @@ var vm = new Vue({
         showCartPage: false,
         chosenCatName: '',
         searchTerm: '',
-        currentSuperOrder: new this.superOrder(),
-   },
-    
-created: function(){
-        this.currentSuperOrder.drinks.push(new this.drink); 
-},
-    
-    
-    
+    },
+
+
     methods: {
         hideAllTabs: function () {
             this.showStartPage = false;
@@ -210,9 +244,8 @@ created: function(){
             this.showIngredientsButtons = false;
             this.showCartPage = false;
         },
-        
-    //The function that is activated when "cart" is pressed    
-        
+
+
 
         filtered_ingredients: function(cat) {
             return this.ingredients.filter(function(item) {
@@ -223,20 +256,20 @@ created: function(){
                 }
             })
         },
-        
+
         searched_ingredients: function(ingred){
-                if(this.searchTerm === ''){
-                    return ingred }
-                else if( ingred['ingredient_'+ this.lang].indexOf(this.searchTerm) !==-1){
-                    return ingred;
-                
-                }
-            }, 
-        
+            if(this.searchTerm === ''){
+                return ingred }
+            else if( ingred['ingredient_'+ this.lang].indexOf(this.searchTerm) !==-1){
+                return ingred;
+
+            }
+        }, 
+
         showAllIngredients: function(){
             this.chosenCatName='';
         },
-        
+
 
 
         doShowIngredientsButtons: function(catName){
@@ -271,7 +304,7 @@ created: function(){
                 this.showCartPage =true;
                 this.showTopBarButton = true;
             }
-            
+
             else if (tab === "orderHistory") {
                 this.orderHistoryShow = true;
             }
