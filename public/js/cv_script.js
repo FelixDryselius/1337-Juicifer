@@ -1,132 +1,5 @@
 'use strict';
 
-var orderDrinksArray = [];
-
-
-
-
-
-/*var startPage = new Vue({
-    el: '#start',
-    data: {
-        seen: true
-    }
-})
-
-var sizePage = new Vue({
-    el: '#size',
-    data: {
-        seen: false
-    }
-})
-
-var topbar = new Vue({
-    el: '#topbar',
-    data: {
-        seen: false
-    }
-})
-
-var smoothieIngredientsPage = new Vue({
-  el: '#smoothieIngredients',
-  data: {
-    seen: false
-  }
-})
-
-var juiceIngredientsPage = new Vue({
-  el: '#juiceIngredients',
-  data: {
-    seen: false
-  }
-})
-
-var ingredientsPage = new Vue({
-  el: '#ingredPage',
-  data: {
-    seen: false
-  }
-})
-
-var cartPage = new Vue({
-  el: '#cart',
-  data: {
-    seen: false
-  }
-})*/
-
-
-
-/*function typeItem(type) {
-    this.drink.type = type;
-    orderDrinksArray.push(drink);
-    console.log(drink.type + " new drink type");
-    console.log(orderDrinksArray[0].type + " content array");
-    all_cv.showStartPage = false;
-    console.log(all_cv.showStartPage);
-    all_cv.showTopbar = false;
-    all_cv.showSizePage = true;
-}
-
-function sizeItem(size) {
-    this.drink.size = size;
-    console.log(drink.size + " new size");
-    console.log(drink.type + " current drink type");
-    console.log(orderDrinksArray[0].type + " " + orderDrinksArray[0].size + " content array");
-    sizePage.seen = false;
-    topbar.seen = true;
-    if (drink.type === "smoothie"){
-        smoothieIngredientsPage.seen = true;
-    } else {
-        juiceIngredientsPage.seen = true;
-    }
-}
-
-function ingredBase() {
-    closeAllIngred();
-    var x = document.getElementById("ingredBase");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-
-function ingredCat() {
-    closeAllIngred();
-    var x = document.getElementById("ingredCat");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-
-function closeAllIngred() {
-    var iB = document.getElementById("ingredBase");
-    var iC = document.getElementById("ingredCat");
-    iB.style.display = "none";
-    iC.style.display = "none";
-}
-
-function sendToCart() {
-    this.drink.inCart = true;
-    ingredientsPage.seen = false;
-    cartPage.seen = true;
-    console.log(orderDrinksArray[0].type + " " + orderDrinksArray[0].size + " " + orderDrinksArray[0].inCart + " content array");
-}
-
-console.log(drink.type + " innan");
-console.log(drink.size + " innan");
-
-
-
-/*ordering.js
-------------------------------*/
-
-/*jslint es5:true, indent: 2 */
-/*global sharedVueStuff, Vue, socket */
-
 var currentSuperOrder = new superOrder();
 
 function superOrder() {
@@ -163,18 +36,6 @@ function deleteActiveDrink() {
 }
 
 
-//funk: välja aktiv drink
-//funk: sätta orderid
-//funk: markera order som done
-//funk: sätta ordertid
-//funk: sätta sluttid
-//funk: lägga till ingrediens
-//funk: sätta pris
-//funk: markera som avbruten 
-
-//The function that is activated when "cart" is pressed    
-
-
 function addIngredientToActiveDrink(ingred) {
        var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient; currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[tempActiveIngred]=ingred; 
 };
@@ -199,6 +60,22 @@ function getFlagSrc(){
     console.log(flagSrc);
     return 'images/gb_flagga.png';
 }
+
+
+
+
+
+//funk: välja aktiv drink
+//funk: sätta orderid
+//funk: markera order som done
+//funk: sätta ordertid
+//funk: sätta sluttid
+//funk: lägga till ingrediens
+//funk: sätta pris
+//funk: markera som avbruten 
+
+//The function that is activated when "cart" is pressed    
+
 
 
 // Start Vue:
@@ -236,6 +113,7 @@ var vm = new Vue({
         showCartPage: false,
         chosenCatName: '',
         searchTerm: '',
+        vueSuperOrder: {}
     },
 
 
@@ -359,38 +237,6 @@ var vm = new Vue({
                 this.showCatButtons = false;
             }
         },
-
-        /* for use in next step
-         else if (ingredTyp === "berry") {
-            }
-            else if (ingredTyp === "fruit") {
-
-            }
-            else if (ingredTyp === "vegetable") {
-            }
-        */
-
-        /*   createIngredButton: function(catName){
-            var ingred_html = document.createElement("ingredient");
-            ref="ingredient"
-                v-for="item in filtered_ingredients('catName')"
-                v-on:addIngredient="addToOrder(item)"  
-                :item="item" 
-                :lang="lang"
-                :key="item.ingredient_id"> 
-            th.appendChild(anObj);
-            return th;
-            }*/
-
-
-        addType: function(drinkType) {
-            drink.type = drinkType;
-        },
-
-        addSize: function(drinkSize) {
-            drink.size = drinkSize;
-        },
-
 
 
         placeOrder: function () {
