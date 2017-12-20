@@ -30,6 +30,7 @@
 
     "help": "Here you can get help",
     "abortQuestion": "Do you really want to abort your order",
+    "enFlag": "'images/gb_flagga.png'",
     "createDrink": "Create Drink",
     "chart": "Chart",
     "payment": "Payment",
