@@ -2,130 +2,14 @@
 
 var orderDrinksArray = [];
 
-
-
-
-
-/*var startPage = new Vue({
-    el: '#start',
-    data: {
-        seen: true
-    }
-})
-
-var sizePage = new Vue({
-    el: '#size',
-    data: {
-        seen: false
-    }
-})
-
-var topbar = new Vue({
-    el: '#topbar',
-    data: {
-        seen: false
-    }
-})
-
-var smoothieIngredientsPage = new Vue({
-  el: '#smoothieIngredients',
-  data: {
-    seen: false
-  }
-})
-
-var juiceIngredientsPage = new Vue({
-  el: '#juiceIngredients',
-  data: {
-    seen: false
-  }
-})
-
-var ingredientsPage = new Vue({
-  el: '#ingredPage',
-  data: {
-    seen: false
-  }
-})
-
-var cartPage = new Vue({
-  el: '#cart',
-  data: {
-    seen: false
-  }
-})*/
-
-
-
-/*function typeItem(type) {
-    this.drink.type = type;
-    orderDrinksArray.push(drink);
-    console.log(drink.type + " new drink type");
-    console.log(orderDrinksArray[0].type + " content array");
-    all_cv.showStartPage = false;
-    console.log(all_cv.showStartPage);
-    all_cv.showTopbar = false;
-    all_cv.showSizePage = true;
-}
-
-function sizeItem(size) {
-    this.drink.size = size;
-    console.log(drink.size + " new size");
-    console.log(drink.type + " current drink type");
-    console.log(orderDrinksArray[0].type + " " + orderDrinksArray[0].size + " content array");
-    sizePage.seen = false;
-    topbar.seen = true;
-    if (drink.type === "smoothie"){
-        smoothieIngredientsPage.seen = true;
-    } else {
-        juiceIngredientsPage.seen = true;
-    }
-}
-
-function ingredBase() {
-    closeAllIngred();
-    var x = document.getElementById("ingredBase");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-
-function ingredCat() {
-    closeAllIngred();
-    var x = document.getElementById("ingredCat");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-
-function closeAllIngred() {
-    var iB = document.getElementById("ingredBase");
-    var iC = document.getElementById("ingredCat");
-    iB.style.display = "none";
-    iC.style.display = "none";
-}
-
-function sendToCart() {
-    this.drink.inCart = true;
-    ingredientsPage.seen = false;
-    cartPage.seen = true;
-    console.log(orderDrinksArray[0].type + " " + orderDrinksArray[0].size + " " + orderDrinksArray[0].inCart + " content array");
-}
-
-console.log(drink.type + " innan");
-console.log(drink.size + " innan");
-
+/*
 
 
 /*ordering.js
 ------------------------------*/
 
 /*jslint es5:true, indent: 2 */
-/*global sharedVueStuff, Vue, socket */
+/*global sharedVueStuff, Vue, socket 
 
 
 
@@ -137,8 +21,9 @@ var drink = {
     inCart : false,
 };
 
+*/
 
-
+//Funktion som genererar ett slumpmässigt tal
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -146,7 +31,7 @@ function getRandomInt(min, max) {
 }
 
 
-
+//Funktion som kallar på ett slumpmässigt tal mellan 1 till 1,000,000
 function getOrderNumber() {
     // It's probably not a good idea to generate a random order number, client-side. 
     // A better idea would be to let the server decide.
@@ -154,7 +39,8 @@ function getOrderNumber() {
 }
 
 
-// Start Vue:
+// Start vue-komponent:
+//
 Vue.component('ingredient', {
     props: ['item', 'lang'],
     template: ' <button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
@@ -166,15 +52,17 @@ Vue.component('ingredient', {
 });
 
 
-var vm = new Vue({
-    el: '#all_cv',
+// Start vue-objekt:
+var drink = new Vue({
+    el: '#all_cv', //Hela html-dokumentet hämtas
     mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
     data: {
-        type: '',
-        chosenIngredients: [],
-        volume: 0,
+        type: '', // Orderns typ {juice, smoothie}
+        chosenIngredients: [], // Ingredienser i ordern {alla ingredienser i databasen}
+        volume: 0, // Storlek på drycken
         price: 0,
 
+        // Olika delar av html-dokumentet. Startsidan börjar med att visas (true) och resten är osynliga (false)
         showStartPage: true,
         showHelp: true,
         showSizePage: false,
@@ -189,9 +77,10 @@ var vm = new Vue({
         searchTerm: ''
 
     },
-
-
+    
+    // Metoder i vue-objektet:
     methods: {
+        // Funktion som osynliggör allt
         hideAllTabs: function () {
             this.showStartPage = false;
             this.showHelp = true;
@@ -203,6 +92,7 @@ var vm = new Vue({
             this.showCartPage = false;
         },
         
+
     //The function that is activated when "cart" is pressed    
     goToCart: function() {
     this.hideAllTabs();
@@ -210,7 +100,6 @@ var vm = new Vue({
     this.showCartPage =true;
     },
         
-
         filtered_ingredients: function(cat) {
             return this.ingredients.filter(function(item) {
                 if(cat ===''){
@@ -220,20 +109,20 @@ var vm = new Vue({
                 }
             })
         },
-        
+
         searched_ingredients: function(ingred){
-                if(this.searchTerm === ''){
-                    return ingred }
-                else if( ingred['ingredient_'+ this.lang].indexOf(this.searchTerm) !==-1){
-                    return ingred;
-                
-                }
-            }, 
-        
+            if(this.searchTerm === ''){
+                return ingred }
+            else if( ingred['ingredient_'+ this.lang].indexOf(this.searchTerm) !==-1){
+                return ingred;
+
+            }
+        }, 
+
         showAllIngredients: function(){
             this.chosenCatName='';
         },
-        
+
 
 
         doShowIngredientsButtons: function(catName){
@@ -248,8 +137,7 @@ var vm = new Vue({
 
 
         showTab: function (tab) {
-            console.log(tab)
-            this.showSizePage = false;
+            console.log(tab);
             this.hideAllTabs();
             if (tab === "sizePage") {
                 this.showSizePage = true;
@@ -257,8 +145,13 @@ var vm = new Vue({
             else if (tab === "abortOrder") {
                 this.showStartPage = true;
             }
-            else if (tab === "smoothieIngredPage") {
-                this.showSmoothieIngredPage = true;
+            else if (tab === "ingredPage") {
+                if (drink.type == "juice") {
+                    this.showJuiceIngredPage = true;
+                }
+                else if (drink.type == "smoothie") {
+                    this.showSmoothieIngredPage = true;
+                }
                 this.showTopBar = true;
             }
             else if (tab === "orderHistory") {
@@ -297,39 +190,16 @@ var vm = new Vue({
             }
         },
 
-        /* for use in next step
-         else if (ingredTyp === "berry") {
-            }
-            else if (ingredTyp === "fruit") {
-
-            }
-            else if (ingredTyp === "vegetable") {
-            }
-        */
-
-        /*   createIngredButton: function(catName){
-            var ingred_html = document.createElement("ingredient");
-            ref="ingredient"
-                v-for="item in filtered_ingredients('catName')"
-                v-on:addIngredient="addToOrder(item)"  
-                :item="item" 
-                :lang="lang"
-                :key="item.ingredient_id"> 
-            th.appendChild(anObj);
-            return th;
-            }*/
-
 
         addType: function(drinkType) {
             drink.type = drinkType;
+            console.log("Du har valt drycktypen " + drink.type);
         },
 
         addSize: function(drinkSize) {
             drink.size = drinkSize;
+            console.log("Du har valt storlek " + drink.size);
         },
-
-
-
 
 
         addToOrder: function (item) {
@@ -357,7 +227,7 @@ var vm = new Vue({
             this.type = '';
             this.chosenIngredients = [];
         },
-    }
+}
 });
 
 
@@ -365,4 +235,3 @@ var vm = new Vue({
 
 
 //vm.test=vm.get_categories();
-
