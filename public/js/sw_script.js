@@ -94,7 +94,15 @@ function pressedButton() {
 
 Vue.component('ingredient', {
   props: ['item', 'lang'],
-  template:  ' <div class = "database"> <table> <th> {{uiLabels.ingredients}} </th><th>Size of JU</th> <tr> <td>{{item["ingredient_"+ lang]}}</td> <td>{{item.stock}} </td> </tr></table> </div>',
+  template:  ' <div class = "database">\
+<table width="100%" border="0" cellspacing="0" cellpadding="0" >\
+<td  width="20%"> {{item["ingredient_"+ lang]}}</td>\
+<td width="20%"> {{item["JU_volume"]}} mL </td>\
+<td width="20%"> {{item["JU_volume" ]}} / {{item["balance"]}} L </td>\
+<td width="20%"> {{item["balance"]}} mL </td>\
+<td width="20%"> input </td>\
+</table>\
+</div>',
 });
 
 //SLUT INVENTORY
@@ -104,6 +112,7 @@ Vue.component('ingredient', {
 //STATISTICS SLUT
 
 
+ 
 
 
 // INGRIDS TESTFUNKTIONER
@@ -174,10 +183,7 @@ Vue.component('order-item-to-prepare', {
     }
 }); */
 
-Vue.component('ingredient', {
-    props: ['item', 'lang'],
-    template: '<div> {{item["ingredient_"+ lang]}} </div>'
-});
+
 /*Vue.component('inventoryIngredient', {
   props: ['item', 'lang'],
   template: '<div> {{item["ingredient_"+ lang]}}, {{item.stock}} </div>'
