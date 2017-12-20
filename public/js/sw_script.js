@@ -95,7 +95,7 @@ function pressedButton() {
 
 Vue.component('ingredient', {
   props: ['item', 'lang'],
-  template:  ' <div>{{item["ingredient_"+ lang]}}</div>',
+  template:  ' <div class = "database"> <table> <th> {{uiLabels.ingredients}} </th><th>Size of JU</th> <tr> <td>{{item["ingredient_"+ lang]}}</td> <td>{{item.stock}} </td> </tr></table> </div>',
 });
 
 //SLUT INVENTORY

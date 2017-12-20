@@ -1,8 +1,12 @@
 /*Start på css för start page*/
-header{
+.header{
     text-align: center;
     position: relative;
 
+}
+.subHeader {
+    text-align: center;
+    position: relative;
 }
 
 .helpLangContainer {
