@@ -164,12 +164,32 @@
             <div id="inventory" v-if = "inventoryShow">
                 <!-- HÄR SKAPAS SIDSPECIFIKA GREJER -->
                 <div id="inventoryContainer">
+
+
                     <div id="inventoryInformation">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th width="20%">
+                                    <h1> {{uiLabels.ingredients}}</h1>
+                                </th>
+                                <th width="20%">
+                                    Size of JU
+                                </th >
+                                <th width="20%">
+                                    JU Balance
+                                </th>
+                                <th width="20%">
+                                    Balance
+                                </th>
+                                <th width="20%">
+                                    New Balance
+                                </th>
+                            </tr>
+                        </table>
+                      
 
 
-                    <div class = "database" id="inventoryInformation">
 
-                        <h1> {{uiLabels.ingredients}} </h1>
                         <ingredient
                                                 ref="ingredient"
                                                 v-for="item in ingredients"
@@ -184,11 +204,10 @@
                     <div id="SubmitChange">
                         <button onclick="submit()" class = "SubmitButton">Save new balance </button> </div>
 
-
                 </div>
-        
 
 
+        </div>
             <!--- statistics-->
             <div id="statistics" v-if = "statisticsShow">
                 detta är statisticssidan - tillfälligt nere
@@ -217,10 +236,11 @@ chart.draw(data, options);
 </script>
 </head> -->
             </div>
-
-
+            
 
         </div>
+
+
 
 
     </body>
