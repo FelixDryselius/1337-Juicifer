@@ -94,8 +94,9 @@ function pressedButton() {
 
 Vue.component('ingredient', {
   props: ['item', 'lang'],
-  template: '<div> {{item["ingredient_"+ lang]}}, {{item.stock}} </div>'
+  template:  ' <div>{{item["ingredient_"+ lang]}}</div>',
 });
+
 //SLUT INVENTORY
 
 //STATISTICS START

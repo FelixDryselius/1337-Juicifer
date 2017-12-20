@@ -309,3 +309,8 @@ h4{
 .hide{
     display: none;
 }
+
+.database {
+	border: 1px solid #cdc;
+	padding: 1em;
+}
