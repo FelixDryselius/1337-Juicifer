@@ -38,7 +38,8 @@ div.menu button {
     border: none;
     outline: none;
     cursor: pointer;
-    width: 20%;
+    width: 19%;
+    height: 7vh;
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 17px;
@@ -58,12 +59,29 @@ div.menu button {
     background-color: lightcoral;
 }
 
+
 /*INVENTORY*/
 
 #inventoryTab {
+
     background-color: #cc99ff;
     /*dra ner transparity*/
 }
+
+#statisticsTab {
+    background-color: #ffccff;
+}
+
+#languageTab{
+    color: aliceblue;
+    background-color:darkolivegreen;
+    width: 5%;
+    font-size: 10px;
+}
+
+/*INVENTORY*/
+
+
 
 #inventoryContainer {
     background-color: #cc99ff;
@@ -124,9 +142,6 @@ div.menu button {
 
 /* STATISTIKDELEN */
 
-#statisticsTab {
-    background-color: #ffccff;
-}
 
 #stats {
     position: relative;

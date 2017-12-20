@@ -39,21 +39,54 @@
             </div>
             <!-- Slut på avbryttab-->
 
+
+            <!--Start of topbar-->
+            <div class="topBarContainer" v-if="showTopBar">
+
+                <!--Buttons to get help or switch language-->
+                <div class="helpLangContainer" v-if="showHelpLangContainer">
+                    <input type="image" src="images/gb_flagga.png" name="questionButton" id="langButton">
+                    <a onclick="document.getElementById('help').style.display='block';
+                                document.getElementById('fade').style.display='block'"> 
+                        <img src="images/info.png" name="languageButton" id="helpButton"/>
+                    </a>
+                </div>
+                <div v-if="showHelpLangContainer">
+
+                </div>
+
+                <!--Buttons to abort and get help-->
+                <div class="helpAbortContainer" v-if="showHelpAbortContainer">
+
+                    <a id="abortButton" onclick="document.getElementById('confirmAbort').style.display='block';
+                                document.getElementById('fade').style.display='block'"> 
+                        <button>
+                            Avbryt beställning
+                        </button>
+                    </a>
+                    <a onclick="document.getElementById('help').style.display='block';
+                                document.getElementById('fade').style.display='block'"> 
+                        <img src="images/info.png" name="languageButton" class="helpLangButton"/>
+                    </a>
+                </div>    
+
+                <!--The top bar buttons-->
+                <div class="topBarButton" v-if="showTopBarButton">
+                    <button id="makeDrinkButton" type="button" v-on:click="showTab('ingredPage')">Skapa dryck</button>
+                    <button id="cartButton" type="button" v-on:click="showTab('cartPage')">Varukorg</button>
+                    <button id="payButton" type="button">Betalning</button>
+                </div>
+            </div>  
+            <!--End of topbar-->
+
+
+
             <!--Start of start page-->
 
             <div id="start" v-if="showStartPage">
                 <main>
-                    <header>
-                        <div class="helpLangContainer">
-                            <input type="image" src="images/gb_flagga.png" name="questionButton" id="langButton">
-                            <a onclick="document.getElementById('help').style.display='block';
-                                        document.getElementById('fade').style.display='block'"> 
-                                <img src="images/info.png" name="languageButton" id="helpButton"/>
-                            </a>
-                        </div>
-                        <h1 class="header">Välkommen till Jucifer</h1>
-                        <h2 class="subHeader"> Välj din dryck:</h2>
-                    </header>
+                    <h1 class="header">Välkommen till Jucifer</h1>
+                    <h2 class="subHeader"> Välj din dryck:</h2>
 
                     <div class="startPageButtonContainer">
                         <div class="chooseDrinkTypeButton">
@@ -75,30 +108,18 @@
 
             <div id="size" v-if="showSizePage">
                 <main>
-                    <header>
-                        <div class="helpAbortContainer">
-                            <button>
-                                <a onclick="document.getElementById('confirmAbort').style.display='block';
-                                            document.getElementById('fade').style.display='block'"> 
-                                    Avbryt beställning
-                                </a>
-                            </button>
-                            <a onclick="document.getElementById('help').style.display='block';
-                                        document.getElementById('fade').style.display='block'"> 
-                                <img src="images/info.png" name="languageButton" class="helpLangButton"/>
-                            </a>
-                        </div>
-                        <h1 class="chooseSize">Välj storlek:</h1>
-                    </header>
+                    <h1 class="header">Välj en storlek</h1>
+
                     <div class="buttonSizeContainer">
                         <div class="chooseSizeButton">
-                            <button id="smallButton" type="button" v-on:click="showTab('ingredPage'); addSize('small')">Small</button>
+                            <button id="smallButton" type="button" v-on:click="showTab('ingredPage')">Small</button>
                         </div>
                         <div class="chooseSizeButton">
-                            <button id="mediumButton" type="button" v-on:click="showTab('ingredPage'); addSize('medium')">Medium</button>
+                            <button id="mediumButton" type="button" v-on:click="showTab('ingredPage')">Medium</button>
                         </div>  
+
                         <div class="chooseSizeButton">
-                            <button id="largeButton" type="button" v-on:click="showTab('ingredPage'); addSize('large')">Large</button>
+                            <button id="largeButton" type="button" v-on:click="showTab('ingredPage')">Large</button>
                         </div>
                     </div>
                 </main>
@@ -107,44 +128,15 @@
                 </footer>
             </div>
             <!--End of size page-->
-           
 
-                   
-                    <!--Start of topbar-->
-                    <div class="topBarContainer" v-if="showTopBar">
-                        <div class="topBarButton">
 
-                            <button id="makeDrinkButton" type="button">Skapa dryck</button>
-                            <button id="cartButton" type="button" v-on:click="goToCart()">Varukorg</button>
-                            <button id="payButton" type="button">Betalning</button>
+            <!--Start of smoothie ingredients page-->
+            <div id ="ingredPage" v-if="showIngredPage">
 
-                        </div>
-                    
-                    <div class="helpAbortContainer">
-                        <button>
-                            <a onclick="document.getElementById('confirmAbort').style.display='block';
-                                        document.getElementById('fade').style.display='block'"> 
-                                Avbryt beställning
-                            </a>
-                        </button>
-                        <a onclick="document.getElementById('help').style.display='block';
-                                    document.getElementById('fade').style.display='block'"> 
-                            <img src="images/info.png" name="languageButton" class="helpLangButton"/>
-                        </a>
-                    </div>
 
-            </div>             <!--End of topbar-->
-                
-                
-                
-                 <!--Start of smoothie ingredients page-->
-            <div id ="smoothieIngredients" v-if="showSmoothieIngredPage">
-                
-              
                 <!--Start of ingredient menus-->
-            <h1 class="header" align="left">Skapa dryck</h1>
+                <h1 class="header" align="left">Skapa dryck</h1>
                 <div class="mainContent">                    
-
                     <!--Start of base ingredient menu-->
                     <div id=chooseIngredientsBox v-if="showButtonBox">
                         <div class="headContainer">
@@ -179,103 +171,108 @@
                     <!--End of standard ingredients menu-->
                     <!--End of ingredient menus-->
                     <!--Start of mug interface-->
-                    <div class="mugContainer">
-                        <div class="mug">
-                            <div class="toppingButton">
-                                <button id="topping"  v-on:click="showIngredients">Topping</button>
-                            </div>
-                            <div class="mugButtons">
-                                <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
-                                <br>
-                                <button id="ingredient2" v-on:click="showIngredients('ingredCat')">Ingredient 2</button>
-                                <br>
-                                <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>
-                                <br>
-                                <button id="base" v-on:click="showIngredients('base')">base
-                                </button> 
+                    <div id="smoothieMug" v-if="showSmoothieMug">
+                        <div class="mugContainer">
+                            <div class="mug">
+                                <div class="toppingButton">
+                                    <button id="topping" v-on:click="showIngredients">Topping</button>
+                                </div>
+                                <div class="mugButtons">
+                                    <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
+                                    <br>
+                                    <button id="ingredient2" v-on:click="showIngredients('ingredCat')">Ingredient 2</button>
+                                    <br>
+                                    <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>
+                                    <br>
+                                    <button id="base" v-on:click="showIngredients('base')">base
+                                    </button> 
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div id="juiceMug" v-if="showJuiceMug">
+                        <!--Start of mug interface-->
+                        <div class="mugContainer">
+                            <div class="mug">
+                                <div class="toppingButton">
+                                    <button id="topping" v-on:click="showIngredients">Topping</button>
+                                </div>
+                                <div class="mugButtons">
+                                    <button id="ingredient5" v-on:click="showIngredients('ingredCat')">Ingredient 5</button>
+                                    <br>
+                                    <button id="ingredient6" v-on:click="showIngredients('ingredCat')">Ingredient 4</button>
+                                    <br>
+                                    <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
+                                    <br>
+                                    <button id="ingredient2" v-on:click="showIngredients('ingredCat')">Ingredient 2</button>
+                                    <br>
+                                    <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>    
+                                </div>
+                            </div>
+                        </div>
+                        <!--End of mug interface-->
                     </div>
                     <!--End of mug interface-->
                 </div>
             </div>
             <!--End of smoothie ingredients page-->
             <!--Start of juice ingredients page-->
-            <div id="juiceIngredients" v-if="showJuiceIngredPage">
-                <!--Start of mug interface-->
-                <div class="mugContainer">
-                    <div class="mug">
-                        <div class="toppingButton">
-                            <button id="topping">Topping</button>
-                        </div>
-                        <div class="mugButtons">
-                            <button id="ingredient5">Ingredient 5</button>
-                            <br>
-                            <button id="ingredient6">Ingredient 4</button>
-                            <br>
-                            <button id="ingredient3">Ingredient 3</button>
-                            <br>
-                            <button id="ingredient2">Ingredient 2</button>
-                            <br>
-                            <button id="ingredient1">Ingredient 1</button>    
-                        </div>
-                    </div>
-                </div>
-                <!--End of mug interface-->
-            </div>
+
             <!--End of juice ingredients page-->
-          
-            
-           <!--LEFTOVER I DON'T DARE TO REMOVE YET-->
-            
-             <!--   <div class="topBarContainer">
-                    <div class="topBarButton">
-                        <button id="makeDrinkButton" type="button">Skapa dryck</button>
-                    </div>
-                    <div class="topBarButton">
-                        <button id="cartButton" type="button">Varukorg</button>
-                    </div>
-                    <div class="topBarButton">
-                        <button id="payButton" type="button">Betala</button>
-                    </div> 
-                </div> -->
-             <!--   <header>
-                    <div class="helpAbortContainer">
-                        <button>
-                            <a onclick="document.getElementById('confirmAbort').style.display='block';
-                                        document.getElementById('fade').style.display='block'"> 
-                                Avbryt beställning
-                            </a>
-                        </button>
-                        <a onclick="document.getElementById('help').style.display='block';
-                                    document.getElementById('fade').style.display='block'"> 
-                            <img src="images/info.png" name="languageButton" class="helpLangButton"/>
-                        </a>
-                    </div>
-                    
-                </header>-->
-                
-            
-             <!--Start of cart page-->
+
+
+            <!--LEFTOVER I DON'T DARE TO REMOVE YET-->
+
+            <!--   <div class="topBarContainer">
+<div class="topBarButton">
+<button id="makeDrinkButton" type="button">Skapa dryck</button>
+</div>
+<div class="topBarButton">
+<button id="cartButton" type="button">Varukorg</button>
+</div>
+<div class="topBarButton">
+<button id="payButton" type="button">Betala</button>
+</div> 
+</div> -->
+            <!--   <header>
+<div class="helpAbortContainer">
+<button>
+<a onclick="document.getElementById('confirmAbort').style.display='block';
+document.getElementById('fade').style.display='block'"> 
+Avbryt beställning
+</a>
+</button>
+<a onclick="document.getElementById('help').style.display='block';
+document.getElementById('fade').style.display='block'"> 
+<img src="images/info.png" name="languageButton" class="helpLangButton"/>
+</a>
+</div>
+
+</header>-->
+
+
+            <!--Start of cart page-->
             <div id="cart" v-if="showCartPage">
                 <h1 class="header" align="left">Varukorg</h1>
                 <div class="mainContent">
-                
+
                     <div class="cartOverviewBox">
                         <h2>Dina drycker</h2>
                     </div>
                     <div class="cartRecipeBox">
                         <h2>Din order</h2>
 
-                    
-                </div>
-            </div>    
-        </div><!--End of cart page--> 
-            
-            
-            
-           
-            
+
+                    </div>
+                </div>    
+            </div><!--End of cart page--> 
+
+
+
+
+
         </div>
     </body>
 </html>
+
+
