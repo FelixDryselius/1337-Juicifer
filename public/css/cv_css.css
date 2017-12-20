@@ -1,3 +1,23 @@
+/*Container for css related to topbarcontainer */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*Start på css för start page*/
 .header{
     text-align: center;
@@ -25,6 +45,10 @@
     top:1em;
     right: 1em; 
     width: 13vw;
+}
+
+a button {
+    height: 2.5em;
 }
 
 #langButton{
