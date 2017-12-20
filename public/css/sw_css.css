@@ -1,5 +1,6 @@
 /* kommentarer ser ut så här ctrl shift i*/
-@media screen and (aspect-ratio: 16/9){}
+
+@media screen and (aspect-ratio: 16/9) {}
 
 
 table {
@@ -8,7 +9,8 @@ table {
     width: 100%;
 }
 
-td, th {
+td,
+th {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
@@ -29,6 +31,7 @@ div.menu {
 }
 
 /* Style the buttons inside the tab */
+
 div.menu button {
     background-color: inherit;
     float: left;
@@ -42,20 +45,25 @@ div.menu button {
     font-size: 17px;
 }
 
-#newOrderTab{
-    background-color:gold;
+#newOrderTab {
+    background-color: gold;
     /*background-color:*/
 }
 
-#orderQueueTab{
-    background-color:rgb(234, 234, 225);;
+#orderQueueTab {
+    background-color: rgb(234, 234, 225);
+    ;
 }
 
-#orderHistoryTab{
-    background-color:lightcoral;
+#orderHistoryTab {
+    background-color: lightcoral;
 }
 
-#inventoryTab{
+
+/*INVENTORY*/
+
+#inventoryTab {
+
     background-color: #cc99ff;
     /*dra ner transparity*/
 }
@@ -79,11 +87,13 @@ div.menu button {
     background-color: #cc99ff;
     opacity: 0.8;
     position: relative;
-    height:90vh;
+    height: 90vh;
 
 
 }
-#inventoryInformation{ /* Detta är då min DIV som jag har problem med */
+
+#inventoryInformation {
+    /* Detta är då min DIV som jag har problem med */
     background-color: #e6e6e6;
     border: 5px solid #bfbfbf;
     width: 75%;
@@ -97,7 +107,7 @@ div.menu button {
 
 /*KNAPPEN I INVENTORY*/
 
-#SubmitChange{
+#SubmitChange {
     position: absolute;
     left: 80%;
     bottom: 80%;
@@ -118,7 +128,9 @@ div.menu button {
     box-shadow: 0 9px grey;
 }
 
-.SubmitButton:hover {background-color: #999999}
+.SubmitButton:hover {
+    background-color: #999999
+}
 
 .SubmitButton:active {
     background-color: #999999;
@@ -158,19 +170,23 @@ div.menu button {
 
 
 /* Change background color of buttons on hover */
+
 div.menu button:hover {
     /*background-color: #ddd;*/
     font-weight: bold;
 }
 
 /* Create an active/current tablink class */
+
 /*DENNA GÖR INGET VA?*/
+
 div.menu button.active {
     /*background-color: #ccc;*/
     font-weight: bold;
 }
 
 /* Style the tab content */
+
 .menuContent {
     display: none;
     padding: 6px 12px;
@@ -178,104 +194,103 @@ div.menu button.active {
     border-top: none;
 }
 
-h3{
+h3 {
     /*font: bold; */
-    text-align:center;
+    text-align: center;
 }
 
-h4{
+h4 {}
 
-}
 /*SLUT KOD SOM RÖR ALLT*/
 
 /*Start css för NEW ORDER*/
+
 /*Slut NEW ORDER*/
-
-
 
 /*start GEMENSAMMA för ORDER QUEUE och ORDER HISTORY*/
 
-.leftSideMenuBox{
-    position:absolute;
+.leftSideMenuBox {
+    position: absolute;
     width: 25%;
-    height:85vh;
+    height: 85vh;
     bottom: 6px;
     left: 6px;
-    background-color: rgb(165,170,170);
-    border: 2px solid rgb(125,124,127);
+    background-color: rgb(165, 170, 170);
+    border: 2px solid rgb(125, 124, 127);
     overflow: auto;
 }
 
-.oneOrder{
+.oneOrder {
     overflow: auto;
 }
 
-.rightSideBox{
-    position:absolute;
+.rightSideBox {
+    position: absolute;
     width: 25%;
-    height:85vh;
+    height: 85vh;
     bottom: 6px;
     right: 6px;
-    background-color: rgb(165,170,170);
-    border: 2px solid rgb(125,124,127);
+    background-color: rgb(165, 170, 170);
+    border: 2px solid rgb(125, 124, 127);
 }
 
-.juicesInTheOrder{
-    position:absolute;
+.juicesInTheOrder {
+    position: absolute;
     width: 40%;
     left: 30%;
     top: 60px;
-    background-color: rgb(165,170,170);
-    border: 2px solid rgb(125,124,127);
+    background-color: rgb(165, 170, 170);
+    border: 2px solid rgb(125, 124, 127);
     cursor: pointer;
 }
 
-.pressedDiv{
+.pressedDiv {
     filter: brightness(85%);
     cursor: pointer;
 }
 
-.oneOrder{
+.oneOrder {
     position: relative;
     width: 90%;
     height: 10vh;
     margin: 7px auto;
     top: 13px;
-    background-color: rgb(210,210,210);
-    border: 2px solid rgb(125,124,127);
+    background-color: rgb(210, 210, 210);
+    border: 2px solid rgb(125, 124, 127);
     cursor: pointer;
 }
 
-#order1{
-}
+#order1 {}
+
 /*slut gemensamma ORDER QUEUE och ORDER HISTORY*/
 
 /*Start css för ORDER QUEUE*/
-#oQBoxContainer{
+
+#oQBoxContainer {
     position: relative;
-    height:90vh;
+    height: 90vh;
     background-color: rgb(234, 234, 225);
 }
 
-.oQButtons{
+.oQButtons {
     position: absolute;
     align-content: center;
     bottom: 23px;
     height: 14vh;
     text-align: center;
-    border: 2px solid rgb(125,124,127);
+    border: 2px solid rgb(125, 124, 127);
     border-radius: 12px;
     cursor: pointer;
     /* font-size:; */
 }
 
-#cancelOrderButton{
+#cancelOrderButton {
     left: 30%;
     width: 12%;
     background-color: rgb(255, 179, 179);
 }
 
-#finishOrderButton{
+#finishOrderButton {
     left: 46%;
     background-color: rgb(51, 204, 51);
     width: 24%
@@ -285,36 +300,37 @@ h4{
 
 /*Start css för ORDER HISTORY*/
 
-
 /*Start css för ORDER HISTORY*/
 
-
-#oHBoxContainer{
+#oHBoxContainer {
     position: relative;
-    height:90vh;
+    height: 90vh;
     background-color: lightcoral;
 }
 
-#oHMenu{}
+#oHMenu {}
 
-#oHIngridients{}
+#oHIngridients {}
 
-#oHTimeInfo{
+#oHTimeInfo {
     position: relative;
     width: 30%;
     height: 25vh;
     /*left: 35%;*/
     margin: auto;
     top: 400px;
-    background-color: rgb(210,210,210);
-    border: 2px solid rgb(125,124,127);
+    background-color: rgb(210, 210, 210);
+    border: 2px solid rgb(125, 124, 127);
 }
+
 /*Slut ORDER HISTORY*/
 
 /*Start css för INVENTORY*/
+
 /*Slut INVENTORY*/
 
 /*Start css för STATISTICS*/
+
 /*Slut STATISTICS*/
 
 .hide {
@@ -322,14 +338,14 @@ h4{
 }
 
 .database {
-   font-family:  'Hoefler Text', Georgia, 'Times New Roman', serif;
- font-weight: normal;
-        font-size: 1.2em;
- letter-spacing: .2em;
- line-height: 1.1em;
- margin:0px;
-     text-transform: capitalize;
-
+    font-family: 'Hoefler Text', Georgia, 'Times New Roman', serif;
+    font-weight: normal;
+    font-size: 1.2em;
+    letter-spacing: .2em;
+    line-height: 1.1em;
+    margin: 0px;
+    text-transform: capitalize;
     border: 3px solid #cdc;
     padding: 1em;
 }
+

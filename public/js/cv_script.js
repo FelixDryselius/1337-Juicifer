@@ -165,7 +165,6 @@ Vue.component('ingredient', {
     }
 });
 
-
 var vm = new Vue({
     el: '#all_cv',
     mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
@@ -181,8 +180,9 @@ var vm = new Vue({
         showHelpAbortContainer: false,
         showTopBarButton: false,
         showSizePage: false,
-        showSmoothieIngredPage: false,
-        showJuiceIngredPage: false,
+        showIngredPage: false,
+        showJuiceMug: false,
+        showSmoothieMug: false,
         showButtonBox: false,
         showCatButtons: false,
         showIngredientsButtons: false,
@@ -200,8 +200,9 @@ var vm = new Vue({
             this.showHelpAbortContainer =false;
             this.showTopBarButton = false;
             this.showSizePage = false;
-            this.showSmoothieIngredPage = false;
-            this.showJuiceIngredPage = false;
+            this.showIngredPage = false;
+            this.showJuiceMug = false;
+            this.showSmoothieMug = false;
             this.showIngredientsButtons = false;
             this.showCartPage = false;
         },
@@ -256,8 +257,14 @@ var vm = new Vue({
                 this.showStartPage = true;
                 this.showHelpLangContainer = true;
             }
-            else if (tab === "smoothieIngredPage") {
-                this.showSmoothieIngredPage = true;
+            else if (tab === "ingredPage") {
+                if (drink.type == "smoothie") {
+                    this.showSmoothieMug = true;
+                }
+                else if (drink.type == "juice") {
+                    this.showJuiceMug = true;
+                }
+                this.showIngredPage = true;
                 this.showTopBarButton = true;
                 this.showHelpAbortContainer = true;
             }
@@ -333,10 +340,6 @@ var vm = new Vue({
         addSize: function(drinkSize) {
             drink.size = drinkSize;
         },
-
-
-
-
 
         addToOrder: function (item) {
             this.chosenIngredients.push(item);

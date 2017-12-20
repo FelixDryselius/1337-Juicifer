@@ -52,17 +52,20 @@
                     </a>
                 </div>
                 <div v-if="showHelpLangContainer">
-                    
+
                 </div>
 
                 <!--Buttons to abort and get help-->
                 <div class="helpAbortContainer" v-if="showHelpAbortContainer">
-                    <button>
-                        <a onclick="document.getElementById('confirmAbort').style.display='block';
-                                    document.getElementById('fade').style.display='block'"> 
+
+
+                    <a id="abortButton" onclick="document.getElementById('confirmAbort').style.display='block';
+                                document.getElementById('fade').style.display='block'"> 
+                        <button>
                             {{uiLabels.cancel}}
-                        </a>
-                    </button>
+                        </button>
+                    </a>
+
                     <a onclick="document.getElementById('help').style.display='block';
                                 document.getElementById('fade').style.display='block'"> 
                         <img src="images/info.png" name="languageButton" class="helpLangButton"/>
@@ -71,9 +74,11 @@
 
                 <!--The top bar buttons-->
                 <div class="topBarButton" v-if="showTopBarButton">
-                    <button id="makeDrinkButton" type="button">{{uiLabels.createDrink}}</button>
-                    <button id="cartButton" type="button" v-on:click='showTab("cartPage")'>{{uiLabels.chart}}</button>
+
+                    <button id="makeDrinkButton" type="button" v-on:click="showTab('ingredPage')">{{uiLabels.createDrink}}</button>
+                    <button id="cartButton" type="button" v-on:click="showTab('cartPage')">{{uiLabels.chart}}</button>
                     <button id="payButton" type="button">{{uiLabels.payment}}</button>
+
                 </div>
             </div>  
             <!--End of topbar-->
@@ -89,7 +94,9 @@
 
                     <div class="startPageButtonContainer">
                         <div class="chooseDrinkTypeButton">
-                            <button id="juiceButton" type="button" v-on:click="showTab('juiceIngredPage')">{{uiLabels.juice}}</button>
+
+                            <button id="juiceButton" type="button" v-on:click="showTab('sizePage'); addType('juice')">{{uiLabels.juice}}</button>
+
                         </div>
 
                         <div class="chooseDrinkTypeButton">
@@ -111,14 +118,14 @@
 
                     <div class="buttonSizeContainer">
                         <div class="chooseSizeButton">
-                            <button id="smallButton" type="button" v-on:click="showTab('smoothieIngredPage')">Small</button>
+                            <button id="smallButton" type="button" v-on:click="showTab('ingredPage')">Small</button>
                         </div>
                         <div class="chooseSizeButton">
-                            <button id="mediumButton" type="button" v-on:click="showTab('smoothieIngredPage')">Medium</button>
+                            <button id="mediumButton" type="button" v-on:click="showTab('ingredPage')">Medium</button>
                         </div>  
 
                         <div class="chooseSizeButton">
-                            <button id="largeButton" type="button" v-on:click="showTab('smoothieIngredPage')">Large</button>
+                            <button id="largeButton" type="button" v-on:click="showTab('ingredPage')">Large</button>
                         </div>
                     </div>
                 </main>
@@ -130,7 +137,7 @@
 
 
             <!--Start of smoothie ingredients page-->
-            <div id ="smoothieIngredients" v-if="showSmoothieIngredPage">
+            <div id ="ingredPage" v-if="showIngredPage">
 
 
                 <!--Start of ingredient menus-->
@@ -170,30 +177,58 @@
                     <!--End of standard ingredients menu-->
                     <!--End of ingredient menus-->
                     <!--Start of mug interface-->
-                    <div class="mugContainer">
-                        <div class="mug">
-                            <div class="toppingButton">
-                                <button id="topping"  v-on:click="showIngredients">{{uiLabels.topping}}</button>
-                            </div>
-                            <div class="mugButtons">
-                                <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
-                                <br>
-                                <button id="ingredient2" v-on:click="showIngredients('ingredCat')">Ingredient 2</button>
-                                <br>
-                                <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>
-                                <br>
-                                <button id="base" v-on:click="showIngredients('base')">{{uiLabels.base}}
-                                </button> 
+
+                    <div id="smoothieMug" v-if="showSmoothieMug">
+                        <div class="mugContainer">
+                            <div class="mug">
+                                <div class="toppingButton">
+                                    <button id="topping" v-on:click="showIngredients">{{uiLabels.topping}}</button>
+                                </div>
+                                <div class="mugButtons">
+                                    <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
+                                    <br>
+                                    <button id="ingredient2" v-on:click="showIngredients('ingredCat')">Ingredient 2</button>
+                                    <br>
+                                    <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>
+                                    <br>
+                                    <button id="base" v-on:click="showIngredients('base')">{{uiLabels.base}}
+                                    </button> 
+                                </div>
                             </div>
                         </div>
+                    </div>
+                    <div id="juiceMug" v-if="showJuiceMug">
+                        <!--Start of mug interface-->
+                        <div class="mugContainer">
+                            <div class="mug">
+                                <div class="toppingButton">
+                                    <button id="topping" v-on:click="showIngredients">{{uiLabels.topping}}</button>
+                                </div>
+                                <div class="mugButtons">
+                                    <button id="ingredient5" v-on:click="showIngredients('ingredCat')">Ingredient 5</button>
+                                    <br>
+                                    <button id="ingredient6" v-on:click="showIngredients('ingredCat')">Ingredient 4</button>
+                                    <br>
+                                    <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
+                                    <br>
+                                    <button id="ingredient2" v-on:click="showIngredients('ingredCat')">Ingredient 2</button>
+                                    <br>
+                                    <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>    
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--End of mug interface-->
                     </div>
                     <!--End of mug interface-->
                 </div>
             </div>
             <!--End of smoothie ingredients page-->
             <!--Start of juice ingredients page-->
+<!-- detta verkar vara borttaget i en merge - Ingrid-->
+                  <!--
             <div id="juiceIngredients" v-if="showJuiceIngredPage">
-                <!--Start of mug interface-->
+                start of mug interface
                 <div class="mugContainer">
                     <div class="mug">
                         <div class="toppingButton">
@@ -212,8 +247,9 @@
                         </div>
                     </div>
                 </div>
-                <!--End of mug interface-->
+               
             </div>
+            end of mug interface   INGRID SLUT-->
             <!--End of juice ingredients page-->
 
 
