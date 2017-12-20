@@ -188,11 +188,16 @@ var vm = new Vue({
         showIngredientsButtons: false,
         showCartPage: false,
         chosenCatName: '',
-        searchTerm: ''
-
-    },
-
-
+        searchTerm: '',
+        currentSuperOrder: new this.superOrder(),
+   },
+    
+created: function(){
+        this.currentSuperOrder.drinks.push(new this.drink); 
+},
+    
+    
+    
     methods: {
         hideAllTabs: function () {
             this.showStartPage = false;
