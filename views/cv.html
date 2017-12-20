@@ -14,10 +14,10 @@
             <!-- Hjälptab-->
             <div>
                 <div id="help" class="popUpContent">
-                    <h2>Här får du hjälp</h2>
+                    <h2>{{uiLabels.help}}</h2>
                     <a onclick="document.getElementById('help').style.display='none';
                                 document.getElementById('fade').style.display='none'">
-                        <button>Tillbaka</button>
+                        <button>{{uiLabels.return}}</button>
                     </a>
                 </div>
                 <div id="fade" class="blackOverlay"></div>
@@ -26,12 +26,12 @@
             <!-- Avbryttab-->
             <div>
                 <div id="confirmAbort" class="popUpContent">
-                    <h2>Vill du verkligen avbryta din order?</h2>
+                    <h2>{{uiLabels.abortQuestion}}?</h2>
                     <a onclick="document.getElementById('confirmAbort').style.display='none';
                                 document.getElementById('fade').style.display='none'">
                         <div class="flexAbort">
-                            <button v-on:click="showTab('abortOrder')">Ja</button>
-                            <button>Nej</button>
+                            <button v-on:click="showTab('abortOrder')">{{uiLabels.yes}}</button>
+                            <button>{{uiLabels.no}}</button>
                         </div>
                     </a>
                 </div>
@@ -45,7 +45,7 @@
 
                 <!--Buttons to get help or switch language-->
                 <div class="helpLangContainer" v-if="showHelpLangContainer">
-                    <input type="image" src="images/gb_flagga.png" name="questionButton" id="langButton">
+                    <input type="image" src="images/gb_flagga.png" v-on:click="switchLang()" name="questionButton" id="langButton">
                     <a onclick="document.getElementById('help').style.display='block';
                                 document.getElementById('fade').style.display='block'"> 
                         <img src="images/info.png" name="languageButton" id="helpButton"/>
@@ -60,7 +60,7 @@
                     <button>
                         <a onclick="document.getElementById('confirmAbort').style.display='block';
                                     document.getElementById('fade').style.display='block'"> 
-                            Avbryt beställning
+                            {{uiLabels.cancel}}
                         </a>
                     </button>
                     <a onclick="document.getElementById('help').style.display='block';
@@ -71,9 +71,9 @@
 
                 <!--The top bar buttons-->
                 <div class="topBarButton" v-if="showTopBarButton">
-                    <button id="makeDrinkButton" type="button">Skapa dryck</button>
-                    <button id="cartButton" type="button" v-on:click='showTab("cartPage")'>Varukorg</button>
-                    <button id="payButton" type="button">Betalning</button>
+                    <button id="makeDrinkButton" type="button">{{uiLabels.createDrink}}</button>
+                    <button id="cartButton" type="button" v-on:click='showTab("cartPage")'>{{uiLabels.chart}}</button>
+                    <button id="payButton" type="button">{{uiLabels.payment}}</button>
                 </div>
             </div>  
             <!--End of topbar-->
@@ -84,16 +84,16 @@
 
             <div id="start" v-if="showStartPage">
                 <main>
-                    <h1 class="header">Välkommen till Jucifer</h1>
-                    <h2 class="subHeader"> Välj din dryck:</h2>
+                    <h1 class="header">{{uiLabels.welcomeText}}</h1>
+                    <h2 class="subHeader"> {{uiLabels.chooseDrink}}:</h2>
 
                     <div class="startPageButtonContainer">
                         <div class="chooseDrinkTypeButton">
-                            <button id="juiceButton" type="button" v-on:click="showTab('juiceIngredPage')">Juice</button>
+                            <button id="juiceButton" type="button" v-on:click="showTab('juiceIngredPage')">{{uiLabels.juice}}</button>
                         </div>
 
                         <div class="chooseDrinkTypeButton">
-                            <button id="smoothieButton" type="button" v-on:click="showTab('sizePage'); addType('smoothie')">Smoothie</button>
+                            <button id="smoothieButton" type="button" v-on:click="showTab('sizePage'); addType('smoothie')">{{uiLabels.smoothie}}</button>
                         </div>      
                     </div>
                 </main>
@@ -107,7 +107,7 @@
 
             <div id="size" v-if="showSizePage">
                 <main>
-                    <h1 class="header">Välj en storlek</h1>
+                    <h1 class="header">{{uiLabels.chooseSize}}</h1>
 
                     <div class="buttonSizeContainer">
                         <div class="chooseSizeButton">
@@ -134,7 +134,7 @@
 
 
                 <!--Start of ingredient menus-->
-                <h1 class="header" align="left">Skapa dryck</h1>
+                <h1 class="header" align="left">{{uiLabels.createDrink}}</h1>
                 <div class="mainContent">                    
                     <!--Start of base ingredient menu-->
                     <div id=chooseIngredientsBox v-if="showButtonBox">
@@ -145,10 +145,10 @@
 
                         <div class="flex-container">
                             <button class="chooseIngredientsButton" v-on:click="closeIngredMenus()">
-                                Return</button>
+                                {{uiLabels.return}}</button>
                             <button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
-                                Our Favorites</button>
-                            <button class="chooseIngredientsButton" v-on:click="showAllIngredients()">All ingredients</button>
+                                {{uiLabels.ourFavorites}}</button>
+                            <button class="chooseIngredientsButton" v-on:click="showAllIngredients()">{{uiLabels.allIngredients}}</button>
 
                             <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">
                                 {{catName}}</button>
@@ -173,7 +173,7 @@
                     <div class="mugContainer">
                         <div class="mug">
                             <div class="toppingButton">
-                                <button id="topping"  v-on:click="showIngredients">Topping</button>
+                                <button id="topping"  v-on:click="showIngredients">{{uiLabels.topping}}</button>
                             </div>
                             <div class="mugButtons">
                                 <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
@@ -182,7 +182,7 @@
                                 <br>
                                 <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>
                                 <br>
-                                <button id="base" v-on:click="showIngredients('base')">base
+                                <button id="base" v-on:click="showIngredients('base')">{{uiLabels.base}}
                                 </button> 
                             </div>
                         </div>
@@ -197,7 +197,7 @@
                 <div class="mugContainer">
                     <div class="mug">
                         <div class="toppingButton">
-                            <button id="topping">Topping</button>
+                            <button id="topping">{{uiLabels.topping}}</button>
                         </div>
                         <div class="mugButtons">
                             <button id="ingredient5">Ingredient 5</button>
@@ -249,14 +249,14 @@ document.getElementById('fade').style.display='block'">
 
             <!--Start of cart page-->
             <div id="cart" v-if="showCartPage">
-                <h1 class="header" align="left">Varukorg</h1>
+                <h1 class="header" align="left">{{uiLabels.chart}}</h1>
                 <div class="mainContent">
 
                     <div class="cartOverviewBox">
-                        <h2>Dina drycker</h2>
+                        <h2>{{uiLabels.yourDrinks}}</h2>
                     </div>
                     <div class="cartRecipeBox">
-                        <h2>Din order</h2>
+                        <h2>{{uiLabels.yourOrder}}</h2>
 
 
                     </div>
