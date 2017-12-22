@@ -102,7 +102,8 @@ Data.prototype.addSuperOrder = function (recievedSuperOrder) {
     this.superOrders[recievedSuperOrder.orderId] = recievedSuperOrder.superOrderProperties;
     
     this.superOrders[recievedSuperOrder.orderId].done = false;
-    var transactions = this.data[transactionsDataName],
+    var transactions = this.data[transactionsDataName];
+       
 //ALERT ALERT ALERT ALERT THIS SHOULD NOT BE REMOVED BUT MUST BE WORKED WITH IN ODER TO FUNCTION      
 // THIS IS COMMENTED BECAUSE WE DON'T WANT THE PROGRAM TO CRASH
 // DATE OF THIS COMMENT IS 20/12-17
@@ -116,8 +117,8 @@ Data.prototype.addSuperOrder = function (recievedSuperOrder) {
                            ingredient_id: i[k].ingredient_id,
                            change: -1});
     }*/
-};
 
+ };
 Data.prototype.getAllSuperOrders = function () {
     return this.superOrders;
 };
