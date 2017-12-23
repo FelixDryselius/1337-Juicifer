@@ -244,7 +244,7 @@ var vm = new Vue({
 
             socket.emit('sentSuperOrder', {orderId: getOrderNumber(), superOrderProperties: vueSuperOrder});
 
-            console.log(skickade superOrder);
+            console.log("skickade superOrder");
         },
     }
 });
