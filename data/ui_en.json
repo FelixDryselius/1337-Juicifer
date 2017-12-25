@@ -26,7 +26,12 @@
     "buttonOrderHistory": "Order History",
     "buttonInventory": "Inventory",
     "buttonStatistics": "Statistics",
-    "buttonLanguage": "Byt till Svenska",
+    "buttonLanguage": "Byt till Svenska",   
+    "JUsize" : "Size of JU",
+    "JUbalance" : "JU Balance",
+    "balance" : "Balance",
+    "newbalance": "New Balance",
+    "savenewbalance" : "Save new balance",
 
     "help": "Here you can get help",
     "abortQuestion": "Do you really want to abort your order",
@@ -41,4 +46,5 @@
     "allIngredients": "All ingredients",
     "yourDrinks": "Your drinks",
     "yourOrder": "Your order"
+
 }

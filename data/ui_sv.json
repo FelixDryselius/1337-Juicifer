@@ -27,6 +27,11 @@
     "buttonInventory": "Lagersaldo",
     "buttonStatistics": "Statistik",
     "buttonLanguage": "Change to English",
+    "JUsize" : "Storlek av JU",
+    "JUbalance" : "Antal JU",
+    "balance" : "Mängd",
+    "newbalance": "Ny mängd",
+    "savenewbalance" : "Spara ny mängd",
 
     "help": "Här får du hjälp",
     "abortQuestion": "Vill du verkligen avbryta din order",
@@ -41,4 +46,6 @@
     "allIngredients": "Alla ingredienser",
     "yourDrinks": "Dina drycker",
     "yourOrder": "Din order"
+    
+  
 }
