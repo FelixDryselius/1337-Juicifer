@@ -136,12 +136,12 @@ data.initializeData(transactionsDataName);
 
 io.on('connection', function (socket) {
     // Send list of orders and text labels when a client connects
-    socket.emit('initialize', { orders: data.getAllSuperOrders(),
+    socket.emit('initialize', { superOrders: data.getAllSuperOrders(),
                                uiLabels: data.getUILabels(),
                                ingredients: data.getIngredients() });
 
     // When someone orders something
-    socket.on('sentSuperOrder', function (recievedSuperOrder) {
+    socket.on('SuperOrder', function (recievedSuperOrder) {
         data.addSuperOrder(recievedSuperOrder);
         // send updated info to all connected clients, note the use of io instead of socket     
         io.emit('currentQueue', { superOrders: data.getAllSuperOrders(),

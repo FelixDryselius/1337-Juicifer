@@ -13,7 +13,7 @@ Vue.component('order-item', {
 // Stuff that is used both in the ordering system and in the kitchen
 var sharedVueStuff = {
     data: {
-        orders: {},
+        superOrders: {},
         uiLabels: {},
         ingredients: {},
         lang: "sv",
@@ -22,7 +22,7 @@ var sharedVueStuff = {
     },
     created: function () {
         socket.on('initialize', function (data) {
-            this.orders = data.orders;
+            this.superOrders = data.superOrders;
             this.uiLabels = data.uiLabels;
             this.ingredients = data.ingredients;
             for(var index in this.ingredients){
@@ -35,10 +35,13 @@ var sharedVueStuff = {
         }.bind(this));
 
         socket.on('currentQueue', function (data) {
-            this.orders = data.orders;
+            this.superOrders = data.superOrders;
             if (typeof data.ingredients !== 'undefined') {
                 this.ingredients = data.ingredients;
             }
+                    //Just to see that it works
+            console.log("From sharedVueStuff");
+            console.log(this.superOrders);
         }.bind(this));
     },
     methods: {
