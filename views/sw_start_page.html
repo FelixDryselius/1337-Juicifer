@@ -38,7 +38,11 @@
 
         </div>
 
-        <div id="orderQueue" v-if="orderQueueShow">
+      
+            <!--End NEW ORDER-->
+            
+            <!--ORDER QUEUE-->
+            <div id="orderQueue" v-if ="orderQueueShow">
 
             <div id="oQBoxContainer">
 
@@ -86,9 +90,13 @@
                 <button class="oQButtons" id="finishOrderButton" onclick="pressedFinishOrder()">{{ uiLabels.ready }}</button>
 
             </div>
+
         </div>
 
         <!-- ORDER HISTORY-->
+
+            <!--End ORDER QUEUE-->
+            
 
 
         <div id="orderHistory" v-if="orderHistoryShow">

@@ -96,13 +96,10 @@
 
                     <div class="startPageButtonContainer">
                         <div class="chooseDrinkTypeButton">
-
-                            <button id="juiceButton" type="button" v-on:click="showTab('sizePage'); addType('juice')">{{uiLabels.juice}}</button>
-
+                            <button id="juiceButton" type="button" v-on:click="showTab('sizePage')" onclick="createNewDrink('juice')">{{uiLabels.juice}}</button>
                         </div>
-
                         <div class="chooseDrinkTypeButton">
-                            <button id="smoothieButton" type="button" v-on:click="showTab('sizePage'); addType('smoothie')">{{uiLabels.smoothie}}</button>
+                            <button id="smoothieButton" type="button" v-on:click="showTab('sizePage')" onclick="createNewDrink('smoothie')">{{uiLabels.smoothie}}</button>
                         </div>      
                     </div>
                 </main>
@@ -120,14 +117,13 @@
 
                     <div class="buttonSizeContainer">
                         <div class="chooseSizeButton">
-                            <button id="smallButton" type="button" v-on:click="showTab('ingredPage')">Small</button>
+                            <button id="smallButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize(1)">Small</button>
                         </div>
                         <div class="chooseSizeButton">
-                            <button id="mediumButton" type="button" v-on:click="showTab('ingredPage')">Medium</button>
+                            <button id="mediumButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize(2)">Medium</button>
                         </div>  
-
                         <div class="chooseSizeButton">
-                            <button id="largeButton" type="button" v-on:click="showTab('ingredPage')">Large</button>
+                            <button id="largeButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize(3)">Large</button>
                         </div>
                     </div>
                 </main>
@@ -167,7 +163,7 @@
                                         ref="ingredient"
                                         v-if="showIngredientsButtons"
                                         v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
-                                        v-on:addIngredient="addToOrder(item),closeIngredMenus()"  
+                                        v-on:add-ingredient="closeIngredMenus(),vueAddIngredientToActiveDrink(item)"
                                         :item="item" 
                                         :lang="lang"
                                         :key="item.ingredient_id"> 
@@ -180,20 +176,21 @@
                     <!--End of ingredient menus-->
                     <!--Start of mug interface-->
 
+
                     <div id="smoothieMug" v-if="showSmoothieMug">
                         <div class="mugContainer">
                             <div class="mug">
                                 <div class="toppingButton">
-                                    <button id="topping" v-on:click="showIngredients">{{uiLabels.topping}}</button>
+                                    <button id="topping" v-on:click="showIngredients('topping',0)">{{uiLabels.topping}}</button>
                                 </div>
                                 <div class="mugButtons">
-                                    <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
+                                    <button id="ingredient3" v-on:click="showIngredients('ingredCat',3)">Ingredient 3</button>
                                     <br>
-                                    <button id="ingredient2" v-on:click="showIngredients('ingredCat')">Ingredient 2</button>
+                                    <button id="ingredient2" v-on:click="showIngredients('ingredCat',2)">Ingredient 2</button>
                                     <br>
-                                    <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>
+                                    <button id="ingredient1" v-on:click="showIngredients('ingredCat',1)">Ingredient 1</button>
                                     <br>
-                                    <button id="base" v-on:click="showIngredients('base')">{{uiLabels.base}}
+                                    <button id="base" v-on:click="showIngredients('base',5)">{{uiLabels.base}}
                                     </button> 
                                 </div>
                             </div>
@@ -217,7 +214,6 @@
                                     <br>
                                     <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>    
                                 </div>
-
                             </div>
                         </div>
                         <!--End of mug interface-->
