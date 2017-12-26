@@ -1,312 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" href="css/cv_css.css">
-        <script src="/vue/vue.js"></script>
-        <script src="/socket.io/socket.io.js" defer></script>
-        <script src="js/juicifer-main.js" defer></script>
-        <script src="js/cv_script.js" defer></script>
-        <title>Jucifer</title>
-    </head>
-    <body>
-        <div id="all_cv">
-            <!-- Hjälptab-->
-            <div>
-                <div id="help" class="popUpContent">
-                    <h2>{{uiLabels.help}}</h2>
-                    <a onclick="document.getElementById('help').style.display='none';
-                                document.getElementById('fade').style.display='none'">
-                        <button>{{uiLabels.return}}</button>
-                    </a>
-                </div>
-                <div id="fade" class="blackOverlay"></div>
-            </div>
-            <!-- Slut på hjälptab-->
-            <!-- Avbryttab-->
-            <div>
-                <div id="confirmAbort" class="popUpContent">
-                    <h2>{{uiLabels.abortQuestion}}?</h2>
-                    <a onclick="document.getElementById('confirmAbort').style.display='none';
-                                document.getElementById('fade').style.display='none'">
-                        <div class="flexAbort">
-                            <button v-on:click="showTab('abortOrder')">{{uiLabels.yes}}</button>
-                            <button>{{uiLabels.no}}</button>
-                        </div>
-                    </a>
-                </div>
-                <div id="fade" class="blackOverlay"></div>
-            </div>
-            <!-- Slut på avbryttab-->
-
-
-            <!--Start of topbar-->
-            <div class="topBarContainer" v-if="showTopBar">
-
-                <!--Buttons to get help or switch language-->
-                <div class="helpLangContainer" v-if="showHelpLangContainer">
-                    <!-- antingen visas engelsk eller svensk flagga -->
-                    <input type="image" v-if= this.chosenLangIsSv src='images/gb_flagga.png' v-on:click="switchLang()" name="questionButton" id="langButton">
-                    <input type="image" v-if= !this.chosenLangIsSv src='images/sv_flagga.png' v-on:click="switchLang()" name="questionButton" id="langButton">
-                    <a onclick="document.getElementById('help').style.display='block';
-                                document.getElementById('fade').style.display='block'"> 
-                        <img src="images/info.png" name="languageButton" id="helpButton"/>
-                    </a>
-                </div>
-                <div v-if="showHelpLangContainer">
-
-                </div>
-
-                <!--Buttons to abort and get help-->
-                <div class="helpAbortContainer" v-if="showHelpAbortContainer">
-
-
-                    <a id="abortButton" onclick="document.getElementById('confirmAbort').style.display='block';
-                                document.getElementById('fade').style.display='block'"> 
-                        <button>
-                            {{uiLabels.cancel}}
-                        </button>
-                    </a>
-
-                    <a onclick="document.getElementById('help').style.display='block';
-                                document.getElementById('fade').style.display='block'"> 
-                        <img src="images/info.png" name="languageButton" class="helpLangButton"/>
-                    </a>
-                </div>    
-
-                <!--The top bar buttons-->
-                <div class="topBarButton" v-if="showTopBarButton">
-
-                    <button id="makeDrinkButton" type="button" v-on:click="showTab('ingredPage')">{{uiLabels.createDrink}}</button>
-                    <button id="cartButton" type="button" v-on:click="showTab('cartPage')">{{uiLabels.chart}}</button>
-                    <button id="payButton" type="button">{{uiLabels.payment}}</button>
-
-                </div>
-            </div>  
-            <!--End of topbar-->
-
-
-
-            <!--Start of start page-->
-
-            <div id="start" v-if="showStartPage">
-                <main>
-                    <h1 class="header">{{uiLabels.welcomeText}}</h1>
-                    <h2 class="subHeader"> {{uiLabels.chooseDrink}}:</h2>
-
-                    <div class="startPageButtonContainer">
-                        <div class="chooseDrinkTypeButton">
-                            <button id="juiceButton" type="button" v-on:click="showTab('sizePage')" onclick="createNewDrink('juice')">{{uiLabels.juice}}</button>
-                        </div>
-                        <div class="chooseDrinkTypeButton">
-                            <button id="smoothieButton" type="button" v-on:click="showTab('sizePage')" onclick="createNewDrink('smoothie')">{{uiLabels.smoothie}}</button>
-                        </div>      
-                    </div>
-                </main>
-                <footer class="footer">
-                    <p>&copy;1337-Leet Force</p>
-                </footer>
-            </div>
-
-            <!--End of start page-->
-            <!--Start of size page-->
-
-            <div id="size" v-if="showSizePage">
-                <main>
-                    <h1 class="header">{{uiLabels.chooseSize}}</h1>
-
-                    <div class="buttonSizeContainer">
-                        <div class="chooseSizeButton">
-                            <button id="smallButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize(1)">Small</button>
-                        </div>
-                        <div class="chooseSizeButton">
-                            <button id="mediumButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize(2)">Medium</button>
-                        </div>  
-                        <div class="chooseSizeButton">
-                            <button id="largeButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize(3)">Large</button>
-                        </div>
-                    </div>
-                </main>
-                <footer class="footer">
-                    <p>&copy;1337-Leet Force</p>
-                </footer>
-            </div>
-            <!--End of size page-->
-
-
-            <!--Start of smoothie ingredients page-->
-            <div id ="ingredPage" v-if="showIngredPage">
-
-
-                <!--Start of ingredient menus-->
-                <h1 class="header" align="left">{{uiLabels.createDrink}}</h1>
-                <div class="mainContent">                    
-                    <!--Start of base ingredient menu-->
-                    <div id=chooseIngredientsBox v-if="showButtonBox">
-                        <div class="headContainer">
-                            <div class="head">{{chosenCatName}}</div>
-                            <input class="head" placeholder="Search" v-model="searchTerm">
-                        </div>
-
-                        <div class="flex-container">
-                            <button class="chooseIngredientsButton" v-on:click="closeIngredMenus()">
-                                {{uiLabels.return}}</button>
-                            <button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
-                                {{uiLabels.ourFavorites}}</button>
-                            <button class="chooseIngredientsButton" v-on:click="showAllIngredients()">{{uiLabels.allIngredients}}</button>
-
-                            <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">
-                                {{catName}}</button>
-
-                            <ingredient
-
-                                        ref="ingredient"
-                                        v-if="showIngredientsButtons"
-                                        v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
-                                        v-on:add-ingredient="closeIngredMenus(),vueAddIngredientToActiveDrink(item)"
-                                        :item="item" 
-                                        :lang="lang"
-                                        :key="item.ingredient_id"> 
-
-                            </ingredient>
-                        </div>
-                    </div>
-
-                    <!--End of standard ingredients menu-->
-                    <!--End of ingredient menus-->
-                    <!--Start of mug interface-->
-
-
-                    <div id="smoothieMug" v-if="showSmoothieMug">
-                        <div class="mugContainer">
-                            <div class="mug">
-                                <div class="toppingButton">
-                                    <button id="topping" v-on:click="showIngredients('topping',0)">{{uiLabels.topping}}</button>
-                                </div>
-                                <div class="mugButtons">
-                                    <button id="ingredient3" v-on:click="showIngredients('ingredCat',3)">Ingredient 3</button>
-                                    <br>
-                                    <button id="ingredient2" v-on:click="showIngredients('ingredCat',2)">Ingredient 2</button>
-                                    <br>
-                                    <button id="ingredient1" v-on:click="showIngredients('ingredCat',1)">Ingredient 1</button>
-                                    <br>
-                                    <button id="base" v-on:click="showIngredients('base',5)">{{uiLabels.base}}
-                                    </button> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="juiceMug" v-if="showJuiceMug">
-                        <!--Start of mug interface-->
-                        <div class="mugContainer">
-                            <div class="mug">
-                                <div class="toppingButton">
-                                    <button id="topping" v-on:click="showIngredients">{{uiLabels.topping}}</button>
-                                </div>
-                                <div class="mugButtons">
-                                    <button id="ingredient5" v-on:click="showIngredients('ingredCat')">Ingredient 5</button>
-                                    <br>
-                                    <button id="ingredient6" v-on:click="showIngredients('ingredCat')">Ingredient 4</button>
-                                    <br>
-                                    <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
-                                    <br>
-                                    <button id="ingredient2" v-on:click="showIngredients('ingredCat')">Ingredient 2</button>
-                                    <br>
-                                    <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>    
-                                </div>
-                            </div>
-                        </div>
-                        <!--End of mug interface-->
-                    </div>
-                    <!--End of mug interface-->
-                </div>
-            </div>
-            <!--End of smoothie ingredients page-->
-            <!--Start of juice ingredients page-->
-            
-            
-<!-- Ingrids kommentar: detta verkar behöva tas bort i en merge, sparade för säkerhets skull. ca: 25 rader kod-->
-                  <!--
-            <div id="juiceIngredients" v-if="showJuiceIngredPage">
-                start of mug interface
-                <div class="mugContainer">
-                    <div class="mug">
-                        <div class="toppingButton">
-                            <button id="topping">{{uiLabels.topping}}</button>
-                        </div>
-                        <div class="mugButtons">
-                            <button id="ingredient5">Ingredient 5</button>
-                            <br>
-                            <button id="ingredient6">Ingredient 4</button>
-                            <br>
-                            <button id="ingredient3">Ingredient 3</button>
-                            <br>
-                            <button id="ingredient2">Ingredient 2</button>
-                            <br>
-                            <button id="ingredient1">Ingredient 1</button>    
-                        </div>
-                    </div>
-                </div>
-               
-            </div>
-            end of mug interface   INGRIDs kommentar SLUT-->
-            
-            
-            <!--End of juice ingredients page-->
-
-
-            <!--LEFTOVER I DON'T DARE TO REMOVE YET-->
-
-            <!--   <div class="topBarContainer">
-<div class="topBarButton">
-<button id="makeDrinkButton" type="button">Skapa dryck</button>
-</div>
-<div class="topBarButton">
-<button id="cartButton" type="button">Varukorg</button>
-</div>
-<div class="topBarButton">
-<button id="payButton" type="button">Betala</button>
-</div> 
-</div> -->
-            <!--   <header>
-<div class="helpAbortContainer">
-<button>
-<a onclick="document.getElementById('confirmAbort').style.display='block';
-document.getElementById('fade').style.display='block'"> 
-Avbryt beställning
+<head>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="css/cv_css.css">
+<script src="/vue/vue.js"></script>
+<script src="/socket.io/socket.io.js" defer></script>
+<script src="js/juicifer-main.js" defer></script>
+<script src="js/cv_script.js" defer></script>
+<title>Jucifer</title>
+</head>
+<body>
+<div id="all_cv">
+<!-- Hjälptab-->
+<div>
+<div id="help" class="popUpContent">
+<h2>{{uiLabels.help}}</h2>
+<a onclick="document.getElementById('help').style.display='none';
+    document.getElementById('fade').style.display='none'">
+<button>{{uiLabels.return}}</button>
 </a>
-</button>
+</div>
+<div id="fade" class="blackOverlay"></div>
+</div>
+<!-- Slut på hjälptab-->
+<!-- Avbryttab-->
+<div>
+<div id="confirmAbort" class="popUpContent">
+<h2>{{uiLabels.abortQuestion}}?</h2>
+<a onclick="document.getElementById('confirmAbort').style.display='none';
+    document.getElementById('fade').style.display='none'">
+<div class="flexAbort">
+<button v-on:click="showTab('abortOrder')">{{uiLabels.yes}}</button>
+<button>{{uiLabels.no}}</button>
+</div>
+</a>
+</div>
+<div id="fade" class="blackOverlay"></div>
+</div>
+<!-- Slut på avbryttab-->
+
+
+<!--Start of topbar-->
+<div class="topBarContainer" v-if="showTopBar">
+
+<!--Buttons to get help or switch language-->
+<div class="helpLangContainer" v-if="showHelpLangContainer">
+<!-- antingen visas engelsk eller svensk flagga -->
+<input type="image" v-if= this.chosenLangIsSv src='images/gb_flagga.png' v-on:click="switchLang()" name="questionButton" id="langButton">
+<input type="image" v-if= !this.chosenLangIsSv src='images/sv_flagga.png' v-on:click="switchLang()" name="questionButton" id="langButton">
 <a onclick="document.getElementById('help').style.display='block';
-document.getElementById('fade').style.display='block'"> 
+    document.getElementById('fade').style.display='block'"> 
+<img src="images/info.png" name="languageButton" id="helpButton"/>
+</a>
+</div>
+<div v-if="showHelpLangContainer">
+
+</div>
+
+<!--Buttons to abort and get help-->
+<div class="helpAbortContainer" v-if="showHelpAbortContainer">
+
+
+<a id="abortButton" onclick="document.getElementById('confirmAbort').style.display='block';
+                     document.getElementById('fade').style.display='block'"> 
+<button>
+{{uiLabels.cancel}}
+</button>
+</a>
+
+<a onclick="document.getElementById('help').style.display='block';
+    document.getElementById('fade').style.display='block'"> 
 <img src="images/info.png" name="languageButton" class="helpLangButton"/>
 </a>
+</div>    
+
+<!--The top bar buttons-->
+<div class="topBarButton" v-if="showTopBarButton">
+
+<button id="makeDrinkButton" type="button" v-on:click="showTab('ingredPage')">{{uiLabels.createDrink}}</button>
+<button id="cartButton" type="button" v-on:click="showTab('cartPage')">{{uiLabels.chart}}</button>
+<button id="payButton" type="button" v-on:click="placeSuperOrder()">{{uiLabels.payment}}</button>
+
+</div>
+</div>  
+<!--End of topbar-->
+
+
+
+<!--Start of start page-->
+
+<div id="start" v-if="showStartPage">
+<main>
+<h1 class="header">{{uiLabels.welcomeText}}</h1>
+<h2 class="subHeader"> {{uiLabels.chooseDrink}}:</h2>
+
+<div class="startPageButtonContainer">
+<div class="chooseDrinkTypeButton">
+<button id="juiceButton" type="button" v-on:click="showTab('sizePage')" onclick="createNewDrink('juice')">{{uiLabels.juice}}</button>
+</div>
+<div class="chooseDrinkTypeButton">
+<button id="smoothieButton" type="button" v-on:click="showTab('sizePage')" onclick="createNewDrink('smoothie')">{{uiLabels.smoothie}}</button>
+</div>      
+</div>
+</main>
+<footer class="footer">
+<p>&copy;1337-Leet Force</p>
+</footer>
 </div>
 
-</header>-->
+<!--End of start page-->
+<!--Start of size page-->
+
+<div id="size" v-if="showSizePage">
+<main>
+<h1 class="header">{{uiLabels.chooseSize}}</h1>
+
+<div class="buttonSizeContainer">
+<div class="chooseSizeButton">
+<button id="smallButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize(1)">Small</button>
+</div>
+<div class="chooseSizeButton">
+<button id="mediumButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize(2)">Medium</button>
+</div>  
+<div class="chooseSizeButton">
+<button id="largeButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize(3)">Large</button>
+</div>
+</div>
+</main>
+<footer class="footer">
+<p>&copy;1337-Leet Force</p>
+</footer>
+</div>
+<!--End of size page-->
 
 
-            <!--Start of cart page-->
-            <div id="cart" v-if="showCartPage">
-                <h1 class="header" align="left">{{uiLabels.chart}}</h1>
-                <div class="mainContent">
-
-                    <div class="cartOverviewBox">
-                        <h2>{{uiLabels.yourDrinks}}</h2>
-                    </div>
-                    <div class="cartRecipeBox">
-                        <h2>{{uiLabels.yourOrder}}</h2>
+<!--Start of smoothie ingredients page-->
+<div id ="ingredPage" v-if="showIngredPage">
 
 
-                    </div>
-                </div>    
-            </div><!--End of cart page--> 
+<!--Start of ingredient menus-->
+<h1 class="header" align="left">{{uiLabels.createDrink}}</h1>
+<div class="mainContent">                    
+<!--Start of base ingredient menu-->
+<div id=chooseIngredientsBox v-if="showButtonBox">
+<div class="headContainer">
+<div class="head">{{chosenCatName}}</div>
+<input class="head" placeholder="Search" v-model="searchTerm">
+</div>
+
+<div class="flex-container">
+<button class="chooseIngredientsButton" v-on:click="closeIngredMenus()">
+    {{uiLabels.return}}</button>
+<button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
+    {{uiLabels.ourFavorites}}</button>
+<button class="chooseIngredientsButton" v-on:click="showAllIngredients()">{{uiLabels.allIngredients}}</button>
+
+<button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">
+    {{catName}}</button>
+
+<ingredient
+
+            ref="ingredient"
+            v-if="showIngredientsButtons"
+            v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
+            v-on:add-ingredient="closeIngredMenus(),vueAddIngredientToActiveDrink(item)"
+            :item="item" 
+            :lang="lang"
+            :key="item.ingredient_id"> 
+
+</ingredient>
+</div>
+</div>
+
+<!--End of standard ingredients menu-->
+<!--End of ingredient menus-->
+<!--Start of mug interface-->
 
 
+<div id="smoothieMug" v-if="showSmoothieMug">
+<div class="mugContainer">
+<div class="mug">
+    <div class="toppingButton">
+        <button id="topping" v-on:click="showIngredients('topping',0)">{{uiLabels.topping}}</button>
+    </div>
+    <div class="mugButtons">
+        <button id="ingredient3" v-on:click="showIngredients('ingredCat',3)">Ingredient 3</button>
+        <br>
+        <button id="ingredient2" v-on:click="showIngredients('ingredCat',2)">Ingredient 2</button>
+        <br>
+        <button id="ingredient1" v-on:click="showIngredients('ingredCat',1)">Ingredient 1</button>
+        <br>
+        <button id="base" v-on:click="showIngredients('base',5)">{{uiLabels.base}}
+        </button> 
+    </div>
+</div>
+</div>
+</div>
+<div id="juiceMug" v-if="showJuiceMug">
+<!--Start of mug interface-->
+<div class="mugContainer">
+<div class="mug">
+    <div class="toppingButton">
+        <button id="topping" v-on:click="showIngredients">{{uiLabels.topping}}</button>
+    </div>
+    <div class="mugButtons">
+        <button id="ingredient5" v-on:click="showIngredients('ingredCat')">Ingredient 5</button>
+        <br>
+        <button id="ingredient6" v-on:click="showIngredients('ingredCat')">Ingredient 4</button>
+        <br>
+        <button id="ingredient3" v-on:click="showIngredients('ingredCat')">Ingredient 3</button>
+        <br>
+        <button id="ingredient2" v-on:click="showIngredients('ingredCat')">Ingredient 2</button>
+        <br>
+        <button id="ingredient1" v-on:click="showIngredients('ingredCat')">Ingredient 1</button>    
+    </div>
+</div>
+</div>
+<!--End of mug interface-->
+</div>
+<!--End of mug interface-->
+</div>
+</div>
+<!--End of smoothie ingredients page-->
 
+<!--Start of cart page-->
+<div id="cart" v-if="showCartPage">
+<h1 class="header" align="left">{{uiLabels.chart}}</h1>
+<div class="mainContent">
 
+<div class="cartOverviewBox">
+<h2>{{uiLabels.yourDrinks}}</h2>
+</div>
+<div class="cartRecipeBox">
+<h2>{{uiLabels.yourOrder}}</h2>
 
-        </div>
-    </body>
+</div>
+</div>    
+</div><!--End of cart page--> 
+</div>
+</body>
 </html>
-
-
