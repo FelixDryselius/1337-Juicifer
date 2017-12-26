@@ -93,6 +93,17 @@ function pressedButton() {
 
 // INVENTORY START
 
+function changeBalanceButton() 
+{
+    var fname = $("#changeBalance").val();
+    
+    $("#balanceChanged").html(fname);
+     $("p").hide()
+}
+    
+    
+
+
 Vue.component('ingredient', {
   props: ['item', 'lang'],
   template:  ' <div class = "database">\
@@ -100,8 +111,8 @@ Vue.component('ingredient', {
 <td  width="20%"> {{item["ingredient_"+ lang]}}</td>\
 <td width="20%"> {{item["JU_volume"]}} mL </td>\
 <td width="20%"> {{item["JU_volume" ]}} / {{item["balance"]}} L </td>\
-<td width="20%"> {{item["balance"]}} mL </td>\
-<td width="20%"> input </td>\
+<td width="20%"> {{item["balance"]}}<label id = "balanceChanged"></label> mL </td>\
+<td width="20%"> <input type = "text" id="changeBalance"> </td>\
 </table>\
 </div>',
 });
@@ -145,9 +156,6 @@ function functionTömDiv() {
 
 
 
-function sumbit() {
-    document.getElementById("demo").innerHTML = "Hello";
-}
 
 Vue.component('order-item-to-prepare', {
     props: ['uiLabels', 'order', 'orderId', 'lang'],
