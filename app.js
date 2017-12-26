@@ -141,7 +141,7 @@ io.on('connection', function (socket) {
                                ingredients: data.getIngredients() });
 
     // When someone orders something
-    socket.on('SuperOrder', function (recievedSuperOrder) {
+    socket.on('superOrder', function (recievedSuperOrder) {
         data.addSuperOrder(recievedSuperOrder);
         // send updated info to all connected clients, note the use of io instead of socket     
         io.emit('currentQueue', { superOrders: data.getAllSuperOrders(),
