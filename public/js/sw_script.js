@@ -9,26 +9,6 @@
 
 
 // GEMENSAMMA
-
-// Detta är tidigare funktion för tabarna
-/*function showTab(link) {
-    window.location.href = link;
-}/*/
-
-//Detta är tidigare funktion för "new order tab"
-/*function openInNewTab(link) {
-    //var win = window.open(link, '_blank');
-    window.location.href = "sw_new_order.html";
-    var tab = window.open(link);
-    //raden under sätter nya taben i fokus.
-    tab.focus();
-}*/
-
-/*function createButton(buttonName) {
-    var btn = document.createElement();
-    document.body.appendChild(btn);
-}*/
-
 // SLUT GEMENSAMMA FUNKTIONER
 
 // NEW ORDER START
@@ -43,6 +23,28 @@ function pressedFinishOrder() {
     window.alert("du har tryckt på Finish order");
 }
 
+/*Hur skriver man ut variablerna size härifrån?*/
+Vue.component('juices', {
+    props: ['uiLabels', 'drink', 'orderId', 'lang'],
+    template: '<div class="oneJuice"> <h2> info {{this.size}},{{this.done}}</h2> </div>\
+<div>\
+<order-item\
+:ui-labels="uiLabels"\
+:lang="lang"\
+:order-id="orderId"\
+:order="order">\
+</order-item>\
+<button v-on:click="showRecipe">\
+{{uiLabels.ready}}\
+</button>\
+</div>',
+    methods: {
+    showRecipe: function () {
+    window.alert("visa recept");
+}
+              }
+              });
+
 
 // SLUT ORDER QUEUE FUNKTIONER
 
@@ -50,7 +52,7 @@ function pressedFinishOrder() {
 
 
 //document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()};
-function pressedOneOrder(){
+function pressedOneSuperOrder(){
     window.alert("du har tryckt på en order. den känner inte av vilken");
     addJuiceToMiddle();
 
@@ -96,17 +98,15 @@ function pressedButton() {
 function changeBalanceButton() 
 {
     var fname = $("#changeBalance").val();
-    
+
     $("#balanceChanged").html(fname);
-     $("p").hide()
+    $("p").hide()
 }
-    
-    
 
 
 Vue.component('ingredient', {
-  props: ['item', 'lang'],
-  template:  ' <div class = "database">\
+    props: ['item', 'lang'],
+    template:  ' <div class = "database">\
 <table width="100%" border="0" cellspacing="0" cellpadding="0" >\
 <td  width="20%"> {{item["ingredient_"+ lang]}}</td>\
 <td width="20%"> {{item["JU_volume"]}} mL </td>\
@@ -124,7 +124,7 @@ Vue.component('ingredient', {
 //STATISTICS SLUT
 
 
- 
+
 
 
 // INGRIDS TESTFUNKTIONER
@@ -179,6 +179,7 @@ Vue.component('order-item-to-prepare', {
 }
 }
 });
+
 
 
 // Start Vue:

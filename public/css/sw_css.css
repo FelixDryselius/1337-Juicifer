@@ -20,6 +20,21 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
+h1{}
+h2{
+    font-size: 3vh;
+    text-align: center;
+}
+/*Med h3 och h4 kan du fixa så orderinfon visas rätt. I varje One order*/
+h3 {
+    /*font: bold; */
+    text-align:left;
+}
+
+h4 {
+    text-align: right;
+}
+
 /*{
 box-sizing: border-box;
 }*/
@@ -166,9 +181,6 @@ div.menu button {
 }
 
 
-
-
-
 /* Change background color of buttons on hover */
 
 div.menu button:hover {
@@ -194,12 +206,6 @@ div.menu button.active {
     border-top: none;
 }
 
-h3 {
-    /*font: bold; */
-    text-align: center;
-}
-
-h4 {}
 
 /*SLUT KOD SOM RÖR ALLT*/
 
@@ -220,7 +226,7 @@ h4 {}
     overflow: auto;
 }
 
-.oneOrder {
+.oneSuperOrder {
     overflow: auto;
 }
 
@@ -244,12 +250,16 @@ h4 {}
     cursor: pointer;
 }
 
+.oneJuice{
+    border: dotted red; /*Denna border är här under testing för att se enklare.*/
+}
+
 .pressedDiv {
     filter: brightness(85%);
     cursor: pointer;
 }
 
-.oneOrder {
+.oneSuperOrder {
     position: relative;
     width: 90%;
     height: 10vh;
@@ -259,8 +269,6 @@ h4 {}
     border: 2px solid rgb(125, 124, 127);
     cursor: pointer;
 }
-
-#order1 {}
 
 /*slut gemensamma ORDER QUEUE och ORDER HISTORY*/
 
