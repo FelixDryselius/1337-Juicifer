@@ -3,20 +3,20 @@
 var currentSuperOrder = new superOrder();
 
 function superOrder() {
-this.drinks = [],
-this.activeDrink = 0,
-this.done = false,
-this.orderTime = null,
-this.finishTime = null
+    this.drinks = [],
+        this.activeDrink = 0,
+        this.done = false,
+        this.orderTime = null,
+        this.finishTime = null
 };
 
 function drink() {
-this.type = "",
-this.size = 0,
-this.ingredients = [0,0,0,0,0,0],
-this.prize = 0,
-this.aborted = false,
-this.tempId = -1
+    this.type = "",
+        this.size = 0,
+        this.ingredients = [0,0,0,0,0,0],
+        this.prize = 0,
+        this.aborted = false,
+        this.tempId = -1
 };
 
 
@@ -32,237 +32,237 @@ this.tempId = -1
 
 
 function createNewDrink(drinkType) { 
-var mydrink = new drink();
-mydrink.type = drinkType;
-currentSuperOrder.drinks.push(mydrink);
-currentSuperOrder.activeDrink = currentSuperOrder.drinks.length-1;
+    var mydrink = new drink();
+    mydrink.type = drinkType;
+    currentSuperOrder.drinks.push(mydrink);
+    currentSuperOrder.activeDrink = currentSuperOrder.drinks.length-1;
 
-//This is for checking that it works
-console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].type);
+    //This is for checking that it works
+    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].type);
 };
 
 function selectDrinkSize(inputSize) {
-currentSuperOrder.drinks[currentSuperOrder.activeDrink].size = inputSize;
+    currentSuperOrder.drinks[currentSuperOrder.activeDrink].size = inputSize;
 
     //This is for checking that it works
-console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].size);
+    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].size);
 };
 
 function deleteActiveDrink() {
-currentSuperOrder.drinks.splice(currentSuperOrder.activeDrink, 1);
+    currentSuperOrder.drinks.splice(currentSuperOrder.activeDrink, 1);
 }
 
 
 function addIngredientToActiveDrink(ingred) {
-var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient; currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[tempActiveIngred]=ingred; 
+    var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient; currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[tempActiveIngred]=ingred; 
 
-//This is for checking that it works
-console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients);
+    //This is for checking that it works
+    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients);
 
 
 };
 
 
 function getRandomInt(min, max) {
-min = Math.ceil(min);
-max = Math.floor(max);
-return Math.floor(Math.random() * (max - min)) + min;
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 
 
 function getOrderNumber() {
-// It's probably not a good idea to generate a random order number, client-side. 
-// A better idea would be to let the server decide.
-return "#" + getRandomInt(1, 1000000);
+    // It's probably not a good idea to generate a random order number, client-side. 
+    // A better idea would be to let the server decide.
+    return "#" + getRandomInt(1, 1000000);
 }
 
 function getFlagSrc(){
-var flagSrc = 'images/gb_flagga.png';
-console.log(flagSrc);
-return 'images/gb_flagga.png';
+    var flagSrc = 'images/gb_flagga.png';
+    console.log(flagSrc);
+    return 'images/gb_flagga.png';
 }
 
 function sendCurrentSuperOrderToVue() {
-vm.vueSuperOrder = currentSuperOrder;
-currentSuperOrder = new superOrder();
+    vm.vueSuperOrder = currentSuperOrder;
+    currentSuperOrder = new superOrder();
 }
 
 // Start Vue:
 Vue.component('ingredient', {
-props: ['item', 'lang'],
-template: ' <button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
-methods: {
-addIngredientToDrink: function () {
-this.$emit('add-ingredient');
-},
-}
+    props: ['item', 'lang'],
+    template: ' <button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
+    methods: {
+        addIngredientToDrink: function () {
+            this.$emit('add-ingredient');
+        },
+    }
 });
 
 var vm = new Vue({
-el: '#all_cv',
-mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
-data: {
-type: '',
-chosenIngredients: [],
-volume: 0,
-price: 0,
+    el: '#all_cv',
+    mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
+    data: {
+        type: '',
+        chosenIngredients: [],
+        volume: 0,
+        price: 0,
 
-showStartPage: true,
-showHelpLangContainer: true,
-showTopBar: true,
-showHelpAbortContainer: false,
-showTopBarButton: false,
-showSizePage: false,
-showIngredPage: false,
-showJuiceMug: false,
-showSmoothieMug: false,
-showButtonBox: false,
-showCatButtons: false,
-showIngredientsButtons: false,
-showCartPage: false,
-chosenCatName: '',
-searchTerm: '',
-vueSuperOrder: {}
+        showStartPage: true,
+        showHelpLangContainer: true,
+        showTopBar: true,
+        showHelpAbortContainer: false,
+        showTopBarButton: false,
+        showSizePage: false,
+        showIngredPage: false,
+        showJuiceMug: false,
+        showSmoothieMug: false,
+        showButtonBox: false,
+        showCatButtons: false,
+        showIngredientsButtons: false,
+        showCartPage: false,
+        chosenCatName: '',
+        searchTerm: '',
+        vueSuperOrder: {}
 
-},
-
-
-methods: {
-hideAllTabs: function () {
-this.showStartPage = false;
-this.showHelpLangContainer = false;
-this.showHelpAbortContainer =false;
-this.showTopBarButton = false;
-this.showSizePage = false;
-this.showIngredPage = false;
-this.showJuiceMug = false;
-this.showSmoothieMug = false;
-this.showIngredientsButtons = false;
-this.showCartPage = false;
-},
+    },
 
 
-
-filtered_ingredients: function(cat) {
-return this.ingredients.filter(function(item) {
-if(cat ===''){
-return item }
-else {
-return item["ingredient_cat"] === cat;
-}
-})
-},
-
-searched_ingredients: function(ingred){
-if(this.searchTerm === ''){
-return ingred }
-else if( ingred['ingredient_'+ this.lang].indexOf(this.searchTerm) !==-1){
-return ingred;
-
-}
-}, 
-
-showAllIngredients: function(){
-this.chosenCatName='';
-},
+    methods: {
+        hideAllTabs: function () {
+            this.showStartPage = false;
+            this.showHelpLangContainer = false;
+            this.showHelpAbortContainer =false;
+            this.showTopBarButton = false;
+            this.showSizePage = false;
+            this.showIngredPage = false;
+            this.showJuiceMug = false;
+            this.showSmoothieMug = false;
+            this.showIngredientsButtons = false;
+            this.showCartPage = false;
+        },
 
 
 
-doShowIngredientsButtons: function(catName){
-this.chosenCatName = catName;
-this.showCatButtons = false;
-this.showIngredientsButtons = true;
-},
+        filtered_ingredients: function(cat) {
+            return this.ingredients.filter(function(item) {
+                if(cat ===''){
+                    return item }
+                else {
+                    return item["ingredient_cat"] === cat;
+                }
+            })
+        },
 
-choosePreMadeDrinks: function(){
+        searched_ingredients: function(ingred){
+            if(this.searchTerm === ''){
+                return ingred }
+            else if( ingred['ingredient_'+ this.lang].indexOf(this.searchTerm) !==-1){
+                return ingred;
 
-},
+            }
+        }, 
 
-
-showTab: function (tab) {
-console.log(tab)
-this.hideAllTabs();
-if (tab === "sizePage") {
-this.showSizePage = true;
-this.showHelpAbortContainer = true;
-}
-else if (tab === "abortOrder") {
-this.showStartPage = true;
-this.showHelpLangContainer = true;
-}
-else if (tab === "ingredPage") {
-if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "smoothie") {
-this.showSmoothieMug = true;
-}
-else if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "juice") {
-this.showJuiceMug = true;
-}
-this.showIngredPage = true;
-this.showTopBarButton = true;
-this.showHelpAbortContainer = true;
-}
-else if (tab === "cartPage") {
-this.showHelpAbortContainer = true;
-this.showCartPage =true;
-this.showTopBarButton = true;
-}
-
-else if (tab === "orderHistory") {
-this.orderHistoryShow = true;
-}
-else if (tab === "inventory") {
-this.inventoryShow = true;
-}
-else if (tab === "statistics") {
-this.statisticsShow = true;
-}
-
-},
-
-closeIngredMenus: function() {
-this.showButtonBox = false;
-console.log("Closed menus");
-},
-
-vueAddIngredientToActiveDrink: function(item){
-addIngredientToActiveDrink(item);
-},
-
-showIngredients: function(ingredTyp,pos) {
-this.showButtonBox = true;
-currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient=pos; 
-if (ingredTyp === "base") {
-this.chosenCatName = "base"; 
-this.showIngredientsButtons = true;
-this.showCatButtons = false;
-}
-else if (ingredTyp === "ingredCat") {
-this.chosenCatName = "";
-this.showCatButtons = true;
-this.showIngredientsButtons =false;
-}
-else {
-this.chosenCatName = "topping"; 
-this.showIngredientsButtons = true;
-this.showCatButtons = false;
-}
-},
+        showAllIngredients: function(){
+            this.chosenCatName='';
+        },
 
 
-placeSuperOrder: function () {
-//So that the Vue element is updated
-sendCurrentSuperOrderToVue()
-// make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
 
-socket.emit('superOrder', {orderId: getOrderNumber(), superOrderProperties: this.vueSuperOrder});
+        doShowIngredientsButtons: function(catName){
+            this.chosenCatName = catName;
+            this.showCatButtons = false;
+            this.showIngredientsButtons = true;
+        },
 
-//This is for checking that it works
-console.log("skickade superOrder");
-console.log(this.vueSuperOrder);
+        choosePreMadeDrinks: function(){
 
-},
-}
+        },
+
+
+        showTab: function (tab) {
+            console.log(tab)
+            this.hideAllTabs();
+            if (tab === "sizePage") {
+                this.showSizePage = true;
+                this.showHelpAbortContainer = true;
+            }
+            else if (tab === "abortOrder") {
+                this.showStartPage = true;
+                this.showHelpLangContainer = true;
+            }
+            else if (tab === "ingredPage") {
+                if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "smoothie") {
+                    this.showSmoothieMug = true;
+                }
+                else if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "juice") {
+                    this.showJuiceMug = true;
+                }
+                this.showIngredPage = true;
+                this.showTopBarButton = true;
+                this.showHelpAbortContainer = true;
+            }
+            else if (tab === "cartPage") {
+                this.showHelpAbortContainer = true;
+                this.showCartPage =true;
+                this.showTopBarButton = true;
+            }
+
+            else if (tab === "orderHistory") {
+                this.orderHistoryShow = true;
+            }
+            else if (tab === "inventory") {
+                this.inventoryShow = true;
+            }
+            else if (tab === "statistics") {
+                this.statisticsShow = true;
+            }
+
+        },
+
+        closeIngredMenus: function() {
+            this.showButtonBox = false;
+            console.log("Closed menus");
+        },
+
+        vueAddIngredientToActiveDrink: function(item){
+            addIngredientToActiveDrink(item);
+        },
+
+        showIngredients: function(ingredTyp,pos) {
+            this.showButtonBox = true;
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient=pos; 
+            if (ingredTyp === "base") {
+                this.chosenCatName = "base"; 
+                this.showIngredientsButtons = true;
+                this.showCatButtons = false;
+            }
+            else if (ingredTyp === "ingredCat") {
+                this.chosenCatName = "";
+                this.showCatButtons = true;
+                this.showIngredientsButtons =false;
+            }
+            else {
+                this.chosenCatName = "topping"; 
+                this.showIngredientsButtons = true;
+                this.showCatButtons = false;
+            }
+        },
+
+
+        placeSuperOrder: function () {
+            //So that the Vue element is updated
+            sendCurrentSuperOrderToVue()
+            // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
+
+            socket.emit('superOrder', {orderId: getOrderNumber(), superOrderProperties: this.vueSuperOrder});
+
+            //This is for checking that it works
+            console.log("skickade superOrder");
+            console.log(this.vueSuperOrder);
+
+        },
+    }
 });
 
 // End Vue

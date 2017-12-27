@@ -54,12 +54,14 @@
                         <!-- <script>showOrders()</script> -->
 
 
-                        <div class="oneOrder" v-for="order in orders" v-if="!order.done" onclick=pressedOneOrder()>
-                            <h3> Antal drycker, beställningstid, ordernummer, {{order.type}} {{order.ingredients}
-                            </h3>
+                        <!-- v-if="!superOrder.done" -->
+                        <div class="oneSuperOrder" v-for="superOrder in superOrders" v-if="!superOrder.done" onclick=pressedOnesuperOrder(superOrder)>
+                            <h3> Antal drycker:{{superOrder.drinks.length}}, </h3><h4> Beställningstid:{{superOrder.orderTime}},  Ordernummer:inte färdigt,
+                            Done:{{superOrder.done}}
+                            </h4>
                         </div>
-
-                        <div class="oneOrder">
+                        <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
+                        <div class="oneSuperOrder">
                             <ingredient ref="ingredient" v-for="item in ingredients" :item="item" :lang="lang" :key="item.ingredient_id">
                             </ingredient>
                         </div>
@@ -68,14 +70,14 @@
                         <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
 
 
-                        <div class="oneOrder" id="oQorder1">
+                        <div class="oneSuperOrder" id="oQorder1">
                             <h3><strong>3</strong> 12:01, 23</h3>
                         </div>
-                        <div class="oneOrder" id="oQorder2">
+                        <div class="oneSuperOrder" id="oQorder2">
                             <h3>1 12:04, 24</h3>
                         </div>
-                        <div class="oneOrder" id="oQorder3">
-                            <h3><strong>5</strong> 12:06, 25</h3>
+                        <div class="oneSuperOrder" id="oQorder3">
+                            <h3>5</h3> <h4>12:06, 25</h4>
                         </div>
                     </div>
 
@@ -84,9 +86,21 @@
                         Recipie L Apple juice
                     </div>
 
-                    <div class="juicesInTheOrder" id="oQJuicesInOrder" onclick="pressedOHJuicesInOrder('orderQueue')">
-                        JuicesIn the selected Order
+                    <!-- Deta är rutan i mitten där jucerna ska presenteras -->
+                    <div class="juicesInTheOrder" id="oQJuicesInOrder" onclick="pressedOHJuicesInOrder('orderQueue')"> 
+                        <div class="oneJuice" v-for="superOrder in superOrders">
+                            <h2>x {{superOrder.drinks[0].size}} custom {{superOrder.drinks[0].type}}    </h2>
+                        </div>
+                        
+                        <div v-for="superOrder in superOrders" :drinks="drinks" :done="done" :activeDrink="activeDrink">
+                            <juices  v-for="drink in superOrder.drinks" >
+                                {{drink.ingredients}}
+                            </juices> 
+                        </div>
+
+
                     </div>
+
                     <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">{{ uiLabels.cancel }}</button>
                     <button class="oQButtons" id="finishOrderButton" onclick="pressedFinishOrder()">{{ uiLabels.ready }}</button>
 
@@ -106,36 +120,36 @@
 
                     <div class="leftSideMenuBox" id="oHMenu">
                         <!-- <h3>orderHistoryMenu</h3> -->
-                        <div class="oneOrder" v-for="order in orders" v-if="order.done" onclick=pressedOneOrder()>
+                        <div class="oneSuperOrder" v-for="order in orders" v-if="order.done" onclick=pressedOneSuperOrder()>
                             <h3> Antal drycker, beställningstid, ordernummer, {{order.type}} {{order.ingredients} </h3>
                         </div>
 
-                        <div class="oneOrder" id="order1">
+                        <div class="oneSuperOrder" id="order1">
                             <h3><strong>3</strong> 12:01, 23</h3>
                         </div>
-                        <div class="oneOrder" id="order2">
+                        <div class="oneSuperOrder" id="order2">
                             <h3><strong>1</strong> 12:04, 24</h3>
                         </div>
-                        <div class="oneOrder" id="order3">
+                        <div class="oneSuperOrder" id="order3">
                             <h3><strong>5</strong> 12:06, 25</h3>
                         </div>
 
-                        <div class="oneOrder">
+                        <div class="oneSuperOrder">
                             <h3> den här rutan är för att fylla ut så scrollern kan testas </h3>
                         </div>
-                        <div class="oneOrder">
+                        <div class="oneSuperOrder">
                             <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
                         </div>
-                        <div class="oneOrder">
+                        <div class="oneSuperOrder">
                             <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
                         </div>
-                        <div class="oneOrder">
+                        <div class="oneSuperOrder">
                             <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
                         </div>
-                        <div class="oneOrder">
+                        <div class="oneSuperOrder">
                             <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
                         </div>
-                        <div class="oneOrder">
+                        <div class="oneSuperOrder">
                             <h3>den här rutan är för att fylla ut så scrollern kan testas</h3>
                         </div>
 
