@@ -94,93 +94,6 @@ div.menu button {
     font-size: 10px;
 }
 
-/*INVENTORY*/
-
-
-
-#inventoryContainer {
-    background-color: #cc99ff;
-    opacity: 0.8;
-    position: relative;
-    height: 90vh;
-
-
-}
-
-#inventoryInformation {
-    /* Detta är då min DIV som jag har problem med */
-    background-color: #e6e6e6;
-    border: 5px solid #bfbfbf;
-    width: 75%;
-    height: 75%;
-    top: 50px;
-    left: 15px;
-    position: relative;
-    overflow-y: scroll;
-
-}
-
-/*KNAPPEN I INVENTORY*/
-
-#SubmitChange {
-    position: absolute;
-    left: 80%;
-    bottom: 80%;
-}
-
-.SubmitButton {
-    display: inline-block;
-    padding: 15px 25px;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #a6a6a6;
-    border: none;
-    border-radius: 15px;
-    box-shadow: 0 9px grey;
-}
-
-.SubmitButton:hover {
-    background-color: #999999
-}
-
-.SubmitButton:active {
-    background-color: #999999;
-    box-shadow: 0 5px #404040;
-    transform: translateY(4px);
-}
-
-
-
-/* STATISTIKDELEN */
-
-
-#stats {
-    position: relative;
-    height: 90vh;
-    background-color: #ffccff;
-    font-size: 0;
-
-}
-
-#piechart_3d {
-    position: relative;
-    border: 25px solid purple;
-    width: 900px;
-    height: 500px;
-    display: table;
-    margin: 0 auto;
-    bottom: -57px;
-
-
-
-
-}
-
-
 /* Change background color of buttons on hover */
 
 div.menu button:hover {
@@ -227,6 +140,14 @@ div.menu button.active {
 }
 
 .oneSuperOrder {
+    position: relative;
+    width: 90%;
+    height: 10vh;
+    margin: 7px auto;
+    top: 13px;
+    background-color: rgb(210, 210, 210);
+    border: 2px solid rgb(125, 124, 127);
+    cursor: pointer;
     overflow: auto;
 }
 
@@ -259,16 +180,7 @@ div.menu button.active {
     cursor: pointer;
 }
 
-.oneSuperOrder {
-    position: relative;
-    width: 90%;
-    height: 10vh;
-    margin: 7px auto;
-    top: 13px;
-    background-color: rgb(210, 210, 210);
-    border: 2px solid rgb(125, 124, 127);
-    cursor: pointer;
-}
+
 
 /*slut gemensamma ORDER QUEUE och ORDER HISTORY*/
 
@@ -352,8 +264,83 @@ div.menu button.active {
     padding: 1em;
 }
 
+/*INVENTORY*/
+
+#inventoryContainer {
+    background-color: #cc99ff;
+    opacity: 0.8;
+    position: relative;
+    height: 90vh;
+}
+
+#inventoryInformation {
+    /* Detta är då min DIV som jag har problem med */
+    background-color: #e6e6e6;
+    border: 5px solid #bfbfbf;
+    width: 75%;
+    height: 75%;
+    top: 50px;
+    left: 15px;
+    position: relative;
+    overflow-y: scroll;
+
+}
+
+/*KNAPPEN I INVENTORY*/
+
+#SubmitChange {
+    position: absolute;
+    left: 80%;
+    bottom: 80%;
+}
+
+.SubmitButton {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #a6a6a6;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px grey;
+}
+
+.SubmitButton:hover {
+    background-color: #999999
+}
+
+.SubmitButton:active {
+    background-color: #999999;
+    box-shadow: 0 5px #404040;
+    transform: translateY(4px);
+}
+
+
 /*Slut INVENTORY*/
 
 /*Start css för STATISTICS*/
+/* STATISTIKDELEN */
+
+
+#stats {
+    position: relative;
+    height: 90vh;
+    background-color: #ffccff;
+    font-size: 0;
+}
+
+#piechart_3d {
+    position: relative;
+    border: 25px solid purple;
+    width: 900px;
+    height: 500px;
+    display: table;
+    margin: 0 auto;
+    bottom: -57px;
+}
 
 /*Slut STATISTICS*/
