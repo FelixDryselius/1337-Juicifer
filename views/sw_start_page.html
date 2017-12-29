@@ -56,9 +56,9 @@
 
                         <!-- v-if="!superOrder.done" -->
                         <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="!thisSuperOrder.done" onclick=pressedOneSuperOrder("thisSuperOrder")>
-                            <h3> Antal drycker:{{thisSuperOrder.drinks.length}}, </h3><h4> Beställningstid:{{thisSuperOrder.orderTime[1]}},  Ordernummer:inte färdigt,
+                            <h3> <!--Antal drycker:-->{{thisSuperOrder.drinks.length}}, <!--Beställningstid:-->{{thisSuperOrder.orderTime[1]}},  <!--Ordernummer:-->{{thisSuperOrder.orderId}},
                             Done:{{thisSuperOrder.done}}
-                            </h4>
+                            </h3>
                         </div>
                         <div class="oneSuperOrder" id="oQorder1">
                             <h3><strong>3</strong> 12:01, 23</h3>

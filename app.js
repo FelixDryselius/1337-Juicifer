@@ -106,21 +106,15 @@ Data.prototype.initializeData = function (table) {
 */
 Data.prototype.addSuperOrder = function (recievedSuperOrder) {
     var orderId= this.getOrderNumber();
-    
-    //console.log("första-"+this.superOrders[orderId]);
-    console.log("andra-"+this.currentOrderNumber);
-    console.log("tredje-"+this.superOrders);
-    console.log("fjärde-"+recievedSuperOrder.superOrderProperties);
-    
-    //this.superOrders[/*recievedSuperOrder.orderId*/orderId] = recievedSuperOrder.superOrderProperties; // så här ser den ut i main.
 
-    //this.superOrders[/*recievedSuperOrder.orderId*/orderId].done = false;
-    
-    this.superOrders[orderId].done = false;
-    
+    this.superOrders[orderId] = recievedSuperOrder.superOrderProperties;  //this.superOrders[/*recievedSuperOrder.orderId*/orderId] = recievedSuperOrder.superOrderProperties; // så här såg den ut innan - Ingrid.
+
+    this.superOrders[orderId].done = false; //this.superOrders[/*recievedSuperOrder.orderId*/orderId].done = false; //Så här såg den ut innan - Ingrid
+    this.superOrders[orderId].orderId = orderId;
+
     var transactions = this.data[transactionsDataName];
-    
-    
+
+
     //ALERT ALERT ALERT ALERT THIS SHOULD NOT BE REMOVED BUT MUST BE WORKED WITH IN ODER TO FUNCTION      
     // THIS IS COMMENTED BECAUSE WE DON'T WANT THE PROGRAM TO CRASH
     // DATE OF THIS COMMENT IS 20/12-17
@@ -134,7 +128,7 @@ Data.prototype.addSuperOrder = function (recievedSuperOrder) {
                            ingredient_id: i[k].ingredient_id,
                            change: -1});
     }*/
-    
+
     return orderId;
 };
 Data.prototype.getAllSuperOrders = function () {

@@ -25,15 +25,15 @@ h2{
     font-size: 3vh;
     text-align: center;
 }
-/*Med h3 och h4 kan du fixa så orderinfon visas rätt. I varje One order*/
+
 h3 {
     /*font: bold; */
+    font-size: 2.5vh;
     text-align:left;
+    
 }
 
-h4 {
-    text-align: right;
-}
+h4{}
 
 /*{
 box-sizing: border-box;
