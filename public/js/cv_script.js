@@ -14,7 +14,7 @@ function superOrder() {
 
 function drink() {
     this.type = "",
-        this.size = 0,
+        this.size = "U",
         this.ingredients = [0,0,0,0,0,0],
         this.prize = 0,
         this.aborted = false,
