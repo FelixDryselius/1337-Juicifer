@@ -6,8 +6,9 @@ function superOrder() {
     this.drinks = [],
         this.activeDrink = 0,
         this.done = false,
-        this.orderTime = null,
+        this.orderTime = [], 
         this.finishTime = null
+    /*Jag har gjort om orderTime och finishTime till en array med två index, för att kunna spara datum och tid separat. - Ingrid*/
 };
 
 function drink() {
@@ -29,7 +30,6 @@ function drink() {
 //funk: sätta pris
 //funk: markera som avbruten 
 //The function that is activated when "cart" is pressed 
-
 
 function createNewDrink(drinkType) { 
     var mydrink = new drink();
@@ -58,9 +58,28 @@ function addIngredientToActiveDrink(ingred) {
 
     //This is for checking that it works
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients);
+}
+
+function addTimeStamp(){
+    var date = new Date;
+    
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+    
+    /*return year +"-"+ month +"-"+ day +" "+ hour +":"+min;*/
+    currentSuperOrder.orderTime[0]= year +"-"+ month +"-"+ day +" ";
+    currentSuperOrder.orderTime[1]= hour +":"+min;
+    console.log("Detta är orderTime[]: "+currentSuperOrder.orderTime);
+}
 
 
-};
 
 
 function getRandomInt(min, max) {
@@ -251,8 +270,9 @@ var vm = new Vue({
 
 
         placeSuperOrder: function () {
+            addTimeStamp(); //spara tiden orden sickas.
             //So that the Vue element is updated
-            sendCurrentSuperOrderToVue()
+            sendCurrentSuperOrderToVue();
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
 
             socket.emit('superOrder', {orderId: getOrderNumber(), superOrderProperties: this.vueSuperOrder});
