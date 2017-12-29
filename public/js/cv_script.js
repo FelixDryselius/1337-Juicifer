@@ -7,7 +7,8 @@ function superOrder() {
         this.activeDrink = 0,
         this.done = false,
         this.orderTime = [], 
-        this.finishTime = null
+        this.finishTime = null,
+        this.orderId= -2
     /*Jag har gjort om orderTime och finishTime till en array med två index, för att kunna spara datum och tid separat. - Ingrid*/
 };
 
@@ -17,7 +18,7 @@ function drink() {
         this.ingredients = [0,0,0,0,0,0],
         this.prize = 0,
         this.aborted = false,
-        this.tempId = -1
+        this.tempId = -1 // vad ska denna variabel användas till? - Ingrid
 };
 
 
@@ -62,7 +63,7 @@ function addIngredientToActiveDrink(ingred) {
 
 function addTimeStamp(){
     var date = new Date;
-    
+
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
     month = (month < 10 ? "0" : "") + month;
@@ -72,7 +73,7 @@ function addTimeStamp(){
     hour = (hour < 10 ? "0" : "") + hour;
     var min  = date.getMinutes();
     min = (min < 10 ? "0" : "") + min;
-    
+
     currentSuperOrder.orderTime[0]= year +"-"+ month +"-"+ day +" ";
     currentSuperOrder.orderTime[1]= hour +":"+min;
     console.log("Detta är orderTime[]: "+currentSuperOrder.orderTime);
@@ -96,7 +97,8 @@ function getOrderNumber() {
     return "#" + getRandomInt(1, 1000000);
 }
 
-function getFlagSrc(){
+// Används getFlagSrc?? -Ingrid
+function getFlagSrc(){ 
     var flagSrc = 'images/gb_flagga.png';
     console.log(flagSrc);
     return 'images/gb_flagga.png';
@@ -143,6 +145,13 @@ var vm = new Vue({
         chosenCatName: '',
         searchTerm: '',
         vueSuperOrder: {}
+
+    },
+    created: function() {
+        socket.on("orderNumber",function(orderNumber) {
+            alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber + "\
+                Thank you for your order. Your order number is: " + orderNumber);
+        });
 
     },
 
@@ -275,7 +284,7 @@ var vm = new Vue({
             sendCurrentSuperOrderToVue();
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
 
-            socket.emit('superOrder', {orderId: getOrderNumber(), superOrderProperties: this.vueSuperOrder});
+            socket.emit('superOrder', {superOrderProperties: this.vueSuperOrder});
 
             //This is for checking that it works
             console.log("skickade superOrder");

@@ -49,6 +49,12 @@ function Data() {
 
     this.data = {};
     this.superOrders = {};
+    this.currentOrderNumber = 1000;
+}
+
+Data.prototype.getOrderNumber = function () {
+    this.currentOrderNumber += 1;
+    return this.currentOrderNumber;
 }
 
 Data.prototype.getUILabels = function (lang) {
@@ -99,15 +105,20 @@ Data.prototype.initializeData = function (table) {
   this is the right moment to do this.
 */
 Data.prototype.addSuperOrder = function (recievedSuperOrder) {
-    this.superOrders[recievedSuperOrder.orderId] = recievedSuperOrder.superOrderProperties;
-    
-    this.superOrders[recievedSuperOrder.orderId].done = false;
+    var orderId= this.getOrderNumber();
+
+    this.superOrders[orderId] = recievedSuperOrder.superOrderProperties;  //this.superOrders[/*recievedSuperOrder.orderId*/orderId] = recievedSuperOrder.superOrderProperties; // så här såg den ut innan - Ingrid.
+
+    this.superOrders[orderId].done = false; //this.superOrders[/*recievedSuperOrder.orderId*/orderId].done = false; //Så här såg den ut innan - Ingrid
+    this.superOrders[orderId].orderId = orderId;
+
     var transactions = this.data[transactionsDataName];
-       
-//ALERT ALERT ALERT ALERT THIS SHOULD NOT BE REMOVED BUT MUST BE WORKED WITH IN ODER TO FUNCTION      
-// THIS IS COMMENTED BECAUSE WE DON'T WANT THE PROGRAM TO CRASH
-// DATE OF THIS COMMENT IS 20/12-17
-     /*   transId =  transactions[transactions.length - 1].transaction_id,
+
+
+    //ALERT ALERT ALERT ALERT THIS SHOULD NOT BE REMOVED BUT MUST BE WORKED WITH IN ODER TO FUNCTION      
+    // THIS IS COMMENTED BECAUSE WE DON'T WANT THE PROGRAM TO CRASH
+    // DATE OF THIS COMMENT IS 20/12-17
+    /*   transId =  transactions[transactions.length - 1].transaction_id,
         i = recievedSuperOrder.superOrderProperties.ingredients,
         k;
 
@@ -118,13 +129,14 @@ Data.prototype.addSuperOrder = function (recievedSuperOrder) {
                            change: -1});
     }*/
 
- };
+    return orderId;
+};
 Data.prototype.getAllSuperOrders = function () {
     return this.superOrders;
 };
 
-Data.prototype.markOrderDone = function (superOrderId) {
-    this.superOrders[superOrderId].done = true;
+Data.prototype.markOrderDone = function (orderId) {
+    this.superOrders[orderId].done = true;
 };
 
 
@@ -142,8 +154,9 @@ io.on('connection', function (socket) {
 
     // When someone orders something
     socket.on('superOrder', function (recievedSuperOrder) {
-        data.addSuperOrder(recievedSuperOrder);
+        var orderNumber = data.addSuperOrder(recievedSuperOrder);
         // send updated info to all connected clients, note the use of io instead of socket     
+        socket.emit('orderNumber', orderNumber);
         io.emit('currentQueue', { superOrders: data.getAllSuperOrders(),
                                  ingredients: data.getIngredients() });
     });
