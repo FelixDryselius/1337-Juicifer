@@ -1,12 +1,10 @@
 /*jslint es5:true, indent: 2 */
 /*global sharedVueStuff, Vue, socket */
-//kommentar
-/*längre kommentar*/
 'use strict';
 
 
 // GEMENSAMMA
-var currentSuperOrder = new superOrder();
+var currentSuperOrder;
 // SLUT GEMENSAMMA FUNKTIONER
 
 // NEW ORDER START
@@ -50,9 +48,15 @@ Vue.component('juices', {
 
 
 //document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()};
-function pressedOneSuperOrder(){
-    window.alert("du har tryckt på en order. den känner inte av vilken");
-    addJuiceToMiddle();
+function pressedOneSuperOrder(thisSuperOrder){
+    /*window.alert("du har tryckt på en order. den känner inte av vilken");*/
+    /* addJuiceToMiddle(tab); */
+    console.log("order done? :"+thisSuperOrder.done);
+    currentSuperOrder=thisSuperOrder;
+    console.log("orderTime: "+currentSuperOrder.orderTime);
+    console.log(thisSuperOrder);
+    console.log(superOrders);
+    /*this.$emit('done');*/
 
 }
 
@@ -78,14 +82,6 @@ function pressedOHJuicesInOrder(tabSelector) {
 function typeTextToDiv(text, div_id) {
     var aVariable = document.getElementById(div_id);
     aVariable.innerHTML += text;
-}
-
-function putDivIntoDiv() {
-
-}
-
-function pressedButton() {
-    document.getElementById("oHIngridients").classList.toggle("hide");
 }
 
 
@@ -138,46 +134,6 @@ function functionTömDiv() {
     var variabelNamn = document.getElementById('testdiv');
     variabelNamn.innerHTML = " ";
 }
-
-// Test för att skapa divar dynamiskt
-/*function showOrders(){
-    window.alert("test");
-    var ordersRutan = document.createElement("oQMenu");
-    ordersRutan.id='block';
-    document.getElementsById('body')[0].appendChild(iDiv);
-
-    var innerDiv = document.createElement('div');
-    innerDiv.clasName = 'oneOrder';
-
-    ordersRutan.appendChild(innerDiv);
-}*/
-
-
-
-
-Vue.component('order-item-to-prepare', {
-    props: ['uiLabels', 'order', 'orderId', 'lang'],
-    template: '<div>\
-<order-item\
-:ui-labels="uiLabels"\
-:lang="lang"\
-:order-id="orderId"\
-:order="order">\
-</order-item>\
-<button v-on:click="orderDone">\
-{{uiLabels.ready}}\
-</button>\
-</div>',
-    methods: {
-    orderDone: function () {
-    this.$emit('done');
-},
-              cancelOrder: function () {
-
-}
-}
-});
-
 
 
 // Start Vue:
@@ -252,3 +208,19 @@ var vm = new Vue({
         }
     }
 });
+
+
+/*****************TESTER****************/
+
+// Test för att skapa divar dynamiskt
+/*function showOrders(){
+    window.alert("test");
+    var ordersRutan = document.createElement("oQMenu");
+    ordersRutan.id='block';
+    document.getElementsById('body')[0].appendChild(iDiv);
+
+    var innerDiv = document.createElement('div');
+    innerDiv.clasName = 'oneOrder';
+
+    ordersRutan.appendChild(innerDiv);
+}*/

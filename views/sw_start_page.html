@@ -55,30 +55,24 @@
 
 
                         <!-- v-if="!superOrder.done" -->
-                        <div class="oneSuperOrder" v-for="superOrder in superOrders" v-if="!superOrder.done" onclick=pressedOnesuperOrder(superOrder)>
-                            <h3> Antal drycker:{{superOrder.drinks.length}}, </h3><h4> Beställningstid:{{superOrder.orderTime[1]}},  Ordernummer:inte färdigt,
-                            Done:{{superOrder.done}}
+                        <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="!thisSuperOrder.done" onclick=pressedOneSuperOrder("thisSuperOrder")>
+                            <h3> Antal drycker:{{thisSuperOrder.drinks.length}}, </h3><h4> Beställningstid:{{thisSuperOrder.orderTime[1]}},  Ordernummer:inte färdigt,
+                            Done:{{thisSuperOrder.done}}
                             </h4>
                         </div>
-                        <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
-                        <div class="oneSuperOrder">
-                            <ingredient ref="ingredient" v-for="item in ingredients" :item="item" :lang="lang" :key="item.ingredient_id">
-                            </ingredient>
-                        </div>
-
-                        <!-- detta är koden Mikael skrev -->
-                        <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
-
-
                         <div class="oneSuperOrder" id="oQorder1">
                             <h3><strong>3</strong> 12:01, 23</h3>
                         </div>
                         <div class="oneSuperOrder" id="oQorder2">
                             <h3>1 12:04, 24</h3>
                         </div>
-                        <div class="oneSuperOrder" id="oQorder3">
-                            <h3>5</h3> <h4>12:06, 25</h4>
-                        </div>
+                        <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
+                        <!-- <div class="oneSuperOrder">
+<ingredient ref="ingredient" v-for="item in ingredients" :item="item" :lang="lang" :key="item.ingredient_id">
+</ingredient>
+</div> -->
+                        <!-- detta är koden Mikael skrev -->
+                        <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
                     </div>
 
                     <div class="rightSideBox" id="oQIngridients">
@@ -92,11 +86,11 @@
                             <h2>x {{superOrder.drinks[0].size}} custom {{superOrder.drinks[0].type}}    </h2>
                         </div>
 
-                        <div v-for="superOrder in superOrders" :drinks="drinks" :done="done" :activeDrink="activeDrink">
-                            <juices  v-for="drink in superOrder.drinks" >
-                                {{drink.ingredients}}
-                            </juices> 
-                        </div>
+                        <!-- <div v-for="superOrder in superOrders" :drinks="drinks" :done="done" :activeDrink="activeDrink">
+<juices  v-for="drink in superOrder.drinks" >
+{{drink.ingredients}}
+</juices> 
+</div> -->
 
 
                     </div>
@@ -121,9 +115,9 @@
                     <div class="leftSideMenuBox" id="oHMenu">
                         <!-- <h3>orderHistoryMenu</h3> -->
 
-                        <div class="oneSuperOrder" v-for="superOrder in superOrders" v-if="!superOrder.done" onclick=pressedOnesuperOrder(superOrder)>
-                            <h3> Antal drycker:{{superOrder.drinks.length}}, </h3><h4> Beställningstid:{{superOrder.orderTime[1]}},  Ordernummer:inte färdigt,
-                            Done:{{superOrder.done}}
+                        <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="!thisSuperOrder.done" onclick=pressedOneSuperOrder(thisSuperOrder")>
+                            <h3> Antal drycker:{{thisSuperOrder.drinks.length}}, </h3><h4> Beställningstid:{{thisSuperOrder.orderTime[1]}},  Ordernummer:inte färdigt,
+                            Done:{{thisSuperOrder.done}}
                             </h4>
                         </div>
 

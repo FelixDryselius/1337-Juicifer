@@ -73,10 +73,10 @@ function addTimeStamp(){
     var min  = date.getMinutes();
     min = (min < 10 ? "0" : "") + min;
     
-    /*return year +"-"+ month +"-"+ day +" "+ hour +":"+min;*/
     currentSuperOrder.orderTime[0]= year +"-"+ month +"-"+ day +" ";
     currentSuperOrder.orderTime[1]= hour +":"+min;
     console.log("Detta är orderTime[]: "+currentSuperOrder.orderTime);
+    /*console.log(new Date(year, month, day, hour, min));*/
 }
 
 
