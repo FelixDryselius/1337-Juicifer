@@ -1,14 +1,12 @@
 /*jslint es5:true, indent: 2 */
 /*global sharedVueStuff, Vue, socket */
-'use strict';
-
 //kommentar
 /*längre kommentar*/
-//newOrder
-
+'use strict';
 
 
 // GEMENSAMMA
+var currentSuperOrder = new superOrder();
 // SLUT GEMENSAMMA FUNKTIONER
 
 // NEW ORDER START
