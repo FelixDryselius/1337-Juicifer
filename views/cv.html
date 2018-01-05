@@ -78,7 +78,9 @@
 <div class="topBarButton" v-if="showTopBarButton">
 
 <button id="makeDrinkButton" type="button" v-on:click="showTab('ingredPage')">{{uiLabels.createDrink}}</button>
+    &#10148 <!-- Detta gör en pil mellan knapparna -->
 <button id="cartButton" type="button" v-on:click="showTab('cartPage')">{{uiLabels.chart}}</button>
+    &#10148 <!-- Detta gör en pil mellan knapparna -->
 <button id="payButton" type="button" v-on:click="placeSuperOrder()">{{uiLabels.payment}}</button>
 
 </div>
