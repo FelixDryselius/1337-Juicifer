@@ -61,27 +61,6 @@ function addIngredientToActiveDrink(ingred) {
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients);
 }
 
-function addTimeStamp(){
-    var date = new Date;
-
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    month = (month < 10 ? "0" : "") + month;
-    var day  = date.getDate();
-    day = (day < 10 ? "0" : "") + day;
-    var hour = date.getHours();
-    hour = (hour < 10 ? "0" : "") + hour;
-    var min  = date.getMinutes();
-    min = (min < 10 ? "0" : "") + min;
-
-    currentSuperOrder.orderTime[0]= year +"-"+ month +"-"+ day +" ";
-    currentSuperOrder.orderTime[1]= hour +":"+min;
-    console.log("Detta är orderTime[]: "+currentSuperOrder.orderTime);
-    /*console.log(new Date(year, month, day, hour, min));*/
-}
-
-
-
 
 function getRandomInt(min, max) {
     min = Math.ceil(min);
@@ -279,7 +258,7 @@ var vm = new Vue({
 
 
         placeSuperOrder: function () {
-            addTimeStamp(); //spara tiden orden sickas.
+            addTimeStamp(); //spara tiden orden sickas. Ligger i jucifer-main. Bör användas till finish time också
             //So that the Vue element is updated
             sendCurrentSuperOrderToVue();
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)

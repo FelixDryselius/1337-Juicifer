@@ -5,6 +5,25 @@
 
 var socket = io();
 
+function addTimeStamp(){
+    var date = new Date;
+
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    currentSuperOrder.orderTime[0]= year +"-"+ month +"-"+ day +" ";
+    currentSuperOrder.orderTime[1]= hour +":"+min;
+    console.log("Detta är orderTime[]: "+currentSuperOrder.orderTime);
+    /*console.log(new Date(year, month, day, hour, min));*/
+}
+
 Vue.component('order-item', {
     props: ['uiLabels', 'order', 'orderId', 'lang'],
     template: '<div>{{orderId}} {{order.type}} {{uiLabels.ingredients}}: {{ order.ingredients.map(item=>item["ingredient_"+ lang]).join(", ") }} </div>'
