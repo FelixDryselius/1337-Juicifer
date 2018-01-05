@@ -97,6 +97,38 @@ function getOrderNumber() {
     return "#" + getRandomInt(1, 1000000);
 }
 
+function checkActiveIngredButton(pos){
+    console.log("I checkActiveIngredButton. pos:"+pos);
+    var activeIngredButtonID;
+    switch(pos){
+        case 0:
+            activeIngredButtonID = "topping"
+            alert("0 - topping: "+ activeIngredButtonID);
+            break;
+        case 1:
+            activeIngredButtonID = "ingredient1"
+            alert("1 - ing: "+ activeIngredButtonID);
+            break;
+        case 2:
+            activeIngredButtonID = "ingredient2"
+            alert("2 - ing: "+ activeIngredButtonID);
+            break;
+        case 3:
+            activeIngredButtonID = "ingredient3"
+            alert("3 - ing: "+ activeIngredButtonID);
+            break;
+        case 4:
+            activeIngredButtonID = "oklart"
+            alert("4 - ing: "+ activeIngredButtonID+" funkar ej med smoothie");
+            break;
+        case 5:
+            activeIngredButtonID = "base"
+            alert("5 - base: "+ activeIngredButtonID);
+            break;
+    }
+    return activeIngredButtonID;
+}
+
 // Används getFlagSrc?? -Ingrid
 function getFlagSrc(){ 
     var flagSrc = 'images/gb_flagga.png';
@@ -150,7 +182,7 @@ var vm = new Vue({
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
             alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber + "\
-                Thank you for your order. Your order number is: " + orderNumber);
+Thank you for your order. Your order number is: " + orderNumber);
         });
 
     },
@@ -255,6 +287,13 @@ var vm = new Vue({
 
         vueAddIngredientToActiveDrink: function(item){
             addIngredientToActiveDrink(item);
+        },
+
+        updateMug: function(item){
+            var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient;  //this is a pos
+            console.log("I updateMug. pos:"+tempActiveIngred);
+            var activeIngredButtonID = checkActiveIngredButton(tempActiveIngred);
+            console.log("I updateMug. knappID:"+activeIngredButtonID);
         },
 
         showIngredients: function(ingredTyp,pos) {

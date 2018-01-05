@@ -165,7 +165,7 @@
             ref="ingredient"
             v-if="showIngredientsButtons"
             v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
-            v-on:add-ingredient="closeIngredMenus(),vueAddIngredientToActiveDrink(item)"
+            v-on:add-ingredient="closeIngredMenus(),vueAddIngredientToActiveDrink(item),updateMug(item)"
             :item="item" 
             :lang="lang"
             :key="item.ingredient_id"> 
