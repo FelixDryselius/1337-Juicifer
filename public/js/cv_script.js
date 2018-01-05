@@ -82,7 +82,7 @@ function addTimeStamp(){
 
 
 
-
+// Används denna funktion? - Ingrid
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -98,32 +98,31 @@ function getOrderNumber() {
 }
 
 function checkActiveIngredButton(pos){
-    console.log("I checkActiveIngredButton. pos:"+pos);
     var activeIngredButtonID;
     switch(pos){
         case 0:
             activeIngredButtonID = "topping"
-            alert("0 - topping: "+ activeIngredButtonID);
+            console.log("case 0 - knappID: "+ activeIngredButtonID);
             break;
         case 1:
             activeIngredButtonID = "ingredient1"
-            alert("1 - ing: "+ activeIngredButtonID);
+            console.log("case 1 - knappID: "+ activeIngredButtonID);
             break;
         case 2:
             activeIngredButtonID = "ingredient2"
-            alert("2 - ing: "+ activeIngredButtonID);
+            console.log("case 2 - knappID: "+ activeIngredButtonID);
             break;
         case 3:
             activeIngredButtonID = "ingredient3"
-            alert("3 - ing: "+ activeIngredButtonID);
+            console.log("case 3 - knappID: "+ activeIngredButtonID);
             break;
         case 4:
-            activeIngredButtonID = "oklart"
-            alert("4 - ing: "+ activeIngredButtonID+" funkar ej med smoothie");
+            activeIngredButtonID = "denna knpp finns ej i smoothie..."
+            console.log("case 4 - knappID: "+ activeIngredButtonID+" funkar ej med smoothie");
             break;
         case 5:
             activeIngredButtonID = "base"
-            alert("5 - base: "+ activeIngredButtonID);
+            console.log("case 5 - knappID: "+ activeIngredButtonID);
             break;
     }
     return activeIngredButtonID;
@@ -177,6 +176,8 @@ var vm = new Vue({
         chosenCatName: '',
         searchTerm: '',
         vueSuperOrder: {}
+
+        //ingredient3:"ingredient 3" ////Detta är för att ändra knapptext
 
     },
     created: function() {
@@ -289,11 +290,16 @@ Thank you for your order. Your order number is: " + orderNumber);
             addIngredientToActiveDrink(item);
         },
 
-        updateMug: function(item){
-            var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient;  //this is a pos
-            console.log("I updateMug. pos:"+tempActiveIngred);
-            var activeIngredButtonID = checkActiveIngredButton(tempActiveIngred);
-            console.log("I updateMug. knappID:"+activeIngredButtonID);
+        updateMugButton: function(){
+            var activeIngredIndex = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient;  //this is a index in ingrediens-array
+            //var ingredAtPosition currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[activeIngredIndex]; //Detta ska hämta den spesifka ingrediensen. 
+            var activeIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[activeIngredIndex]; 
+            var activeIngredButtonID = checkActiveIngredButton(activeIngredIndex);
+
+            document.getElementById(activeIngredButtonID).style.backgroundColor = activeIngred["hexColor"]; //Sätter bakgrudsfärg på knappen.
+            //this.ingredient3=activeIngred["ingredient_"+this.lang]; //Detta är för att ändra knapptext
+            
+            console.log("Vald ingrediens: "+activeIngred["ingredient_"+this.lang]); //Skriver ut den valda ingrediensen. Det ska göras på knappen
         },
 
         showIngredients: function(ingredTyp,pos) {

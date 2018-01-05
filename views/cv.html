@@ -165,7 +165,7 @@
             ref="ingredient"
             v-if="showIngredientsButtons"
             v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
-            v-on:add-ingredient="closeIngredMenus(),vueAddIngredientToActiveDrink(item),updateMug(item)"
+            v-on:add-ingredient="closeIngredMenus(),vueAddIngredientToActiveDrink(item),updateMugButton()"
             :item="item" 
             :lang="lang"
             :key="item.ingredient_id"> 
@@ -186,7 +186,7 @@
         <button id="topping" v-on:click="showIngredients('topping',0)">{{uiLabels.topping}}</button>
     </div>
     <div class="mugButtons">
-        <button id="ingredient3" v-on:click="showIngredients('ingredCat',3)">Ingredient 3</button>
+        <button id="ingredient3" v-on:click="showIngredients('ingredCat',3)"><!--{{ingredient3}}--><!--Detta ändrar knapptext-->Ingredient 3</button>
         <br>
         <button id="ingredient2" v-on:click="showIngredients('ingredCat',2)">Ingredient 2</button>
         <br>
