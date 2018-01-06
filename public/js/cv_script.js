@@ -69,13 +69,13 @@ function getRandomInt(min, max) {
 }
 
 
-
+/* DETTA ÄR GAMLA GETORDERNR, TA BORT? INGRID?
 function getOrderNumber() {
     // It's probably not a good idea to generate a random order number, client-side. 
     // A better idea would be to let the server decide.
     return "#" + getRandomInt(1, 1000000);
 }
-
+*/
 // Används getFlagSrc?? -Ingrid
 function getFlagSrc(){ 
     var flagSrc = 'images/gb_flagga.png';
@@ -85,7 +85,6 @@ function getFlagSrc(){
 
 function sendCurrentSuperOrderToVue() {
     vm.vueSuperOrder = currentSuperOrder;
-    currentSuperOrder = new superOrder();
 }
 
 // Start Vue:
@@ -206,6 +205,7 @@ var vm = new Vue({
                 this.showHelpAbortContainer = true;
             }
             else if (tab === "cartPage") {
+                sendCurrentSuperOrderToVue();
                 this.showHelpAbortContainer = true;
                 this.showCartPage =true;
                 this.showTopBarButton = true;
@@ -257,6 +257,7 @@ var vm = new Vue({
             addTimeStamp(); //spara tiden orden sickas. Ligger i jucifer-main. Bör användas till finish time också
             //So that the Vue element is updated
             sendCurrentSuperOrderToVue();
+            currentSuperOrder = new superOrder();
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
 
             socket.emit('superOrder', {superOrderProperties: this.vueSuperOrder});
