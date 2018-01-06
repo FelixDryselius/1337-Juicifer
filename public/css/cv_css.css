@@ -272,7 +272,7 @@ button {
 
 #ingred3 {
     width: 11em;
-    margin-bottom: -0.2em;
+/*    margin-bottom: -0.2em;*/
     left: 8.4%;
 }
 
@@ -296,6 +296,7 @@ button {
     border-right: 1.2em solid transparent;
     border-top: 6.8em solid lightgrey;
     border-left: 1.2em solid transparent;
+    left: 13%;
 }
 
 .mugButtons span { 
@@ -308,6 +309,11 @@ button {
 .ingred span { 
     top: -2.5em;
     left: 28%;
+}
+
+#baseIngred span {
+    top: -4em;
+    left: 3.4em;
 }
 
 #ingredJuice {

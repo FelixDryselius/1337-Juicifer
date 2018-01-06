@@ -61,13 +61,14 @@
                 <!--Buttons to abort and get help-->
                 <div class="helpAbortContainer" v-if="showHelpAbortContainer">
 
+                    <button id="abort">
+                        <a id="abortButton" onclick="document.getElementById('confirmAbort').style.display='block';
+                                                     document.getElementById('fade').style.display='block'"> 
 
-                    <a id="abortButton" onclick="document.getElementById('confirmAbort').style.display='block';
-                                                 document.getElementById('fade').style.display='block'"> 
-                        <button>
                             {{uiLabels.cancel}}
-                        </button>
-                    </a>
+                        </a>
+                    </button>
+
 
                     <a onclick="document.getElementById('help').style.display='block';
                                 document.getElementById('fade').style.display='block'"> 
@@ -82,8 +83,9 @@
                     &#10148 <!-- Detta gör en pil mellan knapparna -->
                     <button id="cartButton" type="button" v-on:click="showTab('cartPage')">{{uiLabels.chart}}</button>
                     &#10148 <!-- Detta gör en pil mellan knapparna -->
-                    <button id="payButton" type="button" v-on:click="placeSuperOrder()">{{uiLabels.payment}}</button>
-
+                    
+                    <button id="payButtonGreen" type="button" v-if="showCartPage" v-on:click="placeSuperOrder()">Betalning</button>
+                    <button id="payButton" type="button" v-else>{{uiLabels.payment}}</button>
                 </div>
             </div>  
             <!--End of topbar-->
@@ -182,10 +184,10 @@
                                 </div>
                                 <div class="mugButtons">
                                     <div class="ingred">
-                                        <div class="ingredButton" id="ingred3" v-on:click="showIngredients('ingredCat',3)">Ingredient 3</div>
-                                        <div class="ingredButton" id="ingred2" v-on:click="showIngredients('ingredCat',2)">Ingredient 2</div>
-                                        <div class="ingredButton" id="ingred1" v-on:click="showIngredients('ingredCat',1)">Ingredient 1</div>
-                                        <div class="ingredButton" id="baseIngred" v-on:click="showIngredients('base',5)">{{uiLabels.base}}
+                                        <div class="ingredButton" id="ingred5" v-on:click="showIngredients('ingredCat',3)"><span>Ingredient 3</span></div>
+                                        <div class="ingredButton" id="ingred4" v-on:click="showIngredients('ingredCat',2)"><span>Ingredient 2</span></div>
+                                        <div class="ingredButton" id="ingred3" v-on:click="showIngredients('ingredCat',1)"><span>Ingredient 1</span></div>
+                                        <div class="ingredButton" id="baseIngred" v-on:click="showIngredients('base',5)"><span>{{uiLabels.base}}</span>
                                         </div> 
                                     </div>
                                 </div>
@@ -201,15 +203,15 @@
                                 </div>
                                 <div class="mugButtons">
                                     <div class="ingred" id="ingredJuice">
-                                        <div class="ingredButton ingredButtonJuice" id="ingred5" v-on:click="showIngredients('ingredCat')">Ingredient 5</div>
+                                        <div class="ingredButton ingredButtonJuice" id="ingred5" v-on:click="showIngredients('ingredCat')"><span>Ingredient 5</span></div>
                                         <br>
-                                        <div class="ingredButton ingredButtonJuice" id="ingred4" v-on:click="showIngredients('ingredCat')">Ingredient 4</div>
+                                        <div class="ingredButton ingredButtonJuice" id="ingred4" v-on:click="showIngredients('ingredCat')"><span>Ingredient 4</span></div>
                                         <br>
-                                        <div  class="ingredButton ingredButtonJuice ingred3" id="juiceIngred3" v-on:click="showIngredients('ingredCat')">Ingredient 3</div>
+                                        <div  class="ingredButton ingredButtonJuice ingred3" id="juiceIngred3" v-on:click="showIngredients('ingredCat')"><span>Ingredient 3</span></div>
                                         <br>
-                                        <div class="ingredButton ingredButtonJuice" id="ingred2" v-on:click="showIngredients('ingredCat')">Ingredient 2</div>
+                                        <div class="ingredButton ingredButtonJuice" id="ingred2" v-on:click="showIngredients('ingredCat')"><span>Ingredient 2</span></div>
                                         <br>
-                                        <div class="ingredButton ingredButtonJuice" id="ingred1" v-on:click="showIngredients('ingredCat')">Ingredient 1</div>    
+                                        <div class="ingredButton ingredButtonJuice" id="ingred1" v-on:click="showIngredients('ingredCat')"><span>Ingredient 1</span></div>    
                                     </div>
                                 </div>
                             </div>
