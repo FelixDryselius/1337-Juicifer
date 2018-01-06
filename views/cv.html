@@ -83,7 +83,7 @@
                     &#10148 <!-- Detta gör en pil mellan knapparna -->
                     <button id="cartButton" type="button" v-on:click="showTab('cartPage')">{{uiLabels.chart}}</button>
                     &#10148 <!-- Detta gör en pil mellan knapparna -->
-                    
+
                     <button id="payButtonGreen" type="button" v-if="showCartPage" v-on:click="placeSuperOrder()">Betalning</button>
                     <button id="payButton" type="button" v-else>{{uiLabels.payment}}</button>
                 </div>
@@ -160,7 +160,6 @@
                                 {{catName}}</button>
 
                             <ingredient
-
                                         ref="ingredient"
                                         v-if="showIngredientsButtons"
                                         v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
@@ -168,7 +167,6 @@
                                         :item="item" 
                                         :lang="lang"
                                         :key="item.ingredient_id"> 
-
                             </ingredient>
                         </div>
                     </div>
@@ -239,7 +237,7 @@
             </div><!--End of cart page--> 
 
             <footer class="footer" v-if="showFooter">
-            <p>&copy;1337-Leet Force</p>
+                <p>&copy;1337-Leet Force</p>
             </footer>
 
         </div>

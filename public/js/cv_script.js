@@ -61,7 +61,7 @@ function addIngredientToActiveDrink(ingred) {
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients);
 }
 
-
+/* DETTA ÄR GAMLA GETORDERNR, TA BORT? INGRID?
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -69,7 +69,7 @@ function getRandomInt(min, max) {
 }
 
 
-/* DETTA ÄR GAMLA GETORDERNR, TA BORT? INGRID?
+
 function getOrderNumber() {
     // It's probably not a good idea to generate a random order number, client-side. 
     // A better idea would be to let the server decide.
