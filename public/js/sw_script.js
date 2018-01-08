@@ -170,14 +170,15 @@ var vm = new Vue({
         
         showSuperOrderContent: function(thisSuperOrder){ 
             this.selectedSuperOrder = thisSuperOrder;
+      
             
     /*window.alert("du har tryckt på en order. den känner inte av vilken");*/
     /* addJuiceToMiddle(tab); */
-    console.log("order done? :"+thisSuperOrder.done);
+  /*  console.log("order done? :"+thisSuperOrder.done);
     currentSuperOrder=thisSuperOrder;
     console.log("orderTime: "+currentSuperOrder.orderTime);
     console.log(thisSuperOrder);
-    console.log(superOrders);
+    console.log(superOrders); */
     /*this.$emit('done');*/
 
 
