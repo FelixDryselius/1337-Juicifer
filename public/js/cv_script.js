@@ -96,7 +96,7 @@ function getOrderNumber() {
     return "#" + getRandomInt(1, 1000000);
 }
 
-function checkActiveIngredButton(pos){
+function checkActiveIngredButton(pos, type){
     var activeIngredButtonID;
     switch(pos){
         case 0:
@@ -104,27 +104,36 @@ function checkActiveIngredButton(pos){
             console.log("case 0 - knappID: "+ activeIngredButtonID);
             break;
         case 1:
-            activeIngredButtonID = "ingredient1"
+            activeIngredButtonID = "ingred1"
             console.log("case 1 - knappID: "+ activeIngredButtonID);
             break;
         case 2:
-            activeIngredButtonID = "ingredient2"
+            activeIngredButtonID = "ingred2"
             console.log("case 2 - knappID: "+ activeIngredButtonID);
             break;
         case 3:
-            activeIngredButtonID = "ingredient3"
+            activeIngredButtonID = "ingred3"
             console.log("case 3 - knappID: "+ activeIngredButtonID);
             break;
         case 4:
-            activeIngredButtonID = "denna knpp finns ej i smoothie..."
-            console.log("case 4 - knappID: "+ activeIngredButtonID+" funkar ej med smoothie");
+            activeIngredButtonID = "ingred4"
+            console.log("case 4 - knappID: "+ activeIngredButtonID);
             break;
         case 5:
-            activeIngredButtonID = "base"
+            activeIngredButtonID = "ingred5"
             console.log("case 5 - knappID: "+ activeIngredButtonID);
             break;
+        case 6:
+            activeIngredButtonID = "baseIngred"
+            console.log("case 6 - knappID: "+ activeIngredButtonID);
+            break;            
     }
     return activeIngredButtonID;
+}
+
+function changeButtonColor(ButtonID){
+    console.log(document.getElementById(activeIngredButtonID)+"changebuttoncolor");
+
 }
 
 // Används getFlagSrc?? -Ingrid
@@ -220,8 +229,8 @@ Thank you for your order. Your order number is: " + orderNumber);
 
         showAllIngredients: function(){
             this.chosenCatName='';
-    this.showIngredientsButtons = true;
-                this.showCatButtons = false;
+            this.showIngredientsButtons = true;
+            this.showCatButtons = false;
         },
 
 
@@ -289,13 +298,33 @@ Thank you for your order. Your order number is: " + orderNumber);
 
         updateMugButton: function(){
             var activeIngredIndex = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient;  //this is a index in ingrediens-array
-            //var ingredAtPosition currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[activeIngredIndex]; //Detta ska hämta den spesifka ingrediensen. 
             var activeIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[activeIngredIndex]; 
-            var activeIngredButtonID = checkActiveIngredButton(activeIngredIndex);
+            var activeIngredButtonID = checkActiveIngredButton(activeIngredIndex, activeType);
+            var activeType = currentSuperOrder.drinks[currentSuperOrder.activeDrink].type;
+            console.log(activeType+": type");
+            console.log(activeIngredIndex+": activeIngredIndex");
+            console.log(activeIngred+": activeIngred");
+            console.log(activeIngredButtonID+": activeIngredButtonID");
 
-            document.getElementById(activeIngredButtonID).style.backgroundColor = activeIngred["hexColor"]; //Sätter bakgrudsfärg på knappen.
+            //changeButtonColor(activeIngredButtonID);
+
+            //Byter färg
+            if (activeIngredButtonID=="topping"){
+                alert("topping");
+                document.getElementById(activeIngredButtonID).style.backgroundColor = activeIngred["hexColor"];
+            }
+            else if(activeIngredButtonID=="baseIngred"){
+                document.getElementById(activeIngredButtonID).style.borderTop = "6.8em solid" + activeIngred["hexColor"];
+            }
+            else {
+                alert("anann knapp");
+                document.getElementById(activeIngredButtonID).style.borderTop = "3em solid" + activeIngred["hexColor"];
+            }
+
+
+
             //this.ingredient3=activeIngred["ingredient_"+this.lang]; //Detta är för att ändra knapptext
-            
+
             console.log("Vald ingrediens: "+activeIngred["ingredient_"+this.lang]); //Skriver ut den valda ingrediensen. Det ska göras på knappen
         },
 
