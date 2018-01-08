@@ -6,6 +6,17 @@ html {
     font-family: 'Lato', sans-serif;
 }
 
+/*Start på css för start page*/
+.header{
+    text-align: center;
+    position: relative;
+
+}
+.subHeader {
+    text-align: center;
+    position: relative;
+}
+
 html button {
     font-family: 'Lato', sans-serif; /*Hittar inte font i button om jag inte specificerar av någon anledning*/
 }

@@ -61,7 +61,27 @@ function addIngredientToActiveDrink(ingred) {
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients);
 }
 
-/* DETTA ÄR GAMLA GETORDERNR, TA BORT? INGRID?
+function addTimeStamp(){
+    var date = new Date;
+
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1;
+    month = (month < 10 ? "0" : "") + month;
+    var day  = date.getDate();
+    day = (day < 10 ? "0" : "") + day;
+    var hour = date.getHours();
+    hour = (hour < 10 ? "0" : "") + hour;
+    var min  = date.getMinutes();
+    min = (min < 10 ? "0" : "") + min;
+
+    currentSuperOrder.orderTime[0]= year +"-"+ month +"-"+ day +" ";
+    currentSuperOrder.orderTime[1]= hour +":"+min;
+    console.log("Detta är orderTime[]: "+currentSuperOrder.orderTime);
+    /*console.log(new Date(year, month, day, hour, min));*/
+}
+
+
+// Används denna funktion? - Ingrid
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -69,13 +89,44 @@ function getRandomInt(min, max) {
 }
 
 
-
+// DETTA ÄR GAMLA GETORDERNR, TA BORT? INGRID?
 function getOrderNumber() {
     // It's probably not a good idea to generate a random order number, client-side. 
     // A better idea would be to let the server decide.
     return "#" + getRandomInt(1, 1000000);
 }
-*/
+
+function checkActiveIngredButton(pos){
+    var activeIngredButtonID;
+    switch(pos){
+        case 0:
+            activeIngredButtonID = "topping"
+            console.log("case 0 - knappID: "+ activeIngredButtonID);
+            break;
+        case 1:
+            activeIngredButtonID = "ingredient1"
+            console.log("case 1 - knappID: "+ activeIngredButtonID);
+            break;
+        case 2:
+            activeIngredButtonID = "ingredient2"
+            console.log("case 2 - knappID: "+ activeIngredButtonID);
+            break;
+        case 3:
+            activeIngredButtonID = "ingredient3"
+            console.log("case 3 - knappID: "+ activeIngredButtonID);
+            break;
+        case 4:
+            activeIngredButtonID = "denna knpp finns ej i smoothie..."
+            console.log("case 4 - knappID: "+ activeIngredButtonID+" funkar ej med smoothie");
+            break;
+        case 5:
+            activeIngredButtonID = "base"
+            console.log("case 5 - knappID: "+ activeIngredButtonID);
+            break;
+    }
+    return activeIngredButtonID;
+}
+
 // Används getFlagSrc?? -Ingrid
 function getFlagSrc(){ 
     var flagSrc = 'images/gb_flagga.png';
@@ -120,11 +171,13 @@ var vm = new Vue({
         searchTerm: '',
         vueSuperOrder: {}
 
+        //ingredient3:"ingredient 3" ////Detta är för att ändra knapptext
+
     },
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
             alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber + "\
-                Thank you for your order. Your order number is: " + orderNumber);
+Thank you for your order. Your order number is: " + orderNumber);
         });
 
     },
@@ -232,6 +285,18 @@ var vm = new Vue({
 
         vueAddIngredientToActiveDrink: function(item){
             addIngredientToActiveDrink(item);
+        },
+
+        updateMugButton: function(){
+            var activeIngredIndex = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient;  //this is a index in ingrediens-array
+            //var ingredAtPosition currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[activeIngredIndex]; //Detta ska hämta den spesifka ingrediensen. 
+            var activeIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[activeIngredIndex]; 
+            var activeIngredButtonID = checkActiveIngredButton(activeIngredIndex);
+
+            document.getElementById(activeIngredButtonID).style.backgroundColor = activeIngred["hexColor"]; //Sätter bakgrudsfärg på knappen.
+            //this.ingredient3=activeIngred["ingredient_"+this.lang]; //Detta är för att ändra knapptext
+            
+            console.log("Vald ingrediens: "+activeIngred["ingredient_"+this.lang]); //Skriver ut den valda ingrediensen. Det ska göras på knappen
         },
 
         showIngredients: function(ingredTyp,pos) {

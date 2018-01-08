@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
     <head>
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="css/cv_css.css">
@@ -163,7 +164,7 @@
                                         ref="ingredient"
                                         v-if="showIngredientsButtons"
                                         v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
-                                        v-on:add-ingredient="closeIngredMenus(),vueAddIngredientToActiveDrink(item)"
+                                        v-on:add-ingredient="closeIngredMenus(),vueAddIngredientToActiveDrink(item),updateMugButton()"
                                         :item="item" 
                                         :lang="lang"
                                         :key="item.ingredient_id"> 
@@ -182,7 +183,7 @@
                                 </div>
                                 <div class="mugButtons">
                                     <div class="ingred">
-                                        <div class="ingredButton" id="ingred5" v-on:click="showIngredients('ingredCat',5)"><span>Ingredient 3</span></div>
+                                        <div class="ingredButton" id="ingred5" v-on:click="showIngredients('ingredCat',5)"><span><!--{{ingredient3}}--><!--Detta ändrar knapptext-->Ingredient 3</span></div>
                                         <div class="ingredButton" id="ingred4" v-on:click="showIngredients('ingredCat',4)"><span>Ingredient 2</span></div>
                                         <div class="ingredButton" id="ingred3" v-on:click="showIngredients('ingredCat',3)"><span>Ingredient 1</span></div>
                                         <div class="ingredButton" id="baseIngred" v-on:click="showIngredients('base',6)"><span>{{uiLabels.base}}</span>
