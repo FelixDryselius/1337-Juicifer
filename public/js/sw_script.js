@@ -95,6 +95,8 @@ function changeBalanceButton()
 
     $("#balanceChanged").html(fname);
     $("p").hide()
+   
+
 }
 
 
@@ -106,7 +108,7 @@ Vue.component('ingredient', {
 <td width="20%"> {{item["JU_volume"]}} mL </td>\
 <td width="20%"> {{item["JU_volume" ]}} / {{item["balance"]}} L </td>\
 <td width="20%"> {{item["balance"]}}<label id = "balanceChanged"></label> mL </td>\
-<td width="20%"> <input type = "text" id="changeBalance"> </td>\
+<td width="20%"> <input type = "text" id="changeBalance"  onchange="ChangeBalanceButton(this.value)"> </td>\
 </table>\
 </div>',
 });
