@@ -112,13 +112,24 @@ Data.prototype.addSuperOrder = function (recievedSuperOrder) {
     this.superOrders[orderId].done = false; //this.superOrders[/*recievedSuperOrder.orderId*/orderId].done = false; //Så här såg den ut innan - Ingrid
     this.superOrders[orderId].orderId = orderId;
 
-    var transactions = this.data[transactionsDataName];
+    return orderId;
+};
+
+Data.prototype.uppdateTransactions = function(change) {
+
+var transactions = this.data[transactionsDataName];
+
+//if this is an inventory update
+if(change.inventoryChange){
+var newIngredBalance = change.newBalance.length;
+    
+for(var key in newIngredBalance) {
+
+} 
+}
 
 
-    //ALERT ALERT ALERT ALERT THIS SHOULD NOT BE REMOVED BUT MUST BE WORKED WITH IN ODER TO FUNCTION      
-    // THIS IS COMMENTED BECAUSE WE DON'T WANT THE PROGRAM TO CRASH
-    // DATE OF THIS COMMENT IS 20/12-17
-    /*   transId =  transactions[transactions.length - 1].transaction_id,
+transId =  transactions[transactions.length - 1].transaction_id,
         i = recievedSuperOrder.superOrderProperties.ingredients,
         k;
 
@@ -127,10 +138,9 @@ Data.prototype.addSuperOrder = function (recievedSuperOrder) {
         transactions.push({transaction_id: transId,
                            ingredient_id: i[k].ingredient_id,
                            change: -1});
-    }*/
-
-    return orderId;
+    }
 };
+
 Data.prototype.getAllSuperOrders = function () {
     return this.superOrders;
 };
@@ -169,6 +179,9 @@ io.on('connection', function (socket) {
         data.markOrderDone(orderId);
         io.emit('currentQueue', {superOrders: data.getAllSuperOrders() });
     });
+    socket.on('newInventory',function({newBalance}){
+        
+    })
 });
 
 var server = http.listen(app.get('port'), function () {

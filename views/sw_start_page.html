@@ -194,29 +194,29 @@ Recipie L Apple juice
                                 </th>
                                 <th width="20%">
                                     {{uiLabels.balance}}
-                                </th>
-                                <th width="20%">
-                                    {{uiLabels.newbalance}}
-                                </th>
-                            </tr>
-                        </table>
-                        <ingredient ref="ingredient" v-for="item in ingredients" :item="item" :lang="lang" :key="item.ingredient_id">
+    </th>
+<th width="20%">
+{{uiLabels.newbalance}}
+</th>
+</tr>
+</table>
+<ingredient ref="ingredient" 
+v-for="item in ingredients" 
+v-on:set-temp-id="setTempId(item['ingredient_id'])"
+v-on:new-balance-set ="newBalanceFunction"
+:item="item" 
+:lang="lang"
+:key="item.ingredient_id">
 
-                        </ingredient>
+</ingredient>
+{{newBalance}}
+</div>
 
-                    </div>
-
-                    <div id="SubmitChange">
-                        <input type="button" value = "submit" onclick="changeBalanceButton();" class="SubmitButton">
-                        {{uiLabels.savenewbalance}}
-
-                    </div>
-
-                </div>
+</div>
 
 
-            </div>
-            <!--- statistics-->
+</div>
+<!--- statistics-->
             <div id="statistics" v-if="statisticsShow">
                 detta är statisticssidan - tillfälligt nere
                 <!-- <head>
