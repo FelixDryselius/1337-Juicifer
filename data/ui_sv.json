@@ -45,7 +45,11 @@
     "ourFavorites": "Våra favoriter",
     "allIngredients": "Alla ingredienser",
     "yourDrinks": "Dina drycker",
-    "yourOrder": "Din order"
+    "yourOrder": "Din order",
+    
+    "orderIdIs": "Ordernumret är:",
+    "numberOfDrinks": "Antal drycker:",
+    "orderTime": "Ordertid:"
     
   
 }

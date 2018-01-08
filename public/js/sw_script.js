@@ -47,18 +47,12 @@ Vue.component('juices', {
 // ORDER HISTORY START
 
 
-//document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()};
-function pressedOneSuperOrder(thisSuperOrder){
-    /*window.alert("du har tryckt på en order. den känner inte av vilken");*/
-    /* addJuiceToMiddle(tab); */
-    console.log("order done? :"+thisSuperOrder.done);
-    currentSuperOrder=thisSuperOrder;
-    console.log("orderTime: "+currentSuperOrder.orderTime);
-    console.log(thisSuperOrder);
-    console.log(superOrders);
-    /*this.$emit('done');*/
+//document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()}
+    
+    
+    
+    
 
-}
 
 function addJuiceToMiddle(){
     var variabelNamn = document.getElementById('oQJuicesInOrder');
@@ -165,12 +159,31 @@ var vm = new Vue({
         orderHistoryShow: false,
         inventoryShow: false,
         statisticsShow: false,
+        selectedSuperOrder: {},
 
     },
     methods: {
         markDone: function (orderid) {
             socket.emit("orderDone", orderid);
         },
+        
+        
+        showSuperOrderContent: function(thisSuperOrder){ 
+            this.selectedSuperOrder = thisSuperOrder;
+            
+    /*window.alert("du har tryckt på en order. den känner inte av vilken");*/
+    /* addJuiceToMiddle(tab); */
+    console.log("order done? :"+thisSuperOrder.done);
+    currentSuperOrder=thisSuperOrder;
+    console.log("orderTime: "+currentSuperOrder.orderTime);
+    console.log(thisSuperOrder);
+    console.log(superOrders);
+    /*this.$emit('done');*/
+
+
+        
+        },
+        
         hideAllTabs: function () {
             this.newOrderShow = false;
             this.orderQueueShow = false;

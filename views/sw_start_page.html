@@ -47,53 +47,57 @@
 
                 <div id="oQBoxContainer">
 
-                    <div class="leftSideMenuBox" id="oQMenu">
+<div class="leftSideMenuBox" id="oQMenu">
 
 
-                        <!-- <h3>orderHistoryMenu</h3> -->
-                        <!-- <script>showOrders()</script> -->
+<!-- <h3>orderHistoryMenu</h3> -->
+<!-- <script>showOrders()</script> -->
 
 
-                        <!-- v-if="!superOrder.done" -->
-                        <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="!thisSuperOrder.done" onclick=pressedOneSuperOrder("thisSuperOrder")>
-                            <h3> <!--Antal drycker:-->{{thisSuperOrder.drinks.length}}, <!--Beställningstid:-->{{thisSuperOrder.orderTime[1]}},  <!--Ordernummer:-->{{thisSuperOrder.orderId}},
-                            Done:{{thisSuperOrder.done}}
-                            </h3>
-                        </div>
-                        <div class="oneSuperOrder" id="oQorder1">
-                            <h3><strong>3</strong> 12:01, 23</h3>
-                        </div>
-                        <div class="oneSuperOrder" id="oQorder2">
-                            <h3>1 12:04, 24</h3>
-                        </div>
-                        <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
-                        <!-- <div class="oneSuperOrder">
+<!-- v-if="!superOrder.done" -->
+<div class="oneSuperOrder" v-for="thisSuperOrder in this.superOrders" v-if="!thisSuperOrder.done" v-on:click="showSuperOrderContent(thisSuperOrder)">
+{{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br>
+    {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br>
+    {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
+
+</div>
+<!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
+<!-- <div class="oneSuperOrder">
 <ingredient ref="ingredient" v-for="item in ingredients" :item="item" :lang="lang" :key="item.ingredient_id">
 </ingredient>
 </div> -->
-                        <!-- detta är koden Mikael skrev -->
-                        <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
-                    </div>
+<!-- detta är koden Mikael skrev -->
+<!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
+</div>
 
-                    <div class="rightSideBox" id="oQIngridients">
-                        <h3>orderQueue-{{uiLabels.ingredients}}</h3>
-                        Recipie L Apple juice
-                    </div>
+<!-- Deta är rutan i mitten där jucerna ska presenteras -->
+                    
+ <div class="middleSideBox">
 
-                    <!-- Deta är rutan i mitten där jucerna ska presenteras -->
-                    <div class="juicesInTheOrder" id="oQJuicesInOrder" onclick="pressedOHJuicesInOrder('orderQueue')"> 
-                        <div class="oneJuice" v-for="superOrder in superOrders">
-                            <h2>x {{superOrder.drinks[0].size}} custom {{superOrder.drinks[0].type}}    </h2>
-                        </div>
+     <div class="juicesInTheOrder" id="oQJuicesInOrder" onclick="pressedOHJuicesInOrder('orderQueue')">
+    
+    
+<div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
+    <h2>x {{superOrder.drinks[0].size}} custom {{superOrder.drinks[0].type}}    </h2>
+</div>
 
-                        <!-- <div v-for="superOrder in superOrders" :drinks="drinks" :done="done" :activeDrink="activeDrink">
+<!-- <div v-for="superOrder in superOrders" :drinks="drinks" :done="done" :activeDrink="activeDrink">
 <juices  v-for="drink in superOrder.drinks" >
 {{drink.ingredients}}
 </juices> 
 </div> -->
 
+</div>
+                        </div>
 
-                    </div>
+
+
+<div class="rightSideBox" id="oQIngridients">
+<h3>orderQueue-{{uiLabels.ingredients}}</h3>
+Recipie L Apple juice
+</div>
+
+
 
                     <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">{{ uiLabels.cancel }}</button>
                     <button class="oQButtons" id="finishOrderButton" onclick="pressedFinishOrder()">{{ uiLabels.ready }}</button>
@@ -115,7 +119,7 @@
                     <div class="leftSideMenuBox" id="oHMenu">
                         <!-- <h3>orderHistoryMenu</h3> -->
 
-                        <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="!thisSuperOrder.done" onclick=pressedOneSuperOrder(thisSuperOrder)>
+                        <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="!thisSuperOrder.done" onclick=showSuperOrderContent(thisSuperOrder)>
                             <h3> Antal drycker:{{thisSuperOrder.drinks.length}}, </h3><h4> Beställningstid:{{thisSuperOrder.orderTime[1]}},  Ordernummer:inte färdigt,
                             Done:{{thisSuperOrder.done}}
                             </h4>
