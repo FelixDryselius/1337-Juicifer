@@ -57,9 +57,7 @@
                         {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br> {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br> {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
 
                     </div>
-                    <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
-     <!-- detta är koden Mikael skrev -->
-                    <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
+              
                 </div>
 
                 <!-- Deta är rutan i mitten där jucerna ska presenteras -->
@@ -72,12 +70,6 @@
                         <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
                             <h2>x {{drink.size}} custom {{drink.type}} </h2>
                         </div>
-
-                        <!-- <div v-for="superOrder in superOrders" :drinks="drinks" :done="done" :activeDrink="activeDrink">
-<juices  v-for="drink in superOrder.drinks" >
-{{drink.ingredients}}
-</juices> 
-</div> -->
 
                     </div>
                 </div>
