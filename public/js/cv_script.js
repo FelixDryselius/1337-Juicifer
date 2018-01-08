@@ -15,7 +15,7 @@ function superOrder() {
 function drink() {
     this.type = "",
         this.size = "U",
-        this.ingredients = [0,0,0,0,0,0],
+        this.ingredients = [0,0,0,0,0,0,0],
         this.prize = 0,
         this.aborted = false,
         this.tempId = -1 // vad ska denna variabel användas till? - Ingrid
@@ -90,7 +90,7 @@ function sendCurrentSuperOrderToVue() {
 // Start Vue:
 Vue.component('ingredient', {
     props: ['item', 'lang'],
-    template: ' <button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
+    template: '<button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
     methods: {
         addIngredientToDrink: function () {
             this.$emit('add-ingredient');
@@ -167,6 +167,8 @@ var vm = new Vue({
 
         showAllIngredients: function(){
             this.chosenCatName='';
+    this.showIngredientsButtons = true;
+                this.showCatButtons = false;
         },
 
 
