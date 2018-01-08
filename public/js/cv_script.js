@@ -101,31 +101,31 @@ function checkActiveIngredButton(pos, type){
     switch(pos){
         case 0:
             activeIngredButtonID = "topping"
-            console.log("case 0 - knappID: "+ activeIngredButtonID);
+            //console.log("case 0 - knappID: "+ activeIngredButtonID);
             break;
         case 1:
             activeIngredButtonID = "ingred1"
-            console.log("case 1 - knappID: "+ activeIngredButtonID);
+            //console.log("case 1 - knappID: "+ activeIngredButtonID);
             break;
         case 2:
             activeIngredButtonID = "ingred2"
-            console.log("case 2 - knappID: "+ activeIngredButtonID);
+            //console.log("case 2 - knappID: "+ activeIngredButtonID);
             break;
         case 3:
             activeIngredButtonID = "ingred3"
-            console.log("case 3 - knappID: "+ activeIngredButtonID);
+            //console.log("case 3 - knappID: "+ activeIngredButtonID);
             break;
         case 4:
             activeIngredButtonID = "ingred4"
-            console.log("case 4 - knappID: "+ activeIngredButtonID);
+            //console.log("case 4 - knappID: "+ activeIngredButtonID);
             break;
         case 5:
             activeIngredButtonID = "ingred5"
-            console.log("case 5 - knappID: "+ activeIngredButtonID);
+            //console.log("case 5 - knappID: "+ activeIngredButtonID);
             break;
         case 6:
             activeIngredButtonID = "baseIngred"
-            console.log("case 6 - knappID: "+ activeIngredButtonID);
+            //console.log("case 6 - knappID: "+ activeIngredButtonID);
             break;            
     }
     return activeIngredButtonID;
@@ -305,8 +305,8 @@ Thank you for your order. Your order number is: " + orderNumber);
             var activeType = currentSuperOrder.drinks[currentSuperOrder.activeDrink].type;
             //console.log(activeType+": type");
             //console.log(activeIngredIndex+": activeIngredIndex");
-            console.log(activeIngred+": activeIngred");
-            console.log(activeIngredButtonID+": activeIngredButtonID");
+            //console.log(activeIngred+": activeIngred");
+            //console.log(activeIngredButtonID+": activeIngredButtonID");
 
             if (activeIngredButtonID=="topping"){
                 document.getElementById(activeIngredButtonID).style.backgroundColor = activeIngred["hexColor"]; // byter knappfärg
