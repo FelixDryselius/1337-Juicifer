@@ -15,7 +15,7 @@ function superOrder() {
 function drink() {
     this.type = "",
         this.size = "U",
-        this.ingredients = [0,0,0,0,0,0],
+        this.ingredients = [0,0,0,0,0,0,0],
         this.prize = 0,
         this.aborted = false,
         this.tempId = -1 // vad ska denna variabel användas till? - Ingrid
@@ -61,7 +61,7 @@ function addIngredientToActiveDrink(ingred) {
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients);
 }
 
-
+/* DETTA ÄR GAMLA GETORDERNR, TA BORT? INGRID?
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -75,7 +75,7 @@ function getOrderNumber() {
     // A better idea would be to let the server decide.
     return "#" + getRandomInt(1, 1000000);
 }
-
+*/
 // Används getFlagSrc?? -Ingrid
 function getFlagSrc(){ 
     var flagSrc = 'images/gb_flagga.png';
@@ -85,13 +85,12 @@ function getFlagSrc(){
 
 function sendCurrentSuperOrderToVue() {
     vm.vueSuperOrder = currentSuperOrder;
-    currentSuperOrder = new superOrder();
 }
 
 // Start Vue:
 Vue.component('ingredient', {
     props: ['item', 'lang'],
-    template: ' <button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
+    template: '<button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
     methods: {
         addIngredientToDrink: function () {
             this.$emit('add-ingredient');
@@ -103,11 +102,7 @@ var vm = new Vue({
     el: '#all_cv',
     mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
     data: {
-        type: '',
-        chosenIngredients: [],
-        volume: 0,
-        price: 0,
-
+        showFooter: true,
         showStartPage: true,
         showHelpLangContainer: true,
         showTopBar: true,
@@ -172,6 +167,8 @@ var vm = new Vue({
 
         showAllIngredients: function(){
             this.chosenCatName='';
+    this.showIngredientsButtons = true;
+                this.showCatButtons = false;
         },
 
 
@@ -210,6 +207,7 @@ var vm = new Vue({
                 this.showHelpAbortContainer = true;
             }
             else if (tab === "cartPage") {
+                sendCurrentSuperOrderToVue();
                 this.showHelpAbortContainer = true;
                 this.showCartPage =true;
                 this.showTopBarButton = true;
@@ -261,6 +259,7 @@ var vm = new Vue({
             addTimeStamp(); //spara tiden orden sickas. Ligger i jucifer-main. Bör användas till finish time också
             //So that the Vue element is updated
             sendCurrentSuperOrderToVue();
+            currentSuperOrder = new superOrder();
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
 
             socket.emit('superOrder', {superOrderProperties: this.vueSuperOrder});
