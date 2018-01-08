@@ -131,10 +131,6 @@ function checkActiveIngredButton(pos, type){
     return activeIngredButtonID;
 }
 
-function changeButtonColor(ButtonID){
-    console.log(document.getElementById(activeIngredButtonID)+"changebuttoncolor");
-
-}
 
 // Används getFlagSrc?? -Ingrid
 function getFlagSrc(){ 
@@ -178,9 +174,15 @@ var vm = new Vue({
         showCartPage: false,
         chosenCatName: '',
         searchTerm: '',
-        vueSuperOrder: {}
+        vueSuperOrder: {},
 
-        //ingredient3:"ingredient 3" ////Detta är för att ändra knapptext
+        base:"Base",  ////Dessaa är för att ändra knapptext
+        ingredient1:"Ingredient 1",
+        ingredient2:"Ingredient 2",
+        ingredient3:"Ingredient 3",
+        ingredient4:"Ingredient 4",
+        ingredient5:"Ingredient 5",
+        topping:"Topping",
 
     },
     created: function() {
@@ -301,29 +303,46 @@ Thank you for your order. Your order number is: " + orderNumber);
             var activeIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[activeIngredIndex]; 
             var activeIngredButtonID = checkActiveIngredButton(activeIngredIndex, activeType);
             var activeType = currentSuperOrder.drinks[currentSuperOrder.activeDrink].type;
-            console.log(activeType+": type");
-            console.log(activeIngredIndex+": activeIngredIndex");
+            //console.log(activeType+": type");
+            //console.log(activeIngredIndex+": activeIngredIndex");
             console.log(activeIngred+": activeIngred");
             console.log(activeIngredButtonID+": activeIngredButtonID");
 
-            //changeButtonColor(activeIngredButtonID);
-
-            //Byter färg
             if (activeIngredButtonID=="topping"){
-                alert("topping");
-                document.getElementById(activeIngredButtonID).style.backgroundColor = activeIngred["hexColor"];
+                document.getElementById(activeIngredButtonID).style.backgroundColor = activeIngred["hexColor"]; // byter knappfärg
+                this.topping=activeIngred["ingredient_"+this.lang]; //Detta byter knapptext
             }
             else if(activeIngredButtonID=="baseIngred"){
-                document.getElementById(activeIngredButtonID).style.borderTop = "6.8em solid" + activeIngred["hexColor"];
+                document.getElementById(activeIngredButtonID).style.borderTop = "6.8em solid" + activeIngred["hexColor"]; // byter knappfärg
+                this.base=activeIngred["ingredient_"+this.lang]; //Detta byter knapptext
             }
             else {
-                alert("anann knapp");
-                document.getElementById(activeIngredButtonID).style.borderTop = "3em solid" + activeIngred["hexColor"];
+                document.getElementById(activeIngredButtonID).style.borderTop = "3em solid" + activeIngred["hexColor"]; // byter knappfärg
+                switch(activeIngredIndex){ //Denna swich byter knapptext
+                    case 1:
+                        this.ingredient1=activeIngred["ingredient_"+this.lang]; break;
+                    case 2:
+                        this.ingredient2=activeIngred["ingredient_"+this.lang]; break;
+                    case 3:
+                        if (activeType=="juice"){
+                            this.ingredient3=activeIngred["ingredient_"+this.lang];
+                        }
+                        else {this.ingredient1=activeIngred["ingredient_"+this.lang];}
+                        break;
+                    case 4:
+                        if (activeType=="juice"){
+                            this.ingredient4=activeIngred["ingredient_"+this.lang];
+                        }
+                        else {this.ingredient2=activeIngred["ingredient_"+this.lang];}
+                        break;
+                    case 5:
+                        if (activeType=="juice"){
+                            this.ingredient5=activeIngred["ingredient_"+this.lang];
+                        }
+                        else {this.ingredient3=activeIngred["ingredient_"+this.lang];}
+                        break;
+                }
             }
-
-
-
-            //this.ingredient3=activeIngred["ingredient_"+this.lang]; //Detta är för att ändra knapptext
 
             console.log("Vald ingrediens: "+activeIngred["ingredient_"+this.lang]); //Skriver ut den valda ingrediensen. Det ska göras på knappen
         },
