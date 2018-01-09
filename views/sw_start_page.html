@@ -2,53 +2,53 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <title>Staff View - start page</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/sw_css.css">
-    <script src="/vue/vue.js" defer></script>
-    <script src="/socket.io/socket.io.js" defer></script>
-    <script src="js/juicifer-main.js" defer></script>
-    <script src="js/sw_script.js" defer></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <head>
+        <title>Staff View - start page</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/sw_css.css">
+        <script src="/vue/vue.js" defer></script>
+        <script src="/socket.io/socket.io.js" defer></script>
+        <script src="js/juicifer-main.js" defer></script>
+        <script src="js/sw_script.js" defer></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-</head>
+    </head>
 
-<body>
-    <div id="main">
+    <body>
+        <div id="main">
 
-        <!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->
-        <div class="menu">
-            <button class="menuLinks" id="newOrderTab" v-on:click="showTab('newOrder')"> {{ uiLabels.buttonNewOrder }}</button>
-            <button class="menulinks" id="orderQueueTab" v-on:click="showTab('orderQueue')"> {{ uiLabels.buttonOrderQueue }}</button>
-            <button class="menulinks" id="orderHistoryTab" v-on:click="showTab('orderHistory')"> {{uiLabels.buttonOrderHistory }}</button>
-            <button class="menulinks" id="inventoryTab" v-on:click="showTab('inventory')"> {{ uiLabels.buttonInventory }}</button>
-            <button class="menulinks" id="statisticsTab" v-on:click="showTab('statistics')"> {{ uiLabels.buttonStatistics }}</button>
-            <button class="menulinks" id="languageTab" v-on:click="switchLang()"> {{ uiLabels.language }}</button>
-        </div>
+            <!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->
+            <div class="menu">
+                <button class="menuLinks" id="newOrderTab" v-on:click="showTab('newOrder')"> {{ uiLabels.buttonNewOrder }}</button>
+                <button class="menulinks" id="orderQueueTab" v-on:click="showTab('orderQueue')"> {{ uiLabels.buttonOrderQueue }}</button>
+                <button class="menulinks" id="orderHistoryTab" v-on:click="showTab('orderHistory')"> {{uiLabels.buttonOrderHistory }}</button>
+                <button class="menulinks" id="inventoryTab" v-on:click="showTab('inventory')"> {{ uiLabels.buttonInventory }}</button>
+                <button class="menulinks" id="statisticsTab" v-on:click="showTab('statistics')"> {{ uiLabels.buttonStatistics }}</button>
+                <button class="menulinks" id="languageTab" v-on:click="switchLang()"> {{ uiLabels.language }}</button>
+            </div>
 
-        <!-- här skrivs sidorna -->
+            <!-- här skrivs sidorna -->
 
-        <!--NEW ORDER-->
-        <div id="newOrder" v-if="newOrderShow">
-            new order
-            <br> Här på denna sida händer inget, men jag har öppnat new order - sidan i en ny flik åt dig.
-            <br> Ha en fantastisk dag!
+            <!--NEW ORDER-->
+            <div id="newOrder" v-if="newOrderShow">
+                new order
+                <br> Här på denna sida händer inget, men jag har öppnat new order - sidan i en ny flik åt dig.
+                <br> Ha en fantastisk dag!
 
-        </div>
-
-
-        <!--End NEW ORDER-->
-
-        <!--ORDER QUEUE-->
-        <div id="orderQueue" v-if="orderQueueShow">
-
-            <div id="oQBoxContainer">
+            </div>
 
 
-                <div class="leftSideMenuBox" id="oQMenu">
+            <!--End NEW ORDER-->
+
+            <!--ORDER QUEUE-->
+            <div id="orderQueue" v-if="orderQueueShow">
+
+                <div id="oQBoxContainer">
+
+
+                    <div class="leftSideMenuBox" id="oQMenu">
 
 
 
@@ -62,37 +62,38 @@
                         </div>
 
                         <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
-                        <!-- <div class="oneSuperOrder">
-<ingredient ref="ingredient" v-for="item in ingredients" :item="item" :lang="lang" :key="item.ingredient_id">
-</ingredient>
-</div> -->
+     
                         <!-- detta är koden Mikael skrev -->
                         <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
                     </div>
 
                     <!-- Deta är rutan i mitten där jucerna ska presenteras -->
 
-                    
-
-                <!-- Deta är rutan i mitten där jucerna ska presenteras -->
-
-                <div class="middleSideBox">
-
-                    <div class="juicesInTheOrder" id="oQJuicesInOrder"> 
 
 
-                        <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks" v-on:click="hideRightSideBoxToggle()">
-                            <h2>x {{drink.size}} custom {{drink.type}} </h2>
+                    <!-- Deta är rutan i mitten där jucerna ska presenteras -->
+
+                    <div class="middleSideBox">
+
+                        <div class="juicesInTheOrder" id="oQJuicesInOrder"> 
+
+
+                            <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks" v-on:click="hideRightSideBoxToggle()">
+                                <h2>x {{drink.size}} custom {{drink.type}} </h2>
+
+                            </div>
+                            <input type="checkbox" id="myCheck">
 
                         </div>
-                                    <input type="checkbox" id="myCheck">
+<<<<<<< HEAD
+
+=======
+                                   <label class="myCheckbox"> <input type="checkbox" id="myCheck"></label> 
+>>>>>>> 204020614eac36b39d0c4ccc92cf1c44fe76bd11
 
                     </div>
 
 
-                        </div>
-                     
-                
 
                 </div>
 
@@ -107,122 +108,129 @@
                         <li>Ingrediens 5: {{drink.ingredients[5]["ingredient_sv"]}}</li> <br>
                         <li>Topping: {{drink.ingredients[0]["ingredient_sv"]}} </li>
                     </div>
+            </div>
 
 
-
+<<<<<<< HEAD
+                    <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">{{ uiLabels.cancel }}</button>
+=======
                 <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">{{ uiLabels.cancel }}</button>
             
             
-                <button class="oQButtons" id="finishOrderButton" v-for="thisSuperOrder in selectedSuperOrder" v-on:click="pressedFinishOrder(thisSuperOrder)">{{ uiLabels.ready }}</button>
-
-            </div>
-
-      
-
-        <!--End ORDER QUEUE-->
-
-        <!-- ORDER HISTORY-->
-
-        <div id="orderHistory" v-if="orderHistoryShow">
-
-            <div id="oHBoxContainer">
-
-                <!-- VÄNSTRA HISTORY -->
-                <div class="leftSideMenuBox" id="oHMenu">
-
-                    <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="thisSuperOrder.done" v-on:click="showSuperOrderContentHistory(thisSuperOrder)">
-                        {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br> {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br> {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
-                    </div>
+                <button class="oQButtons" id="finishOrderButton" v-for="thisSuperOrder in this.superOrders" v-on:click="pressedFinishOrder(thisSuperOrder)">{{ uiLabels.ready }}</button>
+>>>>>>> 204020614eac36b39d0c4ccc92cf1c44fe76bd11
 
 
+                    <button class="oQButtons" id="finishOrderButton" v-for="thisSuperOrder in selectedSuperOrder" v-on:click="pressedFinishOrder(thisSuperOrder)">{{ uiLabels.ready }}</button>
 
                 </div>
-                <!-- HÖGRA BOXEN -->
-                <div class="rightSideBox" id="oHIngridients" v-if="hideRightBoxHistory">
-                    <h3>orderHistory-{{uiLabels.ingredients}}</h3>
-                    Recipie L Apple juice
-                </div>
 
 
 
-                <!-- MITTENBOXEN -->
-                <div class="middleSideBox">
+                <!--End ORDER QUEUE-->
 
-                    <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggleHistory()">
+                <!-- ORDER HISTORY-->
+
+                <div id="orderHistory" v-if="orderHistoryShow">
+
+                    <div id="oHBoxContainer">
+
+                        <!-- VÄNSTRA HISTORY -->
+                        <div class="leftSideMenuBox" id="oHMenu">
+
+                            <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="thisSuperOrder.done" v-on:click="showSuperOrderContentHistory(thisSuperOrder)">
+                                {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br> {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br> {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
+                            </div>
 
 
-                        <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
-                            <h2>x {{drink.size}} custom {{drink.type}} </h2>
+
+                        </div>
+                        <!-- HÖGRA BOXEN -->
+                        <div class="rightSideBox" id="oHIngridients" v-if="hideRightBoxHistory">
+                            <h3>orderHistory-{{uiLabels.ingredients}}</h3>
+                            Recipie L Apple juice
                         </div>
 
+
+
+                        <!-- MITTENBOXEN -->
+                        <div class="middleSideBox">
+
+                            <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggleHistory()">
+
+
+                                <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
+                                    <h2>x {{drink.size}} custom {{drink.type}} </h2>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div id="oHTimeInfo">
+                            <!-- här ska du använda superOrder.orderTime och ta båda index i arrayen. -->
+                            Order placed: 2017-11-21 12:01 <br><br> Order finihed: 2017-11-21 12:05
+
+                        </div>
                     </div>
                 </div>
 
-                <div id="oHTimeInfo">
-                    <!-- här ska du använda superOrder.orderTime och ta båda index i arrayen. -->
-                    Order placed: 2017-11-21 12:01 <br><br> Order finihed: 2017-11-21 12:05
-
-                </div>
-            </div>
-        </div>
 
 
+                <div id="inventory" v-if="inventoryShow">
+                    <!-- HÄR SKAPAS SIDSPECIFIKA GREJER -->
+                    <div id="inventoryContainer">
 
-            <div id="inventory" v-if="inventoryShow">
-                <!-- HÄR SKAPAS SIDSPECIFIKA GREJER -->
-                <div id="inventoryContainer">
+
+                        <div id="inventoryInformation">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                    <th width="15%">
+                                        {{uiLabels.ingredients}}
+                                    </th>
+                                    <th width="15%">
+                                        {{uiLabels.JUsize}}
+                                    </th>
+                                    <th width="15%">
+                                        {{uiLabels.JUbalance}}
+                                    </th>
+                                    <th width="15%">
+                                        {{uiLabels.inventoryUnit}}
+                                    </th>
+                                    <th width="15%">
+                                        {{uiLabels.newbalance}}
+                                    </th>
+                                    <th width="25%">
+                                        submit
+                                    </th>
+                                </tr>
+                            </table>
+                            <ingredient ref="ingredient" 
+                                        v-for="item in ingredients" 
+                                        v-on:set-temp-id="setTempId(item['ingredient_id'])"
+                                        v-on:new-balance-set ="newBalanceFunction"
+                                        :item="item" 
+                                        :lang="lang"
+                                        :key="item.ingredient_id">
+
+                            </ingredient>
+                        </div>
 
 
-                    <div id="inventoryInformation">
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <th width="15%">
-                                    {{uiLabels.ingredients}}
-                                </th>
-                                <th width="15%">
-                                    {{uiLabels.JUsize}}
-                                </th>
-                                <th width="15%">
-                                    {{uiLabels.JUbalance}}
-                                </th>
-                                <th width="15%">
-                                    {{uiLabels.inventoryUnit}}
-                                </th>
-                                <th width="15%">
-                                    {{uiLabels.newbalance}}
-                                </th>
-                                <th width="25%">
-                                    submit
-                                </th>
-                            </tr>
-                        </table>
-                        <ingredient ref="ingredient" 
-                                    v-for="item in ingredients" 
-                                    v-on:set-temp-id="setTempId(item['ingredient_id'])"
-                                    v-on:new-balance-set ="newBalanceFunction"
-                                    :item="item" 
-                                    :lang="lang"
-                                    :key="item.ingredient_id">
-
-                        </ingredient>
                     </div>
 
 
                 </div>
 
-
+            </div>
+            <!--- statistics-->
+            <div id="statistics" v-if="statisticsShow">
+                <div id="chart"></div>
+                <!--            <div id= "stats"><div id="piechart"></div></div>-->
             </div>
 
-        </div>
-        <!--- statistics-->
-        <div id="statistics" v-if="statisticsShow">
-            <div id="chart"></div>
-            <!--            <div id= "stats"><div id="piechart"></div></div>-->
-        </div>
 
 
 
+            </body>
 
-</body>
-
-</html>
+        </html>

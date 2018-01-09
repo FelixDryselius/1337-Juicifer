@@ -21,7 +21,6 @@ function pressedCancelOrder() {
 
 
 function pressedFinishOrder(size) {
-    window.alert("du har tryckt på Finish order");
 }
 
 
@@ -171,8 +170,8 @@ var vm = new Vue({
         pressedFinishOrder: function (thisSuperOrder) {
         var x = document.getElementById("myCheck").checked;
         if (x == true){
-         window.alert("du har tryckt på Finish order");
         this.superOrders[thisSuperOrder.orderId].done = true;
+        this.selectedSuperOrder.drinks = null;
 }
     
   
