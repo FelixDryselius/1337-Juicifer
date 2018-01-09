@@ -64,13 +64,14 @@
 
                 <div class="middleSideBox">
 
-                    <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggle()">
+                    <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggle()" tabindex="-1">
 
 
                         <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
                             <h2>x {{drink.size}} custom {{drink.type}} </h2>
-                        </div>
 
+                        </div>
+                     
                     </div>
                 </div>
 
@@ -98,32 +99,42 @@
         </div>
 
         <!--End ORDER QUEUE-->
-        
+
         <!-- ORDER HISTORY-->
 
         <div id="orderHistory" v-if="orderHistoryShow">
 
             <div id="oHBoxContainer">
 
+                <!-- VÄNSTRA HISTORY -->
                 <div class="leftSideMenuBox" id="oHMenu">
-                    <!-- <h3>orderHistoryMenu</h3> -->
 
-                    <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="!thisSuperOrder.done" onclick=showSuperOrderContent(thisSuperOrder)>
+                    <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="thisSuperOrder.done" v-on:click="showSuperOrderContentHistory(thisSuperOrder)">
                         {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br> {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br> {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
                     </div>
 
 
 
                 </div>
-
-                <div class="rightSideBox" id="oHIngridients">
+                <!-- HÖGRA BOXEN -->
+                <div class="rightSideBox" id="oHIngridients" v-if="hideRightBoxHistory">
                     <h3>orderHistory-{{uiLabels.ingredients}}</h3>
                     Recipie L Apple juice
                 </div>
 
 
-                <div class="juicesInTheOrder" id="oHJuicesInOrder" onclick="pressedOHJuicesInOrder('orderHistory')">
-                    orderHistoryJuicesInOrder
+
+                <!-- MITTENBOXEN -->
+                <div class="middleSideBox">
+
+                    <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggleHistory()">
+
+
+                        <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
+                            <h2>x {{drink.size}} custom {{drink.type}} </h2>
+                        </div>
+
+                    </div>
                 </div>
 
                 <div id="oHTimeInfo">
@@ -170,7 +181,7 @@
 
             </div>
 
-          
+
 
         </div>
 

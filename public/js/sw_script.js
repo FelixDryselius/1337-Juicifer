@@ -46,14 +46,6 @@ Vue.component('juices', {
 
 // ORDER HISTORY START
 
-
-//document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()}
-
-
-
-
-
-
 function addJuiceToMiddle() {
     var variabelNamn = document.getElementById('oQJuicesInOrder');
     variabelNamn.innerHTML += "skriv ut specifika juicen";
@@ -101,20 +93,20 @@ Vue.component('ingredient', {
 </div>',
 
 
-data: function () {
-  return {
-    newValueInput: ''
-  }
-},
+    data: function () {
+        return {
+            newValueInput: ''
+        }
+    },
 
-methods: {
-changeBalance: function () {
-    
-    this.$emit("set-temp-id");
-    this.$emit("new-balance-set",this.newValueInput);
-    this.newValueInput = "";
-},
-}
+    methods: {
+        changeBalance: function () {
+
+            this.$emit("set-temp-id");
+            this.$emit("new-balance-set", this.newValueInput);
+            this.newValueInput = "";
+        },
+    }
 
 })
 //SLUT INVENTORY
@@ -131,7 +123,10 @@ var vm = new Vue({
         inventoryShow: false,
         statisticsShow: false,
         hideRightBox: false,
+        hideRightBoxHistory: false,
+        hideMiddleBox: false,
         selectedSuperOrder: {},
+        selectedSuperOrderHistory: {},
         newBalance: {},
         tempId: -1
 
@@ -143,29 +138,42 @@ var vm = new Vue({
         },
         hideRightSideBoxToggle: function () {
             this.hideRightBox = !this.hideRightBox;
+       
+        
+        },
+
+        hideRightSideBoxToggleHistory: function () {
+            this.hideRightBoxHistory = !this.hideRightBoxHistory;
+        },
+        
+        hideMiddleBoxToggleHistory: function () {
+            this.hideMiddleBox = !this.hideMiddleBox;
         },
 
         showSuperOrderContent: function (thisSuperOrder) {
             this.selectedSuperOrder = thisSuperOrder;
         },
-      
-        showSuperOrderContent: function(thisSuperOrder){ 
-        this.selectedSuperOrder = thisSuperOrder;
+        showSuperOrderContentHistory: function (thisSuperOrder) {
+            this.selectedSuperOrderHistory = thisSuperOrder;
         },
 
-        setTempId: function(tId){
-        this.tempId = tId;
+
+        setTempId: function (tId) {
+            this.tempId = tId;
         },
-        newBalanceFunction: function(nBalance){ 
-        this.newBalance[this.tempId]=nBalance;
+        newBalanceFunction: function (nBalance) {
+            this.newBalance[this.tempId] = nBalance;
 
-        socket.emit("newInventory",{inventoryChange: true, newBalance: this.newBalance});
-        this.newBalance={};
-        },    
+            socket.emit("newInventory", {
+                inventoryChange: true,
+                newBalance: this.newBalance
+            });
+            this.newBalance = {};
+        },
 
 
 
-       
+
         hideAllTabs: function () {
             this.newOrderShow = false;
             this.orderQueueShow = false;
