@@ -134,13 +134,8 @@ var vm = new Vue({
         tempId: -1
 
     },
-    methods: {
-        markDone: function (orderid) {
-            socket.emit("orderDone", orderid);
-        },
 
 
-    },
     methods: {
         markDone: function (orderid) {
             socket.emit("orderDone", orderid);
@@ -169,13 +164,6 @@ var vm = new Vue({
         },
 
 
-        showSuperOrderContent: function (thisSuperOrder) {
-            this.selectedSuperOrder = thisSuperOrder;
-        },
-      
-        showSuperOrderContent: function(thisSuperOrder){ 
-        this.selectedSuperOrder = thisSuperOrder;
-        },
  
         hideAllTabs: function () {
             this.newOrderShow = false;

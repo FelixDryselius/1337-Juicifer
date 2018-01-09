@@ -149,43 +149,6 @@
         </div>
 
 
-        <!--INVENTORY -->
-
-        <div id="inventory" v-if="inventoryShow">
-            <!-- HÄR SKAPAS SIDSPECIFIKA GREJER -->
-            <div id="inventoryContainer">
-
-
-                <div id="inventoryInformation">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <th width="20%">
-                                <h1> {{uiLabels.ingredients}}</h1>
-                            </th>
-                            <th width="20%">
-                                {{uiLabels.JUsize}}
-                            </th>
-                            <th width="20%">
-                                {{uiLabels.JUbalance}}
-                            </th>
-                            <th width="20%">
-                                {{uiLabels.balance}}
-                            </th>
-                            <th width="20%">
-                                {{uiLabels.newbalance}}
-                            </th>
-                        </tr>
-                    </table>
-                    <ingredient ref="ingredient" v-for="item in ingredients" v-on:set-temp-id="setTempId(item['ingredient_id'])" v-on:new-balance-set="newBalanceFunction" :item="item" :lang="lang" :key="item.ingredient_id">
-
-                    </ingredient>
-                    {{newBalance}}
-                </div>
-
-            </div>
-
-
-            <!--INVENTORY -->
 
             <div id="inventory" v-if="inventoryShow">
                 <!-- HÄR SKAPAS SIDSPECIFIKA GREJER -->
