@@ -120,13 +120,13 @@
 
                     <div class="buttonSizeContainer">
                         <div class="largeButton">
-                            <button id="smallButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize('S')">Small</button>
+                            <button id="smallButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSizeAndPrice('S')">Small 10:-</button>
                         </div>
                         <div class="largeButton">
-                            <button id="mediumButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize('M')">Medium</button>
+                            <button id="mediumButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSizeAndPrice('M')">Medium 20:-</button>
                         </div>  
                         <div class="largeButton">
-                            <button id="largeButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSize('L')">Large</button>
+                            <button id="largeButton" type="button" v-on:click="showTab('ingredPage')" onclick="selectDrinkSizeAndPrice('L')">Large 30:-</button>
                         </div>
                     </div>
                 </main>
@@ -150,7 +150,7 @@
                         </div>
 
                         <div class="flexContainer">
-                            <button class="chooseIngredientsButton" v-on:click="closeIngredMenus()">
+                            <button class="chooseIngredientsButton" id="returnButton" v-on:click="closeIngredMenus()">
                                 {{uiLabels.return}}</button>
                             <button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
                                 {{uiLabels.ourFavorites}}</button>

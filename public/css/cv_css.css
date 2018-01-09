@@ -28,7 +28,6 @@ button {
     border-width: 0;
     box-shadow: 0 -2px 0 0 rgba(0, 0, 0, 0.3) inset;
 }
-
 /*Slut - css för alla sidor*/
 
 
@@ -100,7 +99,7 @@ button {
     width: 13vw;
 }
 
-#abort {
+#abort, #returnButton { /* båda knapparna är röda*/
     background-color: #EA3546;
 }
 
