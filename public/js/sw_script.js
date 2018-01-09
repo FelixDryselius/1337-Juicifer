@@ -95,7 +95,7 @@ function changeBalanceButton()
 
     $("#balanceChanged").html(fname);
     $("p").hide()
-   
+
 
 }
 
@@ -166,10 +166,52 @@ var vm = new Vue({
         orderQueueShow: true,
         orderHistoryShow: false,
         inventoryShow: false,
-        statisticsShow: false,
-
+        statisticsShow: true,
+        amountSmoothies: 0,
+        amountJuices: 0
     },
     methods: {
+        getIngredData: function() { 
+            var ingredArray = [['Ingrediens', 'Saldo']];
+            for (var i = 1; i < this.ingredients.length/10; i++) {
+                ingredArray.push([this.ingredients[i].ingredient_sv, this.ingredients[i].balance]);
+            }
+            console.log(ingredArray);
+
+
+            return ingredArray;
+        },
+        //    getIngredientData: function (){
+        //        var contentArr = [
+        //            ['Ingrediens', 'Antal beställda']
+        //        ];
+        //        /*--- Initiera contentArr---*/
+        //        for (var i = 0; i < this.ingredients.length; i ++){
+        //            contentArr.push([this.ingredients[i].ingredient_sv, 0]);
+        //        }
+        //        /*--- Gå igenom ordrar, dess ingredienser och jämför---*/
+        //        for (var i = 1; i < Object.keys(this.orders).length +1; i += 1) { //loopa över alla ordrar
+        //            for (var j = 0; j < this.orders[i].ingredients.length; j++){ //loopa över varje orders ingredienser
+        //                for (var k = 1; k < contentArr.length; k++){ //loopa över alla ingredienser
+        //                    if (contentArr[k][0] == this.orders[i].ingredients[j].ingredient_sv){ //jämför
+        //                        contentArr[k][1] ++;
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        /*---Rensa ut ingredienser som inte är beställda tillräckligt ofta--*/
+        //        var m = 1;
+        //        while (m < contentArr.length){
+        //            if(contentArr[m][1] < 1){
+        //                contentArr.splice(m,1);
+        //            } else {m++;}
+        //        }
+        //        return (contentArr)
+        //    },
+        //   getCurrentStatus(){
+        //     return this.orders;
+        //   }
+
         markDone: function (orderid) {
             socket.emit("orderDone", orderid);
         },
@@ -208,8 +250,57 @@ var vm = new Vue({
                 return item["ingredient_cat"] === cat;
             })
         }
-    }
-});
+    }});
+/*--------------Rita grafer------------*/
+google.charts.load("current", {packages:["corechart"]});
+google.charts.setOnLoadCallback(drawChart);
+
+//function getColors(size){
+//    var colors = [];
+//    var red = 0;
+//    var green = 140;
+//    var blue = 0;
+//    for (var i = 0; i < size; i ++){
+//        var currColor = 'rgb(' + red + ',' + green + ',' + blue + ')';
+//        colors.push(currColor);
+//        red += 5;
+//        green += 2;
+//        blue += 5;
+//    }
+//    //  console.log(colors);
+//    return colors;
+//
+//}
+
+function drawChart() {
+    //    var orderData = google.visualization.arrayToDataTable(vm.getOrderData());
+    //    var orderOptions = {
+    //        title: 'Fördelning av beställningar',
+    //        pieHole: 0.4,
+    //        colors: ['rgb(255,51,153)', 'rgb(220,220,51)'],
+    //        'backgroundColor':'transparent',
+    //        'titleTextStyle': {color:'white', fontName: 'champagne__limousinesregular', fontSize:'20', bold:'false'},
+    //        legend: {textStyle: {color: 'white', fontName: 'champagne__limousinesregular', fontSize:'16'}}
+    //    };
+
+    var ingredientData = google.visualization.arrayToDataTable(vm.getIngredData());
+    var ingredientOptions = {
+        title: 'Fördelning av beställda ingredienser'
+//        pieHole: 0.4,
+//        //        colors: getColors(dataVm.getIngredientData().length),
+//        colors: ['rgb(0, 140, 0)', 'rgb(255,255,255)'],
+//        'backgroundColor':'transparent',
+//        'titleTextStyle': {color:'white', fontName: 'champagne__limousinesregular', fontSize:'20', bold:'false'},
+//        legend: {textStyle: {color: 'white', fontName: 'champagne__limousinesregular', fontSize:'16'}},
+//        pieResidueSliceLabel: 'Övriga',
+//        //pieResidueSliceColor: '#365888',
+//        sliceVisibilityThreshold: 6/100
+    };
+    console.log(ingredientData);
+    var chart = new google.visualization.PieChart(document.getElementById('chart'));
+    chart.draw(ingredientData, ingredientOptions);
+}
+
 
 
 /*****************TESTER****************/
