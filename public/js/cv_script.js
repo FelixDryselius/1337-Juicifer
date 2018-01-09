@@ -16,7 +16,7 @@ function drink() {
     this.type = "",
         this.size = "U",
         this.ingredients = [0,0,0,0,0,0,0],
-        this.prize = 0,
+        this.price = 0,
         this.aborted = false,
         this.tempId = -1 // vad ska denna variabel användas till? - Ingrid
 };
@@ -24,11 +24,11 @@ function drink() {
 
 //Att göra:
 //funk: välja aktiv drink
-//funk: markera order som done (gör i staff view)
-//funk: sätta ordertid
-//funk: sätta sluttid
+//funk: markera order som done (görs i staff view)
+//funk: sätta ordertid - klar Ingrid
+//funk: sätta sluttid (görs i staff view)
 //funk: lägga till ingrediens
-//funk: sätta pris
+//funk: sätta pris - klar Ingrid
 //funk: markera som avbruten 
 //The function that is activated when "cart" is pressed 
 
@@ -42,16 +42,31 @@ function createNewDrink(drinkType) {
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].type);
 }
 
-function selectDrinkSize(inputSize) {
+function selectDrinkSizeAndPrice(inputSize) { //and sets price
     currentSuperOrder.drinks[currentSuperOrder.activeDrink].size = inputSize;
 
-    //This is for checking that it works
-    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].size);
-}
+
+    switch(inputSize){
+        case "S":
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 10;
+            break;
+        case "M":
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 20;
+            break;
+        case "M":
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 30;
+            break;
+    }
+
+    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].size); //This is for checking that it works    
+    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].price);
+};
+
 
 function deleteActiveDrink() {
     currentSuperOrder.drinks.splice(currentSuperOrder.activeDrink, 1);
 }
+function changeActiveDrink(){}
 
 
 function addIngredientToActiveDrink(ingred) {
@@ -63,7 +78,6 @@ function addIngredientToActiveDrink(ingred) {
 
 function addTimeStamp(){
     var date = new Date;
-
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
     month = (month < 10 ? "0" : "") + month;
@@ -141,6 +155,7 @@ function getFlagSrc(){
 
 function sendCurrentSuperOrderToVue() {
     vm.vueSuperOrder = currentSuperOrder;
+
 }
 
 // Start Vue:
@@ -153,6 +168,7 @@ Vue.component('ingredient', {
         },
     }
 });
+
 
 var vm = new Vue({
     el: '#all_cv',
@@ -172,28 +188,41 @@ var vm = new Vue({
         showCatButtons: false,
         showIngredientsButtons: false,
         showCartPage: false,
+        showSmoothieInCart: true,
+        showJuiceInCart: false,
         chosenCatName: '',
         searchTerm: '',
         vueSuperOrder: {},
+        tempDrink: {},
 
-        base:"Base",  ////Dessaa är för att ändra knapptext
+        canPressCart:false,
+        canPressPay: false,
+
+        topping:"Topping", ////Dessa är för att ändra knapptext
         ingredient1:"Ingredient 1",
         ingredient2:"Ingredient 2",
         ingredient3:"Ingredient 3",
         ingredient4:"Ingredient 4",
         ingredient5:"Ingredient 5",
-        topping:"Topping",
+        base:"Base",
 
+        toppingColor:"lightgrey",
+        ingredient1Color:"3em solid lightgrey",
+        ingredient2Color:"3em solid lightgrey",
+        ingredient3Color:"3em solid lightgrey",
+        ingredient4Color:"3em solid lightgrey",
+        ingredient5Color:"3em solid lightgrey",
+        baseColor:"6.8em solid lightgrey"
     },
+
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
-            alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber + "\
-Thank you for your order. Your order number is: " + orderNumber);
-
+            alert(this.lang+"Tack för din beställning. Ditt ordernummer är: " + orderNumber +" Thank you for your order. Your order number is: " + orderNumber); //Jag får inte uiLabels att funka med alert, så därför skrivs båda språk ut.
+            //          console.log(this.lang+" språk");
+            //  console.log(this.uiLabels.base);
+            location.reload(); //Reset sidan
         });
-
     },
-
 
     methods: {
         hideAllTabs: function () {
@@ -207,9 +236,9 @@ Thank you for your order. Your order number is: " + orderNumber);
             this.showSmoothieMug = false;
             this.showIngredientsButtons = false;
             this.showCartPage = false;
+            this.showSmoothieInCart = false;
+            this.showJuiceInCart = false;
         },
-
-
 
         filtered_ingredients: function(cat) {
             return this.ingredients.filter(function(item) {
@@ -226,7 +255,6 @@ Thank you for your order. Your order number is: " + orderNumber);
                 return ingred }
             else if( ingred['ingredient_'+ this.lang].indexOf(this.searchTerm) !==-1){
                 return ingred;
-
             }
         }, 
 
@@ -235,8 +263,6 @@ Thank you for your order. Your order number is: " + orderNumber);
             this.showIngredientsButtons = true;
             this.showCatButtons = false;
         },
-
-
 
         doShowIngredientsButtons: function(catName){
             this.chosenCatName = catName;
@@ -247,7 +273,30 @@ Thank you for your order. Your order number is: " + orderNumber);
         choosePreMadeDrinks: function(){
 
         },
-
+        
+        
+            writeOutIngredients: function(aDrink){
+            var aDrinksIngredient = {};
+                console.log(aDrink)
+            for(var el in aDrink.ingredients){
+                if(aDrink.ingredients[el] === 0){
+                    console.log(aDrink.ingredients[el]);
+                }
+                    else{
+                        console.log(aDrink.ingredients[el])
+                    aDrinksIngredient[el] = aDrink.ingredients[el];}
+                
+            }
+                console.log(aDrinksIngredient);
+            return aDrinksIngredient
+        },
+        
+        ingredientType: function(aKey){
+            console.log("this is aKey" + aKey)
+            if(aKey == 0){return "topping"}
+            if(aKey == 6){return "bas"}
+            else {return aKey}
+        },
 
         showTab: function (tab) {
 //            console.log(this.ingredients[3].balance);
@@ -261,6 +310,7 @@ Thank you for your order. Your order number is: " + orderNumber);
             else if (tab === "abortOrder") {
                 this.showStartPage = true;
                 this.showHelpLangContainer = true;
+                location.reload(); //Reset sidan
             }
             else if (tab === "ingredPage") {
                 if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "smoothie") {
@@ -274,10 +324,23 @@ Thank you for your order. Your order number is: " + orderNumber);
                 this.showHelpAbortContainer = true;
             }
             else if (tab === "cartPage") {
-                sendCurrentSuperOrderToVue();
+                sendCurrentSuperOrderToVue(); 
                 this.showHelpAbortContainer = true;
                 this.showCartPage =true;
                 this.showTopBarButton = true;
+                if(this.checkIfMugIsFilled()){ //om true blir betalknapp grön.
+                    this.canPressPay=true; //betalknapp blir grön.
+                }
+                this.canPressCart=false; //varukorgsknapp blir grå.
+                if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "smoothie") { //är fer drycker ska kunna visas ska detta test öras i en loop på ett annat sätt.
+                    this.showSmoothieInCart = true;
+                    this.updateMugColors("smoothie");
+                }
+                else if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "juice") {
+                    this.showJuiceInCart = true;
+                    this.updateMugColors("juice");
+                }
+                console.log("Priset på aktiv dryck kostar: "+ currentSuperOrder.drinks[currentSuperOrder.activeDrink].price +":-");
             }
 
             else if (tab === "orderHistory") {
@@ -297,6 +360,7 @@ Thank you for your order. Your order number is: " + orderNumber);
             console.log("Closed menus");
         },
 
+
         vueAddIngredientToActiveDrink: function(item){
             addIngredientToActiveDrink(item);
         },
@@ -312,33 +376,37 @@ Thank you for your order. Your order number is: " + orderNumber);
             //console.log(activeIngredButtonID+": activeIngredButtonID");
 
             if (activeIngredButtonID=="topping"){
-                document.getElementById(activeIngredButtonID).style.backgroundColor = activeIngred["hexColor"]; // byter knappfärg
+                this.toppingColor=activeIngred["hexColor"]; //sätter knappfärg på variabeln. Ändrar i updateMugColors();
                 this.topping=activeIngred["ingredient_"+this.lang]; //Detta byter knapptext
             }
             else if(activeIngredButtonID=="baseIngred"){
-                document.getElementById(activeIngredButtonID).style.borderTop = "6.8em solid" + activeIngred["hexColor"]; // byter knappfärg
+                this.baseColor = "6.8em solid " + activeIngred["hexColor"]; //sätter knappfärg
                 this.base=activeIngred["ingredient_"+this.lang]; //Detta byter knapptext
             }
             else {
-                document.getElementById(activeIngredButtonID).style.borderTop = "3em solid" + activeIngred["hexColor"]; // byter knappfärg
                 switch(activeIngredIndex){ //Denna swich byter knapptext
                     case 1:
+                        this.ingredient1Color = "3em solid " + activeIngred["hexColor"];
                         this.ingredient1=activeIngred["ingredient_"+this.lang]; break;
                     case 2:
+                        this.ingredient2Color = "3em solid " + activeIngred["hexColor"];
                         this.ingredient2=activeIngred["ingredient_"+this.lang]; break;
                     case 3:
+                        this.ingredient3Color = "3em solid" + activeIngred["hexColor"];
                         if (activeType=="juice"){
                             this.ingredient3=activeIngred["ingredient_"+this.lang];
                         }
                         else {this.ingredient1=activeIngred["ingredient_"+this.lang];}
                         break;
                     case 4:
+                        this.ingredient4Color = "3em solid" + activeIngred["hexColor"];
                         if (activeType=="juice"){
                             this.ingredient4=activeIngred["ingredient_"+this.lang];
                         }
                         else {this.ingredient2=activeIngred["ingredient_"+this.lang];}
                         break;
                     case 5:
+                        this.ingredient5Color = "3em solid" + activeIngred["hexColor"];
                         if (activeType=="juice"){
                             this.ingredient5=activeIngred["ingredient_"+this.lang];
                         }
@@ -346,8 +414,36 @@ Thank you for your order. Your order number is: " + orderNumber);
                         break;
                 }
             }
+            this.updateMugColors(activeType); //här ändras färgen. 
+            console.log("Vald ingrediens: "+activeIngred["ingredient_"+this.lang]); //Skriver ut den valda ingrediensen.
+        },
 
-            console.log("Vald ingrediens: "+activeIngred["ingredient_"+this.lang]); //Skriver ut den valda ingrediensen. Det ska göras på knappen
+
+
+        checkIfMugIsFilled: function() {
+            var type = currentSuperOrder.drinks[currentSuperOrder.activeDrink].type;
+            if (type == "juice"){
+                var stopAtIndex=5;
+                var startIndex=0;
+            }
+            else { //är Smoothie
+                var stopAtIndex=6;
+                var startIndex=3;
+                if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[0] == 0){ // Denna if-sats kollar om topping på index 0 är vald.
+                    return false;
+                }
+            }
+            var indexIngredient;
+            var i;
+            for (i = startIndex; i <= stopAtIndex; i++){
+                indexIngredient = currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[i];
+                if (indexIngredient == 0){ //är ingrediensen 0 finns det inget valt där.
+                    return false;
+                }
+            }
+
+            this.canPressCart=true; //Om funktionen inte returnat, sätts pressCart till true/grön.
+            return true;
         },
 
         showIngredients: function(ingredTyp,pos) {
@@ -370,12 +466,43 @@ Thank you for your order. Your order number is: " + orderNumber);
             }
         },
 
+        resetMugButtons: function() { //Används inte nu, men behövs när fler drycker kan beställas. //en knapp som inte finns (bas i en juice) kan inte kalas på. -Ingrid
+            this.base= "Base";
+            this.ingredient1="Ingredient 1";
+            this.ingredient2="Ingredient 2";
+            this.ingredient3="Ingredient 3";
+            this.ingredient4="Ingredient 4";
+            this.ingredient5="Ingredient 5";
+            this.topping="Topping";
+            document.getElementById("topping").style.backgroundColor = "lightgrey"; // byter knappfärg
+            //  document.getElementById("ingred1").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+            //  document.getElementById("ingred2").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+            document.getElementById("ingred3").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+            document.getElementById("ingred4").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+            document.getElementById("ingred5").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+            document.getElementById("baseIngred").style.borderTop = "6.8em solid lightgrey"; // byter knappfärg
+        },
+
+        updateMugColors: function(type) { // byter knappfärg på alla knappar i rätt sorts mugg - Ingrid
+            document.getElementById("topping").style.backgroundColor = this.toppingColor;
+            if (type=="smoothie"){
+                document.getElementById("baseIngred").style.borderTop = this.baseColor; 
+            }
+            else { //if (type == "juice")
+                document.getElementById("ingred1").style.borderTop = this.ingredient1Color; 
+                document.getElementById("ingred2").style.borderTop = this.ingredient2Color; 
+            } 
+            document.getElementById("ingred3").style.borderTop = this.ingredient3Color; 
+            document.getElementById("ingred4").style.borderTop = this.ingredient4Color; 
+            document.getElementById("ingred5").style.borderTop = this.ingredient5Color; 
+
+        },
 
         placeSuperOrder: function () {
             addTimeStamp(); //spara tiden orden sickas. Ligger i jucifer-main. Bör användas till finish time också
             //So that the Vue element is updated
             sendCurrentSuperOrderToVue();
-            currentSuperOrder = new superOrder();
+            
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
 
             socket.emit('superOrder', {superOrderProperties: this.vueSuperOrder});
@@ -384,6 +511,9 @@ Thank you for your order. Your order number is: " + orderNumber);
             console.log("skickade superOrder");
             console.log(this.vueSuperOrder);
 
+            currentSuperOrder = new superOrder();
+            //this.resetMugButtons();
+            this.canPressPay=false;
         },
 
     }

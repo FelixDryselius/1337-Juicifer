@@ -21,6 +21,10 @@
     "no": "No",
     "return": "Return",
     "ingredient_lau": "ingredient_en",
+    "size": "size",
+    "of": "of",
+    "price": "price",
+   
 
     "buttonNewOrder": "New Order",
     "buttonOrderQueue": "Order Queue",
@@ -36,6 +40,7 @@
 
     "help": "Here you can get help",
     "abortQuestion": "Do you really want to abort your order",
+    "orderInformation":"Thank you for your order. Your order number is: ",
     "enFlag": "'images/gb_flagga.png'",
     "createDrink": "Create Drink",
     "chart": "Chart",
@@ -46,10 +51,12 @@
     "ourFavorites": "Our Favorites",
     "allIngredients": "All ingredients",
     "yourDrinks": "Your drinks",
+
     "yourOrder": "Your order",
-    
+    "yourDrink": "Your drink",
     "orderIdIs": "Order ID is:",
     "numberOfDrinks": "Number of drinks:",
     "orderTime": "Order time:"
+
 
 }
