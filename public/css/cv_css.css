@@ -23,12 +23,11 @@ html button {
 
 button {
     background-color: #49c0f0;
-    color: #E6EAEF;
+    color: #2e2e1f; /*#E6EAEF;*/
     border-radius: 6px;
     border-width: 0;
     box-shadow: 0 -2px 0 0 rgba(0, 0, 0, 0.3) inset;
 }
-
 /*Slut - css för alla sidor*/
 
 
@@ -100,7 +99,7 @@ button {
     width: 13vw;
 }
 
-#abort {
+#abort, #returnButton { /* båda knapparna är röda*/
     background-color: #EA3546;
 }
 
@@ -210,6 +209,14 @@ button {
     width: 2em;
 }
 
+#cartButtonGreen {
+    background-color: #6EEB83;
+}
+
+#payButtonGreen {
+    background-color: #6EEB83;
+}
+
 /*Slut - Topbar*/
 
 
@@ -231,12 +238,24 @@ button {
     justify-content: space-around;
 }
 
+.mugCart {
+    height: 12em;
+    width: 8.15em;
+    background-image: url(/images/mug.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+}
+
 .toppingButton{
     flex: 1;
     display: flex;
     justify-content: center;
     flex-flow: column;
 }
+
 .mugButtons{
     flex: 3;
     display: flex;
@@ -257,6 +276,19 @@ button {
     margin-bottom: 0.2em;
 }
 
+.ingredButtonCart {
+    text-align: center;
+    font-size: 0.7em;
+    height: 0; 
+    position: relative;
+    border-right: 0.6em solid transparent;
+    border-top: 3em solid lightgrey;
+    border-left: 0.6em solid transparent;
+    box-sizing: content-box;
+    border-radius: 6px;
+    margin-bottom: 0.2em;
+}
+
 .ingredButtonJuice {
     margin-bottom: -0.8em;
 }
@@ -267,13 +299,23 @@ button {
     align-self: center;
     flex-basis: 3.25em;
     min-width: 15em;
-    margin-bottom: 1.5em;
+    /*    margin-bottom: 1.5em;*/
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.3) inset;
     background-color: lightgrey;
 }
 
+#toppingCart {
+    font-size: 0.7em;
+    width: 8em;
+    height: 2em;
+}
+
 #ingred5 {
     width: 13.5em;
+}
+
+#ingred5cart {
+    width: 7em;
 }
 
 #ingred4 {
@@ -281,15 +323,18 @@ button {
     left: 4.25%;
 }
 
+#ingred4Cart {
+    width: 6 em;
+}
+
 #ingred3 {
     width: 11em;
-/*    margin-bottom: -0.2em;*/
+    /*    margin-bottom: -0.2em;*/
     left: 8.4%;
 }
 
-#juiceIngred3 {
-    width: 11em;
-    left: 8.4%;
+#ingred3Cart {
+    width: 5em;
 }
 
 #ingred2 {
@@ -297,9 +342,17 @@ button {
     left: 13%;
 }
 
+#ingred2Cart {
+    width: 5em;
+}
+
 #ingred1 {
     width: 8.6em;
     left: 17%;
+}
+
+#ingred1Cart {
+    width: 4e
 }
 
 #baseIngred {
@@ -308,6 +361,14 @@ button {
     border-top: 6.8em solid lightgrey;
     border-left: 1.2em solid transparent;
     left: 13%;
+}
+
+#baseIngredCart {
+    width: 4em;
+    border-right: 1.2em solid transparent;
+    border-top: 2.5em solid lightgrey;
+    border-left: 1.2em solid transparent;
+    /*    left: 13%    */
 }
 
 .mugButtons span { 
@@ -320,6 +381,13 @@ button {
 .ingred span { 
     top: -2.5em;
     left: 28%;
+
+}
+
+.ingredCart span { 
+    /*    top: -2.5em;
+    left: 28%;*/
+    text-align:center;
 }
 
 #baseIngred span {
@@ -366,10 +434,6 @@ button {
     align-content: center;
     overflow: auto;
     align-self: stretch;
-}
-
-#payButtonGreen {
-    background-color: #6EEB83;
 }
 
 /*Slut - Cart page*/

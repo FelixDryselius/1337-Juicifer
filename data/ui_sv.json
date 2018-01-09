@@ -36,6 +36,7 @@
 
     "help": "Här får du hjälp",
     "abortQuestion": "Vill du verkligen avbryta din order",
+    "orderInformation":"Tack för din beställning. Ditt ordernummer är: ",
     "enFlag": "'images/gb_flagga.png'",
     "createDrink": "Skapa dryck",
     "chart": "Varukorg",
