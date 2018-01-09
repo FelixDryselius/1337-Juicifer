@@ -49,9 +49,6 @@ Vue.component('juices', {
 
 //document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()}
 
-
-
-
 function addJuiceToMiddle() {
     var variabelNamn = document.getElementById('oQJuicesInOrder');
     variabelNamn.innerHTML += "skriv ut specifika juicen";
@@ -100,20 +97,20 @@ Vue.component('ingredient', {
 
 
     data: function () {
-    return {
-    newValueInput: ''
-}
-              },
 
-              methods: {
-              changeBalance: function () {
+        return {
+            newValueInput: ''
+        }
+    },
 
-    this.$emit("set-temp-id");
-    this.$emit("new-balance-set",this.newValueInput);
-    this.newValueInput = "";
-},
-}
+    methods: {
+        changeBalance: function () {
 
+            this.$emit("set-temp-id");
+            this.$emit("new-balance-set", this.newValueInput);
+            this.newValueInput = "";
+        },
+    }
 })
 //SLUT INVENTORY
 
@@ -129,7 +126,10 @@ var vm = new Vue({
         inventoryShow: false,
         statisticsShow: false,
         hideRightBox: false,
+        hideRightBoxHistory: false,
+        hideMiddleBox: false,
         selectedSuperOrder: {},
+        selectedSuperOrderHistory: {},
         transChange: {},
         tempId: -1
 
@@ -142,12 +142,26 @@ var vm = new Vue({
         },
         hideRightSideBoxToggle: function () {
             this.hideRightBox = !this.hideRightBox;
+       
+        
         },
 
-        showSuperOrderContent: function(thisSuperOrder){ 
+        hideRightSideBoxToggleHistory: function () {
+            this.hideRightBoxHistory = !this.hideRightBoxHistory;
+        },
+        
+        hideMiddleBoxToggleHistory: function () {
+            this.hideMiddleBox = !this.hideMiddleBox;
+        },
+
+
+        showSuperOrderContent: function (thisSuperOrder) {
             this.selectedSuperOrder = thisSuperOrder;
         },
-
+        showSuperOrderContentHistory: function (thisSuperOrder) {
+            this.selectedSuperOrderHistory = thisSuperOrder;
+        },
+   
         setTempId: function(tId){
             this.tempId = tId - 1;
         },
@@ -163,8 +177,6 @@ var vm = new Vue({
             this.transChange={};
         },
 
-
- 
         hideAllTabs: function () {
             this.newOrderShow = false;
             this.orderQueueShow = false;

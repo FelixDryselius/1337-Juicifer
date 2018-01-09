@@ -172,7 +172,8 @@ div.menu button.active {
 }
 
 .oneDrink{
-    border: dotted red; /*Denna border är här under testing för att se enklare.*/
+    border: dotted red;
+    /*Denna border är här under testing för att se enklare.*/
 }
 
 .pressedDiv {
@@ -242,6 +243,7 @@ div.menu button.active {
     background-color: rgb(210, 210, 210);
     border: 2px solid rgb(125, 124, 127);
 }
+
 
 /*Slut ORDER HISTORY*/
 
