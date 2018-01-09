@@ -125,8 +125,8 @@ var vm = new Vue({
     mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
     data: {
         orderQueueShow: true,
+        oQButtonsShow: true,
         newOrderShow: false,
-        orderQueueShow: true,
         orderHistoryShow: false,
         inventoryShow: false,
         statisticsShow: false,
@@ -216,6 +216,7 @@ var vm = new Vue({
 
         hideAllTabs: function () {
             this.orderQueueShow = false;
+            this.oQButtonsShow = false;
             this.newOrderShow = false;
             this.orderQueueShow = false;
             this.orderHistoryShow = false;
@@ -226,19 +227,17 @@ var vm = new Vue({
             document.getElementById('statistics').style.display='none';
             this.hideAllTabs();
             if (tab === "newOrder") {
-                this.orderQueueShow = true;
+                this.oQButtonsShow = true;
                 this.newOrderShow = true;
                 var newTab = window.open("localhost:3000/");
                 //raden under sätter nya taben i fokus.
                 tab.focus();
             } else if (tab === "orderQueue") {
-                this.orderQueueShow = true;
+                this.oQButtonsShow = true;
                 this.orderQueueShow = true;
             } else if (tab === "orderHistory") {
-                this.orderQueueShow = true;
                 this.orderHistoryShow = true;
             } else if (tab === "inventory") {
-                this.orderQueueShow = true;
                 this.inventoryShow = true;
             } else if (tab === "statistics") {
                 document.getElementById('statistics').style.display='block';
