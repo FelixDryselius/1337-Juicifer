@@ -248,6 +248,7 @@ button {
     display: flex;
     flex-flow: column;
     justify-content: space-around;
+    align-items: center;
 }
 
 .toppingButton{
@@ -307,8 +308,9 @@ button {
 
 #toppingCart {
     font-size: 0.7em;
-    width: 8em;
-    height: 2em;
+    width: 10em;
+    height: 3em;
+    margin-top: 2.8em;
 }
 
 #ingred5 {
@@ -316,7 +318,7 @@ button {
 }
 
 #ingred5cart {
-    width: 7em;
+    width: 15em;
 }
 
 #ingred4 {
@@ -325,7 +327,7 @@ button {
 }
 
 #ingred4Cart {
-    width: 6 em;
+    width: 6em;
 }
 
 #ingred3 {
@@ -353,7 +355,7 @@ button {
 }
 
 #ingred1Cart {
-    width: 4e
+    width: 4em;
 }
 
 #baseIngred {
