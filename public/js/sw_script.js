@@ -48,10 +48,10 @@ Vue.component('juices', {
 
 
 //document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()}
-    
-    
-    
-    
+
+
+
+
 
 
 function addJuiceToMiddle(){
@@ -100,15 +100,15 @@ Vue.component('ingredient', {
 </div>',
 
 
-data: function () {
-  return {
+    data: function () {
+    return {
     newValueInput: ''
-  }
-},
+}
+              },
 
-methods: {
-changeBalance: function () {
-    
+              methods: {
+              changeBalance: function () {
+
     this.$emit("set-temp-id");
     this.$emit("new-balance-set",this.newValueInput);
     this.newValueInput = "";
@@ -175,35 +175,35 @@ var vm = new Vue({
         transChange: {},
         tempId: -1
 
-},
-methods: {
-markDone: function (orderid) {
-socket.emit("orderDone", orderid);
-},
+    },
+    methods: {
+        markDone: function (orderid) {
+            socket.emit("orderDone", orderid);
+        },
 
 
-showSuperOrderContent: function(thisSuperOrder){ 
-this.selectedSuperOrder = thisSuperOrder;
-},
+        showSuperOrderContent: function(thisSuperOrder){ 
+            this.selectedSuperOrder = thisSuperOrder;
+        },
 
-setTempId: function(tId){
-this.tempId = tId - 1;
-},
-newBalanceFunction: function(nBalance){ 
-console.log("This is nBalance: " + nBalance)
-console.log("this is tempID: " + this.tempId)
-console.log(this.ingredients[this.tempId].balance_unit_to_ju_unit);
-this.transChange[this.tempId] = Number(nBalance) * this.ingredients[this.tempId].balance_unit_to_ju_unit -this.ingredients[this.tempId].stock;
-console.log(this.transChange[this.tempId]);
+        setTempId: function(tId){
+            this.tempId = tId - 1;
+        },
+        newBalanceFunction: function(nBalance){ 
+            console.log("This is nBalance: " + nBalance)
+            console.log("this is tempID: " + this.tempId)
+            console.log(this.ingredients[this.tempId].balance_unit_to_ju_unit);
+            this.transChange[this.tempId] = Number(nBalance) * this.ingredients[this.tempId].balance_unit_to_ju_unit -this.ingredients[this.tempId].stock;
+            console.log(this.transChange[this.tempId]);
 
-socket.emit("newInventory", {newBalance:this.transChange});
-console.log("did emit");
-this.transChange={};
+            socket.emit("newInventory", {newBalance:this.transChange});
+            console.log("did emit");
+            this.transChange={};
 
 
-},
+        },
 
-        
+
         hideAllTabs: function () {
             this.newOrderShow = false;
             this.orderQueueShow = false;

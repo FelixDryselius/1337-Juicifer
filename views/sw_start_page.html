@@ -47,55 +47,55 @@
 
                 <div id="oQBoxContainer">
 
-<div class="leftSideMenuBox" id="oQMenu">
+                    <div class="leftSideMenuBox" id="oQMenu">
 
 
-<!-- <h3>orderHistoryMenu</h3> -->
-<!-- <script>showOrders()</script> -->
+                        <!-- <h3>orderHistoryMenu</h3> -->
+                        <!-- <script>showOrders()</script> -->
 
 
-<!-- v-if="!superOrder.done" -->
-<div class="oneSuperOrder" v-for="thisSuperOrder in this.superOrders" v-if="!thisSuperOrder.done" v-on:click="showSuperOrderContent(thisSuperOrder)">
-{{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br>
-    {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br>
-    {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
+                        <!-- v-if="!superOrder.done" -->
+                        <div class="oneSuperOrder" v-for="thisSuperOrder in this.superOrders" v-if="!thisSuperOrder.done" v-on:click="showSuperOrderContent(thisSuperOrder)">
+                            {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br>
+                            {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br>
+                            {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
 
-</div>
-<!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
-<!-- <div class="oneSuperOrder">
+                        </div>
+                        <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
+                        <!-- <div class="oneSuperOrder">
 <ingredient ref="ingredient" v-for="item in ingredients" :item="item" :lang="lang" :key="item.ingredient_id">
 </ingredient>
 </div> -->
-<!-- detta är koden Mikael skrev -->
-<!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
-</div>
+                        <!-- detta är koden Mikael skrev -->
+                        <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
+                    </div>
 
-<!-- Deta är rutan i mitten där jucerna ska presenteras -->
-                    
- <div class="middleSideBox">
+                    <!-- Deta är rutan i mitten där jucerna ska presenteras -->
 
-     <div class="juicesInTheOrder" id="oQJuicesInOrder" onclick="pressedOHJuicesInOrder('orderQueue')">
-    
-    
-<div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
-    <h2>x {{drink.size}} custom {{drink.type}}    </h2>
-</div>
+                    <div class="middleSideBox">
 
-<!-- <div v-for="superOrder in superOrders" :drinks="drinks" :done="done" :activeDrink="activeDrink">
+                        <div class="juicesInTheOrder" id="oQJuicesInOrder" onclick="pressedOHJuicesInOrder('orderQueue')">
+
+
+                            <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
+                                <h2>x {{drink.size}} custom {{drink.type}}    </h2>
+                            </div>
+
+                            <!-- <div v-for="superOrder in superOrders" :drinks="drinks" :done="done" :activeDrink="activeDrink">
 <juices  v-for="drink in superOrder.drinks" >
 {{drink.ingredients}}
 </juices> 
 </div> -->
 
-</div>
                         </div>
+                    </div>
 
 
 
-<div class="rightSideBox" id="oQIngridients">
-<h3>orderQueue-{{uiLabels.ingredients}}</h3>
-Recipie L Apple juice
-</div>
+                    <div class="rightSideBox" id="oQIngridients">
+                        <h3>orderQueue-{{uiLabels.ingredients}}</h3>
+                        Recipie L Apple juice
+                    </div>
 
 
 
@@ -184,7 +184,7 @@ Recipie L Apple juice
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <th width="15%">
-                                     {{uiLabels.ingredients}}
+                                    {{uiLabels.ingredients}}
                                 </th>
                                 <th width="15%">
                                     {{uiLabels.JUsize}}
@@ -194,32 +194,32 @@ Recipie L Apple juice
                                 </th>
                                 <th width="15%">
                                     {{uiLabels.inventoryUnit}}
-    </th>
-<th width="15%">
-{{uiLabels.newbalance}}
-</th>
+                                </th>
+                                <th width="15%">
+                                    {{uiLabels.newbalance}}
+                                </th>
                                 <th width="25%">
-submit
-</th>
-</tr>
-</table>
-<ingredient ref="ingredient" 
-v-for="item in ingredients" 
-v-on:set-temp-id="setTempId(item['ingredient_id'])"
-v-on:new-balance-set ="newBalanceFunction"
-:item="item" 
-:lang="lang"
-:key="item.ingredient_id">
+                                    submit
+                                </th>
+                            </tr>
+                        </table>
+                        <ingredient ref="ingredient" 
+                                    v-for="item in ingredients" 
+                                    v-on:set-temp-id="setTempId(item['ingredient_id'])"
+                                    v-on:new-balance-set ="newBalanceFunction"
+                                    :item="item" 
+                                    :lang="lang"
+                                    :key="item.ingredient_id">
 
-</ingredient>
+                        </ingredient>
 
-</div>
+                    </div>
 
-</div>
+                </div>
 
 
-</div>
-<!--- statistics-->
+            </div>
+            <!--- statistics-->
             <div id="statistics" v-if="statisticsShow">
                 detta är statisticssidan - tillfälligt nere
                 <!-- <head>
