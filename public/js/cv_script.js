@@ -41,7 +41,7 @@ function selectDrinkSizeAndPrice(inputSize) { //and sets price
         case "M":
             currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 20;
             break;
-        case "M":
+        case "L":
             currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 30;
             break;
     }

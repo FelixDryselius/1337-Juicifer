@@ -264,30 +264,18 @@
                         <div class="oneDrink">
 
                             <li v-for="(aIngred,key) in writeOutIngredients(vueSuperOrder.drinks[vueSuperOrder.activeDrink])">{{uiLabels.ingredient}} {{ingredientType(key)}}: {{aIngred["ingredient_"+lang]}} <br></li>
-                            
-                            <!-- >   <li> Bas: {{drink.ingredients[6]["ingredient_sv"]}} </li><br>
-<li>Ingrediens 3: {{drink.ingredients[3]["ingredient_sv"]}}</li> <br>
-<li>Ingrediens 4: {{drink.ingredients[4]["ingredient_sv"]}}</li> <br>
-<li>Ingrediens 5: {{drink.ingredients[5]["ingredient_sv"]}}</li> <br>
-<li>Topping: {{drink.ingredients[0]["ingredient_sv"]}} </li> 
 
-</div>
-<h3>{{currentDrinkInfo}}  </h3>
-<ul v-for="tempDrink in vueSuperOrder.drinks[vueSuperOrder.activeDrink]"> 
-<li v-for="ingredient in writeOutIngredients(tempDrink)">{{ingredient["ingredient_"+lang]}}</li>
-</ul>-->
-                            
+
                         </div>
                     </div>    
                 </div>
             </div>
             <!--End of cart page--> 
 
-            <!--
-<footer class="footer" v-if="showFooter">
-<p>&copy;1337-Leet Force</p>
-</footer>
--->
+
+            <footer class="footer" v-if="showFooter">
+                <p>&copy;1337-Leet Force</p>
+            </footer>
 
         </div>
     </body>
