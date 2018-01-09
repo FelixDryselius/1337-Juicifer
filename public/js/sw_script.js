@@ -244,7 +244,7 @@ var vm = new Vue({
             return this.ingredients.filter(function (item) {
                 return item["ingredient_cat"] === cat;
             })
-        }
+        },
     }});
 /*--------------Rita grafer------------*/
 google.charts.load("current", {packages:["corechart"]});
