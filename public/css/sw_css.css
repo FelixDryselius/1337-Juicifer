@@ -248,9 +248,7 @@ div.menu button.active {
 /*Start css för INVENTORY*/
 
 
-.hide {
-    display: none;
-}
+
 
 .database {
     font-family: 'Hoefler Text', Georgia, 'Times New Roman', serif;
@@ -264,7 +262,7 @@ div.menu button.active {
     padding: 1em 0 1em 0;
 }
 
-/*INVENTORY*/
+
 
 #inventoryContainer {
     background-color: #cc99ff;
