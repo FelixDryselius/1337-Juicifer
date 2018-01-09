@@ -209,7 +209,7 @@
                                         <br>
                                         <div class="ingredButton ingredButtonJuice" id="ingred2" v-on:click="showIngredients('ingredCat',2)"><span>{{ingredient2}}</span></div>
                                         <br>
-                                        <div class="ingredButton ingredButtonJuice" id="ingred1" v-on:click="showIngredients('ingredCat',1)"><span>{{base}}</span></div>    
+                                        <div class="ingredButton ingredButtonJuice" id="ingred1" v-on:click="showIngredients('ingredCat',1)"><span>{{ingredient1}}</span></div>    
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +244,7 @@
                         <!--End of cart smoothie mug interface-->
                         <!--Start of cart juice mug interface-->
                         <div class="mugContainer" v-if="showJuiceInCart">
-                            <div class="mug">
+                            <div class="mugCart">
                                 <div class="toppingButton">
                                     <button id="toppingCart"><span style="display:none">{{topping}}</span></button>
                                 </div>
