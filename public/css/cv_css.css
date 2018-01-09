@@ -287,7 +287,7 @@ button {
     border-left: 0.6em solid transparent;
     box-sizing: content-box;
     border-radius: 6px;
-    margin-bottom: 0.2em;
+/*    margin-bottom: 0.2em;*/
 }
 
 .ingredButtonJuice {
@@ -309,7 +309,7 @@ button {
     font-size: 0.7em;
     width: 10em;
     height: 3em;
-    margin-top: 2.8em;
+    margin-top: 2.5em;
 }
 
 #ingred5 {
@@ -336,7 +336,7 @@ button {
 }
 
 #ingred3Cart {
-    width: 5em;
+    width: 6em;
 }
 
 #ingred2 {
