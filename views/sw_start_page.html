@@ -47,18 +47,30 @@
 
             <div id="oQBoxContainer">
 
+
                 <div class="leftSideMenuBox" id="oQMenu">
 
 
-                    <!-- v-if="!superOrder.done" -->
-                    <div class="oneSuperOrder" v-for="thisSuperOrder in this.superOrders" v-if="!thisSuperOrder.done" v-on:click="showSuperOrderContent(thisSuperOrder)">
 
-                        <!---->
-                        {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br> {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br> {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
+                        <!-- v-if="!superOrder.done" -->
+                        <div class="oneSuperOrder" v-for="thisSuperOrder in this.superOrders" v-if="!thisSuperOrder.done" v-on:click="showSuperOrderContent(thisSuperOrder)">
+                            {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br>
+                            {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br>
+                            {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
+                        </div>
 
+                        <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
+                        <!-- <div class="oneSuperOrder">
+<ingredient ref="ingredient" v-for="item in ingredients" :item="item" :lang="lang" :key="item.ingredient_id">
+</ingredient>
+</div> -->
+                        <!-- detta är koden Mikael skrev -->
+                        <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
                     </div>
 
-                </div>
+                    <!-- Deta är rutan i mitten där jucerna ska presenteras -->
+
+                    
 
                 <!-- Deta är rutan i mitten där jucerna ska presenteras -->
 
@@ -69,7 +81,9 @@
 
                         <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
                             <h2>x {{drink.size}} custom {{drink.type}} </h2>
+
                         </div>
+                    </div>
 
                     </div>
                 </div>
@@ -170,16 +184,57 @@
 
             </div>
 
-          
 
-        </div>
+            <!--INVENTORY -->
+
+            <div id="inventory" v-if="inventoryShow">
+                <!-- HÄR SKAPAS SIDSPECIFIKA GREJER -->
+                <div id="inventoryContainer">
 
 
-    </div>
-    <!--- statistics-->
-    <div id="statistics" v-if="statisticsShow">
-        detta är statisticssidan - tillfälligt nere
-        <!-- <head>
+                    <div id="inventoryInformation">
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <th width="15%">
+                                    {{uiLabels.ingredients}}
+                                </th>
+                                <th width="15%">
+                                    {{uiLabels.JUsize}}
+                                </th>
+                                <th width="15%">
+                                    {{uiLabels.JUbalance}}
+                                </th>
+                                <th width="15%">
+                                    {{uiLabels.inventoryUnit}}
+                                </th>
+                                <th width="15%">
+                                    {{uiLabels.newbalance}}
+                                </th>
+                                <th width="25%">
+                                    submit
+                                </th>
+                            </tr>
+                        </table>
+                        <ingredient ref="ingredient" 
+                                    v-for="item in ingredients" 
+                                    v-on:set-temp-id="setTempId(item['ingredient_id'])"
+                                    v-on:new-balance-set ="newBalanceFunction"
+                                    :item="item" 
+                                    :lang="lang"
+                                    :key="item.ingredient_id">
+
+                        </ingredient>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!--- statistics-->
+            <div id="statistics" v-if="statisticsShow">
+                detta är statisticssidan - tillfälligt nere
+                <!-- <head>
 
 <script type="text/javascript">
 google.charts.load("current", {packages:["corechart"]});

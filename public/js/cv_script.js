@@ -124,7 +124,9 @@ var vm = new Vue({
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
             alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber + "\
-                Thank you for your order. Your order number is: " + orderNumber);
+Thank you for your order. Your order number is: " + orderNumber);
+
+
         });
 
     },
@@ -167,8 +169,8 @@ var vm = new Vue({
 
         showAllIngredients: function(){
             this.chosenCatName='';
-    this.showIngredientsButtons = true;
-                this.showCatButtons = false;
+            this.showIngredientsButtons = true;
+            this.showCatButtons = false;
         },
 
 
@@ -186,6 +188,7 @@ var vm = new Vue({
 
         showTab: function (tab) {
             console.log(tab)
+            console.log(this.ingredients[0].stock);
             this.hideAllTabs();
             if (tab === "sizePage") {
                 this.showSizePage = true;
