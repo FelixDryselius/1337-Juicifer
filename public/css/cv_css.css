@@ -23,7 +23,7 @@ html button {
 
 button {
     background-color: #49c0f0;
-    color: #E6EAEF;
+    color: #2e2e1f; /*#E6EAEF;*/
     border-radius: 6px;
     border-width: 0;
     box-shadow: 0 -2px 0 0 rgba(0, 0, 0, 0.3) inset;

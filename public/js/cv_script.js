@@ -421,7 +421,7 @@ var vm = new Vue({
             }
         },
 
-        resetMugButtons: function() { //Används inte nu, men behövs när fler drycker kan beställas.
+        resetMugButtons: function() { //Används inte nu, men behövs när fler drycker kan beställas. //en knapp som inte finns (bas i en juice) kan inte kalas på. -Ingrid
             this.base= "Base";
             this.ingredient1="Ingredient 1";
             this.ingredient2="Ingredient 2";
@@ -430,8 +430,8 @@ var vm = new Vue({
             this.ingredient5="Ingredient 5";
             this.topping="Topping";
             document.getElementById("topping").style.backgroundColor = "lightgrey"; // byter knappfärg
-            document.getElementById("ingred1").style.borderTop = "3em solid lightgrey"; // byter knappfärg
-            document.getElementById("ingred2").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+          //  document.getElementById("ingred1").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+          //  document.getElementById("ingred2").style.borderTop = "3em solid lightgrey"; // byter knappfärg
             document.getElementById("ingred3").style.borderTop = "3em solid lightgrey"; // byter knappfärg
             document.getElementById("ingred4").style.borderTop = "3em solid lightgrey"; // byter knappfärg
             document.getElementById("ingred5").style.borderTop = "3em solid lightgrey"; // byter knappfärg
@@ -458,7 +458,8 @@ var vm = new Vue({
             //So that the Vue element is updated
             sendCurrentSuperOrderToVue();
             currentSuperOrder = new superOrder();
-            this.resetMugButtons();
+            //this.resetMugButtons();
+            
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
 
             socket.emit('superOrder', {superOrderProperties: this.vueSuperOrder});
