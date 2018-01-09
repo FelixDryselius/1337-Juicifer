@@ -189,6 +189,7 @@ var vm = new Vue({
         socket.on("orderNumber",function(orderNumber) {
             alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber + "\
 Thank you for your order. Your order number is: " + orderNumber);
+
         });
 
     },
@@ -250,6 +251,7 @@ Thank you for your order. Your order number is: " + orderNumber);
 
         showTab: function (tab) {
             console.log(tab)
+            console.log(this.ingredients[0].stock);
             this.hideAllTabs();
             if (tab === "sizePage") {
                 this.showSizePage = true;

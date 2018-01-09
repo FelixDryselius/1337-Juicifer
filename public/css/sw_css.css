@@ -12,7 +12,7 @@ table {
 td,
 th {
     border: 1px solid #dddddd;
-    text-align: left;
+    text-align: center;
     padding: 8px;
 }
 
@@ -171,8 +171,9 @@ div.menu button.active {
     cursor: pointer;
 }
 
-.oneJuice{
-    border: dotted red; /*Denna border är här under testing för att se enklare.*/
+.oneDrink{
+    border: dotted red;
+    /*Denna border är här under testing för att se enklare.*/
 }
 
 .pressedDiv {
@@ -243,14 +244,13 @@ div.menu button.active {
     border: 2px solid rgb(125, 124, 127);
 }
 
+
 /*Slut ORDER HISTORY*/
 
 /*Start css för INVENTORY*/
 
 
-.hide {
-    display: none;
-}
+
 
 .database {
     font-family: 'Hoefler Text', Georgia, 'Times New Roman', serif;
@@ -261,10 +261,10 @@ div.menu button.active {
     margin: 0px;
     text-transform: capitalize;
     border: 3px solid #cdc;
-    padding: 1em;
+    padding: 1em 0 1em 0;
 }
 
-/*INVENTORY*/
+
 
 #inventoryContainer {
     background-color: #cc99ff;
@@ -296,7 +296,7 @@ div.menu button.active {
 
 .SubmitButton {
     display: inline-block;
-    padding: 15px 25px;
+    padding: 15px 25%;
     font-size: 24px;
     cursor: pointer;
     text-align: center;
