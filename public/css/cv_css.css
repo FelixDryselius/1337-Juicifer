@@ -1,12 +1,9 @@
 
-
 /*Start - css för alla sidor*/
-
 html {
     font-family: 'Lato', sans-serif;
 }
 
-/*Start på css för start page*/
 .header{
     text-align: center;
     position: relative;
@@ -30,9 +27,7 @@ button {
 }
 /*Slut - css för alla sidor*/
 
-
 /*Start - Hjälpsida popup*/
-
 .blackOverlay {
     display: none;
     position: absolute;
@@ -75,12 +70,9 @@ button {
     margin: 4px 2px;
     cursor: pointer;
 }
+/*Slut - hjälpsida popup*/
 
-/*Slut - hjälpsida*/
-
-
-/*Start - Språk och hjälpknappar startsida*/
-
+/*Start - språk och hjälpknappar startsida*/
 .helpLangContainer {
     display: flex;
     justify-content: space-between;
@@ -99,7 +91,7 @@ button {
     width: 13vw;
 }
 
-#abort, #returnButton { /* båda knapparna är röda*/
+#abort, #returnButton { /*båda knapparna är röda*/
     background-color: #EA3546;
 }
 
@@ -112,12 +104,9 @@ button {
     width: 2em;
     height: 2em;
 }
-
 /*Slut - språk och hjälpknappar startsida*/
 
-
-/*Start - Start page*/
-
+/*Start - start page*/
 .header {
     text-align: center;
     position: relative;
@@ -150,12 +139,10 @@ button {
     font-size: 1.6em;
     width: 7em;
 }
+/*Slut - start page*/
 
-/*Slut - Start page*/
 
-
-/*Start - Choose size page*/
-
+/*Start - choose size page*/
 #size main {
     margin-top: 5em;
 }
@@ -181,12 +168,9 @@ button {
     height: 10em;
     width: 10em;
 }
+/*Slut - choose size page*/
 
-/*Slut - Choose size page*/
-
-
-/*Start - Topbar*/
-
+/*Start - topbar*/
 .topBarContainer{
     text-align: center;
     height: 3em;
@@ -216,12 +200,9 @@ button {
 #payButtonGreen {
     background-color: #6EEB83;
 }
+/*Slut - topbar*/
 
-/*Slut - Topbar*/
-
-
-/*Start - Mug*/
-
+/*Start - mug*/
 .mugContainer {
     display: flex;
     margin-right: 3em;
@@ -401,12 +382,9 @@ button {
 #ingredJuice {
     margin-bottom: 1em;
 }
+/*Slut - mug*/
 
-/*Slut - Mug*/
-
-
-/*Start - Cart page*/
-
+/*Start - cart page*/
 .cartBox{
     display: flex;
     flex: 1;
@@ -415,6 +393,7 @@ button {
     justify-content: space-between;
     /*    overflow: hidden;*/
 }
+
 .cartOverviewBox{
     flex: 4;
     flex-direction: row;
@@ -427,6 +406,7 @@ button {
     overflow: auto;
     align-self: stretch;
 }
+
 .cartRecipeBox{
     flex: 2;
     padding: 10px;
@@ -438,12 +418,9 @@ button {
     overflow: auto;
     align-self: stretch;
 }
-
-/*Slut - Cart page*/
-
+/*Slut - cart page*/
 
 /*Start - ingred box*/
-
 .mainContent {
     display: flex;
     align-content: center;
@@ -508,12 +485,9 @@ input.head {
     line-height: 75px;
     font-size: 1.5em;
 }
-
 /*Slut - ingred box*/
 
-
 /*Start - footer*/
-
 .footer {
     position: fixed;
     left: 0;
