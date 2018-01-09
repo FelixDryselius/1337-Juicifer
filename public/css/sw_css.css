@@ -217,6 +217,10 @@ div.menu button.active {
     width: 24%
 }
 
+#myCheck {
+    float:right;
+}
+
 /*Slut ORDER QUEUE*/
 
 /*Start css för ORDER HISTORY*/

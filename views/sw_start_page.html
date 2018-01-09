@@ -78,19 +78,22 @@
 
                 <div class="middleSideBox">
 
-                    <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggle()" tabindex="-1">
+                    <div class="juicesInTheOrder" id="oQJuicesInOrder"> 
 
 
-                        <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
+                        <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks" v-on:click="hideRightSideBoxToggle()">
                             <h2>x {{drink.size}} custom {{drink.type}} </h2>
 
                         </div>
+                                    <input type="checkbox" id="myCheck">
+
                     </div>
 
 
                         </div>
                      
-                    </div>
+                
+
                 </div>
 
 
@@ -108,7 +111,9 @@
 
 
                 <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">{{ uiLabels.cancel }}</button>
-                <button class="oQButtons" id="finishOrderButton" onclick="pressedFinishOrder()">{{ uiLabels.ready }}</button>
+            
+            
+                <button class="oQButtons" id="finishOrderButton" v-for="thisSuperOrder in selectedSuperOrder" v-on:click="pressedFinishOrder(thisSuperOrder)">{{ uiLabels.ready }}</button>
 
             </div>
 
