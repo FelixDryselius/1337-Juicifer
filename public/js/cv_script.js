@@ -154,6 +154,7 @@ Vue.component('ingredient', {
     }
 });
 
+
 var vm = new Vue({
     el: '#all_cv',
     mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
