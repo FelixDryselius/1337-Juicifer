@@ -35,11 +35,11 @@ Vue.component('juices', {
 </button>\
 </div>',
     methods: {
-    showRecipe: function () {
-    window.alert("visa recept");
-}
-              }
-              });
+        showRecipe: function () {
+            window.alert("visa recept");
+        }
+    }
+});
 
 
 // SLUT ORDER QUEUE FUNKTIONER
@@ -48,15 +48,15 @@ Vue.component('juices', {
 
 
 //document.getElementById("oHJuicesInOrder").onclick = function() {pressedOHJuicesInOrder()}
-    
-    
-    
-    
 
 
-function addJuiceToMiddle(){
+
+
+
+
+function addJuiceToMiddle() {
     var variabelNamn = document.getElementById('oQJuicesInOrder');
-    variabelNamn.innerHTML += "skriv ut specifika juicen";    
+    variabelNamn.innerHTML += "skriv ut specifika juicen";
 }
 
 function pressedOHJuicesInOrder(tabSelector) {
@@ -69,7 +69,7 @@ function pressedOHJuicesInOrder(tabSelector) {
     } else if (tabSelector == "orderQueue") {
         console.log("tryckt på juices från queue");
         document.getElementById("oQJuicesInOrder").classList.toggle("pressedDiv");
-        document.getElementById("oQIngridients").classList.toggle("hide");
+
     }
 }
 
@@ -85,9 +85,10 @@ function typeTextToDiv(text, div_id) {
 
 
 
+
 Vue.component('ingredient', {
     props: ['item', 'lang'],
-    template:  ' <div class = "database">\
+    template: ' <div class = "database">\
 <table width="100%" border="0" cellspacing="0" cellpadding="0" >\
 <td  width="15%"> {{item["ingredient_"+ lang]}}</td>\
 <td width="15%"> {{item["JU_volume"]}} mL </td>\
@@ -118,48 +119,6 @@ changeBalance: function () {
 })
 //SLUT INVENTORY
 
-//STATISTICS START
-
-//STATISTICS SLUT
-
-
-
-
-
-// INGRIDS TESTFUNKTIONER
-// testar div
-
-function functionTextTillDiv() {
-    var variabelNamn = document.getElementById('testdiv');
-    console.log(variabelNamn);
-    variabelNamn.innerHTML += "Text som ploppar upp för att jag tryck på knappen. ";
-}
-
-function functionTömDiv() {
-    var variabelNamn = document.getElementById('testdiv');
-    variabelNamn.innerHTML = " ";
-}
-
-
-// Start Vue:
-/* Vue.component('ingredient', {
-    props: ['item', 'lang'],
-    template: ' < {{item["ingredient_"+ lang]}} >',
-    methods: {
-        addIngredientToDrink: function () {
-            this.$emit('add-ingredient');
-        },
-    }
-}); */
-
-
-/*Vue.component('inventoryIngredient', {
-  props: ['item', 'lang'],
-  template: '<div> {{item["ingredient_"+ lang]}}, {{item.stock}} </div>'
-});*/
-/*Vue.component('inventoryStock', {
-  template: '<div> text  </div>'
-});*/
 
 
 var vm = new Vue({
@@ -171,34 +130,42 @@ var vm = new Vue({
         orderHistoryShow: false,
         inventoryShow: false,
         statisticsShow: false,
+        hideRightBox: false,
         selectedSuperOrder: {},
         newBalance: {},
         tempId: -1
 
-},
-methods: {
-markDone: function (orderid) {
-socket.emit("orderDone", orderid);
-},
+
+    },
+    methods: {
+        markDone: function (orderid) {
+            socket.emit("orderDone", orderid);
+        },
+        hideRightSideBoxToggle: function () {
+            this.hideRightBox = !this.hideRightBox;
+        },
+
+        showSuperOrderContent: function (thisSuperOrder) {
+            this.selectedSuperOrder = thisSuperOrder;
+        },
+      
+        showSuperOrderContent: function(thisSuperOrder){ 
+        this.selectedSuperOrder = thisSuperOrder;
+        },
+
+        setTempId: function(tId){
+        this.tempId = tId;
+        },
+        newBalanceFunction: function(nBalance){ 
+        this.newBalance[this.tempId]=nBalance;
+
+        socket.emit("newInventory",{inventoryChange: true, newBalance: this.newBalance});
+        this.newBalance={};
+        },    
 
 
-showSuperOrderContent: function(thisSuperOrder){ 
-this.selectedSuperOrder = thisSuperOrder;
-},
 
-setTempId: function(tId){
-this.tempId = tId;
-},
-newBalanceFunction: function(nBalance){ 
-this.newBalance[this.tempId]=nBalance;
-
-socket.emit("newInventory",{inventoryChange: true, newBalance: this.newBalance});
-this.newBalance={};
-
-
-},
-
-        
+       
         hideAllTabs: function () {
             this.newOrderShow = false;
             this.orderQueueShow = false;
@@ -213,24 +180,20 @@ this.newBalance={};
                 var newTab = window.open("localhost:3000/");
                 //raden under sätter nya taben i fokus.
                 tab.focus();
-            }
-            else if (tab === "orderQueue") {
+            } else if (tab === "orderQueue") {
                 this.orderQueueShow = true;
-            }
-            else if (tab === "orderHistory") {
+            } else if (tab === "orderHistory") {
                 this.orderHistoryShow = true;
-            }
-            else if (tab === "inventory") {
+            } else if (tab === "inventory") {
                 this.inventoryShow = true;
-            }
-            else if (tab === "statistics") {
+            } else if (tab === "statistics") {
                 this.statisticsShow = true;
             }
 
         },
 
-        filtered_ingredients: function(cat) {
-            return this.ingredients.filter(function(item) {
+        filtered_ingredients: function (cat) {
+            return this.ingredients.filter(function (item) {
                 return item["ingredient_cat"] === cat;
             })
         }
