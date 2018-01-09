@@ -62,10 +62,7 @@
                         </div>
 
                         <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
-                        <!-- <div class="oneSuperOrder">
-<ingredient ref="ingredient" v-for="item in ingredients" :item="item" :lang="lang" :key="item.ingredient_id">
-</ingredient>
-</div> -->
+     
                         <!-- detta är koden Mikael skrev -->
                         <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
                     </div>
@@ -78,39 +75,51 @@
 
                     <div class="middleSideBox">
 
-                        <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggle()" tabindex="-1">
+
+                    <div class="juicesInTheOrder" id="oQJuicesInOrder"> 
 
 
-                            <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
-                                <h2>x {{drink.size}} custom {{drink.type}} </h2>
+                        <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks" v-on:click="hideRightSideBoxToggle()">
+                            <h2>x {{drink.size}} custom {{drink.type}} </h2>
+
 
                             </div>
                         </div>
 
 
+
                     </div>
 
-                </div>
+                    <div class="check"><label class="myCheckbox"> <input type="checkbox" id="myCheck">
+                                    <span class="checkmark"></span>
+                        </label> </div>
+
+                    </div>
+
+
+                        </div>
+                     
+                
+
+
+                <div class="rightSideBox" id="oQIngridients" v-if="hideRightBox">
+                    <h3> {{uiLabels.ingredients}}</h3>
+                    <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
+                        <li> Bas: {{drink.ingredients[6]["ingredient_sv"]}} </li><br>
+                        <li>Ingrediens 3: {{drink.ingredients[3]["ingredient_sv"]}}</li> <br>
+                        <li>Ingrediens 4: {{drink.ingredients[4]["ingredient_sv"]}}</li> <br>
+                        <li>Ingrediens 5: {{drink.ingredients[5]["ingredient_sv"]}}</li> <br>
+                        <li>Topping: {{drink.ingredients[0]["ingredient_sv"]}} </li>
+                    </div>
             </div>
-
-
-
-            <div class="rightSideBox" id="oQIngridients" v-if="hideRightBox">
-                <h3> {{uiLabels.ingredients}}</h3>
-                <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
-                    <li> Bas: {{drink.ingredients[6]["ingredient_sv"]}} </li><br>
-                    <li>Ingrediens 3: {{drink.ingredients[3]["ingredient_sv"]}}</li> <br>
-                    <li>Ingrediens 4: {{drink.ingredients[4]["ingredient_sv"]}}</li> <br>
-                    <li>Ingrediens 5: {{drink.ingredients[5]["ingredient_sv"]}}</li> <br>
-                    <li>Topping: {{drink.ingredients[0]["ingredient_sv"]}} </li>
-                </div>
 
 
 
                 <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">{{ uiLabels.cancel }}</button>
-                <button class="oQButtons" id="finishOrderButton" onclick="pressedFinishOrder()">{{ uiLabels.ready }}</button>
+            
+            
+                <button class="oQButtons" id="finishOrderButton" v-on:click="pressedFinishOrder(selectedSuperOrderID)">{{ uiLabels.ready }}</button>
 
-            </div>
 
 
 
@@ -130,25 +139,27 @@
                         </div>
 
 
-
+                </div>
+                <!-- HÖGRA BOXEN -->
+                <div class="rightSideBox" id="oHIngridients" v-if="hideRightBoxHistory">
+                   <h3> {{uiLabels.ingredients}}</h3>
+                    <div class="oneDrink" v-for="drink in selectedSuperOrderHistory.drinks">
+                        <li> Bas: {{drink.ingredients[6]["ingredient_sv"]}} </li><br>
+                        <li>Ingrediens 3: {{drink.ingredients[3]["ingredient_sv"]}}</li> <br>
+                        <li>Ingrediens 4: {{drink.ingredients[4]["ingredient_sv"]}}</li> <br>
+                        <li>Ingrediens 5: {{drink.ingredients[5]["ingredient_sv"]}}</li> <br>
+                        <li>Topping: {{drink.ingredients[0]["ingredient_sv"]}} </li>
                     </div>
-                    <!-- HÖGRA BOXEN -->
-                    <div class="rightSideBox" id="oHIngridients" v-if="hideRightBoxHistory">
-                        <h3>orderHistory-{{uiLabels.ingredients}}</h3>
-                        Recipie L Apple juice
-                    </div>
-
-
+                </div>
 
                     <!-- MITTENBOXEN -->
                     <div class="middleSideBox">
 
                         <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggleHistory()">
-
-
-                            <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
-                                <h2>x {{drink.size}} custom {{drink.type}} </h2>
-                            </div>
+                            
+                        <div class="oneDrink" v-for="drink in selectedSuperOrderHistory.drinks">
+                            <h2>x {{drink.size}} custom {{drink.type}} </h2>
+                        </div>
 
                         </div>
                     </div>
@@ -211,6 +222,7 @@
             </div>
 
         </div>
+
         <!--- statistics-->
 
 

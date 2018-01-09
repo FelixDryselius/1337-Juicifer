@@ -12,12 +12,17 @@ var currentSuperOrder;
 
 // ORDER QUEUE START
 function pressedCancelOrder() {
-    window.alert("du har tryckt på Cancel order");
+    var x = document.getElementById("myCheck").checked;
+    if (x == true){
+        document.getElementById("temo").innerHTML = x;
 }
+    }
+
+
 
 function pressedFinishOrder(size) {
-    window.alert("du har tryckt på Finish order");
 }
+
 
 /*Hur skriver man ut variablerna size härifrån?*/
 Vue.component('juices', {
@@ -74,6 +79,7 @@ function typeTextToDiv(text, div_id) {
 }
 
 
+
 // SLUT ORDER HISTORY
 
 // INVENTORY START
@@ -127,6 +133,7 @@ var vm = new Vue({
         hideRightBoxHistory: false,
         hideMiddleBox: false,
         selectedSuperOrder: {},
+        selectedSuperOrderID: -1,
         selectedSuperOrderHistory: {},
         transChange: {},
         tempId: -1
@@ -162,7 +169,6 @@ var vm = new Vue({
         hideRightSideBoxToggle: function () {
             this.hideRightBox = !this.hideRightBox;
 
-
         },
 
         hideRightSideBoxToggleHistory: function () {
@@ -172,10 +178,21 @@ var vm = new Vue({
         hideMiddleBoxToggleHistory: function () {
             this.hideMiddleBox = !this.hideMiddleBox;
         },
-
+        
+        pressedFinishOrder: function (thisSuperOrder) {
+        var x = document.getElementById("myCheck").checked;
+        if (x == true){
+        this.superOrders[thisSuperOrder].done = true;
+        this.selectedSuperOrder.drinks = [];
+            socket.emit("orderDone", thisSuperOrder);
+}
+    
+  
+},
 
         showSuperOrderContent: function (thisSuperOrder) {
             this.selectedSuperOrder = thisSuperOrder;
+            this.selectedSuperOrderID = thisSuperOrder.orderId;
         },
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
