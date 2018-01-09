@@ -23,12 +23,11 @@ html button {
 
 button {
     background-color: #49c0f0;
-    color: #E6EAEF;
+    color: #2e2e1f; /*#E6EAEF;*/
     border-radius: 6px;
     border-width: 0;
     box-shadow: 0 -2px 0 0 rgba(0, 0, 0, 0.3) inset;
 }
-
 /*Slut - css för alla sidor*/
 
 
@@ -100,7 +99,7 @@ button {
     width: 13vw;
 }
 
-#abort {
+#abort, #returnButton { /* båda knapparna är röda*/
     background-color: #EA3546;
 }
 
@@ -248,6 +247,7 @@ button {
     display: flex;
     flex-flow: column;
     justify-content: space-around;
+    align-items: center;
 }
 
 .toppingButton{
@@ -307,8 +307,9 @@ button {
 
 #toppingCart {
     font-size: 0.7em;
-    width: 8em;
-    height: 2em;
+    width: 10em;
+    height: 3em;
+    margin-top: 2.8em;
 }
 
 #ingred5 {
@@ -316,7 +317,7 @@ button {
 }
 
 #ingred5cart {
-    width: 7em;
+    width: 15em;
 }
 
 #ingred4 {
@@ -325,7 +326,7 @@ button {
 }
 
 #ingred4Cart {
-    width: 6 em;
+    width: 6em;
 }
 
 #ingred3 {
@@ -353,7 +354,7 @@ button {
 }
 
 #ingred1Cart {
-    width: 4e
+    width: 4em;
 }
 
 #baseIngred {

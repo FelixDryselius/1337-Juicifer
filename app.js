@@ -111,26 +111,52 @@ Data.prototype.addSuperOrder = function (recievedSuperOrder) {
 
     this.superOrders[orderId].done = false; //this.superOrders[/*recievedSuperOrder.orderId*/orderId].done = false; //Så här såg den ut innan - Ingrid
     this.superOrders[orderId].orderId = orderId;
+    
+    for(var anEl in this.superOrders[orderId].drinks){
+        console.log("for loop with anEl started")
+        var sizeMultiplier = 3;
+        var aChange = {};
+        if(this.superOrders[orderId].drinks[anEl].size=="S"){sizeMultiplier = 1}
+        if(this.superOrders[orderId].drinks[anEl].size=="M"){sizeMultiplier = 2}
+        var tempIngredients = this.superOrders[orderId].drinks[anEl].ingredients;
+        for(var el in tempIngredients){
+            console.log("for loop where ingredients added to aChange")
+            if(tempIngredients[el]!==0){
+                var aIngredId = tempIngredients[el].ingredient_id -1;
+                aChange[aIngredId] = (- 1*sizeMultiplier);
 
+            }
+        }
+        data.uppdateTransactions(aChange);
+    }
+
+    return orderId;
+};
+
+Data.prototype.uppdateTransactions = function(aChange) {
     var transactions = this.data[transactionsDataName];
+    var ingredKeys =[];
+    for(var key in aChange){
+        ingredKeys.push(key);
+    }
 
-
-    //ALERT ALERT ALERT ALERT THIS SHOULD NOT BE REMOVED BUT MUST BE WORKED WITH IN ODER TO FUNCTION      
-    // THIS IS COMMENTED BECAUSE WE DON'T WANT THE PROGRAM TO CRASH
-    // DATE OF THIS COMMENT IS 20/12-17
-    /*   transId =  transactions[transactions.length - 1].transaction_id,
-        i = recievedSuperOrder.superOrderProperties.ingredients,
+    var transId =  transactions[transactions.length - 1].transaction_id,
+        i = ingredKeys,
         k;
 
     for (k = 0; k < i.length; k += 1) {
         transId += 1;
+        var anIngredientId = Number(i[k])+1;
+        
+        console.log("this is transID: " + transId);
+        console.log("this is ingredientId: " + anIngredientId);
+        console.log("this is aChange: " + aChange[i[k]]);
         transactions.push({transaction_id: transId,
-                           ingredient_id: i[k].ingredient_id,
-                           change: -1});
-    }*/
-
-    return orderId;
+                           ingredient_id: anIngredientId,
+                           change: aChange[i[k]]});
+    }
 };
+
 Data.prototype.getAllSuperOrders = function () {
     return this.superOrders;
 };
@@ -168,6 +194,11 @@ io.on('connection', function (socket) {
     socket.on('orderDone', function (orderId) {
         data.markOrderDone(orderId);
         io.emit('currentQueue', {superOrders: data.getAllSuperOrders() });
+    });
+    socket.on('newInventory',function(aChange){ 
+        var newBalance = aChange.newBalance;
+        data.uppdateTransactions(newBalance);
+        io.emit('currentQueue', {ingredients: data.getIngredients() });
     });
 });
 
