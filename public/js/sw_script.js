@@ -20,6 +20,11 @@ function pressedCancelOrder() {
 
 
 
+function pressedFinishOrder(size) {
+    window.alert("du har tryckt på Finish order");
+}
+
+
 /*Hur skriver man ut variablerna size härifrån?*/
 Vue.component('juices', {
     props: ['uiLabels', 'drink', 'orderId', 'lang'],
@@ -80,11 +85,9 @@ function typeTextToDiv(text, div_id) {
 // INVENTORY START
 
 
-
-
 Vue.component('ingredient', {
     props: ['item', 'lang'],
-    template: ' <div class = "database">\
+    template: '<div class = "database">\
 <table width="100%" border="0" cellspacing="0" cellpadding="0" >\
 <td  width="15%"> {{item["ingredient_"+ lang]}}</td>\
 <td width="15%"> {{item["JU_volume"]}} {{item["JU_unit"]}} / {{item["balance_unit"]}} </td>\
@@ -138,6 +141,17 @@ var vm = new Vue({
 
 
     methods: {
+        getIngredData: function() { 
+            var ingredArray = [['Ingrediens', 'Saldo']];
+            for (var i = 1; i < this.ingredients.length/10; i++) {
+                ingredArray.push([this.ingredients[i].ingredient_sv, this.ingredients[i].balance]);
+            }
+            console.log(ingredArray);
+
+
+            return ingredArray;
+        },
+       
         markDone: function (orderid) {
             socket.emit("orderDone", orderid);
         },
@@ -217,8 +231,22 @@ var vm = new Vue({
                 return item["ingredient_cat"] === cat;
             })
         }
-    }
-});
+    }});
+/*--------------Rita grafer------------*/
+google.charts.load("current", {packages:["corechart"]});
+google.charts.setOnLoadCallback(drawChart);
+
+
+function drawChart() {
+    var ingredientData = google.visualization.arrayToDataTable(vm.getIngredData());
+    var ingredientOptions = {
+        title: 'Fördelning av beställda ingredienser'
+    };
+    console.log(ingredientData);
+    var chart = new google.visualization.PieChart(document.getElementById('chart'));
+    chart.draw(ingredientData, ingredientOptions);
+}
+
 
 
 /*****************TESTER****************/

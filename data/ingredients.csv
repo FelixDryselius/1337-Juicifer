@@ -1,61 +1,61 @@
-ingredient_id,ingredient_sv,ingredient_en,ingredient_cat,JU_volume,JU_unit,balance_unit_to_ju_unit,balance_unit
-1,banan,banana,fruit,0.5,pcs,2,pcs
-2,citron,lemon,fruit,0.5,pcs,2,pcs
-3,lime,lime,fruit,1,pcs,1,pcs
-4,apelsin,orange,fruit,0.5,pcs,2,pcs
-5,kaffe,coffee,base,125,ml,160,kg
-6,vaniljglass,vanilla ice cream,base,125,ml,8,litre
-7,sodavatten,soda water,base,125,ml,8,litre
-8,vatten,water,base,125,ml,8,litre
-9,is,ice,topping,5,pcs,8,litre
-10,guava,guava,fruit,2,pcs,0.5,pcs
-11,grönkål,kale,vegetable,50,gram,20,kg
-12,morot,carrot,vegetable,50,gram,20,kg
-13,ingefära,ginger,vegetable,50,gram,20,kg
-14,chili,chili,topping,5,ml,200,kg
-15,kanel,cinnamon,topping,5,ml,200,kg
-16,kakao,cocoa,topping,5,ml,200,kg
-17,äpple,apple,fruit,0.5,pcs,2,pcs
-18,päron,pear,fruit,0.5,pcs,2,pcs
-19,ananas,pineapple,fruit,0.125,pcs,8,pcs
-20,katrinplommon,prune,fruit,4,pcs,0.25,pcs
-21,blåbär,blueberry,berry,50,ml,20,litre
-22,hallon,raspberry,berry,50,ml,20,litre
-23,jordgubbe,strawberry,berry,80,ml,12.5,litre
-24,pumpa,pumpkin,fruit,1,pcs,1,pcs
-25,selleri,celery,vegetable,0.5,pcs,2,pcs
-26,mango,mango,fruit,0.25,pcs,4,pcs
-27,grapefrukt,grapefruit,fruit,0.5,pcs,2,pcs
-28,druva,grape,fruit,60,ml,16,kg
-29,spenat,spinach,vegetable,50,gram,20,kg
-30,rödbeta,beet,vegetable,50,gram,20,kg
-31,mjölk,milk,base,125,ml,8,litre
-32,sojadryck,soy milk,base,125,ml,8,litre
-33,havredryck,oat milk,base,125,ml,8,litre
-34,kokosmjölk,coconut milk,base,125,ml,8,litre
-35,mandelmjölk,almond milk,base,125,ml,8,litre
-36,kokosnöt,coconut,fruit,0.125,pcs,8,pcs
-37,mynta,mint leaves,topping,5,pcs,200,litre
-38,chiafrön,chia seeds,topping,15,ml,66,kg
-39,cashewnötter,cashew nuts,topping,50,ml,20,kg
-40,valnötter,walnut,topping,50,ml,20,kg
-41,mandel,almond,topping,50,ml,20,kg
-42,hasselnötter,hazelnut,topping,50,ml,20,kg
-43,broccoli,broccoli,vegetable,50,gram,20,kg
-44,blomkål,cauliflower,vegetable,50,gram,20,kg
-45,honung,honey,topping,15,ml,66,kg
-46,socker,sugar,topping,15,ml,66,kg
-47,jordnötssmör,peanut butter,topping,25,ml,40,kg
-48,kiwi,kiwi,fruit,0.5,pcs,2,pcs
-49,russin,raisins,topping,25,ml,40,kg
-50,dadlar,dates,fruit,80,ml,12.5,kg
-51,avocado,avocado,vegetable,0.5,pcs,2,pcs
-52,linfrön,flax seeds,topping,15,ml,66,kg
-53,tomat,tomato,vegetable,0.5,pcs,2,pcs
-54,keso,cottage cheese,base,125,ml,8,litre
-55,spirulina,spirulina,topping,15,ml,66,kg
-56,tabasco,tabasco,topping,5,ml,200,litre
-57,proteinpulver av vassle,whey protein powder,topping,50,ml,20,kg
-58,veganskt proteinpulver,vegan protein powder,topping,50,ml,20,kg
-59,yoghurt,yoghurt,base,125,ml,8,litre
-60,ägg,egg,topping,1,pcs,1,pcs
+ingredient_id,ingredient_sv,ingredient_en,ingredient_cat,JU_volume,JU_unit,balance_unit_to_ju_unit,balance_unit,hexColor
+1,banan,banana,fruit,0.5,pcs,2,pcs,#ffff00
+2,citron,lemon,fruit,0.5,pcs,2,pcs,#ffffff
+3,lime,lime,fruit,1,pcs,1,pcs,#ffffff
+4,apelsin,orange,fruit,0.5,pcs,2,pcs,#ffffff
+5,kaffe,coffee,base,125,ml,160,kg,#ffffff
+6,vaniljglass,vanilla ice cream,base,125,ml,8,litre,#ffffff
+7,sodavatten,soda water,base,125,ml,8,litre,#ffffff
+8,vatten,water,base,125,ml,8,litre,#ffffff
+9,is,ice,topping,5,pcs,8,litre,#ffffff
+10,guava,guava,fruit,2,pcs,0.5,pcs,#ffffff
+11,grönkål,kale,vegetable,50,gram,20,kg,#ffffff
+12,morot,carrot,vegetable,50,gram,20,kg,#ffffff
+13,ingefära,ginger,vegetable,50,gram,20,kg,#ffffff
+14,chili,chili,topping,5,ml,200,kg,#ffffff
+15,kanel,cinnamon,topping,5,ml,200,kg,#cc9966
+16,kakao,cocoa,topping,5,ml,200,kg,#663300
+17,äpple,apple,fruit,0.5,pcs,2,pcs,#ffffff
+18,päron,pear,fruit,0.5,pcs,2,pcs,#ffffff
+19,ananas,pineapple,fruit,0.125,pcs,8,pcs,#ffffff
+20,katrinplommon,prune,fruit,4,pcs,0.25,pcs,#ffffff
+21,blåbär,blueberry,berry,50,ml,20,litre,#ffffff
+22,hallon,raspberry,berry,60,ml,20,litre,#ffffff
+23,jordgubbe,strawberry,berry,80,ml,12.5,litre,#ffffff
+24,pumpa,pumpkin,fruit,1,pcs,1,pcs,#ffffff
+25,selleri,celery,vegetable,0.5,pcs,2,pcs,#ffffff
+26,mango,mango,fruit,0.25,pcs,4,pcs,#ffffff
+27,grapefrukt,grapefruit,fruit,0.5,pcs,2,pcs,#ffffff
+28,druva,grape,fruit,60,ml,16,kg,#ffffff
+29,spenat,spinach,vegetable,50,gram,20,kg,#ffffff
+30,rödbeta,beet,vegetable,50,gram,20,kg,#ffffff
+31,mjölk,milk,base,125,ml,8,litre,#ffffff
+32,sojadryck,soy milk,base,125,ml,8,litre,#ffffff
+33,havredryck,oat milk,base,125,ml,8,litre,#ffffff
+34,kokosmjölk,coconut milk,base,125,ml,8,litre,#ffffff
+35,mandelmjölk,almond milk,base,125,ml,8,litre,#ffffff
+36,kokosnöt,coconut,fruit,0.125,pcs,8,pcs,#ffffff
+37,mynta,mint leaves,topping,5,pcs,200,litre,#ffffff
+38,chiafrön,chia seeds,topping,15,ml,66,kg,#ffffff
+39,cashewnötter,cashew nuts,topping,50,ml,20,kg,#ffffff
+40,valnötter,walnut,topping,50,ml,20,kg,#ffffff
+41,mandel,almond,topping,50,ml,20,kg,#ffffff
+42,hasselnötter,hazelnut,topping,50,ml,20,kg,#ffffff
+43,broccoli,broccoli,vegetable,50,gram,20,kg,#ffffff
+44,blomkÃƒÂ¥l,cauliflower,vegetable,50,gram,20,kg,#ffffff
+45,honung,honey,topping,15,ml,66,kg,#ffffff
+46,socker,sugar,topping,15,ml,66,kg,#ffffff
+47,jordnötssmör,peanut butter,topping,25,ml,40,kg,#ffffff
+48,kiwi,kiwi,fruit,0.5,pcs,2,pcs,#ffffff
+49,russin,raisins,topping,25,ml,40,kg,#ffffff
+50,dadlar,dates,fruit,80,ml,12.5,kg,#ffffff
+51,avocado,avocado,vegetable,0.5,pcs,2,pcs,#ffffff
+52,linfrön,flax seeds,topping,15,ml,66,kg,#ffffff
+53,tomat,tomato,vegetable,0.5,pcs,2,pcs,#ffffff
+54,keso,cottage cheese,base,125,ml,8,litre,#ffffff
+55,spirulina,spirulina,topping,15,ml,66,kg,#ffffff
+56,tabasco,tabasco,topping,5,ml,200,litre,#ffffff
+57,proteinpulver av vassle,whey protein powder,topping,50,ml,20,kg,#ffffff
+58,veganskt proteinpulver,vegan protein powder,topping,50,ml,20,kg,#ffffff
+59,yoghurt,yoghurt,base,125,ml,8,litre,#ffffff
+60,ÃƒÂ¤gg,egg,topping,1,pcs,1,pcs,#ffffff
