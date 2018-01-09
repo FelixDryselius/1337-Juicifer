@@ -269,7 +269,7 @@ button {
     margin-bottom: -0.8em;
 }
 
-#topping {
+#topping, #toppingCart {
     color: black;
     font-size: 1em;
     align-self: center;
@@ -280,8 +280,16 @@ button {
     background-color: lightgrey;
 }
 
+#toppingCart {
+    width: 9em
+}
+
 #ingred5 {
     width: 13.5em;
+}
+
+#ingred5cart {
+    width: 7em;
 }
 
 #ingred4 {
@@ -289,16 +297,18 @@ button {
     left: 4.25%;
 }
 
-/*Tror inte denna används. Idt på knapp 3 är juiceIgred3 -Ingrid*/
+#ingred4Cart {
+    width: 6 em;
+}
+
 #ingred3 {
     width: 11em;
 /*    margin-bottom: -0.2em;*/
     left: 8.4%;
 }
 
-#juiceIngred3 {
-    width: 11em;
-    left: 8.4%;
+#ingred3Cart {
+    width: 5em;
 }
 
 #ingred2 {
@@ -306,17 +316,29 @@ button {
     left: 13%;
 }
 
+#ingred2Cart {
+    width: 5em;
+}
+
 #ingred1 {
     width: 8.6em;
     left: 17%;
 }
 
-#baseIngred {
+#ingred1Cart {
+    width: 4e
+}
+
+#baseIngred, #baseIngredCart {
     width: 8.5em;
     border-right: 1.2em solid transparent;
     border-top: 6.8em solid lightgrey;
     border-left: 1.2em solid transparent;
     left: 13%;
+}
+
+#baseIngredCart {
+    width: 4em;
 }
 
 .mugButtons span { 
