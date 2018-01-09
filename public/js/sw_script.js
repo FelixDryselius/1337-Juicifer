@@ -82,7 +82,7 @@ function typeTextToDiv(text, div_id) {
 
 Vue.component('ingredient', {
     props: ['item', 'lang'],
-    template: ' <div class = "database">\
+    template: '<div class = "database">\
 <table width="100%" border="0" cellspacing="0" cellpadding="0" >\
 <td  width="15%"> {{item["ingredient_"+ lang]}}</td>\
 <td width="15%"> {{item["JU_volume"]}} {{item["JU_unit"]}} / {{item["balance_unit"]}} </td>\
@@ -91,7 +91,6 @@ Vue.component('ingredient', {
 <td width="15%"> <input type = "text" id="changeBalance" v-model="newValueInput"> </td>\
 <td width="25%"> \
 <input type="button" value = "submit" v-on:click="changeBalance()" class="SubmitButton"></td>\
-
 </table>\
 </div>',
 
