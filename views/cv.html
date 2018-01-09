@@ -171,10 +171,9 @@
                             </ingredient>
                         </div>
                     </div>
-
                     <!--End of standard ingredients menu-->
                     <!--End of ingredient menus-->
-                    <!--Start of mug interface-->
+                    <!--Start of smoothie mug interface-->
                     <div id="smoothieMug" v-if="showSmoothieMug">
                         <div class="mugContainer">
                             <div class="mug">
@@ -193,8 +192,9 @@
                             </div>
                         </div>
                     </div>
+                    <!--End of smoothie mug interface-->
+                    <!--Start of juice mug interface-->
                     <div id="juiceMug" v-if="showJuiceMug">
-                        <!--Start of mug interface-->
                         <div class="mugContainer">
                             <div class="mug">
                                 <div class="toppingButton">
@@ -215,13 +215,11 @@
                                 </div>
                             </div>
                         </div>
-                        <!--End of mug interface-->
                     </div>
-                    <!--End of mug interface-->
+                    <!--End of juice mug interface-->
                 </div>
             </div>
-            <!--End of smoothie ingredients page-->
-
+            <!--End of ingredients page-->
             <!--Start of cart page-->
             <div id="cart" v-if="showCartPage">
                 <h1 class="header" align="left">{{uiLabels.chart}}</h1>
@@ -231,8 +229,9 @@
                     <div class="cartOverviewBox">
                         <h2>{{uiLabels.yourDrinks}}</h2>
 
-                        
+
                         <div class="mugContainer">
+                            
                             <div class="mug">
                                 <div class="toppingButton">
                                     <button id="topping" v-on:click="showIngredients('topping',0)">{{topping}}<!--{{uiLabels.topping}}--></button>
