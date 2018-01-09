@@ -390,6 +390,7 @@ button {
     /*    top: -2.5em;
     left: 28%;*/
     text-align:center;
+    display: none;
 }
 
 #baseIngred span {
