@@ -226,18 +226,19 @@
                     <div class="cartOverviewBox">
                         <h2>{{uiLabels.yourDrinks}}</h2>
                         
+                        
                         <!--Start of cart smoothie mug interface-->
-                        <div class="mugContainer" v-if="">
-                            <div class="mug">
+                        <div class="mugContainer">
+                            <div class="mugCart">
                                 <div class="toppingButton">
-                                    <button id="toppingCart" v-on:click="showIngredients('topping',0)">{{topping}}<!--{{uiLabels.topping}}--></button>
+                                    <button id="toppingCart">{{topping}}</button>
                                 </div>
                                 <div class="mugButtons">
-                                    <div class="ingred">
-                                        <div class="ingredButton" id="ingred5Cart" v-on:click="showIngredients('ingredCat',5)"><span>{{ingredient3}}</span></div> <!-- ingrediensvariabeln ligger i cv_sripts vue-data-grej-->
-                                        <div class="ingredButton" id="ingred4Cart" v-on:click="showIngredients('ingredCat',4)"><span>{{ingredient2}}</span></div>
-                                        <div class="ingredButton" id="ingred3Cart" v-on:click="showIngredients('ingredCat',3)"><span>{{ingredient1}}</span></div>
-                                        <div class="ingredButton" id="baseIngredCart" v-on:click="showIngredients('base',6)"><span>{{base}}<!--{{uiLabels.base}}--></span>
+                                    <div class="ingredCart">
+                                        <div class="ingredButtonCart" id="ingred5Cart"><span>{{ingredient3}}</span></div>
+                                        <div class="ingredButtonCart" id="ingred4Cart"><span>{{ingredient2}}</span></div>
+                                        <div class="ingredButtonCart" id="ingred3Cart"><span>{{ingredient1}}</span></div>
+                                        <div class="ingredButtonCart" id="baseIngredCart"><span>{{base}}<!--{{uiLabels.base}}--></span>
                                         </div> 
                                     </div>
                                 </div>
