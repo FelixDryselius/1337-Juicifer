@@ -13,7 +13,8 @@
     </head>
     <body>
         <div id="all_cv">
-            <!-- Hjälptab-->
+
+            <!--Start of help menu-->
             <div>
                 <div id="help" class="popUpContent">
                     <h2>{{uiLabels.help}}</h2>
@@ -24,8 +25,9 @@
                 </div>
                 <div id="fade" class="blackOverlay"></div>
             </div>
-            <!-- Slut på hjälptab-->
-            <!-- Avbryttab-->
+            <!--End of help menu-->
+
+            <!--Start of abort menu-->
             <div>
                 <div id="confirmAbort" class="popUpContent">
                     <h2>{{uiLabels.abortQuestion}}?</h2>
@@ -39,15 +41,13 @@
                 </div>
                 <div id="fade" class="blackOverlay"></div>
             </div>
-            <!-- Slut på avbryttab-->
-
+            <!--End of abort menu-->
 
             <!--Start of topbar-->
             <div class="topBarContainer" v-if="showTopBar">
 
-                <!--Buttons to get help or switch language-->
+                <!--Buttons to switch language-->
                 <div class="helpLangContainer" v-if="showHelpLangContainer">
-                    <!-- antingen visas engelsk eller svensk flagga -->
                     <input type="image" v-if= this.chosenLangIsSv src='images/gb_flagga.png' v-on:click="switchLang()" name="questionButton" id="langButton">
                     <input type="image" v-if= !this.chosenLangIsSv src='images/sv_flagga.png' v-on:click="switchLang()" name="questionButton" id="langButton">
                     <a onclick="document.getElementById('help').style.display='block';
@@ -55,29 +55,23 @@
                         <img src="images/info.png" name="languageButton" id="helpButton"/>
                     </a>
                 </div>
-                <div v-if="showHelpLangContainer">
-
-                </div>
+                <div v-if="showHelpLangContainer"></div>
 
                 <!--Buttons to abort and get help-->
                 <div class="helpAbortContainer" v-if="showHelpAbortContainer">
-
                     <button id="abort">
                         <a id="abortButton" onclick="document.getElementById('confirmAbort').style.display='block';
-                                                     document.getElementById('fade').style.display='block'"> 
-
+                                                     document.getElementById('fade').style.display='block'">
                             {{uiLabels.cancel}}
                         </a>
                     </button>
-
-
                     <a onclick="document.getElementById('help').style.display='block';
                                 document.getElementById('fade').style.display='block'"> 
                         <img src="images/info.png" name="languageButton" class="helpLangButton"/>
                     </a>
-                </div>    
+                </div>
 
-                <!--The top bar buttons-->
+                <!--Start of top bar navigation buttons-->
                 <div class="topBarButton" v-if="showTopBarButton">
                     <button id="makeDrinkButton" type="button" v-on:click="showTab('ingredPage')">{{uiLabels.createDrink}}</button>
                     &#10148 <!-- Detta gör en pil mellan knapparna -->
@@ -90,10 +84,7 @@
             </div>  
             <!--End of topbar-->
 
-
-
             <!--Start of start page-->
-
             <div id="start" v-if="showStartPage">
                 <main>
                     <h1 class="header">{{uiLabels.welcomeText}}</h1>
@@ -110,10 +101,9 @@
                     </div>
                 </main>
             </div>
-
             <!--End of start page-->
-            <!--Start of size page-->
 
+            <!--Start of size page-->
             <div id="size" v-if="showSizePage">
                 <main>
                     <h1 class="header">{{uiLabels.chooseSize}}</h1>
@@ -134,15 +124,12 @@
             </div>
             <!--End of size page-->
 
-
             <!--Start of smoothie ingredients page-->
             <div id ="ingredPage" v-if="showIngredPage">
 
-
-                <!--Start of ingredient menus-->
+                <!--Start of ingredient menu-->
                 <h1 class="header" align="left">{{uiLabels.createDrink}}</h1>
-                <div class="mainContent">                    
-                    <!--Start of base ingredient menu-->
+                <div class="mainContent">    
                     <div id=chooseIngredientsBox v-if="showButtonBox">
                         <div class="headContainer">
                             <div class="head">{{chosenCatName}}</div>
@@ -158,7 +145,6 @@
 
                             <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">
                                 {{catName}}</button>
-
                             <ingredient
                                         ref="ingredient"
                                         v-if="showIngredientsButtons"
@@ -170,8 +156,8 @@
                             </ingredient>
                         </div>
                     </div>
-                    <!--End of standard ingredients menu-->
-                    <!--End of ingredient menus-->
+                    <!--End of ingredient menu-->
+
                     <!--Start of smoothie mug interface-->
                     <div id="smoothieMug" v-if="showSmoothieMug">
                         <div class="mugContainer">
@@ -192,6 +178,7 @@
                         </div>
                     </div>
                     <!--End of smoothie mug interface-->
+
                     <!--Start of juice mug interface-->
                     <div id="juiceMug" v-if="showJuiceMug">
                         <div class="mugContainer">
@@ -216,15 +203,18 @@
                         </div>
                     </div>
                     <!--End of juice mug interface-->
+
                 </div>
             </div>
             <!--End of ingredients page-->
+
             <!--Start of cart page-->
             <div id="cart" v-if="showCartPage">
                 <h1 class="header" align="left">{{uiLabels.chart}}</h1>
                 <div class="mainContent">
                     <div class="cartOverviewBox">
                         <h2>{{uiLabels.yourDrinks}}</h2>
+
                         <!--Start of cart smoothie mug interface-->
                         <div class="mugContainer" v-if="showSmoothieInCart">
                             <div class="mugCart">
@@ -242,6 +232,7 @@
                             </div>
                         </div>
                         <!--End of cart smoothie mug interface-->
+
                         <!--Start of cart juice mug interface-->
                         <div class="mugContainer" v-if="showJuiceInCart">
                             <div class="mugCart">
@@ -265,34 +256,37 @@
                             </div>
                         </div>
                         <!--End of cart juice mug interface-->
+
                     </div>
                     <div class="cartRecipeBox">
                         <h2>{{uiLabels.yourDrink}}</h2>                        
                         <h3> <span> {{uiLabels.price}}: {{vueSuperOrder.drinks[vueSuperOrder.activeDrink].price}}</span></h3>
                         <div class="oneDrink">
-                     
-                        <li v-for="(aIngred,key) in writeOutIngredients(vueSuperOrder.drinks[vueSuperOrder.activeDrink])">{{uiLabels.ingredient}} {{ingredientType(key)}}: {{aIngred["ingredient_"+lang]}} <br></li>
-                    <!-- >   <li> Bas: {{drink.ingredients[6]["ingredient_sv"]}} </li><br>
-                            <li>Ingrediens 3: {{drink.ingredients[3]["ingredient_sv"]}}</li> <br>
-                        <li>Ingrediens 4: {{drink.ingredients[4]["ingredient_sv"]}}</li> <br>
-                        <li>Ingrediens 5: {{drink.ingredients[5]["ingredient_sv"]}}</li> <br>
-                        <li>Topping: {{drink.ingredients[0]["ingredient_sv"]}} </li> 
-    
-                    </div>
-                       <h3>{{currentDrinkInfo}}  </h3>
-                        <ul v-for="tempDrink in vueSuperOrder.drinks[vueSuperOrder.activeDrink]"> 
-                        <li v-for="ingredient in writeOutIngredients(tempDrink)">{{ingredient["ingredient_"+lang]}}</li>
-                        </ul>-->
-                    </div>
-                </div>    
+
+                            <li v-for="(aIngred,key) in writeOutIngredients(vueSuperOrder.drinks[vueSuperOrder.activeDrink])">{{uiLabels.ingredient}} {{ingredientType(key)}}: {{aIngred["ingredient_"+lang]}} <br></li>
+                            
+                            <!-- >   <li> Bas: {{drink.ingredients[6]["ingredient_sv"]}} </li><br>
+<li>Ingrediens 3: {{drink.ingredients[3]["ingredient_sv"]}}</li> <br>
+<li>Ingrediens 4: {{drink.ingredients[4]["ingredient_sv"]}}</li> <br>
+<li>Ingrediens 5: {{drink.ingredients[5]["ingredient_sv"]}}</li> <br>
+<li>Topping: {{drink.ingredients[0]["ingredient_sv"]}} </li> 
+
+</div>
+<h3>{{currentDrinkInfo}}  </h3>
+<ul v-for="tempDrink in vueSuperOrder.drinks[vueSuperOrder.activeDrink]"> 
+<li v-for="ingredient in writeOutIngredients(tempDrink)">{{ingredient["ingredient_"+lang]}}</li>
+</ul>-->
+                            
+                        </div>
+                    </div>    
                 </div>
             </div>
-          <!--End of cart page--> 
+            <!--End of cart page--> 
 
-<!--
-            <footer class="footer" v-if="showFooter">
-                <p>&copy;1337-Leet Force</p>
-            </footer>
+            <!--
+<footer class="footer" v-if="showFooter">
+<p>&copy;1337-Leet Force</p>
+</footer>
 -->
 
         </div>
