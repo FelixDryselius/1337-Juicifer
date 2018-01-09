@@ -20,6 +20,7 @@
     "yes": "Ja",
     "no": "Nej",
     "return": "Gå tillbaka",
+    "ingredient_lau": "ingredient_sv",
 
     "buttonNewOrder": "Ny Beställning",
     "buttonOrderQueue": "Beställningskö",
@@ -29,7 +30,7 @@
     "buttonLanguage": "Change to English",
     "JUsize" : "Storlek av JU",
     "JUbalance" : "Antal JU",
-    "balance" : "Mängd",
+    "inventoryUnit" : "På hyllan",
     "newbalance": "Ny mängd",
     "savenewbalance" : "Spara ny mängd",
 
@@ -46,7 +47,11 @@
     "ourFavorites": "Våra favoriter",
     "allIngredients": "Alla ingredienser",
     "yourDrinks": "Dina drycker",
-    "yourOrder": "Din order"
+    "yourOrder": "Din order",
+    
+    "orderIdIs": "Ordernumret är:",
+    "numberOfDrinks": "Antal drycker:",
+    "orderTime": "Ordertid:"
     
   
 }

@@ -58,9 +58,6 @@ var sharedVueStuff = {
             if (typeof data.ingredients !== 'undefined') {
                 this.ingredients = data.ingredients;
             }
-                    //Just to see that it works
-            console.log("From sharedVueStuff");
-            console.log(this.superOrders);
         }.bind(this));
     },
     methods: {

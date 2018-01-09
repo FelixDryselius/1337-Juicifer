@@ -40,10 +40,11 @@ function createNewDrink(drinkType) {
 
     //This is for checking that it works
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].type);
-};
+}
 
 function selectDrinkSizeAndPrice(inputSize) { //and sets price
     currentSuperOrder.drinks[currentSuperOrder.activeDrink].size = inputSize;
+
 
     switch(inputSize){
         case "S":
@@ -60,6 +61,7 @@ function selectDrinkSizeAndPrice(inputSize) { //and sets price
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].size); //This is for checking that it works    
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].prize);
 };
+
 
 function deleteActiveDrink() {
     currentSuperOrder.drinks.splice(currentSuperOrder.activeDrink, 1);
@@ -212,7 +214,6 @@ var vm = new Vue({
 
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
-
             alert(this.lang+"Tack för din beställning. Ditt ordernummer är: " + orderNumber +" Thank you for your order. Your order number is: " + orderNumber); //Jag får inte uiLabels att funka med alert, så därför skrivs båda språk ut.
             //          console.log(this.lang+" språk");
             //  console.log(this.uiLabels.base);
@@ -271,7 +272,9 @@ var vm = new Vue({
         },
 
         showTab: function (tab) {
+//            console.log(this.ingredients[3].balance);
             console.log(tab)
+            console.log(this.ingredients[0].stock);
             this.hideAllTabs();
             if (tab === "sizePage") {
                 this.showSizePage = true;
@@ -484,6 +487,7 @@ var vm = new Vue({
             //this.resetMugButtons();
             this.canPressPay=false;
         },
+
     }
 });
 

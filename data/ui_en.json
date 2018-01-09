@@ -20,16 +20,17 @@
     "yes": "Yes",
     "no": "No",
     "return": "Return",
+    "ingredient_lau": "ingredient_en",
 
     "buttonNewOrder": "New Order",
     "buttonOrderQueue": "Order Queue",
     "buttonOrderHistory": "Order History",
     "buttonInventory": "Inventory",
     "buttonStatistics": "Statistics",
-    "buttonLanguage": "Byt till Svenska",   
+    "buttonLanguage": "Byt till svenska",   
     "JUsize" : "Size of JU",
     "JUbalance" : "JU Balance",
-    "balance" : "Balance",
+    "inventoryUnit" : "On shelf",
     "newbalance": "New Balance",
     "savenewbalance" : "Save new balance",
 
@@ -46,6 +47,10 @@
     "ourFavorites": "Our Favorites",
     "allIngredients": "All ingredients",
     "yourDrinks": "Your drinks",
-    "yourOrder": "Your order"
+    "yourOrder": "Your order",
+    
+    "orderIdIs": "Order ID is:",
+    "numberOfDrinks": "Number of drinks:",
+    "orderTime": "Order time:"
 
 }
