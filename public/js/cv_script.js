@@ -264,7 +264,7 @@ var vm = new Vue({
         
         calcSelectedDrinkInfo: function(){
           var aDrink = this.vueSuperOrder.drinks[this.vueSuperOrder.activeDrink];
-            var someInfo = 
+            var someInfo
         },
 
         showTab: function (tab) {
