@@ -77,7 +77,9 @@
 
 
                         <div class="juicesInTheOrder" id="oQJuicesInOrder"> 
-
+                            <div class="check"><label class="myCheckbox"> <input type="checkbox" id="myCheck">
+                                <span class="checkmark"></span>
+                                </label> </div>
 
                             <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks" v-on:click="hideRightSideBoxToggle()">
                                 <h2>x {{drink.size}} custom {{drink.type}} </h2>
@@ -90,9 +92,7 @@
 
                     </div>
 
-                    <div class="check"><label class="myCheckbox"> <input type="checkbox" id="myCheck">
-                        <span class="checkmark"></span>
-                        </label> </div>
+
 
                 </div>
 
@@ -165,16 +165,16 @@
                     </div>
 
 
-                <div id="oHTimeInfo">
-              <div >
-                             <br> this.superOrder.orderTime
-                    <br> Order finished: 2017-11-21 12:05
+                    <div id="oHTimeInfo">
+                        <div >
+                            <br> this.superOrder.orderTime
+                            <br> Order finished: 2017-11-21 12:05
+
+                        </div>
 
                     </div>
-        
                 </div>
             </div>
-
 
 
             <div id="inventory" v-if="inventoryShow">
@@ -224,12 +224,12 @@
                 <!--            <div id= "stats"><div id="piechart"></div></div>-->
             </div>
 
+
+
+            <!--- statistics-->
+
+
         </div>
-
-        <!--- statistics-->
-
-
-
 
 
     </body>
