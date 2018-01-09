@@ -20,6 +20,9 @@
     "yes": "Yes",
     "no": "No",
     "return": "Return",
+    "size": "size",
+    "of": "of",
+    
 
     "buttonNewOrder": "New Order",
     "buttonOrderQueue": "Order Queue",
@@ -46,6 +49,6 @@
     "ourFavorites": "Our Favorites",
     "allIngredients": "All ingredients",
     "yourDrinks": "Your drinks",
-    "yourOrder": "Your order"
+    "yourDrink": "Your drink"
 
 }

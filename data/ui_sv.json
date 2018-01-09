@@ -20,6 +20,8 @@
     "yes": "Ja",
     "no": "Nej",
     "return": "Gå tillbaka",
+    "size": "storlek",
+    "of": "of",
 
     "buttonNewOrder": "Ny Beställning",
     "buttonOrderQueue": "Beställningskö",
@@ -46,7 +48,7 @@
     "ourFavorites": "Våra favoriter",
     "allIngredients": "Alla ingredienser",
     "yourDrinks": "Dina drycker",
-    "yourOrder": "Din order"
+    "yourDrink": "Din dryck"
     
   
 }

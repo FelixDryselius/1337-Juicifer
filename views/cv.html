@@ -267,7 +267,11 @@
                         <!--End of cart juice mug interface-->
                     </div>
                     <div class="cartRecipeBox">
-                        <h2>{{uiLabels.yourOrder}}</h2>
+                        <h2>{{uiLabels.yourDrink}}</h2>
+                       <!-- <h3>{{currentDrinkInfo}}  </h3>
+                        <ul v-for="aDrink in vueSuperOrder.drinks[vueSuperOrder.activeDrink]"> 
+                        <li v-for="ingredient in writeOutIngredients(aDrink)">{{ingredient["ingredient_"+lang]}}</li>
+                        </ul>-->
                     </div>
                 </div>    
             </div>

@@ -52,6 +52,7 @@ function selectDrinkSize(inputSize) {
 function deleteActiveDrink() {
     currentSuperOrder.drinks.splice(currentSuperOrder.activeDrink, 1);
 }
+function changeActiveDrink(){}
 
 
 function addIngredientToActiveDrink(ingred) {
@@ -140,6 +141,7 @@ function getFlagSrc(){
 
 function sendCurrentSuperOrderToVue() {
     vm.vueSuperOrder = currentSuperOrder;
+
 }
 
 // Start Vue:
@@ -177,6 +179,8 @@ var vm = new Vue({
         chosenCatName: '',
         searchTerm: '',
         vueSuperOrder: {},
+        tempSuperOrderIngredients: [],
+        currentDrinkInfo: {},
 
         canPressCart:false,
         canPressPay: false,
@@ -256,6 +260,12 @@ var vm = new Vue({
         choosePreMadeDrinks: function(){
 
         },
+        
+        
+        calcSelectedDrinkInfo: function(){
+          var aDrink = this.vueSuperOrder.drinks[this.vueSuperOrder.activeDrink];
+            var someInfo = 
+        },
 
         showTab: function (tab) {
             console.log(tab)
@@ -281,7 +291,7 @@ var vm = new Vue({
                 this.showHelpAbortContainer = true;
             }
             else if (tab === "cartPage") {
-                //sendCurrentSuperOrderToVue(); //
+                sendCurrentSuperOrderToVue(); 
                 this.showHelpAbortContainer = true;
                 this.showCartPage =true;
                 this.showTopBarButton = true;
@@ -314,6 +324,16 @@ var vm = new Vue({
         closeIngredMenus: function() {
             this.showButtonBox = false;
             console.log("Closed menus");
+        },
+
+        writeOutIngredients: function(aDrink){
+            var aDrinksIngredient = {};
+            for(var el in aDrink.ingredients){
+                if(aDrink.ingredients[el] !== 0){
+                    aDrinksIngredient[el] = aDrink.ingredients[el];
+                } 
+            }
+            return aDrinksIngredient
         },
 
         vueAddIngredientToActiveDrink: function(item){
