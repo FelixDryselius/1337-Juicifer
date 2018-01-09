@@ -2,53 +2,53 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <title>Staff View - start page</title>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/sw_css.css">
-    <script src="/vue/vue.js" defer></script>
-    <script src="/socket.io/socket.io.js" defer></script>
-    <script src="js/juicifer-main.js" defer></script>
-    <script src="js/sw_script.js" defer></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <head>
+        <title>Staff View - start page</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/sw_css.css">
+        <script src="/vue/vue.js" defer></script>
+        <script src="/socket.io/socket.io.js" defer></script>
+        <script src="js/juicifer-main.js" defer></script>
+        <script src="js/sw_script.js" defer></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 
-</head>
+    </head>
 
-<body>
-    <div id="main">
+    <body>
+        <div id="main">
 
-        <!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->
-        <div class="menu">
-            <button class="menuLinks" id="newOrderTab" v-on:click="showTab('newOrder')"> {{ uiLabels.buttonNewOrder }}</button>
-            <button class="menulinks" id="orderQueueTab" v-on:click="showTab('orderQueue')"> {{ uiLabels.buttonOrderQueue }}</button>
-            <button class="menulinks" id="orderHistoryTab" v-on:click="showTab('orderHistory')"> {{uiLabels.buttonOrderHistory }}</button>
-            <button class="menulinks" id="inventoryTab" v-on:click="showTab('inventory')"> {{ uiLabels.buttonInventory }}</button>
-            <button class="menulinks" id="statisticsTab" v-on:click="showTab('statistics')"> {{ uiLabels.buttonStatistics }}</button>
-            <button class="menulinks" id="languageTab" v-on:click="switchLang()"> {{ uiLabels.language }}</button>
-        </div>
+            <!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->
+            <div class="menu">
+                <button class="menuLinks" id="newOrderTab" v-on:click="showTab('newOrder')"> {{ uiLabels.buttonNewOrder }}</button>
+                <button class="menulinks" id="orderQueueTab" v-on:click="showTab('orderQueue')"> {{ uiLabels.buttonOrderQueue }}</button>
+                <button class="menulinks" id="orderHistoryTab" v-on:click="showTab('orderHistory')"> {{uiLabels.buttonOrderHistory }}</button>
+                <button class="menulinks" id="inventoryTab" v-on:click="showTab('inventory')"> {{ uiLabels.buttonInventory }}</button>
+                <button class="menulinks" id="statisticsTab" v-on:click="showTab('statistics')"> {{ uiLabels.buttonStatistics }}</button>
+                <button class="menulinks" id="languageTab" v-on:click="switchLang()"> {{ uiLabels.language }}</button>
+            </div>
 
-        <!-- här skrivs sidorna -->
+            <!-- här skrivs sidorna -->
 
-        <!--NEW ORDER-->
-        <div id="newOrder" v-if="newOrderShow">
-            new order
-            <br> Här på denna sida händer inget, men jag har öppnat new order - sidan i en ny flik åt dig.
-            <br> Ha en fantastisk dag!
+            <!--NEW ORDER-->
+            <div id="newOrder" v-if="newOrderShow">
+                new order
+                <br> Här på denna sida händer inget, men jag har öppnat new order - sidan i en ny flik åt dig.
+                <br> Ha en fantastisk dag!
 
-        </div>
-
-
-        <!--End NEW ORDER-->
-
-        <!--ORDER QUEUE-->
-        <div id="orderQueue" v-if="orderQueueShow">
-
-            <div id="oQBoxContainer">
+            </div>
 
 
-                <div class="leftSideMenuBox" id="oQMenu">
+            <!--End NEW ORDER-->
+
+            <!--ORDER QUEUE-->
+            <div id="orderQueue" v-if="orderQueueShow">
+
+                <div id="oQBoxContainer">
+
+
+                    <div class="leftSideMenuBox" id="oQMenu">
 
 
 
@@ -72,38 +72,38 @@
 
                     <!-- Deta är rutan i mitten där jucerna ska presenteras -->
 
-                    
-
-                <!-- Deta är rutan i mitten där jucerna ska presenteras -->
-
-                <div class="middleSideBox">
-
-                    <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggle()" tabindex="-1">
 
 
-                        <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
-                            <h2>x {{drink.size}} custom {{drink.type}} </h2>
+                    <!-- Deta är rutan i mitten där jucerna ska presenteras -->
 
+                    <div class="middleSideBox">
+
+                        <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggle()" tabindex="-1">
+
+
+                            <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
+                                <h2>x {{drink.size}} custom {{drink.type}} </h2>
+
+                            </div>
                         </div>
+
+
                     </div>
 
-
-                        </div>
-                     
-                    </div>
                 </div>
+            </div>
 
 
 
-                <div class="rightSideBox" id="oQIngridients" v-if="hideRightBox">
-                    <h3> {{uiLabels.ingredients}}</h3>
-                    <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
-                        <li> Bas: {{drink.ingredients[6]["ingredient_sv"]}} </li><br>
-                        <li>Ingrediens 3: {{drink.ingredients[3]["ingredient_sv"]}}</li> <br>
-                        <li>Ingrediens 4: {{drink.ingredients[4]["ingredient_sv"]}}</li> <br>
-                        <li>Ingrediens 5: {{drink.ingredients[5]["ingredient_sv"]}}</li> <br>
-                        <li>Topping: {{drink.ingredients[0]["ingredient_sv"]}} </li>
-                    </div>
+            <div class="rightSideBox" id="oQIngridients" v-if="hideRightBox">
+                <h3> {{uiLabels.ingredients}}</h3>
+                <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
+                    <li> Bas: {{drink.ingredients[6]["ingredient_sv"]}} </li><br>
+                    <li>Ingrediens 3: {{drink.ingredients[3]["ingredient_sv"]}}</li> <br>
+                    <li>Ingrediens 4: {{drink.ingredients[4]["ingredient_sv"]}}</li> <br>
+                    <li>Ingrediens 5: {{drink.ingredients[5]["ingredient_sv"]}}</li> <br>
+                    <li>Topping: {{drink.ingredients[0]["ingredient_sv"]}} </li>
+                </div>
 
 
 
@@ -112,54 +112,54 @@
 
             </div>
 
-      
-
-        <!--End ORDER QUEUE-->
-
-        <!-- ORDER HISTORY-->
-
-        <div id="orderHistory" v-if="orderHistoryShow">
-
-            <div id="oHBoxContainer">
-
-                <!-- VÄNSTRA HISTORY -->
-                <div class="leftSideMenuBox" id="oHMenu">
-
-                    <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="thisSuperOrder.done" v-on:click="showSuperOrderContentHistory(thisSuperOrder)">
-                        {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br> {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br> {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
-                    </div>
 
 
+            <!--End ORDER QUEUE-->
 
-                </div>
-                <!-- HÖGRA BOXEN -->
-                <div class="rightSideBox" id="oHIngridients" v-if="hideRightBoxHistory">
-                    <h3>orderHistory-{{uiLabels.ingredients}}</h3>
-                    Recipie L Apple juice
-                </div>
+            <!-- ORDER HISTORY-->
 
+            <div id="orderHistory" v-if="orderHistoryShow">
 
+                <div id="oHBoxContainer">
 
-                <!-- MITTENBOXEN -->
-                <div class="middleSideBox">
+                    <!-- VÄNSTRA HISTORY -->
+                    <div class="leftSideMenuBox" id="oHMenu">
 
-                    <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggleHistory()">
-
-
-                        <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
-                            <h2>x {{drink.size}} custom {{drink.type}} </h2>
+                        <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="thisSuperOrder.done" v-on:click="showSuperOrderContentHistory(thisSuperOrder)">
+                            {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br> {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br> {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
                         </div>
 
+
+
+                    </div>
+                    <!-- HÖGRA BOXEN -->
+                    <div class="rightSideBox" id="oHIngridients" v-if="hideRightBoxHistory">
+                        <h3>orderHistory-{{uiLabels.ingredients}}</h3>
+                        Recipie L Apple juice
+                    </div>
+
+
+
+                    <!-- MITTENBOXEN -->
+                    <div class="middleSideBox">
+
+                        <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggleHistory()">
+
+
+                            <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
+                                <h2>x {{drink.size}} custom {{drink.type}} </h2>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div id="oHTimeInfo">
+                        <!-- här ska du använda superOrder.orderTime och ta båda index i arrayen. -->
+                        Order placed: 2017-11-21 12:01 <br><br> Order finihed: 2017-11-21 12:05
+
                     </div>
                 </div>
-
-                <div id="oHTimeInfo">
-                    <!-- här ska du använda superOrder.orderTime och ta båda index i arrayen. -->
-                    Order placed: 2017-11-21 12:01 <br><br> Order finihed: 2017-11-21 12:05
-
-                </div>
             </div>
-        </div>
 
 
 
@@ -202,22 +202,21 @@
                         </ingredient>
                     </div>
 
-
                 </div>
 
-
+            </div>
+            <div id="statistics">
+                <div id="toppingChart"></div>
+                <!--            <div id= "stats"><div id="piechart"></div></div>-->
             </div>
 
         </div>
         <!--- statistics-->
-        <div id="statistics" v-if="statisticsShow">
-            <div id="chart"></div>
-            <!--            <div id= "stats"><div id="piechart"></div></div>-->
-        </div>
 
 
 
 
-</body>
+
+    </body>
 
 </html>

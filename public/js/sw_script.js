@@ -35,11 +35,11 @@ Vue.component('juices', {
 </button>\
 </div>',
     methods: {
-        showRecipe: function () {
-            window.alert("visa recept");
-        }
-    }
-});
+    showRecipe: function () {
+    window.alert("visa recept");
+}
+              }
+              });
 
 
 // SLUT ORDER QUEUE FUNKTIONER
@@ -96,19 +96,19 @@ Vue.component('ingredient', {
 
     data: function () {
 
-        return {
-            newValueInput: ''
-        }
-    },
+    return {
+    newValueInput: ''
+}
+              },
 
-    methods: {
-        changeBalance: function () {
+              methods: {
+              changeBalance: function () {
 
-            this.$emit("set-temp-id");
-            this.$emit("new-balance-set", this.newValueInput);
-            this.newValueInput = "";
-        },
-    }
+    this.$emit("set-temp-id");
+    this.$emit("new-balance-set", this.newValueInput);
+    this.newValueInput = "";
+},
+}
 })
 //SLUT INVENTORY
 
@@ -135,30 +135,40 @@ var vm = new Vue({
 
 
     methods: {
-        getIngredData: function() { 
-            var ingredArray = [['Ingrediens', 'Saldo']];
-            for (var i = 1; i < this.ingredients.length/10; i++) {
-                ingredArray.push([this.ingredients[i].ingredient_sv, this.ingredients[i].balance]);
+        getTopping: function() { 
+            var ingredArray = [['Ingrediens', 'Mängd']];
+            
+            for (var i = 0; i < Object.keys(this.superOrders).length; i++) {
+                var sizeLetter = this.superOrders[1001+i].drinks[0].size;
+                var size;
+                if (sizeLetter == 'S') {
+                    size = 1;
+                }   
+                else if (sizeLetter == 'M') {
+                    size = 2;
+                }
+                else {
+                    size = 3;
+                }
+                ingredArray.push([this.superOrders[1001+i].drinks[0].ingredients[0].ingredient_sv, (this.superOrders[1001+i].drinks[0].ingredients[0].JU_volume)*size]);
+
             }
-            console.log(ingredArray);
-
-
             return ingredArray;
         },
-       
+
         markDone: function (orderid) {
             socket.emit("orderDone", orderid);
         },
         hideRightSideBoxToggle: function () {
             this.hideRightBox = !this.hideRightBox;
-       
-        
+
+
         },
 
         hideRightSideBoxToggleHistory: function () {
             this.hideRightBoxHistory = !this.hideRightBoxHistory;
         },
-        
+
         hideMiddleBoxToggleHistory: function () {
             this.hideMiddleBox = !this.hideMiddleBox;
         },
@@ -170,7 +180,7 @@ var vm = new Vue({
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
         },
-   
+
         setTempId: function(tId){
             this.tempId = tId - 1;
         },
@@ -194,6 +204,7 @@ var vm = new Vue({
             this.statisticsShow = false;
         },
         showTab: function (tab) {
+            document.getElementById('statistics').style.display='none';
             this.hideAllTabs();
             if (tab === "newOrder") {
                 this.newOrderShow = true;
@@ -207,7 +218,7 @@ var vm = new Vue({
             } else if (tab === "inventory") {
                 this.inventoryShow = true;
             } else if (tab === "statistics") {
-                this.statisticsShow = true;
+                document.getElementById('statistics').style.display='block';
             }
 
         },
@@ -224,13 +235,12 @@ google.charts.setOnLoadCallback(drawChart);
 
 
 function drawChart() {
-    var ingredientData = google.visualization.arrayToDataTable(vm.getIngredData());
-    var ingredientOptions = {
-        title: 'Fördelning av beställda ingredienser'
+    var toppingData = google.visualization.arrayToDataTable(vm.getTopping());
+    var toppingOptions = {
+        title: 'Fördelning topping'
     };
-    console.log(ingredientData);
-    var chart = new google.visualization.PieChart(document.getElementById('chart'));
-    chart.draw(ingredientData, ingredientOptions);
+    var chartTopping = new google.visualization.PieChart(document.getElementById('toppingChart'));
+    chartTopping.draw(toppingData, toppingOptions);
 }
 
 
