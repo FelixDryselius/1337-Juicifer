@@ -61,6 +61,7 @@
                 <div class="helpAbortContainer" v-if="showHelpAbortContainer">
                     <button id="abort">
                         <a id="abortButton" onclick="document.getElementById('confirmAbort').style.display='block';
+
                                                      document.getElementById('fade').style.display='block'">
                             {{uiLabels.cancel}}
                         </a>
@@ -134,17 +135,19 @@
                         <div class="headContainer">
                             <div class="head">{{chosenCatName}}</div>
                             <input class="head" placeholder="Search" v-model="searchTerm">
+                            <input type="image"  src='images/delete.png' class="chooseIngredientsButton" id="returnButton" v-on:click="closeIngredMenus()">
+
                         </div>
 
                         <div class="flexContainer">
-                            <button class="chooseIngredientsButton" id="returnButton" v-on:click="closeIngredMenus()">
-                                {{uiLabels.return}}</button>
+                            <div id="scrollbar"></div>
                             <button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
                                 {{uiLabels.ourFavorites}}</button>
                             <button class="chooseIngredientsButton" v-on:click="showAllIngredients()">{{uiLabels.allIngredients}}</button>
 
                             <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">
                                 {{catName}}</button>
+
                             <ingredient
                                         ref="ingredient"
                                         v-if="showIngredientsButtons"
@@ -264,14 +267,11 @@
                         <div class="oneDrink">
 
                             <li v-for="(aIngred,key) in writeOutIngredients(vueSuperOrder.drinks[vueSuperOrder.activeDrink])">{{uiLabels.ingredient}} {{ingredientType(key)}}: {{aIngred["ingredient_"+lang]}} <br></li>
-
-
                         </div>
                     </div>    
                 </div>
             </div>
             <!--End of cart page--> 
-
 
             <footer class="footer" v-if="showFooter">
                 <p>&copy;1337-Leet Force</p>
