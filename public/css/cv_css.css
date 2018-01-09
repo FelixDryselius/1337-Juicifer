@@ -210,6 +210,14 @@ button {
     width: 2em;
 }
 
+#cartButtonGreen {
+    background-color: #6EEB83;
+}
+
+#payButtonGreen {
+    background-color: #6EEB83;
+}
+
 /*Slut - Topbar*/
 
 
@@ -303,15 +311,6 @@ button {
     width: 5em;
 }
 
-#juiceIngred3 {
-    width: 11em;
-    left: 8.4%;
-}
-
-#juiceIngred3Cart {
-    width: 5;
-}
-
 #ingred2 {
     width: 9.8em;
     left: 13%;
@@ -398,10 +397,6 @@ button {
     align-content: center;
     overflow: auto;
     align-self: stretch;
-}
-
-#payButtonGreen {
-    background-color: #6EEB83;
 }
 
 /*Slut - Cart page*/

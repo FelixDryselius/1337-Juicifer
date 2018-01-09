@@ -79,13 +79,12 @@
 
                 <!--The top bar buttons-->
                 <div class="topBarButton" v-if="showTopBarButton">
-
                     <button id="makeDrinkButton" type="button" v-on:click="showTab('ingredPage')">{{uiLabels.createDrink}}</button>
                     &#10148 <!-- Detta gör en pil mellan knapparna -->
-                    <button id="cartButton" type="button" v-on:click="showTab('cartPage')">{{uiLabels.chart}}</button>
+                    <button id="cartButtonGreen" type="button" v-if="canPressCart" v-on:click="showTab('cartPage')">{{uiLabels.chart}}</button>
+                    <button id="cartButton" type="button" v-on:click="showTab('cartPage')" v-else>{{uiLabels.chart}}</button> 
                     &#10148 <!-- Detta gör en pil mellan knapparna -->
-
-                    <button id="payButtonGreen" type="button" v-if="showCartPage" v-on:click="placeSuperOrder()">Betalning</button>
+                    <button id="payButtonGreen" type="button" v-if="canPressPay" v-on:click="placeSuperOrder()">Betalning</button>
                     <button id="payButton" type="button" v-else>{{uiLabels.payment}}</button>
                 </div>
             </div>  
@@ -164,7 +163,7 @@
                                         ref="ingredient"
                                         v-if="showIngredientsButtons"
                                         v-for="item in filtered_ingredients(chosenCatName).filter(searched_ingredients)"
-                                        v-on:add-ingredient="closeIngredMenus(),vueAddIngredientToActiveDrink(item),updateMugButton()"
+                                        v-on:add-ingredient="closeIngredMenus(),vueAddIngredientToActiveDrink(item),updateMugButton(),checkIfMugIsFilled()"
                                         :item="item" 
                                         :lang="lang"
                                         :key="item.ingredient_id"> 

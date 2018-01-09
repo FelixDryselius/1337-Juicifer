@@ -21,7 +21,7 @@ ingredient_id,ingredient_sv,ingredient_en,ingredient_cat,JU_volume,JU_unit,balan
 20,katrinplommon,prune,fruit,4,pcs,100,pcs,#ffffff
 21,blåbär,blueberry,berry,50,ml,5,litre,#ffffff
 22,hallon,raspberry,berry,60,ml,5,litre,#ffffff
-23,jordgubbe,strawberry,berry,80,ml,5,litre,#ffffff
+23,jordgubbe,strawberry,berry,80,ml,5,litre,#ff8080
 24,pumpa,pumpkin,fruit,1,pcs,100,pcs,#ffffff
 25,selleri,celery,vegetable,0.5,pcs,100,pcs,#ffffff
 26,mango,mango,fruit,0.25,pcs,100,pcs,#ffffff

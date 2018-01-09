@@ -35,6 +35,7 @@
 
     "help": "Here you can get help",
     "abortQuestion": "Do you really want to abort your order",
+    "orderInformation":"Thank you for your order. Your order number is: ",
     "enFlag": "'images/gb_flagga.png'",
     "createDrink": "Create Drink",
     "chart": "Chart",

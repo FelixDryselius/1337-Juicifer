@@ -63,7 +63,6 @@ function addIngredientToActiveDrink(ingred) {
 
 function addTimeStamp(){
     var date = new Date;
-
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
     month = (month < 10 ? "0" : "") + month;
@@ -177,21 +176,23 @@ var vm = new Vue({
         searchTerm: '',
         vueSuperOrder: {},
 
-        base:"Base",  ////Dessaa är för att ändra knapptext
+        canPressCart:false,
+        canPressPay: false,
+
+        base:"Base",  ////Dessa är för att ändra knapptext
         ingredient1:"Ingredient 1",
         ingredient2:"Ingredient 2",
         ingredient3:"Ingredient 3",
         ingredient4:"Ingredient 4",
         ingredient5:"Ingredient 5",
         topping:"Topping",
-
     },
+    
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
-            alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber + "\
-Thank you for your order. Your order number is: " + orderNumber);
+            alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber + " Thank you for your order. Your order number is: " + orderNumber);
+            location.reload(); //Reset sidan
         });
-
     },
 
 
@@ -209,8 +210,6 @@ Thank you for your order. Your order number is: " + orderNumber);
             this.showCartPage = false;
         },
 
-
-
         filtered_ingredients: function(cat) {
             return this.ingredients.filter(function(item) {
                 if(cat ===''){
@@ -226,7 +225,6 @@ Thank you for your order. Your order number is: " + orderNumber);
                 return ingred }
             else if( ingred['ingredient_'+ this.lang].indexOf(this.searchTerm) !==-1){
                 return ingred;
-
             }
         }, 
 
@@ -235,8 +233,6 @@ Thank you for your order. Your order number is: " + orderNumber);
             this.showIngredientsButtons = true;
             this.showCatButtons = false;
         },
-
-
 
         doShowIngredientsButtons: function(catName){
             this.chosenCatName = catName;
@@ -248,7 +244,6 @@ Thank you for your order. Your order number is: " + orderNumber);
 
         },
 
-
         showTab: function (tab) {
             console.log(tab)
             this.hideAllTabs();
@@ -259,6 +254,7 @@ Thank you for your order. Your order number is: " + orderNumber);
             else if (tab === "abortOrder") {
                 this.showStartPage = true;
                 this.showHelpLangContainer = true;
+                location.reload(); //Reset sidan
             }
             else if (tab === "ingredPage") {
                 if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "smoothie") {
@@ -272,10 +268,14 @@ Thank you for your order. Your order number is: " + orderNumber);
                 this.showHelpAbortContainer = true;
             }
             else if (tab === "cartPage") {
-                sendCurrentSuperOrderToVue();
+                //sendCurrentSuperOrderToVue(); //
                 this.showHelpAbortContainer = true;
                 this.showCartPage =true;
                 this.showTopBarButton = true;
+                if(this.checkIfMugIsFilled()){ //om true blir betalknapp grön.
+                    this.canPressPay=true; //betalknapp blir grön.
+                }
+                this.canPressCart=false; //varukorgsknapp blir grå.
             }
 
             else if (tab === "orderHistory") {
@@ -337,6 +337,7 @@ Thank you for your order. Your order number is: " + orderNumber);
                         else {this.ingredient2=activeIngred["ingredient_"+this.lang];}
                         break;
                     case 5:
+                        console.log("är i bas");
                         if (activeType=="juice"){
                             this.ingredient5=activeIngred["ingredient_"+this.lang];
                         }
@@ -344,8 +345,33 @@ Thank you for your order. Your order number is: " + orderNumber);
                         break;
                 }
             }
-
             console.log("Vald ingrediens: "+activeIngred["ingredient_"+this.lang]); //Skriver ut den valda ingrediensen. Det ska göras på knappen
+        },
+
+        checkIfMugIsFilled: function() {
+            var type = currentSuperOrder.drinks[currentSuperOrder.activeDrink].type;
+            if (type == "juice"){
+                var stopAtIndex=5;
+                var startIndex=0;
+            }
+            else { //är Smoothie
+                var stopAtIndex=6;
+                var startIndex=3;
+                if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[0] == 0){ // Denna if-sats kollar om topping på index 0 är vald.
+                    return false;
+                }
+            }
+            var indexIngredient;
+            var i;
+            for (i = startIndex; i <= stopAtIndex; i++){
+                indexIngredient = currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[i];
+                if (indexIngredient == 0){ //är ingrediensen 0 finns det inget valt där.
+                    return false;
+                }
+            }
+
+            this.canPressCart=true; //Om funktionen inte returnat, sätts pressCart till true/grön.
+            return true;
         },
 
         showIngredients: function(ingredTyp,pos) {
@@ -368,12 +394,22 @@ Thank you for your order. Your order number is: " + orderNumber);
             }
         },
 
+        resetMugButtons: function() {
+            this.base= "Base";
+            this.ingredient1="Ingredient 1";
+            this.ingredient2="Ingredient 2";
+            this.ingredient3="Ingredient 3";
+            this.ingredient4="Ingredient 4";
+            this.ingredient5="Ingredient 5";
+            this.topping="Topping";
+        },
 
         placeSuperOrder: function () {
             addTimeStamp(); //spara tiden orden sickas. Ligger i jucifer-main. Bör användas till finish time också
             //So that the Vue element is updated
             sendCurrentSuperOrderToVue();
             currentSuperOrder = new superOrder();
+            this.resetMugButtons();
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
 
             socket.emit('superOrder', {superOrderProperties: this.vueSuperOrder});
@@ -382,6 +418,7 @@ Thank you for your order. Your order number is: " + orderNumber);
             console.log("skickade superOrder");
             console.log(this.vueSuperOrder);
 
+            this.canPressPay=false;
         },
     }
 });
