@@ -40,14 +40,14 @@ function createNewDrink(drinkType) {
 
     //This is for checking that it works
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].type);
-};
+}
 
 function selectDrinkSize(inputSize) {
     currentSuperOrder.drinks[currentSuperOrder.activeDrink].size = inputSize;
 
     //This is for checking that it works
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].size);
-};
+}
 
 function deleteActiveDrink() {
     currentSuperOrder.drinks.splice(currentSuperOrder.activeDrink, 1);
@@ -249,6 +249,7 @@ Thank you for your order. Your order number is: " + orderNumber);
 
 
         showTab: function (tab) {
+//            console.log(this.ingredients[3].balance);
             console.log(tab)
             this.hideAllTabs();
             if (tab === "sizePage") {
@@ -382,6 +383,7 @@ Thank you for your order. Your order number is: " + orderNumber);
             console.log(this.vueSuperOrder);
 
         },
+
     }
 });
 

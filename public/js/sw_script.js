@@ -15,7 +15,7 @@ function pressedCancelOrder() {
     window.alert("du har tryckt på Cancel order");
 }
 
-function pressedFinishOrder() {
+function pressedFinishOrder(size) {
     window.alert("du har tryckt på Finish order");
 }
 
