@@ -276,9 +276,17 @@ button {
     width: 13.5em;
 }
 
+#ingred5cart {
+    width: 10.5em;
+}
+
 #ingred4 {
     width: 12.2em;
     left: 4.25%;
+}
+
+#ingred4Cart {
+    width: 6 em;
 }
 
 #ingred3 {
@@ -287,9 +295,17 @@ button {
     left: 8.4%;
 }
 
+#ingred3Cart {
+    width: 5.5em;
+}
+
 #juiceIngred3 {
     width: 11em;
     left: 8.4%;
+}
+
+#juiceIngred3Cart {
+    width: 5.5
 }
 
 #ingred2 {
@@ -297,18 +313,31 @@ button {
     left: 13%;
 }
 
+#ingred2Cart {
+    width
+}
+
 #ingred1 {
     width: 8.6em;
     left: 17%;
 }
 
-#baseIngred {
+#ingred1Cart {
+    width: 4.3em
+}
+
+#baseIngred, #baseIngredCart {
     width: 8.5em;
     border-right: 1.2em solid transparent;
     border-top: 6.8em solid lightgrey;
     border-left: 1.2em solid transparent;
     left: 13%;
 }
+
+#baseIngredCart {
+    width: 8.5em;
+}
+
 
 .mugButtons span { 
     position: absolute;
