@@ -171,11 +171,11 @@ var vm = new Vue({
         
         pressedFinishOrder: function (thisSuperOrder) {
         var x = document.getElementById("myCheck").checked;
-        if (x == true){
+        //if (x == true){
         this.superOrders[thisSuperOrder].done = true;
         this.selectedSuperOrder.drinks = [];
             socket.emit("orderDone", thisSuperOrder);
-}
+//}
     
   
 },
