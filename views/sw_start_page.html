@@ -215,7 +215,7 @@
         </div>
         <!--- statistics-->
         <div id="statistics" v-if="statisticsShow">
-            <script type="text/javascript" v-if="statisticsShow">
+            <script type="text/javascript">
                 google.charts.load("current", {packages:["corechart"]});
                 google.charts.setOnLoadCallback(drawChart);
                 function drawChart() {
