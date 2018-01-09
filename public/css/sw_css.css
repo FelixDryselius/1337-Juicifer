@@ -139,6 +139,11 @@ div.menu button.active {
     overflow: auto;
 }
 
+
+.oneSuperOrder:active{
+    background:olive;
+}
+
 .oneSuperOrder {
     position: relative;
     width: 90%;
@@ -149,6 +154,7 @@ div.menu button.active {
     border: 2px solid rgb(125, 124, 127);
     cursor: pointer;
     overflow: auto;
+    
 }
 
 .rightSideBox {
