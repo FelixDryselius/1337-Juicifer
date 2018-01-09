@@ -224,39 +224,39 @@
             <div id="cart" v-if="showCartPage">
                 <h1 class="header" align="left">{{uiLabels.chart}}</h1>
                 <div class="mainContent">
-
-
                     <div class="cartOverviewBox">
                         <h2>{{uiLabels.yourDrinks}}</h2>
-
-
-                        <div class="mugContainer">
-                            
+                        
+                        <!--Start of cart smoothie mug interface-->
+                        <div class="mugContainer" v-if="">
                             <div class="mug">
                                 <div class="toppingButton">
-                                    <button id="topping" v-on:click="showIngredients('topping',0)">{{topping}}<!--{{uiLabels.topping}}--></button>
+                                    <button id="toppingCart" v-on:click="showIngredients('topping',0)">{{topping}}<!--{{uiLabels.topping}}--></button>
                                 </div>
                                 <div class="mugButtons">
                                     <div class="ingred">
-                                        <div class="ingredButton" id="ingred5cart" v-on:click="showIngredients('ingredCat',5)"><span>{{ingredient3}}</span></div> <!-- ingrediensvariabeln ligger i cv_sripts vue-data-grej-->
-                                        <div class="ingredButton" id="ingred4" v-on:click="showIngredients('ingredCat',4)"><span>{{ingredient2}}</span></div>
-                                        <div class="ingredButton" id="ingred3" v-on:click="showIngredients('ingredCat',3)"><span>{{ingredient1}}</span></div>
+                                        <div class="ingredButton" id="ingred5Cart" v-on:click="showIngredients('ingredCat',5)"><span>{{ingredient3}}</span></div> <!-- ingrediensvariabeln ligger i cv_sripts vue-data-grej-->
+                                        <div class="ingredButton" id="ingred4Cart" v-on:click="showIngredients('ingredCat',4)"><span>{{ingredient2}}</span></div>
+                                        <div class="ingredButton" id="ingred3Cart" v-on:click="showIngredients('ingredCat',3)"><span>{{ingredient1}}</span></div>
                                         <div class="ingredButton" id="baseIngredCart" v-on:click="showIngredients('base',6)"><span>{{base}}<!--{{uiLabels.base}}--></span>
                                         </div> 
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
+                        <!--End of cart smoothie mug interface-->
+                        <!--Start of cart juice mug interface-->
+                        
+                        
+                        
+                        <!--End of cart juice mug interface-->
                     </div>
                     <div class="cartRecipeBox">
                         <h2>{{uiLabels.yourOrder}}</h2>
-
                     </div>
                 </div>    
-            </div><!--End of cart page--> 
-
+            </div>
+            <!--End of cart page--> 
             <footer class="footer" v-if="showFooter">
                 <p>&copy;1337-Leet Force</p>
             </footer>
