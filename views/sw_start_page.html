@@ -82,7 +82,9 @@
                             <h2>x {{drink.size}} custom {{drink.type}} </h2>
 
                         </div>
-                                   <label class="myCheckbox"> <input type="checkbox" id="myCheck"></label> 
+                    <div class="check"><label class="myCheckbox"> <input type="checkbox" id="myCheck">
+                                    <span class="checkmark"></span>
+                        </label> </div>
 
                     </div>
 
@@ -110,7 +112,7 @@
                 <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">{{ uiLabels.cancel }}</button>
             
             
-                <button class="oQButtons" id="finishOrderButton" v-for="thisSuperOrder in this.superOrders" v-on:click="pressedFinishOrder(thisSuperOrder)">{{ uiLabels.ready }}</button>
+                <button class="oQButtons" id="finishOrderButton" v-for="thisSuperOrder in this.superOrders" v-on:click="pressedFinishOrder(selectedSuperOrderID)">{{ uiLabels.ready }}</button>
 
             </div>
 

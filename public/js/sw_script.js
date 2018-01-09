@@ -79,6 +79,7 @@ function typeTextToDiv(text, div_id) {
 }
 
 
+
 // SLUT ORDER HISTORY
 
 // INVENTORY START
@@ -132,6 +133,7 @@ var vm = new Vue({
         hideRightBoxHistory: false,
         hideMiddleBox: false,
         selectedSuperOrder: {},
+        selectedSuperOrderID: -1,
         selectedSuperOrderHistory: {},
         transChange: {},
         tempId: -1
@@ -170,7 +172,8 @@ var vm = new Vue({
         pressedFinishOrder: function (thisSuperOrder) {
         var x = document.getElementById("myCheck").checked;
         if (x == true){
-        this.superOrders[thisSuperOrder.orderId].done = true;
+        this.superOrders[thisSuperOrder].done = true;
+v 
         this.selectedSuperOrder.drinks = null;
 }
     
@@ -179,6 +182,7 @@ var vm = new Vue({
 
         showSuperOrderContent: function (thisSuperOrder) {
             this.selectedSuperOrder = thisSuperOrder;
+            this.selectedSuperOrderID = thisSuperOrder.orderId;
         },
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
