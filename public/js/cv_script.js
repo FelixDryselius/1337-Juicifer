@@ -24,11 +24,11 @@ function drink() {
 
 //Att göra:
 //funk: välja aktiv drink
-//funk: markera order som done (gör i staff view)
+//funk: markera order som done (görs i staff view)
 //funk: sätta ordertid - klar Ingrid
-//funk: sätta sluttid
+//funk: sätta sluttid (görs i staff view)
 //funk: lägga till ingrediens
-//funk: sätta pris
+//funk: sätta pris - klar Ingrid
 //funk: markera som avbruten 
 //The function that is activated when "cart" is pressed 
 
