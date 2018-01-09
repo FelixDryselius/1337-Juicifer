@@ -325,6 +325,7 @@ var vm = new Vue({
             }
             else if (tab === "cartPage") {
                 sendCurrentSuperOrderToVue(); 
+                this.showButtonBox=false;
                 this.showHelpAbortContainer = true;
                 this.showCartPage =true;
                 this.showTopBarButton = true;
