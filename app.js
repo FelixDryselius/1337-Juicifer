@@ -69,7 +69,6 @@ Data.prototype.getUILabels = function (lang) {
 */
 Data.prototype.getIngredients = function () {
     var d = this.data;
-    console.log("getIngredients has runned")
     return d[ingredientsDataName].map(function (obj) {
         obj.stock = d[transactionsDataName].reduce(function (sum, trans) {
             if (trans.ingredient_id === obj.ingredient_id) {
@@ -112,16 +111,19 @@ Data.prototype.addSuperOrder = function (recievedSuperOrder) {
 
     this.superOrders[orderId].done = false; //this.superOrders[/*recievedSuperOrder.orderId*/orderId].done = false; //Så här såg den ut innan - Ingrid
     this.superOrders[orderId].orderId = orderId;
-
-    for(var drink in this.superOrders[orderId].drinks){
+    
+    for(var anEl in this.superOrders[orderId].drinks){
+        console.log("for loop with anEl started")
         var sizeMultiplier = 3;
         var aChange = {};
-        if(drink.type=="S"){sizeMultiplier = 1};
-        if(drink.type=="M"){sizeMultiplier = 2};
-        for(var el in drink.ingredients){
-            if(drink.ingredients[el]!==0){
-                var aIngredId = drink.ingredients[el].ingredient_id;
-                aChange[aIngredId].push(sizeMultiplier*drink.ingredients[el].JU_volume);
+        if(this.superOrders[orderId].drinks[anEl].size=="S"){sizeMultiplier = 1}
+        if(this.superOrders[orderId].drinks[anEl].size=="M"){sizeMultiplier = 2}
+        var tempIngredients = this.superOrders[orderId].drinks[anEl].ingredients;
+        for(var el in tempIngredients){
+            console.log("for loop where ingredients added to aChange")
+            if(tempIngredients[el]!==0){
+                var aIngredId = tempIngredients[el].ingredient_id -1;
+                aChange[aIngredId] = (- 1*sizeMultiplier);
 
             }
         }
