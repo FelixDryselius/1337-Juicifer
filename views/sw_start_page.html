@@ -112,7 +112,7 @@
                 <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">{{ uiLabels.cancel }}</button>
             
             
-                <button class="oQButtons" id="finishOrderButton" v-for="thisSuperOrder in this.superOrders" v-on:click="pressedFinishOrder(selectedSuperOrderID)">{{ uiLabels.ready }}</button>
+                <button class="oQButtons" id="finishOrderButton" v-on:click="pressedFinishOrder(selectedSuperOrderID)">{{ uiLabels.ready }}</button>
 
             </div>
 
@@ -138,10 +138,15 @@
                 </div>
                 <!-- HÖGRA BOXEN -->
                 <div class="rightSideBox" id="oHIngridients" v-if="hideRightBoxHistory">
-                    <h3>orderHistory-{{uiLabels.ingredients}}</h3>
-                    Recipie L Apple juice
+                   <h3> {{uiLabels.ingredients}}</h3>
+                    <div class="oneDrink" v-for="drink in selectedSuperOrderHistory.drinks">
+                        <li> Bas: {{drink.ingredients[6]["ingredient_sv"]}} </li><br>
+                        <li>Ingrediens 3: {{drink.ingredients[3]["ingredient_sv"]}}</li> <br>
+                        <li>Ingrediens 4: {{drink.ingredients[4]["ingredient_sv"]}}</li> <br>
+                        <li>Ingrediens 5: {{drink.ingredients[5]["ingredient_sv"]}}</li> <br>
+                        <li>Topping: {{drink.ingredients[0]["ingredient_sv"]}} </li>
+                    </div>
                 </div>
-
 
 
                 <!-- MITTENBOXEN -->
@@ -150,7 +155,7 @@
                     <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggleHistory()">
 
 
-                        <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
+                        <div class="oneDrink" v-for="drink in selectedSuperOrderHistory.drinks">
                             <h2>x {{drink.size}} custom {{drink.type}} </h2>
                         </div>
 

@@ -173,8 +173,8 @@ var vm = new Vue({
         var x = document.getElementById("myCheck").checked;
         if (x == true){
         this.superOrders[thisSuperOrder].done = true;
-v 
-        this.selectedSuperOrder.drinks = null;
+        this.selectedSuperOrder.drinks = [];
+            socket.emit("orderDone", thisSuperOrder);
 }
     
   
