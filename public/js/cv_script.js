@@ -16,7 +16,7 @@ function drink() {
     this.type = "",
         this.size = "U",
         this.ingredients = [0,0,0,0,0,0,0],
-        this.prize = 0,
+        this.price = 0,
         this.aborted = false,
         this.tempId = -1 // vad ska denna variabel användas till? - Ingrid
 };
@@ -48,18 +48,18 @@ function selectDrinkSizeAndPrice(inputSize) { //and sets price
 
     switch(inputSize){
         case "S":
-            currentSuperOrder.drinks[currentSuperOrder.activeDrink].prize = 10;
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 10;
             break;
         case "M":
-            currentSuperOrder.drinks[currentSuperOrder.activeDrink].prize = 20;
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 20;
             break;
         case "M":
-            currentSuperOrder.drinks[currentSuperOrder.activeDrink].prize = 30;
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 30;
             break;
     }
 
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].size); //This is for checking that it works    
-    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].prize);
+    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].price);
 };
 
 
@@ -193,8 +193,7 @@ var vm = new Vue({
         chosenCatName: '',
         searchTerm: '',
         vueSuperOrder: {},
-        tempSuperOrderIngredients: [],
-        currentDrinkInfo: {},
+        tempDrink: {},
 
         canPressCart:false,
         canPressPay: false,
@@ -276,9 +275,27 @@ var vm = new Vue({
         },
         
         
-        calcSelectedDrinkInfo: function(){
-          var aDrink = this.vueSuperOrder.drinks[this.vueSuperOrder.activeDrink];
-            var someInfo
+            writeOutIngredients: function(aDrink){
+            var aDrinksIngredient = {};
+                console.log(aDrink)
+            for(var el in aDrink.ingredients){
+                if(aDrink.ingredients[el] === 0){
+                    console.log(aDrink.ingredients[el]);
+                }
+                    else{
+                        console.log(aDrink.ingredients[el])
+                    aDrinksIngredient[el] = aDrink.ingredients[el];}
+                
+            }
+                console.log(aDrinksIngredient);
+            return aDrinksIngredient
+        },
+        
+        ingredientType: function(aKey){
+            console.log("this is aKey" + aKey)
+            if(aKey == 0){return "topping"}
+            if(aKey == 6){return "bas"}
+            else {return aKey}
         },
 
         showTab: function (tab) {
@@ -323,7 +340,7 @@ var vm = new Vue({
                     this.showJuiceInCart = true;
                     this.updateMugColors("juice");
                 }
-                console.log("Priset på aktiv dryck kostar: "+ currentSuperOrder.drinks[currentSuperOrder.activeDrink].prize +":-");
+                console.log("Priset på aktiv dryck kostar: "+ currentSuperOrder.drinks[currentSuperOrder.activeDrink].price +":-");
             }
 
             else if (tab === "orderHistory") {
@@ -343,15 +360,6 @@ var vm = new Vue({
             console.log("Closed menus");
         },
 
-        writeOutIngredients: function(aDrink){
-            var aDrinksIngredient = {};
-            for(var el in aDrink.ingredients){
-                if(aDrink.ingredients[el] !== 0){
-                    aDrinksIngredient[el] = aDrink.ingredients[el];
-                } 
-            }
-            return aDrinksIngredient
-        },
 
         vueAddIngredientToActiveDrink: function(item){
             addIngredientToActiveDrink(item);
