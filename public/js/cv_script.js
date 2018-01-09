@@ -142,13 +142,22 @@ function sendCurrentSuperOrderToVue() {
     vm.vueSuperOrder = currentSuperOrder;
 }
 
-// Start Vue:
+// Start Vue:                                                 
 Vue.component('ingredient', {
     props: ['item', 'lang'],
-    template: '<button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
+    template: '<button class="ingredient" v-on:click="addIngredientToDrink" v-bind:style="getIngredientColor(item)"> {{item["ingredient_"+ lang]}} </button>',
     methods: {
         addIngredientToDrink: function () {
             this.$emit('add-ingredient');
+        },
+        getIngredientColor: function(aItem){
+            var colorHex = aItem["hexColor"];
+            return "background-color:" + colorHex;
+        },
+        data: function () {
+            return {
+                anItem: {}
+            }
         },
     }
 });
@@ -256,7 +265,7 @@ var vm = new Vue({
         choosePreMadeDrinks: function(){
 
         },
-        
+
         writeOutIngredients: function(aDrink){
             var aDrinksIngredient = {};
             console.log(aDrink)
