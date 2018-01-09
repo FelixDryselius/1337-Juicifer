@@ -1,12 +1,12 @@
 ingredient_id,ingredient_sv,ingredient_en,ingredient_cat,JU_volume,JU_unit,balance,balance_unit,hexColor
 1,banan,banana,fruit,0.5,pcs,100,pcs,#ffff00
-2,citron,lemon,fruit,0.5,pcs,100,pcs,#ffffff
-3,lime,lime,fruit,1,pcs,100,pcs,#ffffff
-4,apelsin,orange,fruit,0.5,pcs,100,pcs,#ffffff
+2,citron,lemon,fruit,0.5,pcs,100,pcs,#ffff99
+3,lime,lime,fruit,1,pcs,100,pcs,#d5ff80
+4,apelsin,orange,fruit,0.5,pcs,100,pcs,#ffa64d
 5,kaffe,coffee,base,125,ml,10,kg,#ffffff
 6,vaniljglass,vanilla ice cream,base,125,ml,10,litre,#ffffff
 7,sodavatten,soda water,base,125,ml,10,litre,#ffffff
-8,vatten,water,base,125,ml,>,litre,#ffffff
+8,vatten,water,base,125,ml,>,litre,#cce6ff
 9,is,ice,topping,5,pcs,>,litre,#ffffff
 10,guava,guava,fruit,2,pcs,100,pcs,#ffffff
 11,grönkål,kale,vegetable,50,gram,10,kg,#ffffff
