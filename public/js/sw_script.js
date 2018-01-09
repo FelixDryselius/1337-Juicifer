@@ -83,31 +83,41 @@ function typeTextToDiv(text, div_id) {
 
 // INVENTORY START
 
-function changeBalanceButton() {
-    var fname = $("#changeBalance").val();
 
-    $("#balanceChanged").html(fname);
-    $("p").hide()
-}
 
 
 Vue.component('ingredient', {
     props: ['item', 'lang'],
     template: ' <div class = "database">\
 <table width="100%" border="0" cellspacing="0" cellpadding="0" >\
-<td  width="20%"> {{item["ingredient_"+ lang]}}</td>\
-<td width="20%"> {{item["JU_volume"]}} mL </td>\
-<td width="20%"> {{item["JU_volume" ]}} / {{item["balance"]}} L </td>\
-<td width="20%"> {{item["balance"]}}<label id = "balanceChanged"></label> mL </td>\
-<td width="20%"> <input type = "text" id="changeBalance"> </td>\
+<td  width="15%"> {{item["ingredient_"+ lang]}}</td>\
+<td width="15%"> {{item["JU_volume"]}} mL </td>\
+<td width="15%"> {{item["JU_volume" ]}} / {{item["balance"]}} L </td>\
+<td width="15%"> {{item["balance"]}}<label id = "balanceChanged"></label> mL </td>\
+<td width="15%"> <input type = "text" id="changeBalance" v-model="newValueInput"> </td>\
+<td width="25%"> \
+<input type="button" value = "submit" v-on:click="changeBalance()" class="SubmitButton"></td>\
 </table>\
 </div>',
-});
 
+
+data: function () {
+  return {
+    newValueInput: ''
+  }
+},
+
+methods: {
+changeBalance: function () {
+    
+    this.$emit("set-temp-id");
+    this.$emit("new-balance-set",this.newValueInput);
+    this.newValueInput = "";
+},
+}
+
+})
 //SLUT INVENTORY
-
-
-
 
 
 
@@ -122,38 +132,40 @@ var vm = new Vue({
         statisticsShow: false,
         hideRightBox: false,
         selectedSuperOrder: {},
+        newBalance: {},
+        tempId: -1
+
 
     },
     methods: {
         markDone: function (orderid) {
             socket.emit("orderDone", orderid);
         },
-
         hideRightSideBoxToggle: function () {
             this.hideRightBox = !this.hideRightBox;
-
-
-
         },
-
 
         showSuperOrderContent: function (thisSuperOrder) {
             this.selectedSuperOrder = thisSuperOrder;
-
-
-            /*window.alert("du har tryckt på en order. den känner inte av vilken");*/
-            /* addJuiceToMiddle(tab); */
-            /*  console.log("order done? :"+thisSuperOrder.done);
-              currentSuperOrder=thisSuperOrder;
-              console.log("orderTime: "+currentSuperOrder.orderTime);
-              console.log(thisSuperOrder);
-              console.log(superOrders); */
-            /*this.$emit('done');*/
-
-
-
+        },
+      
+        showSuperOrderContent: function(thisSuperOrder){ 
+        this.selectedSuperOrder = thisSuperOrder;
         },
 
+        setTempId: function(tId){
+        this.tempId = tId;
+        },
+        newBalanceFunction: function(nBalance){ 
+        this.newBalance[this.tempId]=nBalance;
+
+        socket.emit("newInventory",{inventoryChange: true, newBalance: this.newBalance});
+        this.newBalance={};
+        },    
+
+
+
+       
         hideAllTabs: function () {
             this.newOrderShow = false;
             this.orderQueueShow = false;
