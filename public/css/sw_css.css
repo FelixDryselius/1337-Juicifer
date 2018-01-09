@@ -414,4 +414,8 @@ div.menu button.active {
     bottom: -57px;
 }
 
+#statistics {
+    display: none;
+}
+
 /*Slut STATISTICS*/
