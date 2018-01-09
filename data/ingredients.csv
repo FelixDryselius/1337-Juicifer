@@ -1,4 +1,4 @@
-﻿ingredient_id;ingredient_sv;ingredient_en;ingredient_cat;JU_volume;JU_unit;balance_unit_to_ju_unit;balance_unit;hexColor
+ingredient_id;ingredient_sv;ingredient_en;ingredient_cat;JU_volume;JU_unit;balance_unit_to_ju_unit;balance_unit;hexColor
 1;banan;banana;fruit;0.5;pcs;2;pcs;#ffff00
 2;citron;lemon;fruit;0.5;pcs;2;pcs;#ffffff
 3;lime;lime;fruit;1;pcs;1;pcs;#ffffff
