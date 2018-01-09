@@ -62,10 +62,7 @@
                         </div>
 
                         <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
-                        <!-- <div class="oneSuperOrder">
-<ingredient ref="ingredient" v-for="item in ingredients" :item="item" :lang="lang" :key="item.ingredient_id">
-</ingredient>
-</div> -->
+     
                         <!-- detta är koden Mikael skrev -->
                         <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
                     </div>
@@ -85,7 +82,7 @@
                             <h2>x {{drink.size}} custom {{drink.type}} </h2>
 
                         </div>
-                                    <input type="checkbox" id="myCheck">
+                                   <label class="myCheckbox"> <input type="checkbox" id="myCheck"></label> 
 
                     </div>
 
@@ -107,13 +104,13 @@
                         <li>Ingrediens 5: {{drink.ingredients[5]["ingredient_sv"]}}</li> <br>
                         <li>Topping: {{drink.ingredients[0]["ingredient_sv"]}} </li>
                     </div>
-
+            </div>
 
 
                 <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">{{ uiLabels.cancel }}</button>
             
             
-                <button class="oQButtons" id="finishOrderButton" v-for="thisSuperOrder in selectedSuperOrder" v-on:click="pressedFinishOrder(thisSuperOrder)">{{ uiLabels.ready }}</button>
+                <button class="oQButtons" id="finishOrderButton" v-for="thisSuperOrder in this.superOrders" v-on:click="pressedFinishOrder(thisSuperOrder)">{{ uiLabels.ready }}</button>
 
             </div>
 
