@@ -260,6 +260,7 @@ Thank you for your order. Your order number is: " + orderNumber);
             else if (tab === "abortOrder") {
                 this.showStartPage = true;
                 this.showHelpLangContainer = true;
+                location.reload(); //Reset sidan
             }
             else if (tab === "ingredPage") {
                 if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "smoothie") {
@@ -431,7 +432,7 @@ Thank you for your order. Your order number is: " + orderNumber);
                 }
             }
 
-                this.canPressCart=true; //Om funktionen inte returnat tidigare, sätts pressCart till true/grön.
+            this.canPressCart=true; //Om funktionen inte returnat tidigare, sätts pressCart till true/grön.
         },
 
         showIngredients: function(ingredTyp,pos) {
@@ -454,11 +455,23 @@ Thank you for your order. Your order number is: " + orderNumber);
             }
         },
 
+
+        resetMugButtons: function() {
+            this.base= "Base";
+            this.ingredient1="Ingredient 1";
+            this.ingredient2="Ingredient 2";
+            this.ingredient3="Ingredient 3";
+            this.ingredient4="Ingredient 4";
+            this.ingredient5="Ingredient 5";
+            this.topping="Topping";
+        },
+
         placeSuperOrder: function () {
             addTimeStamp(); //spara tiden orden sickas. Ligger i jucifer-main. Bör användas till finish time också
             //So that the Vue element is updated
             sendCurrentSuperOrderToVue();
             currentSuperOrder = new superOrder();
+            this.resetMugButtons();
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
 
             socket.emit('superOrder', {superOrderProperties: this.vueSuperOrder});
@@ -466,7 +479,7 @@ Thank you for your order. Your order number is: " + orderNumber);
             //This is for checking that it works
             console.log("skickade superOrder");
             console.log(this.vueSuperOrder);
-            
+
             this.canPressPay=false;
 
         },
