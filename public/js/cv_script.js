@@ -172,6 +172,8 @@ var vm = new Vue({
         showCatButtons: false,
         showIngredientsButtons: false,
         showCartPage: false,
+        showSmoothieInCart: true,
+        showJuiceInCart: false,
         chosenCatName: '',
         searchTerm: '',
         vueSuperOrder: {},
@@ -179,15 +181,24 @@ var vm = new Vue({
         canPressCart:false,
         canPressPay: false,
 
-        base:"Base",  ////Dessa är för att ändra knapptext
+        topping:"Topping", ////Dessa är för att ändra knapptext
         ingredient1:"Ingredient 1",
         ingredient2:"Ingredient 2",
         ingredient3:"Ingredient 3",
         ingredient4:"Ingredient 4",
         ingredient5:"Ingredient 5",
-        topping:"Topping",
+        base:"Base",  
+
+        toppingColor:"lightgrey",
+        ingredient1Color:"3em solid lightgrey",
+        ingredient2Color:"3em solid lightgrey",
+        ingredient3Color:"3em solid lightgrey",
+        ingredient4Color:"3em solid lightgrey",
+        ingredient5Color:"3em solid lightgrey",
+        baseColor:"6.8em solid lightgrey"
+
     },
-    
+
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
             alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber + " Thank you for your order. Your order number is: " + orderNumber);
@@ -208,6 +219,8 @@ var vm = new Vue({
             this.showSmoothieMug = false;
             this.showIngredientsButtons = false;
             this.showCartPage = false;
+            this.showSmoothieInCart = false;
+            this.showJuiceInCart = false;
         },
 
         filtered_ingredients: function(cat) {
@@ -276,6 +289,14 @@ var vm = new Vue({
                     this.canPressPay=true; //betalknapp blir grön.
                 }
                 this.canPressCart=false; //varukorgsknapp blir grå.
+                if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "smoothie") { //är fer drycker ska kunna visas ska detta test öras i en loop på ett annat sätt.
+                    this.showSmoothieInCart = true;
+                    this.updateMugColors("smoothie");
+                }
+                else if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "juice") {
+                    this.showJuiceInCart = true;
+                    this.updateMugColors("juice");
+                }
             }
 
             else if (tab === "orderHistory") {
@@ -310,34 +331,37 @@ var vm = new Vue({
             //console.log(activeIngredButtonID+": activeIngredButtonID");
 
             if (activeIngredButtonID=="topping"){
-                document.getElementById(activeIngredButtonID).style.backgroundColor = activeIngred["hexColor"]; // byter knappfärg
+                this.toppingColor=activeIngred["hexColor"]; //sätter knappfärg på variabeln. Ändrar i updateMugColors();
                 this.topping=activeIngred["ingredient_"+this.lang]; //Detta byter knapptext
             }
             else if(activeIngredButtonID=="baseIngred"){
-                document.getElementById(activeIngredButtonID).style.borderTop = "6.8em solid" + activeIngred["hexColor"]; // byter knappfärg
+                this.baseColor = "6.8em solid " + activeIngred["hexColor"]; //sätter knappfärg
                 this.base=activeIngred["ingredient_"+this.lang]; //Detta byter knapptext
             }
             else {
-                document.getElementById(activeIngredButtonID).style.borderTop = "3em solid" + activeIngred["hexColor"]; // byter knappfärg
                 switch(activeIngredIndex){ //Denna swich byter knapptext
                     case 1:
+                        this.ingredient1Color = "3em solid " + activeIngred["hexColor"];
                         this.ingredient1=activeIngred["ingredient_"+this.lang]; break;
                     case 2:
+                        this.ingredient2Color = "3em solid " + activeIngred["hexColor"];
                         this.ingredient2=activeIngred["ingredient_"+this.lang]; break;
                     case 3:
+                        this.ingredient3Color = "3em solid" + activeIngred["hexColor"];
                         if (activeType=="juice"){
                             this.ingredient3=activeIngred["ingredient_"+this.lang];
                         }
                         else {this.ingredient1=activeIngred["ingredient_"+this.lang];}
                         break;
                     case 4:
+                        this.ingredient4Color = "3em solid" + activeIngred["hexColor"];
                         if (activeType=="juice"){
                             this.ingredient4=activeIngred["ingredient_"+this.lang];
                         }
                         else {this.ingredient2=activeIngred["ingredient_"+this.lang];}
                         break;
                     case 5:
-                        console.log("är i bas");
+                        this.ingredient5Color = "3em solid" + activeIngred["hexColor"];
                         if (activeType=="juice"){
                             this.ingredient5=activeIngred["ingredient_"+this.lang];
                         }
@@ -345,8 +369,11 @@ var vm = new Vue({
                         break;
                 }
             }
-            console.log("Vald ingrediens: "+activeIngred["ingredient_"+this.lang]); //Skriver ut den valda ingrediensen. Det ska göras på knappen
+            this.updateMugColors(activeType); //här ändras färgen. 
+            console.log("Vald ingrediens: "+activeIngred["ingredient_"+this.lang]); //Skriver ut den valda ingrediensen.
         },
+
+
 
         checkIfMugIsFilled: function() {
             var type = currentSuperOrder.drinks[currentSuperOrder.activeDrink].type;
@@ -394,7 +421,7 @@ var vm = new Vue({
             }
         },
 
-        resetMugButtons: function() {
+        resetMugButtons: function() { //Används inte nu, men behövs när fler drycker kan beställas.
             this.base= "Base";
             this.ingredient1="Ingredient 1";
             this.ingredient2="Ingredient 2";
@@ -402,6 +429,28 @@ var vm = new Vue({
             this.ingredient4="Ingredient 4";
             this.ingredient5="Ingredient 5";
             this.topping="Topping";
+            document.getElementById("topping").style.backgroundColor = "lightgrey"; // byter knappfärg
+            document.getElementById("ingred1").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+            document.getElementById("ingred2").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+            document.getElementById("ingred3").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+            document.getElementById("ingred4").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+            document.getElementById("ingred5").style.borderTop = "3em solid lightgrey"; // byter knappfärg
+            document.getElementById("baseIngred").style.borderTop = "6.8em solid lightgrey"; // byter knappfärg
+        },
+
+        updateMugColors: function(type) { // byter knappfärg på alla knappar i rätt sorts mugg - Ingrid
+            document.getElementById("topping").style.backgroundColor = this.toppingColor;
+            if (type=="smoothie"){
+                document.getElementById("baseIngred").style.borderTop = this.baseColor; 
+            }
+            else { //if (type == "juice")
+                document.getElementById("ingred1").style.borderTop = this.ingredient1Color; 
+                document.getElementById("ingred2").style.borderTop = this.ingredient2Color; 
+            } 
+            document.getElementById("ingred3").style.borderTop = this.ingredient3Color; 
+            document.getElementById("ingred4").style.borderTop = this.ingredient4Color; 
+            document.getElementById("ingred5").style.borderTop = this.ingredient5Color; 
+
         },
 
         placeSuperOrder: function () {
