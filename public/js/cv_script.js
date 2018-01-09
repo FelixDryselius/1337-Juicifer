@@ -274,7 +274,7 @@ var vm = new Vue({
         showTab: function (tab) {
 //            console.log(this.ingredients[3].balance);
             console.log(tab)
-            console.log(this.ingredients[0].stock);
+            console.log(this.ingredients[0].stock+ ": ingredientstock");
             this.hideAllTabs();
             if (tab === "sizePage") {
                 this.showSizePage = true;
