@@ -63,7 +63,6 @@ function addIngredientToActiveDrink(ingred) {
 
 function addTimeStamp(){
     var date = new Date;
-
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
     month = (month < 10 ? "0" : "") + month;
@@ -139,10 +138,6 @@ function getFlagSrc(){
     return 'images/gb_flagga.png';
 }
 
-function addCurrentDrinkToCart(){ //Denna används inte just nu 09:22 9/1 - Ingrid
-    alert("du vill lägga till drycken i cart, men just nu händer inget");
-}
-
 function sendCurrentSuperOrderToVue() {
     vm.vueSuperOrder = currentSuperOrder;
 }
@@ -190,14 +185,13 @@ var vm = new Vue({
         ingredient4:"Ingredient 4",
         ingredient5:"Ingredient 5",
         topping:"Topping",
-
     },
+    
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
-            alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber + "\
-Thank you for your order. Your order number is: " + orderNumber);
+            alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber + " Thank you for your order. Your order number is: " + orderNumber);
+            location.reload(); //Reset sidan
         });
-
     },
 
 
@@ -230,7 +224,6 @@ Thank you for your order. Your order number is: " + orderNumber);
                 return ingred }
             else if( ingred['ingredient_'+ this.lang].indexOf(this.searchTerm) !==-1){
                 return ingred;
-
             }
         }, 
 
@@ -265,7 +258,6 @@ Thank you for your order. Your order number is: " + orderNumber);
             else if (tab === "ingredPage") {
                 if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "smoothie") {
                     this.showSmoothieMug = true;
-                    //   this.updateMug();
                 }
                 else if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "juice") {
                     this.showJuiceMug = true;
@@ -279,9 +271,10 @@ Thank you for your order. Your order number is: " + orderNumber);
                 this.showHelpAbortContainer = true;
                 this.showCartPage =true;
                 this.showTopBarButton = true;
-                this.canPressPay=true; //Betalningsknappen blir grön - Ingrid
+                if(this.checkIfMugIsFilled()){ //om true blir betalknapp grön.
+                    this.canPressPay=true; //betalknapp blir grön.
+                }
                 this.canPressCart=false; //varukorgsknapp blir grå.
-                //addCurrentDrinkToCart(); //Antagligen behöver drinken inte läggas till. 
             }
 
             else if (tab === "orderHistory") {
@@ -304,60 +297,6 @@ Thank you for your order. Your order number is: " + orderNumber);
         vueAddIngredientToActiveDrink: function(item){
             addIngredientToActiveDrink(item);
         },
-
-        /* updateMug: function(){
-            this.updateMugButtonOfIndex(0);
-        },
-
-        updateMugButtonOfIndex(index){
-            var activeIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[index]; 
-            if (activeIngred!=0){
-                var activeIngredButtonID = checkActiveIngredButton(index, activeType);
-                var activeType = currentSuperOrder.drinks[currentSuperOrder.activeDrink].type;
-                //console.log(activeType+": type");
-                console.log(index+": activeIngredIndex");
-                console.log(activeIngred+": activeIngred");
-                console.log(activeIngredButtonID+": activeIngredButtonID");
-
-                if (activeIngredButtonID=="topping"){
-                    console.log(document.getElementById(activeIngredButtonID)+": 317");
-                    document.getElementById(activeIngredButtonID).style.backgroundColor = activeIngred["hexColor"]; // byter knappfärg
-                    this.topping=activeIngred["ingredient_"+this.lang]; //Detta byter knapptext
-                }
-                else if(activeIngredButtonID=="baseIngred"){
-                    document.getElementById(activeIngredButtonID).style.borderTop = "6.8em solid" + activeIngred["hexColor"]; // byter knappfärg
-                    this.base=activeIngred["ingredient_"+this.lang]; //Detta byter knapptext
-                }
-                else {
-                    document.getElementById(activeIngredButtonID).style.borderTop = "3em solid" + activeIngred["hexColor"]; // byter knappfärg
-                    switch(index){ //Denna swich byter knapptext
-                        case 1:
-                            this.ingredient1=activeIngred["ingredient_"+this.lang]; break;
-                        case 2:
-                            this.ingredient2=activeIngred["ingredient_"+this.lang]; break;
-                        case 3:
-                            if (activeType=="juice"){
-                                this.ingredient3=activeIngred["ingredient_"+this.lang];
-                            }
-                            else {this.ingredient1=activeIngred["ingredient_"+this.lang];}
-                            break;
-                        case 4:
-                            if (activeType=="juice"){
-                                this.ingredient4=activeIngred["ingredient_"+this.lang];
-                            }
-                            else {this.ingredient2=activeIngred["ingredient_"+this.lang];}
-                            break;
-                        case 5:
-                            console.log("är i bas");
-                            if (activeType=="juice"){
-                                this.ingredient5=activeIngred["ingredient_"+this.lang];
-                            }
-                            else {this.ingredient3=activeIngred["ingredient_"+this.lang];}
-                            break;
-                    }
-                }
-            }
-        }, */
 
         updateMugButton: function(){
             var activeIngredIndex = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient;  //this is a index in ingrediens-array
@@ -408,7 +347,7 @@ Thank you for your order. Your order number is: " + orderNumber);
             console.log("Vald ingrediens: "+activeIngred["ingredient_"+this.lang]); //Skriver ut den valda ingrediensen. Det ska göras på knappen
         },
 
-        checkIfCanAddToCart: function() {
+        checkIfMugIsFilled: function() {
             var type = currentSuperOrder.drinks[currentSuperOrder.activeDrink].type;
             if (type == "juice"){
                 var stopAtIndex=5;
@@ -418,8 +357,7 @@ Thank you for your order. Your order number is: " + orderNumber);
                 var stopAtIndex=6;
                 var startIndex=3;
                 if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[0] == 0){ // Denna if-sats kollar om topping på index 0 är vald.
-                    //hasAllIngredients = false;
-                    return;
+                    return false;
                 }
             }
             var indexIngredient;
@@ -427,12 +365,12 @@ Thank you for your order. Your order number is: " + orderNumber);
             for (i = startIndex; i <= stopAtIndex; i++){
                 indexIngredient = currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[i];
                 if (indexIngredient == 0){ //är ingrediensen 0 finns det inget valt där.
-                    //hasAllIngredients = false;
-                    return;
+                    return false;
                 }
             }
 
-            this.canPressCart=true; //Om funktionen inte returnat tidigare, sätts pressCart till true/grön.
+            this.canPressCart=true; //Om funktionen inte returnat, sätts pressCart till true/grön.
+            return true;
         },
 
         showIngredients: function(ingredTyp,pos) {
@@ -454,7 +392,6 @@ Thank you for your order. Your order number is: " + orderNumber);
                 this.showCatButtons = false;
             }
         },
-
 
         resetMugButtons: function() {
             this.base= "Base";
@@ -481,7 +418,6 @@ Thank you for your order. Your order number is: " + orderNumber);
             console.log(this.vueSuperOrder);
 
             this.canPressPay=false;
-
         },
     }
 });
