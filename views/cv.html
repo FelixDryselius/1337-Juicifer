@@ -262,10 +262,9 @@
 
                     </div>
                     <div class="cartRecipeBox">
-                        <h2>{{uiLabels.yourDrink}}</h2>                        
-                        <h3> <span> {{uiLabels.price}}: {{vueSuperOrder.drinks[vueSuperOrder.activeDrink].price}}</span></h3>
+                        <h2>{{uiLabels.yourDrink}}: {{vueSuperOrder.drinks[vueSuperOrder.activeDrink].type}}</h2>                        
+                        <h3> {{uiLabels.size}} {{vueSuperOrder.drinks[vueSuperOrder.activeDrink].size}}, {{uiLabels.price}}: {{vueSuperOrder.drinks[vueSuperOrder.activeDrink].price}}:-</h3>
                         <div class="oneDrink">
-
                             <li v-for="(aIngred,key) in writeOutIngredients(vueSuperOrder.drinks[vueSuperOrder.activeDrink])">{{uiLabels.ingredient}} {{ingredientType(key)}}: {{aIngred["ingredient_"+lang]}} <br></li>
                         </div>
                     </div>    
