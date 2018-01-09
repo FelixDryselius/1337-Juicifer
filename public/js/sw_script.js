@@ -12,12 +12,13 @@ var currentSuperOrder;
 
 // ORDER QUEUE START
 function pressedCancelOrder() {
-    window.alert("du har tryckt på Cancel order");
+    var x = document.getElementById("myCheck").checked;
+    if (x == true){
+        document.getElementById("temo").innerHTML = x;
 }
+    }
 
-function pressedFinishOrder() {
-    window.alert("du har tryckt på Finish order");
-}
+
 
 /*Hur skriver man ut variablerna size härifrån?*/
 Vue.component('juices', {
@@ -142,7 +143,6 @@ var vm = new Vue({
         },
         hideRightSideBoxToggle: function () {
             this.hideRightBox = !this.hideRightBox;
-       
         
         },
 
@@ -153,7 +153,16 @@ var vm = new Vue({
         hideMiddleBoxToggleHistory: function () {
             this.hideMiddleBox = !this.hideMiddleBox;
         },
-
+        
+        pressedFinishOrder: function (thisSuperOrder) {
+        var x = document.getElementById("myCheck").checked;
+        if (x == true){
+         window.alert("du har tryckt på Finish order");
+        this.superOrders[thisSuperOrder.orderId].done = true;
+}
+    
+  
+},
 
         showSuperOrderContent: function (thisSuperOrder) {
             this.selectedSuperOrder = thisSuperOrder;

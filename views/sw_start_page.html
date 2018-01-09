@@ -111,7 +111,9 @@
 
 
                 <button class="oQButtons" id="cancelOrderButton" onclick="pressedCancelOrder()">{{ uiLabels.cancel }}</button>
-                <button class="oQButtons" id="finishOrderButton" onclick="pressedFinishOrder()">{{ uiLabels.ready }}</button>
+            
+            
+                <button class="oQButtons" id="finishOrderButton" v-for="thisSuperOrder in selectedSuperOrder" v-on:click="pressedFinishOrder(thisSuperOrder)">{{ uiLabels.ready }}</button>
 
             </div>
 
