@@ -210,6 +210,14 @@ button {
     width: 2em;
 }
 
+#cartButtonGreen {
+    background-color: #6EEB83;
+}
+
+#payButtonGreen {
+    background-color: #6EEB83;
+}
+
 /*Slut - Topbar*/
 
 
@@ -281,6 +289,7 @@ button {
     left: 4.25%;
 }
 
+/*Tror inte denna används. Idt på knapp 3 är juiceIgred3 -Ingrid*/
 #ingred3 {
     width: 11em;
 /*    margin-bottom: -0.2em;*/
@@ -366,10 +375,6 @@ button {
     align-content: center;
     overflow: auto;
     align-self: stretch;
-}
-
-#payButtonGreen {
-    background-color: #6EEB83;
 }
 
 /*Slut - Cart page*/
