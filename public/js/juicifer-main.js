@@ -55,12 +55,11 @@ var sharedVueStuff = {
 
         socket.on('currentQueue', function (data) {
             this.superOrders = data.superOrders;
+            console.log("data.ingredients is: " + data.ingredients);
             if (typeof data.ingredients !== 'undefined') {
                 this.ingredients = data.ingredients;
+                console.log("typeof data.ingredients !== 'undefined'");
             }
-                    //Just to see that it works
-            console.log("From sharedVueStuff");
-            console.log(this.superOrders);
         }.bind(this));
     },
     methods: {

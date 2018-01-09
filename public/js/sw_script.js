@@ -90,9 +90,9 @@ Vue.component('ingredient', {
     template:  ' <div class = "database">\
 <table width="100%" border="0" cellspacing="0" cellpadding="0" >\
 <td  width="15%"> {{item["ingredient_"+ lang]}}</td>\
-<td width="15%"> {{item["JU_volume"]}} mL </td>\
-<td width="15%"> {{item["JU_volume" ]}} / {{item["balance"]}} L </td>\
-<td width="15%"> {{item["balance"]}}<label id = "balanceChanged"></label> mL </td>\
+<td width="15%"> {{item["JU_volume"]}} {{item["JU_unit"]}} / {{item["balance_unit"]}} </td>\
+<td width="15%"> {{item.stock}} JU </td>\
+<td width="15%">  {{(item.stock/item.balance_unit_to_ju_unit).toFixed(1)}}  {{item["balance_unit"]}} </td>\
 <td width="15%"> <input type = "text" id="changeBalance" v-model="newValueInput"> </td>\
 <td width="25%"> \
 <input type="button" value = "submit" v-on:click="changeBalance()" class="SubmitButton"></td>\
@@ -172,7 +172,7 @@ var vm = new Vue({
         inventoryShow: false,
         statisticsShow: false,
         selectedSuperOrder: {},
-        newBalance: {},
+        transChange: {},
         tempId: -1
 
 },
@@ -187,13 +187,18 @@ this.selectedSuperOrder = thisSuperOrder;
 },
 
 setTempId: function(tId){
-this.tempId = tId;
+this.tempId = tId - 1;
 },
 newBalanceFunction: function(nBalance){ 
-this.newBalance[this.tempId]=nBalance;
+console.log("This is nBalance: " + nBalance)
+console.log("this is tempID: " + this.tempId)
+console.log(this.ingredients[this.tempId].balance_unit_to_ju_unit);
+this.transChange[this.tempId] = Number(nBalance) * this.ingredients[this.tempId].balance_unit_to_ju_unit -this.ingredients[this.tempId].stock;
+console.log(this.transChange[this.tempId]);
 
-socket.emit("newInventory",{inventoryChange: true, newBalance: this.newBalance});
-this.newBalance={};
+socket.emit("newInventory", {newBalance:this.transChange});
+console.log("did emit");
+this.transChange={};
 
 
 },

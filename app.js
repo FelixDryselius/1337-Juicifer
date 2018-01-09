@@ -69,6 +69,7 @@ Data.prototype.getUILabels = function (lang) {
 */
 Data.prototype.getIngredients = function () {
     var d = this.data;
+    console.log("getIngredients has runned")
     return d[ingredientsDataName].map(function (obj) {
         obj.stock = d[transactionsDataName].reduce(function (sum, trans) {
             if (trans.ingredient_id === obj.ingredient_id) {
@@ -112,71 +113,93 @@ Data.prototype.addSuperOrder = function (recievedSuperOrder) {
     this.superOrders[orderId].done = false; //this.superOrders[/*recievedSuperOrder.orderId*/orderId].done = false; //Så här såg den ut innan - Ingrid
     this.superOrders[orderId].orderId = orderId;
 
+    for(var drink in this.superOrders[orderId].drinks){
+        var sizeMultiplier = 3;
+        var aChange = {};
+        if(drink.type=="S"){sizeMultiplier = 1};
+        if(drink.type=="M"){sizeMultiplier = 2};
+        for(var el in drink.ingredients){
+            if(drink.ingredients[el]!==0){
+                var aIngredId = drink.ingredients[el].ingredient_id;
+                aChange[aIngredId].push(sizeMultiplier*drink.ingredients[el].JU_volume);
+
+            }
+        }
+        data.uppdateTransactions(aChange);
+    }
+
     return orderId;
 };
 
-Data.prototype.uppdateTransactions = function(change) {
-    var newIngredBalance = change.newBalance;
+Data.prototype.uppdateTransactions = function(aChange) {
     var transactions = this.data[transactionsDataName];
-    var ingredKeys = this.newIngredBalance.keys();
+    var ingredKeys =[];
+    for(var key in aChange){
+        ingredKeys.push(key);
+    }
+
+    var transId =  transactions[transactions.length - 1].transaction_id,
+        i = ingredKeys,
+        k;
+
+    for (k = 0; k < i.length; k += 1) {
+        transId += 1;
+        var anIngredientId = Number(i[k])+1;
+        
+        console.log("this is transID: " + transId);
+        console.log("this is ingredientId: " + anIngredientId);
+        console.log("this is aChange: " + aChange[i[k]]);
+        transactions.push({transaction_id: transId,
+                           ingredient_id: anIngredientId,
+                           change: aChange[i[k]]});
+    }
+};
+
+Data.prototype.getAllSuperOrders = function () {
+    return this.superOrders;
+};
+
+Data.prototype.markOrderDone = function (orderId) {
+    this.superOrders[orderId].done = true;
+};
 
 
-    //if this is an inventory update
-    if(change.inventoryChange){
-        var d = this.data;
+var data = new Data();
+// Load initial ingredients. If you want to add columns, do it in the CSV file.
+data.initializeData(ingredientsDataName);
+// Load initial stock. Make alterations in the CSV file.
+data.initializeData(transactionsDataName);
 
-        var affectedIngredients =  d[ingredientsDataName].filter(function (ingred) {
-            if(ingred.ingredient_id.indexOf(this.ingredKeys)!==-1) {
-                return ingred;}
-        }
-        );
-         }
+io.on('connection', function (socket) {
+    // Send list of orders and text labels when a client connects
+    socket.emit('initialize', { superOrders: data.getAllSuperOrders(),
+                               uiLabels: data.getUILabels(),
+                               ingredients: data.getIngredients() });
 
-                                                                 };
+    // When someone orders something
+    socket.on('superOrder', function (recievedSuperOrder) {
+        var orderNumber = data.addSuperOrder(recievedSuperOrder);
+        // send updated info to all connected clients, note the use of io instead of socket     
+        socket.emit('orderNumber', orderNumber);
+        io.emit('currentQueue', { superOrders: data.getAllSuperOrders(),
+                                 ingredients: data.getIngredients() });
+    });
+    // send UI labels in the chosen language
+    socket.on('switchLang', function (lang) {
+        socket.emit('switchLang', data.getUILabels(lang));
+    });
+    // when order is marked as done, send updated queue to all connected clients
+    socket.on('orderDone', function (orderId) {
+        data.markOrderDone(orderId);
+        io.emit('currentQueue', {superOrders: data.getAllSuperOrders() });
+    });
+    socket.on('newInventory',function(aChange){ 
+        var newBalance = aChange.newBalance;
+        data.uppdateTransactions(newBalance);
+        io.emit('currentQueue', {ingredients: data.getIngredients() });
+    });
+});
 
- Data.prototype.getAllSuperOrders = function () {
-            return this.superOrders;
-        };
-
-        Data.prototype.markOrderDone = function (orderId) {
-            this.superOrders[orderId].done = true;
-        };
-
-
-        var data = new Data();
-        // Load initial ingredients. If you want to add columns, do it in the CSV file.
-        data.initializeData(ingredientsDataName);
-        // Load initial stock. Make alterations in the CSV file.
-        data.initializeData(transactionsDataName);
-
-        io.on('connection', function (socket) {
-            // Send list of orders and text labels when a client connects
-            socket.emit('initialize', { superOrders: data.getAllSuperOrders(),
-                                       uiLabels: data.getUILabels(),
-                                       ingredients: data.getIngredients() });
-
-            // When someone orders something
-            socket.on('superOrder', function (recievedSuperOrder) {
-                var orderNumber = data.addSuperOrder(recievedSuperOrder);
-                // send updated info to all connected clients, note the use of io instead of socket     
-                socket.emit('orderNumber', orderNumber);
-                io.emit('currentQueue', { superOrders: data.getAllSuperOrders(),
-                                         ingredients: data.getIngredients() });
-            });
-            // send UI labels in the chosen language
-            socket.on('switchLang', function (lang) {
-                socket.emit('switchLang', data.getUILabels(lang));
-            });
-            // when order is marked as done, send updated queue to all connected clients
-            socket.on('orderDone', function (orderId) {
-                data.markOrderDone(orderId);
-                io.emit('currentQueue', {superOrders: data.getAllSuperOrders() });
-            });
-            socket.on('newInventory',function({newBalance}){
-
-            })
-        });
-
-        var server = http.listen(app.get('port'), function () {
-            console.log('Server listening on port ' + app.get('port'));
-        });
+var server = http.listen(app.get('port'), function () {
+    console.log('Server listening on port ' + app.get('port'));
+});

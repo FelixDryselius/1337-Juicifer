@@ -26,10 +26,10 @@
     "buttonOrderHistory": "Order History",
     "buttonInventory": "Inventory",
     "buttonStatistics": "Statistics",
-    "buttonLanguage": "Byt till Svenska",   
+    "buttonLanguage": "Byt till svenska",   
     "JUsize" : "Size of JU",
     "JUbalance" : "JU Balance",
-    "balance" : "Balance",
+    "inventoryUnit" : "On shelf",
     "newbalance": "New Balance",
     "savenewbalance" : "Save new balance",
 

@@ -183,20 +183,23 @@ Recipie L Apple juice
                     <div id="inventoryInformation">
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                                <th width="20%">
-                                    <h1> {{uiLabels.ingredients}}</h1>
+                                <th width="15%">
+                                     {{uiLabels.ingredients}}
                                 </th>
-                                <th width="20%">
+                                <th width="15%">
                                     {{uiLabels.JUsize}}
                                 </th>
-                                <th width="20%">
+                                <th width="15%">
                                     {{uiLabels.JUbalance}}
                                 </th>
-                                <th width="20%">
-                                    {{uiLabels.balance}}
+                                <th width="15%">
+                                    {{uiLabels.inventoryUnit}}
     </th>
-<th width="20%">
+<th width="15%">
 {{uiLabels.newbalance}}
+</th>
+                                <th width="25%">
+submit
 </th>
 </tr>
 </table>
@@ -209,7 +212,7 @@ v-on:new-balance-set ="newBalanceFunction"
 :key="item.ingredient_id">
 
 </ingredient>
-{{newBalance}}
+
 </div>
 
 </div>
