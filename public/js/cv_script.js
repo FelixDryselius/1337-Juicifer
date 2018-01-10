@@ -502,8 +502,7 @@ var vm = new Vue({
         },
 
         addDrinkToSuperorder: function(){
-            alert("Svenska: Du har tryckt för att lägga till en dryck i ordern. Detta är tyvärr inte implementerat i denna version av hemsidan. \
-English: You wan't to add a drink to your order, but unfortunally this is not implented in this version of the webpage.");
+            alert("Svenska: Du har tryckt för att lägga till en dryck i ordern. Detta är tyvärr inte implementerat i denna version av hemsidan.           English: You wan't to add a drink to your order, but unfortunally this is not implented in this version of the webpage.");
         },
 
         placeSuperOrder: function () {

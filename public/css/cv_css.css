@@ -393,6 +393,22 @@ button {
 #ingredJuice {
     margin-bottom: 1em;
 }
+
+.chooseIngredientsButton {
+    text-transform: capitalize;
+}
+
+.ingredient {
+    text-transform: capitalize;
+}
+
+span {
+    text-transform: capitalize;
+}
+
+#topping {
+    text-transform: capitalize;
+}
 /*Slut - mug*/
 
 /*Start - cart page*/
