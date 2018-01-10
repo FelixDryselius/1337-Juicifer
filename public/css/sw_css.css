@@ -173,10 +173,7 @@ div.menu button.active {
     cursor: pointer;
 }
 
-.oneDrink{
-    
-    /*Denna border är här under testing för att se enklare.*/
-}
+
 
 .pressedDiv {
     filter: brightness(85%);

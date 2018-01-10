@@ -50,7 +50,6 @@
                     <div class="leftSideMenuBox" id="oQMenu">
 
                         <div class="oneSuperOrder" v-for="thisSuperOrder in this.superOrders" v-if="!thisSuperOrder.done" v-on:click="showSuperOrderContent(thisSuperOrder)" tabindex="-1">
-
                             {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br>
                             {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br>
                             {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
@@ -59,8 +58,7 @@
 
                         <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
 
-                        <!-- detta är koden Mikael skrev -->
-                        <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
+                
                     </div>
 
                     <!-- Deta är rutan i mitten där jucerna ska presenteras -->
