@@ -467,7 +467,7 @@ input.head {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     border-color: #2A628F;
-    background-color: #9ED9EB;
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
     /*    background-color: deepskyblue;*/

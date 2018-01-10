@@ -113,14 +113,12 @@ Data.prototype.addSuperOrder = function (recievedSuperOrder) {
     this.superOrders[orderId].orderId = orderId;
     
     for(var anEl in this.superOrders[orderId].drinks){
-        console.log("for loop with anEl started")
         var sizeMultiplier = 3;
         var aChange = {};
         if(this.superOrders[orderId].drinks[anEl].size=="S"){sizeMultiplier = 1}
         if(this.superOrders[orderId].drinks[anEl].size=="M"){sizeMultiplier = 2}
         var tempIngredients = this.superOrders[orderId].drinks[anEl].ingredients;
         for(var el in tempIngredients){
-            console.log("for loop where ingredients added to aChange")
             if(tempIngredients[el]!==0){
                 var aIngredId = tempIngredients[el].ingredient_id -1;
                 aChange[aIngredId] = (- 1*sizeMultiplier);
@@ -147,10 +145,7 @@ Data.prototype.uppdateTransactions = function(aChange) {
     for (k = 0; k < i.length; k += 1) {
         transId += 1;
         var anIngredientId = Number(i[k])+1;
-        
-        console.log("this is transID: " + transId);
-        console.log("this is ingredientId: " + anIngredientId);
-        console.log("this is aChange: " + aChange[i[k]]);
+
         transactions.push({transaction_id: transId,
                            ingredient_id: anIngredientId,
                            change: aChange[i[k]]});
