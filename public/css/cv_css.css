@@ -204,8 +204,9 @@ button {
 /*Start - mug*/
 .mugContainer {
     display: flex;
+    justify-content: flex-start;
     margin-right: 5%;
-    
+
 }
 
 .mug {
@@ -229,6 +230,7 @@ button {
     flex-flow: column;
     justify-content: space-around;
     align-items: center;
+    //margin: 2em;
 }
 
 .toppingButton{
@@ -411,18 +413,38 @@ button {
     border-style: solid;
     border-width: 0.5em;
     border-radius: 6px;
-    border-color: #2A628F;
+    border-width: 0.4em;
+    border-color: #49c0f0;
     overflow: auto;
     align-self: stretch;
+}
+
+.addDrink {
+    background-color: white;
+    margin: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-left: 8%;
+    width: 8.15em;
+    border-style: solid;
+    border-color: #49c0f0;
+    border-width: thick;
+    border-radius: 30px;
+}
+
+#plusSign {
+    margin-top: 3.5em;
+    border-color: white;
 }
 
 .cartRecipeBox{
     flex: 2;
     padding: 10px;
     border-style: solid;
-    border-width: 0.5em;
+    border-width: 0.4em;
     border-radius: 6px;
-    border-color: #2A628F;
+    border-width: 0.4em;
+    border-color: #49c0f0;
     align-content: center;
     overflow: auto;
     align-self: stretch;
@@ -476,6 +498,7 @@ input.head {
     text-align: left;
     max-width: 9em;
     width: 60%;
+
 }
 
 .flexContainer {
