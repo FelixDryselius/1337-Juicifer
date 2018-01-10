@@ -467,6 +467,11 @@ button {
     flex-direction: row-reverse;
     
 }
+
+#mainContentCart {
+    flex-direction:  row;
+}
+
 #chooseIngredientsBox {
 width: 55%;
 order: 1;

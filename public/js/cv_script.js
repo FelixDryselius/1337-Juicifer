@@ -193,6 +193,7 @@ var vm = new Vue({
         searchTerm: '',
         vueSuperOrder: {},
         tempDrink: {},
+        ingredBoxLabel: "",
 
         canPressCart:false,
         canPressPay: false,
@@ -216,7 +217,7 @@ var vm = new Vue({
 
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
-            alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber +" Thank you for your order. Your order number is: " + orderNumber); //Jag får inte uiLabels att funka med alert, så därför skrivs båda språk ut.
+            alert("Svenska: Tack för din beställning. Ditt ordernummer är: " + orderNumber +" English: Thank you for your order. Your order number is: " + orderNumber); //Jag får inte uiLabels att funka med alert, så därför skrivs båda språk ut.
             //          console.log(this.lang+" språk");
             //  console.log(this.uiLabels.base);
             location.reload(); //Reset sidan
@@ -257,19 +258,6 @@ var vm = new Vue({
             }
         }, 
 
-        showAllIngredients: function(){
-            this.chosenCatName='';
-            this.showIngredientsButtons = true;
-            this.showCatButtons = false;
-            this.showAllIngredientsButton = false;
-        },
-
-        doShowIngredientsButtons: function(catName){
-            this.showAllIngredientsButton = false;
-            this.chosenCatName = catName;
-            this.showCatButtons = false;
-            this.showIngredientsButtons = true;
-        },
 
         choosePreMadeDrinks: function(){
 
@@ -440,23 +428,40 @@ var vm = new Vue({
             return true;
         },
 
-        showIngredients: function(ingredTyp,pos) {
+        showIngredients: function(ingredTyp,pos,catName) {
             this.showButtonBox = true;
-            currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient=pos; 
+            console.log("this is the pos: "+ pos)
+            if(pos !==-1){
+                currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient=pos; 
+            }
             if (ingredTyp === "base") {
                 this.chosenCatName = "base"; 
+                this.ingredBoxLabel = "Base"
                 this.showIngredientsButtons = true;
                 this.showCatButtons = false;
                 this.showAllIngredientsButton = false;
             }
             else if (ingredTyp === "ingredCat") {
                 this.chosenCatName = "ingredient";
+                this.ingredBoxLabel = "Categories"
                 this.showCatButtons = true;
                 this.showIngredientsButtons =false;
                 this.showAllIngredientsButton = true;
             }
+            else if (ingredTyp === "allIngredients"){
+                this.chosenCatName = ""; 
+                this.showIngredientsButtons = true;
+                this.showCatButtons = false;
+                this.ingredBoxLabel = "Ingredients"
+            }
+            else if (ingredTyp === "hasChosenCategory"){
+                this.chosenCatName = catName;
+                this.showCatButtons = false;
+                this.showIngredientsButtons = true;
+            }
             else {
                 this.chosenCatName = "topping"; 
+                this.ingredBoxLabel = "Topping"
                 this.showIngredientsButtons = true;
                 this.showCatButtons = false;
                 this.showAllIngredientsButton = false;
@@ -495,8 +500,8 @@ var vm = new Vue({
         },
 
         addDrinkToSuperorder: function(){
-            alert("Du har tryckt för att lägga till en dryck i ordern. Detta är tyvärr inte implementerat i denna version av hemsidan. \
-You wan't to add a drink to your order, but unfortunally this is not implented in this version of the webpage.");
+            alert("Svenska: Du har tryckt för att lägga till en dryck i ordern. Detta är tyvärr inte implementerat i denna version av hemsidan. \
+English: You wan't to add a drink to your order, but unfortunally this is not implented in this version of the webpage.");
         },
 
         placeSuperOrder: function () {
