@@ -133,7 +133,7 @@
                 <div class="mainContent">    
                     <div id=chooseIngredientsBox v-if="showButtonBox">
                         <div class="headContainer">
-
+                            
                             <div class="head">{{ingredBoxLabel}}</div>
                             <input type="text" class="head" name="search" value="search" onchange="hideIcon(this);" v-model="searchTerm" v-if="showIngredientsButtons">
                             <input type="image"  src='images/delete.png' class="chooseIngredientsButton" id="returnButton" v-on:click="closeIngredMenus()">
@@ -218,7 +218,7 @@
             <!--Start of cart page-->
             <div id="cart" v-if="showCartPage">
                 <h1 class="header" align="left">{{uiLabels.chart}}</h1>
-                <div class="mainContent">
+                <div class="mainContent" id="mainContentCart">
                     <div class="cartOverviewBox">
                         <h2>{{uiLabels.yourDrinks}}</h2>
 
