@@ -130,12 +130,12 @@ var vm = new Vue({
         newOrderShow: false,
         orderHistoryShow: false,
         inventoryShow: false,
-        statisticsShow: false,
         hideRightBox: false,
         hideRightBoxHistory: false,
         hideMiddleBox: false,
         selectedSuperOrder: {},
         selectedSuperOrderID: -1,
+        showSelectedOrderDrink: false,
         selectedSuperOrderHistory: {},
         transChange: {},
         tempId: -1
@@ -192,9 +192,23 @@ var vm = new Vue({
 
 
         showSuperOrderContent: function (thisSuperOrder) {
+            console.log("showSuperOrderContent")
+            if(this.showSelectedOrderDrink == true) {
+                console.log("showSuperOrderContent if statement")
+                this.showSelectedOrderDrink = false;
+                return
+            } 
+            console.log("showSuperOrderContent normal")
             this.selectedSuperOrder = thisSuperOrder;
             this.selectedSuperOrderID = thisSuperOrder.orderId;
+<<<<<<< HEAD
             
+=======
+            this.showSelectedOrderDrink = true;
+        },
+        showSuperOrderContentHistory: function (thisSuperOrder) {
+            this.selectedSuperOrderHistory = thisSuperOrder;
+>>>>>>> 9e74be302cedc8588f31d91230f73badd48e443e
         },
 
         setTempId: function (tId) {
@@ -221,10 +235,14 @@ var vm = new Vue({
             this.orderQueueShow = false;
             this.orderHistoryShow = false;
             this.inventoryShow = false;
-            this.statisticsShow = false;
+            hideStatistics();
         },
+<<<<<<< HEAD
         showTab: function (tab) {
             document.getElementById('statistics').style.display = 'none';
+=======
+        showTab: function (tab) {   
+>>>>>>> 9e74be302cedc8588f31d91230f73badd48e443e
             this.hideAllTabs();
             if (tab === "newOrder") {
                 this.oQButtonsShow = true;
@@ -258,6 +276,9 @@ google.charts.load("current", {
 });
 google.charts.setOnLoadCallback(drawChart);
 
+function hideStatistics(){
+    document.getElementById('statistics').style.display='none';
+};
 
 function drawChart() {
     var toppingData = google.visualization.arrayToDataTable(vm.getTopping());

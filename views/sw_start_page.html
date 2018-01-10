@@ -12,11 +12,11 @@
         <script src="js/sw_script.js" defer></script>
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-
+        
+        
     </head>
 
-    <body>
+    <body onload="hideStatistics();">
         <div id="main">
 
             <!-- HÄR SKAPAS TAB-BAREN MED MENYKNAPPAR -->
@@ -50,6 +50,7 @@
                     <div class="leftSideMenuBox" id="oQMenu">
 
                         <div class="oneSuperOrder" v-for="thisSuperOrder in this.superOrders" v-if="!thisSuperOrder.done" v-on:click="showSuperOrderContent(thisSuperOrder)" tabindex="-1">
+
                             {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br>
                             {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br>
                             {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
@@ -68,7 +69,7 @@
 
                     <!-- Deta är rutan i mitten där jucerna ska presenteras -->
 
-                    <div class="middleSideBox">
+                    <div class="middleSideBox" v-if="showSelectedOrderDrink">
 
 
                         <div class="juicesInTheOrder" id="oQJuicesInOrder"> 
@@ -77,7 +78,9 @@
                                 </label> </div>
 
                             <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks" v-on:click="hideRightSideBoxToggle()">
-                                <h2>Size {{drink.size}} custom {{drink.type}} </h2>
+
+
+                                <h2> {{drink.size}} custom {{drink.type}} </h2>
 
                             </div>
                         </div>
@@ -144,7 +147,7 @@
                         <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggleHistory()" tabindex="2">
 
                             <div class="oneDrink" v-for="drink in selectedSuperOrderHistory.drinks">
-                                <h2>x {{drink.size}} custom {{drink.type}} </h2>
+                                <h2> {{drink.size}} custom {{drink.type}} </h2>
                             </div>
 
                         </div>
@@ -205,7 +208,7 @@
                 </div>
 
             </div>
-            <div id="statistics">
+            <div id="statistics" >
                 <div id="toppingChart"></div>
                 <!--            <div id= "stats"><div id="piechart"></div></div>-->
             </div>
