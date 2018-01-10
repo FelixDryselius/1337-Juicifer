@@ -476,8 +476,8 @@ input.head {
     border-width: 0.5em;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
-    border-color: #2364AA;
-    background-color: #9ED9EB;
+    border-color: #2A628F;
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
     /*    background-color: deepskyblue;*/
@@ -500,6 +500,10 @@ input.head {
     text-align: center;
     line-height: 75px;
     font-size: 1.5em;
+}
+
+.chooseIngredientsButton{
+    border-radius: 25%;
 }
 
 #scrollbar::-webkit-scrollbar-track
