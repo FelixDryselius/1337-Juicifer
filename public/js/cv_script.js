@@ -96,6 +96,11 @@ function getOrderNumber() {
     return "#" + getRandomInt(1, 1000000);
 }
 
+/*Funktion för att dölja förstoringsglaset i sökrutan*/
+function hideIcon(self) {
+    self.style.backgroundImage = 'none';
+}
+
 function checkActiveIngredButton(pos, type){
     var activeIngredButtonID;
     switch(pos){
@@ -481,10 +486,10 @@ var vm = new Vue({
             document.getElementById("ingred4").style.borderTop = this.ingredient4Color; 
             document.getElementById("ingred5").style.borderTop = this.ingredient5Color; 
         },
-        
+
         addDrinkToSuperorder: function(){
             alert("Du har tryckt för att lägga till en dryck i ordern. Detta är tyvärr inte implementerat i denna version av hemsidan. \
-                  You wan't to add a drink to your order, but unfortunally this is not implented in this version of the webpage.");
+You wan't to add a drink to your order, but unfortunally this is not implented in this version of the webpage.");
         },
 
         placeSuperOrder: function () {
