@@ -433,6 +433,7 @@ var vm = new Vue({
 
         showIngredients: function(ingredTyp,pos) {
             this.showButtonBox = true;
+            console.log("this is the pos: "+ pos)
             currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient=pos; 
             if (ingredTyp === "base") {
                 this.chosenCatName = "base"; 
