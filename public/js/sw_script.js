@@ -180,15 +180,14 @@ var vm = new Vue({
             this.hideMiddleBox = !this.hideMiddleBox;
         },
 
-        pressedFinishOrder: function (thisSuperOrder) {
-            // var x = document.getElementById("myCheck").checked; //Ingrid kommenterade bort
-            this.superOrders[thisSuperOrder].done = true;
-            this.superOrders[thisSuperOrder].finishTime =  addTimeStamp();
-            console.log(this.superOrders[thisSuperOrder].finishTime+": finish time"+ this.superOrders[thisSuperOrder].orderTime+": order time");
-            this.selectedSuperOrder.drinks = [];
-            socket.emit("orderDone", thisSuperOrder);
+        pressedFinishOrder: function (orderID) {
+            // var x = document.getElementById("myCheck").checked; //Ingrid kommenterade bort. Ta bort?
+            this.superOrders[orderID].done = true;
+            // this.superOrders[orderID].finishTime =  addTimeStamp();
+            console.log(this.superOrders[orderID].orderTime+": order time");
+            this.selectedSuperOrder.drinks = [];  // Vad gör denna? -Ingrid
 
-
+            socket.emit("orderDone", orderID);
         },
 
         showSuperOrderContent: function (thisSuperOrder) {
@@ -205,11 +204,15 @@ var vm = new Vue({
         },
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
+
+            var aVariable = document.getElementById("oHTimeInfo");
+            aVariable.innerHTML = "<br> Order Time: "+this.superOrders[thisSuperOrder.orderId].orderTime;            
         },
 
         setTempId: function(tId){
             this.tempId = tId - 1;
         },
+
         newBalanceFunction: function(nBalance){ 
             console.log("This is nBalance: " + nBalance)
             console.log("this is tempID: " + this.tempId)
