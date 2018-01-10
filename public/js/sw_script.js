@@ -40,11 +40,11 @@ Vue.component('juices', {
 </button>\
 </div>',
     methods: {
-        showRecipe: function () {
-            window.alert("visa recept");
-        }
-    }
-});
+    showRecipe: function () {
+    window.alert("visa recept");
+}
+              }
+              });
 
 
 // SLUT ORDER QUEUE FUNKTIONER
@@ -79,6 +79,7 @@ function typeTextToDiv(text, div_id) {
 }
 
 
+
 // SLUT ORDER HISTORY
 
 // INVENTORY START
@@ -101,19 +102,19 @@ Vue.component('ingredient', {
 
     data: function () {
 
-        return {
-            newValueInput: ''
-        }
-    },
+    return {
+    newValueInput: ''
+}
+              },
 
-    methods: {
-        changeBalance: function () {
+              methods: {
+              changeBalance: function () {
 
-            this.$emit("set-temp-id");
-            this.$emit("new-balance-set", this.newValueInput);
-            this.newValueInput = "";
-        },
-    }
+    this.$emit("set-temp-id");
+    this.$emit("new-balance-set", this.newValueInput);
+    this.newValueInput = "";
+},
+}
 })
 //SLUT INVENTORY
 
@@ -123,8 +124,9 @@ var vm = new Vue({
     el: '#main',
     mixins: [sharedVueStuff], // include stuff that is used both in the ordering system and in the kitchen
     data: {
-        newOrderShow: false,
         orderQueueShow: true,
+        oQButtonsShow: true,
+        newOrderShow: false,
         orderHistoryShow: false,
         inventoryShow: false,
         statisticsShow: false,
@@ -132,6 +134,7 @@ var vm = new Vue({
         hideRightBoxHistory: false,
         hideMiddleBox: false,
         selectedSuperOrder: {},
+        selectedSuperOrderID: -1,
         selectedSuperOrderHistory: {},
         transChange: {},
         tempId: -1
@@ -140,50 +143,62 @@ var vm = new Vue({
 
 
     methods: {
-        getIngredData: function() { 
-            var ingredArray = [['Ingrediens', 'Saldo']];
-            for (var i = 1; i < this.ingredients.length/10; i++) {
-                ingredArray.push([this.ingredients[i].ingredient_sv, this.ingredients[i].balance]);
+        getTopping: function() { 
+            var ingredArray = [['Ingrediens', 'Mängd']];
+            
+            for (var i = 0; i < Object.keys(this.superOrders).length; i++) {
+                var sizeLetter = this.superOrders[1001+i].drinks[0].size;
+                var size;
+                if (sizeLetter == 'S') {
+                    size = 1;
+                }   
+                else if (sizeLetter == 'M') {
+                    size = 2;
+                }
+                else {
+                    size = 3;
+                }
+                ingredArray.push([this.superOrders[1001+i].drinks[0].ingredients[0].ingredient_sv, (this.superOrders[1001+i].drinks[0].ingredients[0].JU_volume)*size]);
+
             }
-            console.log(ingredArray);
-
-
             return ingredArray;
         },
-       
+
         markDone: function (orderid) {
             socket.emit("orderDone", orderid);
         },
         hideRightSideBoxToggle: function () {
             this.hideRightBox = !this.hideRightBox;
-        
+
         },
 
         hideRightSideBoxToggleHistory: function () {
             this.hideRightBoxHistory = !this.hideRightBoxHistory;
         },
-        
+
         hideMiddleBoxToggleHistory: function () {
             this.hideMiddleBox = !this.hideMiddleBox;
         },
         
         pressedFinishOrder: function (thisSuperOrder) {
         var x = document.getElementById("myCheck").checked;
-        if (x == true){
-        this.superOrders[thisSuperOrder.orderId].done = true;
-        this.selectedSuperOrder.drinks = null;
-}
+        //if (x == true){
+        this.superOrders[thisSuperOrder].done = true;
+        this.selectedSuperOrder.drinks = [];
+            socket.emit("orderDone", thisSuperOrder);
+//}
     
   
 },
 
         showSuperOrderContent: function (thisSuperOrder) {
             this.selectedSuperOrder = thisSuperOrder;
+            this.selectedSuperOrderID = thisSuperOrder.orderId;
         },
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
         },
-   
+
         setTempId: function(tId){
             this.tempId = tId - 1;
         },
@@ -200,6 +215,8 @@ var vm = new Vue({
         },
 
         hideAllTabs: function () {
+            this.orderQueueShow = false;
+            this.oQButtonsShow = false;
             this.newOrderShow = false;
             this.orderQueueShow = false;
             this.orderHistoryShow = false;
@@ -207,21 +224,24 @@ var vm = new Vue({
             this.statisticsShow = false;
         },
         showTab: function (tab) {
+            document.getElementById('statistics').style.display='none';
             this.hideAllTabs();
             if (tab === "newOrder") {
+                this.oQButtonsShow = true;
                 this.newOrderShow = true;
                 var newTab = window.open("localhost:3000/");
                 //raden under sätter nya taben i fokus.
                 tab.focus();
             } else if (tab === "orderQueue") {
+                this.oQButtonsShow = true;
                 this.orderQueueShow = true;
             } else if (tab === "orderHistory") {
                 this.orderHistoryShow = true;
             } else if (tab === "inventory") {
                 this.inventoryShow = true;
             } else if (tab === "statistics") {
-                this.statisticsShow = true;
-            }
+                document.getElementById('statistics').style.display='block';
+            } 
 
         },
 
@@ -237,13 +257,12 @@ google.charts.setOnLoadCallback(drawChart);
 
 
 function drawChart() {
-    var ingredientData = google.visualization.arrayToDataTable(vm.getIngredData());
-    var ingredientOptions = {
-        title: 'Fördelning av beställda ingredienser'
+    var toppingData = google.visualization.arrayToDataTable(vm.getTopping());
+    var toppingOptions = {
+        title: 'Fördelning topping'
     };
-    console.log(ingredientData);
-    var chart = new google.visualization.PieChart(document.getElementById('chart'));
-    chart.draw(ingredientData, ingredientOptions);
+    var chartTopping = new google.visualization.PieChart(document.getElementById('toppingChart'));
+    chartTopping.draw(toppingData, toppingOptions);
 }
 
 

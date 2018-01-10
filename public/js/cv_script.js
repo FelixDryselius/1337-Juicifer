@@ -16,21 +16,10 @@ function drink() {
     this.type = "",
         this.size = "U",
         this.ingredients = [0,0,0,0,0,0,0],
-        this.prize = 0,
+        this.price = 0,
         this.aborted = false,
         this.tempId = -1 // vad ska denna variabel användas till? - Ingrid
 };
-
-
-//Att göra:
-//funk: välja aktiv drink
-//funk: markera order som done (görs i staff view)
-//funk: sätta ordertid - klar Ingrid
-//funk: sätta sluttid (görs i staff view)
-//funk: lägga till ingrediens
-//funk: sätta pris - klar Ingrid
-//funk: markera som avbruten 
-//The function that is activated when "cart" is pressed 
 
 function createNewDrink(drinkType) { 
     var mydrink = new drink();
@@ -45,29 +34,28 @@ function createNewDrink(drinkType) {
 function selectDrinkSizeAndPrice(inputSize) { //and sets price
     currentSuperOrder.drinks[currentSuperOrder.activeDrink].size = inputSize;
 
-
     switch(inputSize){
         case "S":
-            currentSuperOrder.drinks[currentSuperOrder.activeDrink].prize = 10;
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 10;
             break;
         case "M":
-            currentSuperOrder.drinks[currentSuperOrder.activeDrink].prize = 20;
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 20;
             break;
-        case "M":
-            currentSuperOrder.drinks[currentSuperOrder.activeDrink].prize = 30;
+        case "L":
+            currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 30;
             break;
     }
 
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].size); //This is for checking that it works    
-    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].prize);
+    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].price);
 };
 
 
 function deleteActiveDrink() {
     currentSuperOrder.drinks.splice(currentSuperOrder.activeDrink, 1);
 }
-function changeActiveDrink(){}
 
+/*function changeActiveDrink(){} KOMMER INTE ATT BEHÖVAS OM INTE FLERA DRINKAR KAN BESTÄLLAS*/
 
 function addIngredientToActiveDrink(ingred) {
     var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient; currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[tempActiveIngred]=ingred; 
@@ -94,14 +82,12 @@ function addTimeStamp(){
     /*console.log(new Date(year, month, day, hour, min));*/
 }
 
-
 // Används denna funktion? - Ingrid
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
 }
-
 
 // DETTA ÄR GAMLA GETORDERNR, TA BORT? INGRID?
 function getOrderNumber() {
@@ -145,7 +131,6 @@ function checkActiveIngredButton(pos, type){
     return activeIngredButtonID;
 }
 
-
 // Används getFlagSrc?? -Ingrid
 function getFlagSrc(){ 
     var flagSrc = 'images/gb_flagga.png';
@@ -155,20 +140,27 @@ function getFlagSrc(){
 
 function sendCurrentSuperOrderToVue() {
     vm.vueSuperOrder = currentSuperOrder;
-
 }
 
-// Start Vue:
+// Start Vue:                                                 
 Vue.component('ingredient', {
     props: ['item', 'lang'],
-    template: '<button class="ingredient" v-on:click="addIngredientToDrink"> {{item["ingredient_"+ lang]}} </button>',
+    template: '<button class="ingredient" v-on:click="addIngredientToDrink" v-bind:style="getIngredientColor(item)"> {{item["ingredient_"+ lang]}} </button>',
     methods: {
         addIngredientToDrink: function () {
             this.$emit('add-ingredient');
         },
+        getIngredientColor: function(aItem){
+            var colorHex = aItem["hexColor"];
+            return "background-color:" + colorHex;
+        },
+        data: function () {
+            return {
+                anItem: {}
+            }
+        },
     }
 });
-
 
 var vm = new Vue({
     el: '#all_cv',
@@ -193,8 +185,7 @@ var vm = new Vue({
         chosenCatName: '',
         searchTerm: '',
         vueSuperOrder: {},
-        tempSuperOrderIngredients: [],
-        currentDrinkInfo: {},
+        tempDrink: {},
 
         canPressCart:false,
         canPressPay: false,
@@ -274,15 +265,31 @@ var vm = new Vue({
         choosePreMadeDrinks: function(){
 
         },
-        
-        
-        calcSelectedDrinkInfo: function(){
-          var aDrink = this.vueSuperOrder.drinks[this.vueSuperOrder.activeDrink];
-            var someInfo
+
+        writeOutIngredients: function(aDrink){
+            var aDrinksIngredient = {};
+            console.log(aDrink)
+            for(var el in aDrink.ingredients){
+                if(aDrink.ingredients[el] === 0){
+                    console.log(aDrink.ingredients[el]);
+                }
+                else{
+                    console.log(aDrink.ingredients[el])
+                    aDrinksIngredient[el] = aDrink.ingredients[el];}
+            }
+            console.log(aDrinksIngredient);
+            return aDrinksIngredient
+        },
+
+        ingredientType: function(aKey){
+            console.log("this is aKey" + aKey)
+            if(aKey == 0){return "topping"}
+            if(aKey == 6){return "bas"}
+            else {return aKey}
         },
 
         showTab: function (tab) {
-//            console.log(this.ingredients[3].balance);
+            //            console.log(this.ingredients[3].balance);
             console.log(tab)
             console.log(this.ingredients[0].stock);
             this.hideAllTabs();
@@ -324,9 +331,8 @@ var vm = new Vue({
                     this.showJuiceInCart = true;
                     this.updateMugColors("juice");
                 }
-                console.log("Priset på aktiv dryck kostar: "+ currentSuperOrder.drinks[currentSuperOrder.activeDrink].prize +":-");
+                console.log("Priset på aktiv dryck kostar: "+ currentSuperOrder.drinks[currentSuperOrder.activeDrink].price +":-");
             }
-
             else if (tab === "orderHistory") {
                 this.orderHistoryShow = true;
             }
@@ -336,22 +342,11 @@ var vm = new Vue({
             else if (tab === "statistics") {
                 this.statisticsShow = true;
             }
-
         },
 
         closeIngredMenus: function() {
             this.showButtonBox = false;
             console.log("Closed menus");
-        },
-
-        writeOutIngredients: function(aDrink){
-            var aDrinksIngredient = {};
-            for(var el in aDrink.ingredients){
-                if(aDrink.ingredients[el] !== 0){
-                    aDrinksIngredient[el] = aDrink.ingredients[el];
-                } 
-            }
-            return aDrinksIngredient
         },
 
         vueAddIngredientToActiveDrink: function(item){
@@ -411,8 +406,6 @@ var vm = new Vue({
             console.log("Vald ingrediens: "+activeIngred["ingredient_"+this.lang]); //Skriver ut den valda ingrediensen.
         },
 
-
-
         checkIfMugIsFilled: function() {
             var type = currentSuperOrder.drinks[currentSuperOrder.activeDrink].type;
             if (type == "juice"){
@@ -434,7 +427,6 @@ var vm = new Vue({
                     return false;
                 }
             }
-
             this.canPressCart=true; //Om funktionen inte returnat, sätts pressCart till true/grön.
             return true;
         },
@@ -488,14 +480,13 @@ var vm = new Vue({
             document.getElementById("ingred3").style.borderTop = this.ingredient3Color; 
             document.getElementById("ingred4").style.borderTop = this.ingredient4Color; 
             document.getElementById("ingred5").style.borderTop = this.ingredient5Color; 
-
         },
 
         placeSuperOrder: function () {
             addTimeStamp(); //spara tiden orden sickas. Ligger i jucifer-main. Bör användas till finish time också
             //So that the Vue element is updated
             sendCurrentSuperOrderToVue();
-            
+
             // make use of socket.io's magic to send the stuff to the kitchen via the server (app.js)
 
             socket.emit('superOrder', {superOrderProperties: this.vueSuperOrder});
@@ -508,10 +499,7 @@ var vm = new Vue({
             //this.resetMugButtons();
             this.canPressPay=false;
         },
-
     }
 });
 
 // End Vue
-
-//vm.test=vm.get_categories();
