@@ -187,6 +187,8 @@ var vm = new Vue({
         showCartPage: false,
         showSmoothieInCart: true,
         showJuiceInCart: false,
+        showAllIngredientsButton: true,
+
         chosenCatName: '',
         searchTerm: '',
         vueSuperOrder: {},
@@ -259,9 +261,11 @@ var vm = new Vue({
             this.chosenCatName='';
             this.showIngredientsButtons = true;
             this.showCatButtons = false;
+            this.showAllIngredientsButton = false;
         },
 
         doShowIngredientsButtons: function(catName){
+            this.showAllIngredientsButton = false;
             this.chosenCatName = catName;
             this.showCatButtons = false;
             this.showIngredientsButtons = true;
@@ -443,16 +447,19 @@ var vm = new Vue({
                 this.chosenCatName = "base"; 
                 this.showIngredientsButtons = true;
                 this.showCatButtons = false;
+                this.showAllIngredientsButton = false;
             }
             else if (ingredTyp === "ingredCat") {
                 this.chosenCatName = "ingredient";
                 this.showCatButtons = true;
                 this.showIngredientsButtons =false;
+                this.showAllIngredientsButton = true;
             }
             else {
                 this.chosenCatName = "topping"; 
                 this.showIngredientsButtons = true;
                 this.showCatButtons = false;
+                this.showAllIngredientsButton = false;
             }
         },
 
