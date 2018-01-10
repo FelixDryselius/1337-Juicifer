@@ -3,25 +3,21 @@
 'use strict';
 
 
-// GEMENSAMMA
 var currentSuperOrder;
-// SLUT GEMENSAMMA FUNKTIONER
 
-// NEW ORDER START
-// SLUT NEW ORDER FUNKTIONER
 
 // ORDER QUEUE START
 function pressedCancelOrder() {
     var x = document.getElementById("myCheck").checked;
-    if (x == true){
+    if (x == true) {
         document.getElementById("temo").innerHTML = x;
-}
     }
-
-
-
-function pressedFinishOrder(size) {
 }
+
+
+function pressedFinishOrder(size) { //Används denna funktion? -Ingrid
+}
+
 
 
 /*Hur skriver man ut variablerna size härifrån?*/
@@ -40,11 +36,11 @@ Vue.component('juices', {
 </button>\
 </div>',
     methods: {
-    showRecipe: function () {
-    window.alert("visa recept");
-}
-              }
-              });
+        showRecipe: function () {
+            window.alert("visa recept");
+        }
+    }
+});
 
 
 // SLUT ORDER QUEUE FUNKTIONER
@@ -82,8 +78,10 @@ function typeTextToDiv(text, div_id) {
 
 // SLUT ORDER HISTORY
 
-// INVENTORY START
 
+
+// INVENTORY START
+//Här tar vi fram information från databasen och ställer upp dem i en tabell
 
 Vue.component('ingredient', {
     props: ['item', 'lang'],
@@ -102,19 +100,19 @@ Vue.component('ingredient', {
 
     data: function () {
 
-    return {
-    newValueInput: ''
-}
-              },
+        return {
+            newValueInput: ''
+        }
+    },
 
-              methods: {
-              changeBalance: function () {
+    methods: {
+        changeBalance: function () {
 
-    this.$emit("set-temp-id");
-    this.$emit("new-balance-set", this.newValueInput);
-    this.newValueInput = "";
-},
-}
+            this.$emit("set-temp-id");
+            this.$emit("new-balance-set", this.newValueInput);
+            this.newValueInput = "";
+        },
+    }
 })
 //SLUT INVENTORY
 
@@ -134,7 +132,9 @@ var vm = new Vue({
         hideMiddleBox: false,
         selectedSuperOrder: {},
         selectedSuperOrderID: -1,
+        selectedSuperOrderIDHistory: -1,
         showSelectedOrderDrink: false,
+        showSelectedOrderDrinkHistory: false,
         selectedSuperOrderHistory: {},
         transChange: {},
         tempId: -1
@@ -143,22 +143,20 @@ var vm = new Vue({
 
 
     methods: {
-        getTopping: function() { 
+        getTopping: function () {
             var ingredArray = [['Ingrediens', 'Mängd']];
-            
+
             for (var i = 0; i < Object.keys(this.superOrders).length; i++) {
-                var sizeLetter = this.superOrders[1001+i].drinks[0].size;
+                var sizeLetter = this.superOrders[1001 + i].drinks[0].size;
                 var size;
                 if (sizeLetter == 'S') {
                     size = 1;
-                }   
-                else if (sizeLetter == 'M') {
+                } else if (sizeLetter == 'M') {
                     size = 2;
-                }
-                else {
+                } else {
                     size = 3;
                 }
-                ingredArray.push([this.superOrders[1001+i].drinks[0].ingredients[0].ingredient_sv, (this.superOrders[1001+i].drinks[0].ingredients[0].JU_volume)*size]);
+                ingredArray.push([this.superOrders[1001 + i].drinks[0].ingredients[0].ingredient_sv, (this.superOrders[1001 + i].drinks[0].ingredients[0].JU_volume) * size]);
 
             }
             return ingredArray;
@@ -179,47 +177,75 @@ var vm = new Vue({
         hideMiddleBoxToggleHistory: function () {
             this.hideMiddleBox = !this.hideMiddleBox;
         },
-        
-        pressedFinishOrder: function (thisSuperOrder) {
-        var x = document.getElementById("myCheck").checked;
-        //if (x == true){
-        this.superOrders[thisSuperOrder].done = true;
-        this.selectedSuperOrder.drinks = [];
-            socket.emit("orderDone", thisSuperOrder);
-//}
-    
-  
-},
+
+
+        //Klickfunktion till Order Queues vänstra spalt. Den tar med orderID så vi kan sätta den till "done"
+        pressedFinishOrder: function (orderID) {
+            // var x = document.getElementById("myCheck").checked; //Ingrid kommenterade bort. Ta bort?
+            this.superOrders[orderID].done = true;
+            console.log(this.superOrders[orderID].orderTime + ": order time");
+            this.selectedSuperOrder.drinks = []; // Vad gör denna? -Ingrid
+
+            socket.emit("orderDone", orderID);
+        },
+
+        //Samma funktion som ovan fast för Order History, och denna tar inte med den specifika IDn utan hela objektet för information.
+        showSuperOrderContentHistory: function (thisSuperOrder) {
+            console.log("showSuperOrderContentHistory")
+            if (this.showSelectedOrderDrinkHistory == true) {
+                console.log("showSuperOrderContentHistory if statement")
+                this.showSelectedOrderDrinkHistory = false;
+                return
+            }
+            console.log("showSuperOrderContentHistory normal")
+            this.showSelectedOrderDrinkHistory = true;
+            this.selectedSuperOrderHistory = thisSuperOrder;
+            this.selectedSuperOrderIDHistory = thisSuperOrder.orderId;
+
+
+        },
+
+
+        //Klickfunktion till Order Queues vänstra spalt. Den tar med orderID så vi kan sätta den till "done"
 
         showSuperOrderContent: function (thisSuperOrder) {
             console.log("showSuperOrderContent")
-            if(this.showSelectedOrderDrink == true) {
+            if (this.showSelectedOrderDrink == true) {
                 console.log("showSuperOrderContent if statement")
                 this.showSelectedOrderDrink = false;
                 return
-            } 
+            }
             console.log("showSuperOrderContent normal")
             this.selectedSuperOrder = thisSuperOrder;
             this.selectedSuperOrderID = thisSuperOrder.orderId;
             this.showSelectedOrderDrink = true;
         },
+        //Samma funktion som ovan fast för Order History, och denna tar inte med den specifika IDn utan hela objektet för information.
+
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
+
+            var aVariable = document.getElementById("oHTimeInfo");
+            aVariable.innerHTML = "<br> Order Time: " + this.superOrders[thisSuperOrder.orderId].orderTime;
         },
 
-        setTempId: function(tId){
+        setTempId: function (tId) {
             this.tempId = tId - 1;
         },
-        newBalanceFunction: function(nBalance){ 
+
+        newBalanceFunction: function (nBalance) {
+
             console.log("This is nBalance: " + nBalance)
             console.log("this is tempID: " + this.tempId)
             console.log(this.ingredients[this.tempId].balance_unit_to_ju_unit);
-            this.transChange[this.tempId] = Number(nBalance) * this.ingredients[this.tempId].balance_unit_to_ju_unit -this.ingredients[this.tempId].stock;
+            this.transChange[this.tempId] = Number(nBalance) * this.ingredients[this.tempId].balance_unit_to_ju_unit - this.ingredients[this.tempId].stock;
             console.log(this.transChange[this.tempId]);
 
-            socket.emit("newInventory", {newBalance:this.transChange});
+            socket.emit("newInventory", {
+                newBalance: this.transChange
+            });
             console.log("did emit");
-            this.transChange={};
+            this.transChange = {};
         },
 
         hideAllTabs: function () {
@@ -231,7 +257,9 @@ var vm = new Vue({
             this.inventoryShow = false;
             hideStatistics();
         },
-        showTab: function (tab) {   
+
+        showTab: function (tab) {
+            document.getElementById('statistics').style.display = 'none';
             this.hideAllTabs();
             if (tab === "newOrder") {
                 this.oQButtonsShow = true;
@@ -247,8 +275,8 @@ var vm = new Vue({
             } else if (tab === "inventory") {
                 this.inventoryShow = true;
             } else if (tab === "statistics") {
-                document.getElementById('statistics').style.display='block';
-            } 
+                document.getElementById('statistics').style.display = 'block';
+            }
 
         },
 
@@ -257,13 +285,16 @@ var vm = new Vue({
                 return item["ingredient_cat"] === cat;
             })
         }
-    }});
+    }
+});
 /*--------------Rita grafer------------*/
-google.charts.load("current", {packages:["corechart"]});
+google.charts.load("current", {
+    packages: ["corechart"]
+});
 google.charts.setOnLoadCallback(drawChart);
 
-function hideStatistics(){
-    document.getElementById('statistics').style.display='none';
+function hideStatistics() {
+    document.getElementById('statistics').style.display = 'none';
 };
 
 function drawChart() {

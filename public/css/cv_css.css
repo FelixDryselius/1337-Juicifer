@@ -179,7 +179,7 @@ button {
     display: inline-block;
 }
 .topBarButton button{
-    background-color: #1D84B5;
+    background-color: #49c0f0;
     color: black;
     height: 2em;
     width: 10em;
@@ -199,10 +199,14 @@ button {
 }
 /*Slut - topbar*/
 
+
+
 /*Start - mug*/
 .mugContainer {
     display: flex;
-    margin-right: 3em;
+    justify-content: flex-start;
+    margin-right: 5%;
+
 }
 
 .mug {
@@ -226,6 +230,7 @@ button {
     flex-flow: column;
     justify-content: space-around;
     align-items: center;
+    //margin: 2em;
 }
 
 .toppingButton{
@@ -388,6 +393,22 @@ button {
 #ingredJuice {
     margin-bottom: 1em;
 }
+
+.chooseIngredientsButton {
+    text-transform: capitalize;
+}
+
+.ingredient {
+    text-transform: capitalize;
+}
+
+span {
+    text-transform: capitalize;
+}
+
+#topping {
+    text-transform: capitalize;
+}
 /*Slut - mug*/
 
 /*Start - cart page*/
@@ -408,18 +429,38 @@ button {
     border-style: solid;
     border-width: 0.5em;
     border-radius: 6px;
-    border-color: #2A628F;
+    border-width: 0.4em;
+    border-color: #49c0f0;
     overflow: auto;
     align-self: stretch;
+}
+
+.addDrink {
+    background-color: white;
+    margin: 1em;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+    margin-left: 8%;
+    width: 8.15em;
+    border-style: solid;
+    border-color: #49c0f0;
+    border-width: thick;
+    border-radius: 30px;
+}
+
+#plusSign {
+    margin-top: 3.5em;
+    border-color: white;
 }
 
 .cartRecipeBox{
     flex: 2;
     padding: 10px;
     border-style: solid;
-    border-width: 0.5em;
+    border-width: 0.4em;
     border-radius: 6px;
-    border-color: #2A628F;
+    border-width: 0.4em;
+    border-color: #49c0f0;
     align-content: center;
     overflow: auto;
     align-self: stretch;
@@ -437,14 +478,25 @@ button {
     display: flex;
     align-content: center;
     height: 65vh;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    flex-direction: row-reverse;
+    
+}
+
+#mainContentCart {
+    flex-direction:  row;
+}
+
+#chooseIngredientsBox {
+width: 55%;
+order: 1;
+    
 }
 
 .headContainer{
     display: flex; 
     justify-content: space-between;
-    width: 65%;
     flex-direction: row;
     border-left-style: solid;
     border-right-style: solid;
@@ -458,16 +510,34 @@ button {
 }
 
 .head {
-    margin-left: 1.6em;
     text-align: left;
     font-size: 2em;
     text-transform: capitalize;
 }
 
-input.head {
-    text-align: left;
-    max-width: 9em;
+input[type=text] {
+    width: 6em;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    background-image: url(/images/magnifying_glass.png);
+    background-position: 0.1em 0.2em; 
+    background-repeat: no-repeat;
+    padding: 0.1em 0em 0em 1.3em;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
 }
+
+input[type=text]:focus {
+    width: 70%;
+}
+
+/*
+#search:active { 
+    background-image: none; 
+}
+*/
 
 .flexContainer {
     border-left-style: solid;
@@ -481,7 +551,6 @@ input.head {
     display: flex;
     flex-wrap: wrap;
     /*    background-color: deepskyblue;*/
-    width: 65%;
     justify-content: center;
     align-items: center;
     flex: 1 1 auto;
@@ -498,7 +567,7 @@ input.head {
     height: 150px;
     margin: 10px;
     text-align: center;
-    line-height: 75px;
+    line-height: 25px;
     font-size: 1.5em;
 }
 

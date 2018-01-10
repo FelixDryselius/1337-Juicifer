@@ -79,8 +79,8 @@
                     <button id="cartButtonGreen" type="button" v-if="canPressCart" v-on:click="showTab('cartPage')">{{uiLabels.chart}}</button>
                     <button id="cartButton" type="button" v-on:click="showTab('cartPage')" v-else>{{uiLabels.chart}}</button> 
                     &#10148 <!-- Detta gör en pil mellan knapparna -->
-                    <button id="payButtonGreen" type="button" v-if="canPressPay" v-on:click="placeSuperOrder()">Betalning</button>
-                    <button id="payButton" type="button" v-else>{{uiLabels.payment}}</button>
+                    <button id="payButtonGreen" type="button" v-if="canPressPay" v-on:click="placeSuperOrder()">{{uiLabels.payment}}</button>
+                    <button id="payButton" type="button" v-on:click="cantPlaceSuperOrder()" v-else>{{uiLabels.payment}}</button>
                 </div>
             </div>  
             <!--End of topbar-->
@@ -125,7 +125,7 @@
             </div>
             <!--End of size page-->
 
-            <!--Start of smoothie ingredients page-->
+            <!--Start of order ingredients page-->
             <div id ="ingredPage" v-if="showIngredPage">
 
                 <!--Start of ingredient menu-->
@@ -133,21 +133,23 @@
                 <div class="mainContent">    
                     <div id=chooseIngredientsBox v-if="showButtonBox">
                         <div class="headContainer">
-                            <div class="head">{{chosenCatName}}</div>
-                            <input class="head" placeholder="Search" v-model="searchTerm" v-if="showIngredientsButtons">
-                            <input type="image"  src='images/delete.png' class="chooseIngredientsButton" id="returnButton" v-on:click="closeIngredMenus()">
 
+                           <div class="head">{{ingredBoxLabel}}</div>
+                            <input class="head" id="search" type="text" name="search" v-model="searchTerm" v-if="showIngredientsButtons">
+
+                            <input type="image"  src='images/delete.png' class="chooseIngredientsButton" id="returnButton" v-on:click="closeIngredMenus()">
                         </div>
 
-
                         <div class="flexContainer" id="scrollbar">
+                            <!--Button for pre-made drinks, not yet implemented:
+<button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
+{{uiLabels.ourFavorites}}</button>-->
 
-                            <!--<button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
-                                {{uiLabels.ourFavorites}}</button>-->
 
-                            <button class="chooseIngredientsButton" v-on:click="showAllIngredients()">{{uiLabels.allIngredients}}</button>
+                            <button class="chooseIngredientsButton" v-on:click="showIngredients('allIngredients',-1)" v-if="showAllIngredientsButton">{{uiLabels.allIngredients}}</button>
 
-                            <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">
+
+                            <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="showIngredients('hasChosenCategory',-1, catName)">
                                 {{catName}}</button>
 
                             <ingredient
@@ -164,8 +166,9 @@
                     <!--End of ingredient menu-->
 
                     <!--Start of smoothie mug interface-->
+                    <div class="mugContainer">
                     <div id="smoothieMug" v-if="showSmoothieMug">
-                        <div class="mugContainer">
+                        
                             <div class="mug">
                                 <div class="toppingButton">
                                     <button id="topping" v-on:click="showIngredients('topping',0)">{{topping}}<!--{{uiLabels.topping}}--></button>
@@ -178,7 +181,7 @@
                                         <div class="ingredButton" id="baseIngred" v-on:click="showIngredients('base',6)"><span>{{base}}<!--{{uiLabels.base}}--></span>
                                         </div> 
                                     </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -186,7 +189,7 @@
 
                     <!--Start of juice mug interface-->
                     <div id="juiceMug" v-if="showJuiceMug">
-                        <div class="mugContainer">
+                        
                             <div class="mug">
                                 <div class="toppingButton">
                                     <button id="topping" v-on:click="showIngredients('topping',0)">{{uiLabels.topping}}</button>
@@ -216,7 +219,7 @@
             <!--Start of cart page-->
             <div id="cart" v-if="showCartPage">
                 <h1 class="header" align="left">{{uiLabels.chart}}</h1>
-                <div class="mainContent">
+                <div class="mainContent" id="mainContentCart">
                     <div class="cartOverviewBox">
                         <h2>{{uiLabels.yourDrinks}}</h2>
 
@@ -234,6 +237,9 @@
                                         <div id="baseIngredCart"></div> 
                                     </div>
                                 </div>
+                            </div>
+                            <div class="addDrink">
+                                <input type="image"  src='images/plus.png' class="addDrink" id="plusSign" v-on:click="addDrinkToSuperorder()">
                             </div>
                         </div>
                         <!--End of cart smoothie mug interface-->
