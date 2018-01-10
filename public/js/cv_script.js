@@ -54,21 +54,6 @@ function addIngredientToActiveDrink(ingred) {
     var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient; currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[tempActiveIngred]=ingred; 
 }
 
-// Används denna funktion? - Ingrid
-/*function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-}*/
-
-// DETTA ÄR GAMLA GETORDERNR, TA BORT? INGRID?
-/*function getOrderNumber() {
-    // It's probably not a good idea to generate a random order number, client-side. 
-    // A better idea would be to let the server decide.
-    return "#" + getRandomInt(1, 1000000);
-}*/
-
-
 function checkActiveIngredButton(pos, type){
     var activeIngredButtonID;
     switch(pos){
