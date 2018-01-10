@@ -175,14 +175,7 @@ var vm = new Vue({
         hideMiddleBoxToggleHistory: function () {
             this.hideMiddleBox = !this.hideMiddleBox;
         },
-<<<<<<< HEAD
-        pressedFinishOrder: function (thisSuperOrder) {
-            var x = document.getElementById("myCheck").checked;
-            this.superOrders[thisSuperOrder].done = true;
-            this.selectedSuperOrder.drinks = [];
-            socket.emit("orderDone", thisSuperOrder); 
-        },
-=======
+
 
         //Klickfunktion till Order Queues vänstra spalt. Den tar med orderID så vi kan sätta den till "done"
         pressedFinishOrder: function (orderID) {
@@ -198,7 +191,6 @@ var vm = new Vue({
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
         },
->>>>>>> dfdad4042d19fca991073f3d32706339f7de7907
 
 
         //Klickfunktion till Order Queues vänstra spalt. Den tar med orderID så vi kan sätta den till "done"
