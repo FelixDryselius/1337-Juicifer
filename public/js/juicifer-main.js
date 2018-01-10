@@ -18,10 +18,12 @@ function addTimeStamp(){
     var min  = date.getMinutes();
     min = (min < 10 ? "0" : "") + min;
 
-    currentSuperOrder.orderTime[0]= year +"-"+ month +"-"+ day +" ";
-    currentSuperOrder.orderTime[1]= hour +":"+min;
-    console.log("Detta är orderTime[]: "+currentSuperOrder.orderTime);
+    var orderTime=[];
+    orderTime[0]= year +"-"+ month +"-"+ day +" ";
+    orderTime[1]= hour +":"+min;
+    console.log("Detta är orderTime[]: "+orderTime);
     /*console.log(new Date(year, month, day, hour, min));*/
+    return orderTime;
 }
 
 Vue.component('order-item', {

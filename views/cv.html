@@ -134,7 +134,7 @@
                     <div id=chooseIngredientsBox v-if="showButtonBox">
                         <div class="headContainer">
                             <div class="head">{{chosenCatName}}</div>
-                            <input class="head" placeholder="Search" v-model="searchTerm" v-if="showIngredientsButtons">
+                            <input type="text" class="head" name="search" value="search" onchange="hideIcon(this);" v-model="searchTerm" v-if="showIngredientsButtons">
                             <input type="image"  src='images/delete.png' class="chooseIngredientsButton" id="returnButton" v-on:click="closeIngredMenus()">
 
                         </div>
@@ -235,6 +235,9 @@
                                         <div id="baseIngredCart"></div> 
                                     </div>
                                 </div>
+                            </div>
+                            <div class="addDrink">
+                                <input type="image"  src='images/plus.png' class="addDrink" id="plusSign" v-on:click="addDrinkToSuperorder()">
                             </div>
                         </div>
                         <!--End of cart smoothie mug interface-->

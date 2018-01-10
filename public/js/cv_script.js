@@ -64,7 +64,7 @@ function addIngredientToActiveDrink(ingred) {
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients);
 }
 
-function addTimeStamp(){
+/*function addTimeStamp(){
     var date = new Date;
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
@@ -79,8 +79,8 @@ function addTimeStamp(){
     currentSuperOrder.orderTime[0]= year +"-"+ month +"-"+ day +" ";
     currentSuperOrder.orderTime[1]= hour +":"+min;
     console.log("Detta är orderTime[]: "+currentSuperOrder.orderTime);
-    /*console.log(new Date(year, month, day, hour, min));*/
-}
+    //console.log(new Date(year, month, day, hour, min));
+}*/
 
 // Används denna funktion? - Ingrid
 function getRandomInt(min, max) {
@@ -94,6 +94,11 @@ function getOrderNumber() {
     // It's probably not a good idea to generate a random order number, client-side. 
     // A better idea would be to let the server decide.
     return "#" + getRandomInt(1, 1000000);
+}
+
+/*Funktion för att dölja förstoringsglaset i sökrutan*/
+function hideIcon(self) {
+    self.style.backgroundImage = 'none';
 }
 
 function checkActiveIngredButton(pos, type){
@@ -209,7 +214,7 @@ var vm = new Vue({
 
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
-            alert(this.lang+"Tack för din beställning. Ditt ordernummer är: " + orderNumber +" Thank you for your order. Your order number is: " + orderNumber); //Jag får inte uiLabels att funka med alert, så därför skrivs båda språk ut.
+            alert("Tack för din beställning. Ditt ordernummer är: " + orderNumber +" Thank you for your order. Your order number is: " + orderNumber); //Jag får inte uiLabels att funka med alert, så därför skrivs båda språk ut.
             //          console.log(this.lang+" språk");
             //  console.log(this.uiLabels.base);
             location.reload(); //Reset sidan
@@ -482,8 +487,13 @@ var vm = new Vue({
             document.getElementById("ingred5").style.borderTop = this.ingredient5Color; 
         },
 
+        addDrinkToSuperorder: function(){
+            alert("Du har tryckt för att lägga till en dryck i ordern. Detta är tyvärr inte implementerat i denna version av hemsidan. \
+You wan't to add a drink to your order, but unfortunally this is not implented in this version of the webpage.");
+        },
+
         placeSuperOrder: function () {
-            addTimeStamp(); //spara tiden orden sickas. Ligger i jucifer-main. Bör användas till finish time också
+            currentSuperOrder.orderTime = addTimeStamp(); //spara tiden orden sickas. Ligger i jucifer-main.
             //So that the Vue element is updated
             sendCurrentSuperOrderToVue();
 

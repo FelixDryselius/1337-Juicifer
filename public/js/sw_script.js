@@ -15,8 +15,9 @@ function pressedCancelOrder() {
 }
 
 
+function pressedFinishOrder(size) { //Används denna funktion? -Ingrid
+}
 
-function pressedFinishOrder(size) {}
 
 
 /*Hur skriver man ut variablerna size härifrån?*/
@@ -174,12 +175,30 @@ var vm = new Vue({
         hideMiddleBoxToggleHistory: function () {
             this.hideMiddleBox = !this.hideMiddleBox;
         },
+<<<<<<< HEAD
         pressedFinishOrder: function (thisSuperOrder) {
             var x = document.getElementById("myCheck").checked;
             this.superOrders[thisSuperOrder].done = true;
             this.selectedSuperOrder.drinks = [];
             socket.emit("orderDone", thisSuperOrder); 
         },
+=======
+
+        //Klickfunktion till Order Queues vänstra spalt. Den tar med orderID så vi kan sätta den till "done"
+        pressedFinishOrder: function (orderID) {
+             // var x = document.getElementById("myCheck").checked; //Ingrid kommenterade bort. Ta bort?
+            this.superOrders[orderID].done = true;
+   console.log(this.superOrders[orderID].orderTime+": order time");
+            this.selectedSuperOrder.drinks = []; // Vad gör denna? -Ingrid
+
+            socket.emit("orderDone", orderID); 
+        },
+                 
+        //Samma funktion som ovan fast för Order History, och denna tar inte med den specifika IDn utan hela objektet för information.
+        showSuperOrderContentHistory: function (thisSuperOrder) {
+            this.selectedSuperOrderHistory = thisSuperOrder;
+        },
+>>>>>>> dfdad4042d19fca991073f3d32706339f7de7907
 
 
         //Klickfunktion till Order Queues vänstra spalt. Den tar med orderID så vi kan sätta den till "done"
@@ -200,12 +219,17 @@ var vm = new Vue({
 
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
+
+            var aVariable = document.getElementById("oHTimeInfo");
+            aVariable.innerHTML = "<br> Order Time: "+this.superOrders[thisSuperOrder.orderId].orderTime;            
         },
 
         setTempId: function (tId) {
             this.tempId = tId - 1;
         },
-        newBalanceFunction: function (nBalance) {
+      
+        newBalanceFunction: function(nBalance){ 
+
             console.log("This is nBalance: " + nBalance)
             console.log("this is tempID: " + this.tempId)
             console.log(this.ingredients[this.tempId].balance_unit_to_ju_unit);
