@@ -125,7 +125,7 @@
             </div>
             <!--End of size page-->
 
-            <!--Start of smoothie ingredients page-->
+            <!--Start of order ingredients page-->
             <div id ="ingredPage" v-if="showIngredPage">
 
                 <!--Start of ingredient menu-->
@@ -162,8 +162,9 @@
                     <!--End of ingredient menu-->
 
                     <!--Start of smoothie mug interface-->
+                    <div class="mugContainer">
                     <div id="smoothieMug" v-if="showSmoothieMug">
-                        <div class="mugContainer">
+                        
                             <div class="mug">
                                 <div class="toppingButton">
                                     <button id="topping" v-on:click="showIngredients('topping',0)">{{topping}}<!--{{uiLabels.topping}}--></button>
@@ -176,7 +177,7 @@
                                         <div class="ingredButton" id="baseIngred" v-on:click="showIngredients('base',6)"><span>{{base}}<!--{{uiLabels.base}}--></span>
                                         </div> 
                                     </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
@@ -184,7 +185,7 @@
 
                     <!--Start of juice mug interface-->
                     <div id="juiceMug" v-if="showJuiceMug">
-                        <div class="mugContainer">
+                        
                             <div class="mug">
                                 <div class="toppingButton">
                                     <button id="topping" v-on:click="showIngredients('topping',0)">{{uiLabels.topping}}</button>

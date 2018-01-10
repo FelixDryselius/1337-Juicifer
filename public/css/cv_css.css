@@ -199,10 +199,13 @@ button {
 }
 /*Slut - topbar*/
 
+
+
 /*Start - mug*/
 .mugContainer {
     display: flex;
-    margin-right: 3em;
+    margin-right: 5%;
+    
 }
 
 .mug {
@@ -428,14 +431,20 @@ button {
     display: flex;
     align-content: center;
     height: 65vh;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    flex-direction: row-reverse;
+    
+}
+#chooseIngredientsBox {
+width: 55%;
+order: 1;
+    
 }
 
 .headContainer{
     display: flex; 
     justify-content: space-between;
-    width: 65%;
     flex-direction: row;
     border-left-style: solid;
     border-right-style: solid;
@@ -448,7 +457,6 @@ button {
 }
 
 .head {
-    margin-left: 1.6em;
     text-align: left;
     font-size: 2em;
     text-transform: capitalize;
@@ -457,6 +465,7 @@ button {
 input.head {
     text-align: left;
     max-width: 9em;
+    width: 60%;
 }
 
 .flexContainer {
@@ -471,7 +480,6 @@ input.head {
     display: flex;
     flex-wrap: wrap;
     /*    background-color: deepskyblue;*/
-    width: 65%;
     justify-content: center;
     align-items: center;
     flex: 1 1 auto;
