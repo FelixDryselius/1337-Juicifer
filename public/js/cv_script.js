@@ -186,6 +186,7 @@ var vm = new Vue({
         searchTerm: '',
         vueSuperOrder: {},
         tempDrink: {},
+        ingredBoxLabel: "",
 
         canPressCart:false,
         canPressPay: false,
@@ -249,18 +250,6 @@ var vm = new Vue({
                 return ingred;
             }
         }, 
-
-        showAllIngredients: function(){
-            this.chosenCatName='';
-            this.showIngredientsButtons = true;
-            this.showCatButtons = false;
-        },
-
-        doShowIngredientsButtons: function(catName){
-            this.chosenCatName = catName;
-            this.showCatButtons = false;
-            this.showIngredientsButtons = true;
-        },
 
         choosePreMadeDrinks: function(){
 
@@ -431,22 +420,38 @@ var vm = new Vue({
             return true;
         },
 
-        showIngredients: function(ingredTyp,pos) {
+        showIngredients: function(ingredTyp,pos,catName) {
             this.showButtonBox = true;
             console.log("this is the pos: "+ pos)
-            currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient=pos; 
+            if(pos !==-1){
+                currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient=pos; 
+            }
             if (ingredTyp === "base") {
                 this.chosenCatName = "base"; 
+                this.ingredBoxLabel = "Base"
                 this.showIngredientsButtons = true;
                 this.showCatButtons = false;
             }
             else if (ingredTyp === "ingredCat") {
                 this.chosenCatName = "ingredient";
+                this.ingredBoxLabel = "Categories"
                 this.showCatButtons = true;
                 this.showIngredientsButtons =false;
             }
+            else if (ingredTyp === "allIngredients"){
+                this.chosenCatName = ""; 
+                this.showIngredientsButtons = true;
+                this.showCatButtons = false;
+                this.ingredBoxLabel = "Ingredients"
+            }
+            else if (ingredTyp === "hasChosenCategory"){
+                this.chosenCatName = catName;
+                this.showCatButtons = false;
+                this.showIngredientsButtons = true;
+            }
             else {
                 this.chosenCatName = "topping"; 
+                this.ingredBoxLabel = "Topping"
                 this.showIngredientsButtons = true;
                 this.showCatButtons = false;
             }

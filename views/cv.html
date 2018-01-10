@@ -133,7 +133,7 @@
                 <div class="mainContent">    
                     <div id=chooseIngredientsBox v-if="showButtonBox">
                         <div class="headContainer">
-                            <div class="head">{{chosenCatName}}</div>
+                            <div class="head">{{ingredBoxLabel}}</div>
                             <input class="head" placeholder="Search" v-model="searchTerm" v-if="showIngredientsButtons">
                             <input type="image"  src='images/delete.png' class="chooseIngredientsButton" id="returnButton" v-on:click="closeIngredMenus()">
 
@@ -145,9 +145,9 @@
 <button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
 {{uiLabels.ourFavorites}}</button>-->
 
-                            <button class="chooseIngredientsButton" v-on:click="showAllIngredients()">{{uiLabels.allIngredients}}</button>
+                            <button class="chooseIngredientsButton" v-on:click="showIngredients('allIngredients',-1)">{{uiLabels.allIngredients}}</button>
 
-                            <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">showIngredients()
+                            <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="showIngredients('hasChosenCategory',-1, catName)">
                                 {{catName}}</button>
 
                             <ingredient
