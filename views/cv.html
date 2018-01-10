@@ -79,8 +79,8 @@
                     <button id="cartButtonGreen" type="button" v-if="canPressCart" v-on:click="showTab('cartPage')">{{uiLabels.chart}}</button>
                     <button id="cartButton" type="button" v-on:click="showTab('cartPage')" v-else>{{uiLabels.chart}}</button> 
                     &#10148 <!-- Detta gör en pil mellan knapparna -->
-                    <button id="payButtonGreen" type="button" v-if="canPressPay" v-on:click="placeSuperOrder()">Betalning</button>
-                    <button id="payButton" type="button" v-else>{{uiLabels.payment}}</button>
+                    <button id="payButtonGreen" type="button" v-if="canPressPay" v-on:click="placeSuperOrder()">{{uiLabels.payment}}</button>
+                    <button id="payButton" type="button" v-on:click="cantPlaceSuperOrder()" v-else>{{uiLabels.payment}}</button>
                 </div>
             </div>  
             <!--End of topbar-->

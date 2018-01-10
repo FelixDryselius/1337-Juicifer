@@ -217,7 +217,7 @@ var vm = new Vue({
 
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
-            alert("Svenska: Tack för din beställning. Ditt ordernummer är: " + orderNumber +" English: Thank you for your order. Your order number is: " + orderNumber); //Jag får inte uiLabels att funka med alert, så därför skrivs båda språk ut.
+            alert("Svenska: Tack för din beställning. Ditt ordernummer är: " + orderNumber +"              English: Thank you for your order. Your order number is: " + orderNumber); //Jag får inte uiLabels att funka med alert, så därför skrivs båda språk ut.
             //          console.log(this.lang+" språk");
             //  console.log(this.uiLabels.base);
             location.reload(); //Reset sidan
@@ -503,6 +503,10 @@ var vm = new Vue({
 
         addDrinkToSuperorder: function(){
             alert("Svenska: Du har tryckt för att lägga till en dryck i ordern. Detta är tyvärr inte implementerat i denna version av hemsidan.           English: You wan't to add a drink to your order, but unfortunally this is not implented in this version of the webpage.");
+        },
+        
+        cantPlaceSuperOrder: function(){
+            alert("Svenska: För att beställa måste du fylla drycken med ingredienser och lägga den i varukorgen           English: To order you need to fill the drink with ingredients and put it in the cart.");
         },
 
         placeSuperOrder: function () {
