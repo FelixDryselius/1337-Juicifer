@@ -348,8 +348,8 @@ div.menu button.active {
     /* Detta är då min DIV som jag har problem med */
     background-color: #e6e6e6;
     border: 5px solid #bfbfbf;
-    width: 75%;
-    height: 75%;
+    width: 97%;
+    height: 80%;
     top: 50px;
     left: 15px;
     position: relative;
@@ -367,7 +367,7 @@ div.menu button.active {
 
 .SubmitButton {
     display: inline-block;
-    padding: 15px 25%;
+    padding: 15px 5%;
     font-size: 24px;
     cursor: pointer;
     text-align: center;
@@ -390,7 +390,7 @@ div.menu button.active {
     transform: translateY(4px);
 }
 
-
+/*slut på submittknappen*/
 /*Slut INVENTORY*/
 
 /*Start css för STATISTICS*/
