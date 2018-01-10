@@ -47,13 +47,9 @@
 
                 <div id="oQBoxContainer">
 
-
                     <div class="leftSideMenuBox" id="oQMenu">
 
-
-                        <!-- v-if="!superOrder.done" -->
-
-                        <div class="oneSuperOrder" v-for="thisSuperOrder in this.superOrders" v-if="!thisSuperOrder.done" v-on:click="showSuperOrderContent(thisSuperOrder)">
+                        <div class="oneSuperOrder" v-for="thisSuperOrder in this.superOrders" v-if="!thisSuperOrder.done" v-on:click="showSuperOrderContent(thisSuperOrder)" tabindex="-1">
                             {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br>
                             {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br>
                             {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
@@ -62,8 +58,7 @@
 
                         <!-- Den här divven med ingredienser är här bara för att jämföra det kodsättet -->
 
-                        <!-- detta är koden Mikael skrev -->
-                        <!-- <div id="createdOrders" v-for="oneOrder in orders">Order: {{oneOrder.ingredients}} </div> -->
+                
                     </div>
 
                     <!-- Deta är rutan i mitten där jucerna ska presenteras -->
@@ -82,27 +77,18 @@
 
                             <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks" v-on:click="hideRightSideBoxToggle()">
 
+
                                 <h2> {{drink.size}} custom {{drink.type}} </h2>
-
-
 
                             </div>
                         </div>
 
-
-
                     </div>
 
-
-
                 </div>
-
-
             </div>
 
-
-
-
+<!--Här presenteras dryckernas innehåll så att personalen vet hur de ska tillaga den -->
             <div class="rightSideBox" id="oQIngridients" v-if="hideRightBox">
                 <h3> {{uiLabels.ingredients}}</h3>
                 <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks">
@@ -132,10 +118,10 @@
 
                 <div id="oHBoxContainer">
 
-                    <!-- VÄNSTRA HISTORY -->
+                    <!-- Tabellen till vänster som presenterar de färdiga ordrarna -->
                     <div class="leftSideMenuBox" id="oHMenu">
 
-                        <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="thisSuperOrder.done" v-on:click="showSuperOrderContentHistory(thisSuperOrder)">
+                        <div class="oneSuperOrder" v-for="thisSuperOrder in superOrders" v-if="thisSuperOrder.done" v-on:click="showSuperOrderContentHistory(thisSuperOrder)" tabindex="2">
                             {{uiLabels.orderIdIs}} {{thisSuperOrder.orderId}}, <br> {{uiLabels.numberOfDrinks}} {{thisSuperOrder.drinks.length}}, <br> {{uiLabels.orderTime}} {{thisSuperOrder.orderTime[1]}}
                         </div>
 
@@ -156,7 +142,7 @@
                     <!-- MITTENBOXEN -->
                     <div class="middleSideBox">
 
-                        <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggleHistory()">
+                        <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggleHistory()" tabindex="2">
 
                             <div class="oneDrink" v-for="drink in selectedSuperOrderHistory.drinks">
                                 <h2> {{drink.size}} custom {{drink.type}} </h2>

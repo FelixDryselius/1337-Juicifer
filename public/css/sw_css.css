@@ -148,8 +148,10 @@ div.menu button.active {
     background-color: rgb(210, 210, 210);
     border: 2px solid rgb(125, 124, 127);
     cursor: pointer;
-    overflow: auto;
+    
 }
+
+
 
 .rightSideBox {
     position: absolute;
@@ -166,15 +168,12 @@ div.menu button.active {
     width: 40%;
     left: 30%;
     top: 60px;
-    background-color: rgb(165, 170, 170);
+    background-color: rgb(210, 210, 210);
     border: 2px solid rgb(125, 124, 127);
     cursor: pointer;
 }
 
-.oneDrink{
-    
-    /*Denna border är här under testing för att se enklare.*/
-}
+
 
 .pressedDiv {
     filter: brightness(85%);
@@ -215,6 +214,10 @@ div.menu button.active {
     left: 46%;
     background-color: rgb(51, 204, 51);
     width: 24%
+}
+
+div:focus {
+    background-color: #bfbfbf;
 }
 
 .check {

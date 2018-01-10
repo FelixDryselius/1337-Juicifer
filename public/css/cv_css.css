@@ -179,7 +179,7 @@ button {
     display: inline-block;
 }
 .topBarButton button{
-    background-color: #1D84B5;
+    background-color: #49c0f0;
     color: black;
     height: 2em;
     width: 10em;
@@ -199,11 +199,14 @@ button {
 }
 /*Slut - topbar*/
 
+
+
 /*Start - mug*/
 .mugContainer {
     display: flex;
     justify-content: flex-start;
-    margin-right: 3em;
+    margin-right: 5%;
+
 }
 
 .mug {
@@ -459,14 +462,20 @@ button {
     display: flex;
     align-content: center;
     height: 65vh;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
+    flex-direction: row-reverse;
+    
+}
+#chooseIngredientsBox {
+width: 55%;
+order: 1;
+    
 }
 
 .headContainer{
     display: flex; 
     justify-content: space-between;
-    width: 65%;
     flex-direction: row;
     border-left-style: solid;
     border-right-style: solid;
@@ -480,7 +489,6 @@ button {
 }
 
 .head {
-    margin-left: 1.6em;
     text-align: left;
     font-size: 2em;
     text-transform: capitalize;
@@ -489,9 +497,8 @@ button {
 input.head {
     text-align: left;
     max-width: 9em;
-    background-image: url(images/magnifier.png);
-    background-repeat: no-repeat;
-    /*    text-indent: 20px;*/
+    width: 60%;
+
 }
 
 .flexContainer {
@@ -506,7 +513,6 @@ input.head {
     display: flex;
     flex-wrap: wrap;
     /*    background-color: deepskyblue;*/
-    width: 65%;
     justify-content: center;
     align-items: center;
     flex: 1 1 auto;
@@ -523,7 +529,7 @@ input.head {
     height: 150px;
     margin: 10px;
     text-align: center;
-    line-height: 75px;
+    line-height: 25px;
     font-size: 1.5em;
 }
 
