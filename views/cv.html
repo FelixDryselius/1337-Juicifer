@@ -139,10 +139,12 @@
 
                         </div>
 
-                        <div class="flexContainer">
-                            <div id="scrollbar"></div>
+
+                        <div class="flexContainer" id="scrollbar">
+
                             <!--<button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
                                 {{uiLabels.ourFavorites}}</button>-->
+
                             <button class="chooseIngredientsButton" v-on:click="showAllIngredients()">{{uiLabels.allIngredients}}</button>
 
                             <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">
@@ -229,7 +231,7 @@
                                         <div class="ingredButtonCart" id="ingred5Cart"><span>{{ingredient3}}</span></div>
                                         <div class="ingredButtonCart" id="ingred4Cart"><span>{{ingredient2}}</span></div>
                                         <div class="ingredButtonCart" id="ingred3Cart"><span>{{ingredient1}}</span></div>
-                                        <div class="ingredButtonCart" id="baseIngredCart"></div> 
+                                        <div id="baseIngredCart"></div> 
                                     </div>
                                 </div>
                             </div>
@@ -239,8 +241,8 @@
                         <!--Start of cart juice mug interface-->
                         <div class="mugContainer" v-if="showJuiceInCart">
                             <div class="mugCart">
-                                <div class="toppingButton">
-                                    <button id="toppingCart"><span style="display:none">{{topping}}</span></button>
+                                <div class="toppingButton" id="toppingCart">
+                                    <button><span style="display:none">{{topping}}</span></button>
                                 </div>
                                 <div class="mugButtons">
                                     <div class="ingredCart" id="ingredJuice"> <!--Hmmm-->
