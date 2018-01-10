@@ -226,6 +226,7 @@ button {
     flex-flow: column;
     justify-content: space-around;
     align-items: center;
+    //margin: 2em;
 }
 
 .toppingButton{
@@ -402,6 +403,12 @@ button {
     border-color: #2A628F;
     overflow: auto;
     align-self: stretch;
+}
+#addDrink{
+    flex: 3;
+    background-color: aqua;
+    margin: 1em;
+    width: 8.15em;
 }
 
 .cartRecipeBox{

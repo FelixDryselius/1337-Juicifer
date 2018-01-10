@@ -15,12 +15,12 @@ function pressedCancelOrder() {
     var x = document.getElementById("myCheck").checked;
     if (x == true){
         document.getElementById("temo").innerHTML = x;
-}
     }
+}
 
 
 
-function pressedFinishOrder(size) {
+function pressedFinishOrder(size) { //Används denna funktion? -Ingrid
 }
 
 
@@ -145,7 +145,7 @@ var vm = new Vue({
     methods: {
         getTopping: function() { 
             var ingredArray = [['Ingrediens', 'Mängd']];
-            
+
             for (var i = 0; i < Object.keys(this.superOrders).length; i++) {
                 var sizeLetter = this.superOrders[1001+i].drinks[0].size;
                 var size;
@@ -179,17 +179,17 @@ var vm = new Vue({
         hideMiddleBoxToggleHistory: function () {
             this.hideMiddleBox = !this.hideMiddleBox;
         },
-        
+
         pressedFinishOrder: function (thisSuperOrder) {
-        var x = document.getElementById("myCheck").checked;
-        //if (x == true){
-        this.superOrders[thisSuperOrder].done = true;
-        this.selectedSuperOrder.drinks = [];
+            // var x = document.getElementById("myCheck").checked; //Ingrid kommenterade bort
+            this.superOrders[thisSuperOrder].done = true;
+            this.superOrders[thisSuperOrder].finishTime =  addTimeStamp();
+            console.log(this.superOrders[thisSuperOrder].finishTime+": finish time"+ this.superOrders[thisSuperOrder].orderTime+": order time");
+            this.selectedSuperOrder.drinks = [];
             socket.emit("orderDone", thisSuperOrder);
-//}
-    
-  
-},
+
+
+        },
 
         showSuperOrderContent: function (thisSuperOrder) {
             console.log("showSuperOrderContent")
