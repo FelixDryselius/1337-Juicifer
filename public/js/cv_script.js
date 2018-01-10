@@ -97,9 +97,9 @@ function getOrderNumber() {
 }
 
 /*Funktion för att dölja förstoringsglaset i sökrutan*/
-function hideIcon(self) {
-    self.style.backgroundImage = 'none';
-}
+//function hideIcon(self) {
+//    self.style.backgroundImage = 'none';
+//}
 
 function checkActiveIngredButton(pos, type){
     var activeIngredButtonID;
