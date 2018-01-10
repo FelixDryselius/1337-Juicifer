@@ -82,7 +82,7 @@
                                 </label> </div>
 
                             <div class="oneDrink" v-for="drink in selectedSuperOrder.drinks" v-on:click="hideRightSideBoxToggle()">
-                                <h2>x {{drink.size}} custom {{drink.type}} </h2>
+                                <h2> {{drink.size}} custom {{drink.type}} </h2>
 
 
                             </div>
@@ -158,7 +158,7 @@
                         <div class="juicesInTheOrder" id="oQJuicesInOrder" v-on:click="hideRightSideBoxToggleHistory()">
 
                             <div class="oneDrink" v-for="drink in selectedSuperOrderHistory.drinks">
-                                <h2>x {{drink.size}} custom {{drink.type}} </h2>
+                                <h2> {{drink.size}} custom {{drink.type}} </h2>
                             </div>
 
                         </div>
