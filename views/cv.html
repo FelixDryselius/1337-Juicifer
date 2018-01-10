@@ -133,9 +133,10 @@
                 <div class="mainContent">    
                     <div id=chooseIngredientsBox v-if="showButtonBox">
                         <div class="headContainer">
-                            
-                            <div class="head">{{ingredBoxLabel}}</div>
-                            <input type="text" class="head" name="search" value="search" onchange="hideIcon(this);" v-model="searchTerm" v-if="showIngredientsButtons">
+
+                           <div class="head">{{ingredBoxLabel}}</div>
+                            <input class="head" id="search" type="text" name="search" v-model="searchTerm" v-if="showIngredientsButtons">
+
                             <input type="image"  src='images/delete.png' class="chooseIngredientsButton" id="returnButton" v-on:click="closeIngredMenus()">
                         </div>
 
