@@ -3,12 +3,8 @@
 'use strict';
 
 
-// GEMENSAMMA
 var currentSuperOrder;
-// SLUT GEMENSAMMA FUNKTIONER
 
-// NEW ORDER START
-// SLUT NEW ORDER FUNKTIONER
 
 // ORDER QUEUE START
 function pressedCancelOrder() {
@@ -136,7 +132,9 @@ var vm = new Vue({
         hideMiddleBox: false,
         selectedSuperOrder: {},
         selectedSuperOrderID: -1,
+        selectedSuperOrderIDHistory: -1,
         showSelectedOrderDrink: false,
+        showSelectedOrderDrinkHistory: false,
         selectedSuperOrderHistory: {},
         transChange: {},
         tempId: -1
@@ -180,46 +178,62 @@ var vm = new Vue({
             this.hideMiddleBox = !this.hideMiddleBox;
         },
 
+
         //Klickfunktion till Order Queues vänstra spalt. Den tar med orderID så vi kan sätta den till "done"
         pressedFinishOrder: function (orderID) {
-             // var x = document.getElementById("myCheck").checked; //Ingrid kommenterade bort. Ta bort?
+            // var x = document.getElementById("myCheck").checked; //Ingrid kommenterade bort. Ta bort?
             this.superOrders[orderID].done = true;
-   console.log(this.superOrders[orderID].orderTime+": order time");
+            console.log(this.superOrders[orderID].orderTime + ": order time");
             this.selectedSuperOrder.drinks = []; // Vad gör denna? -Ingrid
 
-            socket.emit("orderDone", orderID); 
-        },
-                 
-        //Samma funktion som ovan fast för Order History, och denna tar inte med den specifika IDn utan hela objektet för information.
-        showSuperOrderContentHistory: function (thisSuperOrder) {
-            this.selectedSuperOrderHistory = thisSuperOrder;
+            socket.emit("orderDone", orderID);
         },
 
+        //Samma funktion som ovan fast för Order History, och denna tar inte med den specifika IDn utan hela objektet för information.
+        showSuperOrderContentHistory: function (thisSuperOrder) {
+            console.log("showSuperOrderContentHistory")
+            if (this.showSelectedOrderDrinkHistory == true) {
+                console.log("showSuperOrderContentHistory if statement")
+                this.showSelectedOrderDrinkHistory = false;
+                return
+            }
+            console.log("showSuperOrderContentHistory normal")
+            this.showSelectedOrderDrinkHistory = true;
+            this.selectedSuperOrderHistory = thisSuperOrder;
+            this.selectedSuperOrderIDHistory = thisSuperOrder.orderId;
+
+
+        },
+
+
+        //Klickfunktion till Order Queues vänstra spalt. Den tar med orderID så vi kan sätta den till "done"
 
         showSuperOrderContent: function (thisSuperOrder) {
             console.log("showSuperOrderContent")
-            if(this.showSelectedOrderDrink == true) {
+            if (this.showSelectedOrderDrink == true) {
                 console.log("showSuperOrderContent if statement")
                 this.showSelectedOrderDrink = false;
                 return
-            } 
+            }
             console.log("showSuperOrderContent normal")
             this.selectedSuperOrder = thisSuperOrder;
             this.selectedSuperOrderID = thisSuperOrder.orderId;
             this.showSelectedOrderDrink = true;
         },
+        //Samma funktion som ovan fast för Order History, och denna tar inte med den specifika IDn utan hela objektet för information.
+
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
 
             var aVariable = document.getElementById("oHTimeInfo");
-            aVariable.innerHTML = "<br> Order Time: "+this.superOrders[thisSuperOrder.orderId].orderTime;            
+            aVariable.innerHTML = "<br> Order Time: " + this.superOrders[thisSuperOrder.orderId].orderTime;
         },
 
         setTempId: function (tId) {
             this.tempId = tId - 1;
         },
-      
-        newBalanceFunction: function(nBalance){ 
+
+        newBalanceFunction: function (nBalance) {
 
             console.log("This is nBalance: " + nBalance)
             console.log("this is tempID: " + this.tempId)
@@ -279,8 +293,8 @@ google.charts.load("current", {
 });
 google.charts.setOnLoadCallback(drawChart);
 
-function hideStatistics(){
-    document.getElementById('statistics').style.display='none';
+function hideStatistics() {
+    document.getElementById('statistics').style.display = 'none';
 };
 
 function drawChart() {
