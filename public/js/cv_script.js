@@ -459,7 +459,7 @@ var vm = new Vue({
                 this.chosenCatName = catName;
                 this.showCatButtons = false;
                 this.showIngredientsButtons = true;
-                this.showAllIngredientsButton = false;
+                this.showAllIngredientsButton = true;
             }
             else {
                 this.chosenCatName = "topping"; 
