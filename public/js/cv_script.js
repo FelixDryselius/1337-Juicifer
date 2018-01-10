@@ -64,7 +64,7 @@ function addIngredientToActiveDrink(ingred) {
     console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients);
 }
 
-/*function addTimeStamp(){
+/*function addTimeStamp(){ //Utbytt till en function i app.js
     var date = new Date;
     var year = date.getFullYear();
     var month = date.getMonth() + 1;
