@@ -3,12 +3,8 @@
 'use strict';
 
 
-// GEMENSAMMA
 var currentSuperOrder;
-// SLUT GEMENSAMMA FUNKTIONER
 
-// NEW ORDER START
-// SLUT NEW ORDER FUNKTIONER
 
 // ORDER QUEUE START
 function pressedCancelOrder() {
@@ -178,18 +174,15 @@ var vm = new Vue({
         hideMiddleBoxToggleHistory: function () {
             this.hideMiddleBox = !this.hideMiddleBox;
         },
-        //Klickfunktion till Order Queues vänstra spalt. Den tar med orderID så vi kan sätta den till "done"
         pressedFinishOrder: function (thisSuperOrder) {
             var x = document.getElementById("myCheck").checked;
             this.superOrders[thisSuperOrder].done = true;
             this.selectedSuperOrder.drinks = [];
             socket.emit("orderDone", thisSuperOrder); 
         },
-        //Samma funktion som ovan fast för Order History, och denna tar inte med den specifika IDn utan hela objektet för information.
-        showSuperOrderContentHistory: function (thisSuperOrder) {
-            this.selectedSuperOrderHistory = thisSuperOrder;
-        },
 
+
+        //Klickfunktion till Order Queues vänstra spalt. Den tar med orderID så vi kan sätta den till "done"
 
         showSuperOrderContent: function (thisSuperOrder) {
             console.log("showSuperOrderContent")
@@ -203,6 +196,8 @@ var vm = new Vue({
             this.selectedSuperOrderID = thisSuperOrder.orderId;
             this.showSelectedOrderDrink = true;
         },
+        //Samma funktion som ovan fast för Order History, och denna tar inte med den specifika IDn utan hela objektet för information.
+
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
         },
