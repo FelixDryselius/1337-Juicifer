@@ -129,12 +129,12 @@ var vm = new Vue({
         newOrderShow: false,
         orderHistoryShow: false,
         inventoryShow: false,
-        statisticsShow: false,
         hideRightBox: false,
         hideRightBoxHistory: false,
         hideMiddleBox: false,
         selectedSuperOrder: {},
         selectedSuperOrderID: -1,
+        showSelectedOrderDrink: false,
         selectedSuperOrderHistory: {},
         transChange: {},
         tempId: -1
@@ -192,8 +192,16 @@ var vm = new Vue({
 },
 
         showSuperOrderContent: function (thisSuperOrder) {
+            console.log("showSuperOrderContent")
+            if(this.showSelectedOrderDrink == true) {
+                console.log("showSuperOrderContent if statement")
+                this.showSelectedOrderDrink = false;
+                return
+            } 
+            console.log("showSuperOrderContent normal")
             this.selectedSuperOrder = thisSuperOrder;
             this.selectedSuperOrderID = thisSuperOrder.orderId;
+            this.showSelectedOrderDrink = true;
         },
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
@@ -221,10 +229,9 @@ var vm = new Vue({
             this.orderQueueShow = false;
             this.orderHistoryShow = false;
             this.inventoryShow = false;
-            this.statisticsShow = false;
+            hideStatistics();
         },
-        showTab: function (tab) {
-            document.getElementById('statistics').style.display='none';
+        showTab: function (tab) {   
             this.hideAllTabs();
             if (tab === "newOrder") {
                 this.oQButtonsShow = true;
@@ -255,6 +262,9 @@ var vm = new Vue({
 google.charts.load("current", {packages:["corechart"]});
 google.charts.setOnLoadCallback(drawChart);
 
+function hideStatistics(){
+    document.getElementById('statistics').style.display='none';
+};
 
 function drawChart() {
     var toppingData = google.visualization.arrayToDataTable(vm.getTopping());

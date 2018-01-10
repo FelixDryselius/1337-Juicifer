@@ -134,16 +134,17 @@
                     <div id=chooseIngredientsBox v-if="showButtonBox">
                         <div class="headContainer">
                             <div class="head">{{chosenCatName}}</div>
-                            <input class="head" placeholder="Search" v-model="searchTerm">
+                            <input class="head" placeholder="Search" v-model="searchTerm" v-if="showIngredientsButtons">
                             <input type="image"  src='images/delete.png' class="chooseIngredientsButton" id="returnButton" v-on:click="closeIngredMenus()">
 
                         </div>
 
-                        <div class="flexContainer">
-                            <div id="scrollbar"></div>
-                            <!--Button for pre-made drinks, not yet implemented
-                            <button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
-                                {{uiLabels.ourFavorites}}</button>-->
+                        <div class="flexContainer" id="scrollbar">
+
+                            <!--Button for pre-made drinks, not yet implemented:
+<button class="chooseIngredientsButton" v-on:click="choosePreMadeDrinks()">
+{{uiLabels.ourFavorites}}</button>-->
+
                             <button class="chooseIngredientsButton" v-on:click="showAllIngredients()">{{uiLabels.allIngredients}}</button>
 
                             <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="doShowIngredientsButtons(catName)">
@@ -230,7 +231,7 @@
                                         <div class="ingredButtonCart" id="ingred5Cart"><span>{{ingredient3}}</span></div>
                                         <div class="ingredButtonCart" id="ingred4Cart"><span>{{ingredient2}}</span></div>
                                         <div class="ingredButtonCart" id="ingred3Cart"><span>{{ingredient1}}</span></div>
-                                        <div class="ingredButtonCart" id="baseIngredCart"></div> 
+                                        <div id="baseIngredCart"></div> 
                                     </div>
                                 </div>
                             </div>
@@ -240,8 +241,8 @@
                         <!--Start of cart juice mug interface-->
                         <div class="mugContainer" v-if="showJuiceInCart">
                             <div class="mugCart">
-                                <div class="toppingButton">
-                                    <button id="toppingCart"><span style="display:none">{{topping}}</span></button>
+                                <div class="toppingButton" id="toppingCart">
+                                    <button><span style="display:none">{{topping}}</span></button>
                                 </div>
                                 <div class="mugButtons">
                                     <div class="ingredCart" id="ingredJuice"> <!--Hmmm-->

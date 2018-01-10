@@ -217,8 +217,8 @@ button {
 }
 
 .mugCart {
-    height: 12em;
-    width: 8.15em;
+    height: 14em;
+    width: 9.5em;
     background-image: url(/images/mug.jpg);
     background-size: contain;
     background-repeat: no-repeat;
@@ -233,6 +233,7 @@ button {
     display: flex;
     justify-content: center;
     flex-flow: column;
+    margin-top: -1.3em;
 }
 
 .mugButtons{
@@ -241,6 +242,7 @@ button {
     align-items: center;
     justify-content: space-around;
     flex-direction: column;
+    margin-bottom: -0.3em;
 }
 
 .ingredButton {
@@ -252,17 +254,18 @@ button {
     border-left: 0.6em solid transparent;
     box-sizing: content-box;
     border-radius: 6px;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.5em;
 }
 
 .ingredButtonCart {
+    width: 12em;
     text-align: center;
     font-size: 0.7em;
     height: 0; 
     position: relative;
-    border-right: 0.6em solid transparent;
-    border-top: 3em solid lightgrey;
-    border-left: 0.6em solid transparent;
+    border-right: 0.51em solid transparent;
+    border-top: 2em solid lightgrey;
+    border-left: 0.51em solid transparent;
     box-sizing: content-box;
     border-radius: 6px;
     /*    margin-bottom: 0.2em;*/
@@ -285,17 +288,15 @@ button {
 
 #toppingCart {
     font-size: 0.7em;
-    width: 10em;
+    width: 13em;
     height: 3em;
     margin-top: 2.5em;
+    margin-bottom: 0.5em;
+    box-shadow: initial;
 }
 
 #ingred5 {
     width: 13.5em;
-}
-
-#ingred5cart {
-    width: 15em;
 }
 
 #ingred4 {
@@ -304,7 +305,8 @@ button {
 }
 
 #ingred4Cart {
-    width: 6em;
+    width: 11.2em;
+    left: 3%;
 }
 
 #ingred3 {
@@ -314,7 +316,8 @@ button {
 }
 
 #ingred3Cart {
-    width: 6em;
+    width: 10.2em;
+    left: 7.4%;
 }
 
 #ingred2 {
@@ -344,11 +347,17 @@ button {
 }
 
 #baseIngredCart {
-    width: 4em;
+    text-align: center;
+    font-size: 0.7em;
+    height: 0; 
+    position: relative;
+    box-sizing: content-box;
+    border-radius: 6px;
+    width: 7.7em;
     border-right: 1.2em solid transparent;
-    border-top: 2.5em solid lightgrey;
+    border-top: 2em solid lightgrey;
     border-left: 1.2em solid transparent;
-    /*    left: 13%    */
+    left: 11.5%;
 }
 
 .mugButtons span { 
@@ -397,7 +406,7 @@ button {
     flex-wrap: wrap;
     padding: 10px;
     border-style: solid;
-    border-width: 1em;
+    border-width: 0.5em;
     border-radius: 6px;
     border-color: #2A628F;
     overflow: auto;
@@ -408,7 +417,7 @@ button {
     flex: 2;
     padding: 10px;
     border-style: solid;
-    border-width: 1em;
+    border-width: 0.5em;
     border-radius: 6px;
     border-color: #2A628F;
     align-content: center;
@@ -443,7 +452,8 @@ button {
     border-width: 0.5em;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
-    border-color: #2A628F;
+    border-color: #2364AA;
+    background-color: #2364AA;
     margin-left: 3em;
 }
 
@@ -478,7 +488,8 @@ input.head {
     overflow-y: auto;
     height: 54vh;
     margin-left: 3em;
-    box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(0, 0, 0, 0.1) inset;
+    -webkit-box-shadow: 3px 8px 12px 7px rgba(87,87,87,0.75); 
+    box-shadow: 3px 8px 12px 7px rgba(87,87,87,0.75);
 }
 
 
@@ -489,6 +500,10 @@ input.head {
     text-align: center;
     line-height: 25px;
     font-size: 1.5em;
+}
+
+.chooseIngredientsButton{
+    border-radius: 25%;
 }
 
 #scrollbar::-webkit-scrollbar-track

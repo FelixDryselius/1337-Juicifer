@@ -440,7 +440,7 @@ var vm = new Vue({
                 this.showCatButtons = false;
             }
             else if (ingredTyp === "ingredCat") {
-                this.chosenCatName = "";
+                this.chosenCatName = "ingredient";
                 this.showCatButtons = true;
                 this.showIngredientsButtons =false;
             }
