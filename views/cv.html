@@ -134,7 +134,7 @@
                     <div id=chooseIngredientsBox v-if="showButtonBox">
                         <div class="headContainer">
                             <div class="head">{{chosenCatName}}</div>
-                            <input class="head" placeholder="Search" v-model="searchTerm">
+                            <input class="head" placeholder="Search" v-model="searchTerm" v-if="showIngredientsButtons">
                             <input type="image"  src='images/delete.png' class="chooseIngredientsButton" id="returnButton" v-on:click="closeIngredMenus()">
 
                         </div>
