@@ -453,11 +453,13 @@ var vm = new Vue({
                 this.showIngredientsButtons = true;
                 this.showCatButtons = false;
                 this.ingredBoxLabel = "Ingredients"
+                this.showAllIngredientsButton = false;
             }
             else if (ingredTyp === "hasChosenCategory"){
                 this.chosenCatName = catName;
                 this.showCatButtons = false;
                 this.showIngredientsButtons = true;
+                this.showAllIngredientsButton = false;
             }
             else {
                 this.chosenCatName = "topping"; 

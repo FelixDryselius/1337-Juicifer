@@ -145,7 +145,7 @@
 {{uiLabels.ourFavorites}}</button>-->
 
 
-                            <button class="chooseIngredientsButton" v-on:click="showIngredients('allIngredients',-1)">{{uiLabels.allIngredients}}</button>
+                            <button class="chooseIngredientsButton" v-on:click="showIngredients('allIngredients',-1)" v-if="showAllIngredientsButton">{{uiLabels.allIngredients}}</button>
 
 
                             <button class="chooseIngredientsButton" v-for="catName in this.categories" v-if="showCatButtons" v-on:click="showIngredients('hasChosenCategory',-1, catName)">
