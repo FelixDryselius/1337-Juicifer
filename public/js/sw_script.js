@@ -201,14 +201,10 @@ var vm = new Vue({
             console.log("showSuperOrderContent normal")
             this.selectedSuperOrder = thisSuperOrder;
             this.selectedSuperOrderID = thisSuperOrder.orderId;
-<<<<<<< HEAD
-            
-=======
             this.showSelectedOrderDrink = true;
         },
         showSuperOrderContentHistory: function (thisSuperOrder) {
             this.selectedSuperOrderHistory = thisSuperOrder;
->>>>>>> 9e74be302cedc8588f31d91230f73badd48e443e
         },
 
         setTempId: function (tId) {
@@ -237,12 +233,9 @@ var vm = new Vue({
             this.inventoryShow = false;
             hideStatistics();
         },
-<<<<<<< HEAD
+
         showTab: function (tab) {
             document.getElementById('statistics').style.display = 'none';
-=======
-        showTab: function (tab) {   
->>>>>>> 9e74be302cedc8588f31d91230f73badd48e443e
             this.hideAllTabs();
             if (tab === "newOrder") {
                 this.oQButtonsShow = true;
