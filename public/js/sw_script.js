@@ -14,14 +14,8 @@ function pressedCancelOrder() {
     }
 }
 
-
-function pressedFinishOrder(size) { //Används denna funktion? -Ingrid
-}
-
-
-
 /*Hur skriver man ut variablerna size härifrån?*/
-Vue.component('juices', {
+/*Vue.component('juices', {
     props: ['uiLabels', 'drink', 'orderId', 'lang'],
     template: '<div class="oneJuice"> <h2> info {{this.size}},{{this.done}}</h2> </div>\
 <div>\
@@ -40,7 +34,7 @@ Vue.component('juices', {
             window.alert("visa recept");
         }
     }
-});
+});*/
 
 
 // SLUT ORDER QUEUE FUNKTIONER
@@ -75,7 +69,6 @@ function typeTextToDiv(text, div_id) {
 }
 
 
-
 // SLUT ORDER HISTORY
 
 
@@ -100,19 +93,19 @@ Vue.component('ingredient', {
 
     data: function () {
 
-        return {
-            newValueInput: ''
-        }
-    },
+    return {
+    newValueInput: ''
+}
+              },
 
-    methods: {
-        changeBalance: function () {
+              methods: {
+              changeBalance: function () {
 
-            this.$emit("set-temp-id");
-            this.$emit("new-balance-set", this.newValueInput);
-            this.newValueInput = "";
-        },
-    }
+    this.$emit("set-temp-id");
+    this.$emit("new-balance-set", this.newValueInput);
+    this.newValueInput = "";
+},
+}
 })
 //SLUT INVENTORY
 
@@ -181,7 +174,6 @@ var vm = new Vue({
 
         //Klickfunktion till Order Queues vänstra spalt. Den tar med orderID så vi kan sätta den till "done"
         pressedFinishOrder: function (orderID) {
-            // var x = document.getElementById("myCheck").checked; //Ingrid kommenterade bort. Ta bort?
             this.superOrders[orderID].done = true;
             console.log(this.superOrders[orderID].orderTime + ": order time");
             this.selectedSuperOrder.drinks = []; // Vad gör denna? -Ingrid
@@ -305,20 +297,3 @@ function drawChart() {
     var chartTopping = new google.visualization.PieChart(document.getElementById('toppingChart'));
     chartTopping.draw(toppingData, toppingOptions);
 }
-
-
-
-/*****************TESTER****************/
-
-// Test för att skapa divar dynamiskt
-/*function showOrders(){
-    window.alert("test");
-    var ordersRutan = document.createElement("oQMenu");
-    ordersRutan.id='block';
-    document.getElementsById('body')[0].appendChild(iDiv);
-
-    var innerDiv = document.createElement('div');
-    innerDiv.clasName = 'oneOrder';
-
-    ordersRutan.appendChild(innerDiv);
-}*/

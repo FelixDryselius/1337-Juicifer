@@ -9,7 +9,6 @@ function superOrder() {
         this.orderTime = [], 
         this.finishTime = null,
         this.orderId= -2
-    /*Jag har gjort om orderTime och finishTime till en array med två index, för att kunna spara datum och tid separat. - Ingrid*/
 };
 
 function drink() {
@@ -26,9 +25,6 @@ function createNewDrink(drinkType) {
     mydrink.type = drinkType;
     currentSuperOrder.drinks.push(mydrink);
     currentSuperOrder.activeDrink = currentSuperOrder.drinks.length-1;
-
-    //This is for checking that it works
-    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].type);
 }
 
 function selectDrinkSizeAndPrice(inputSize) { //and sets price
@@ -45,9 +41,6 @@ function selectDrinkSizeAndPrice(inputSize) { //and sets price
             currentSuperOrder.drinks[currentSuperOrder.activeDrink].price = 30;
             break;
     }
-
-    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].size); //This is for checking that it works    
-    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].price);
 };
 
 
@@ -55,92 +48,53 @@ function deleteActiveDrink() {
     currentSuperOrder.drinks.splice(currentSuperOrder.activeDrink, 1);
 }
 
-/*function changeActiveDrink(){} KOMMER INTE ATT BEHÖVAS OM INTE FLERA DRINKAR KAN BESTÄLLAS*/
+//function changeActiveDrink(){} //KOMMER INTE ATT BEHÖVAS OM INTE FLERA DRINKAR KAN BESTÄLLAS
 
 function addIngredientToActiveDrink(ingred) {
     var tempActiveIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].activeIngredient; currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[tempActiveIngred]=ingred; 
-
-    //This is for checking that it works
-    console.log(currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients);
 }
 
-/*function addTimeStamp(){
-    var date = new Date;
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    month = (month < 10 ? "0" : "") + month;
-    var day  = date.getDate();
-    day = (day < 10 ? "0" : "") + day;
-    var hour = date.getHours();
-    hour = (hour < 10 ? "0" : "") + hour;
-    var min  = date.getMinutes();
-    min = (min < 10 ? "0" : "") + min;
-
-    currentSuperOrder.orderTime[0]= year +"-"+ month +"-"+ day +" ";
-    currentSuperOrder.orderTime[1]= hour +":"+min;
-    console.log("Detta är orderTime[]: "+currentSuperOrder.orderTime);
-    //console.log(new Date(year, month, day, hour, min));
-}*/
-
 // Används denna funktion? - Ingrid
-function getRandomInt(min, max) {
+/*function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
-}
+}*/
 
 // DETTA ÄR GAMLA GETORDERNR, TA BORT? INGRID?
-function getOrderNumber() {
+/*function getOrderNumber() {
     // It's probably not a good idea to generate a random order number, client-side. 
     // A better idea would be to let the server decide.
     return "#" + getRandomInt(1, 1000000);
-}
+}*/
 
-/*Funktion för att dölja förstoringsglaset i sökrutan*/
-//function hideIcon(self) {
-//    self.style.backgroundImage = 'none';
-//}
 
 function checkActiveIngredButton(pos, type){
     var activeIngredButtonID;
     switch(pos){
         case 0:
             activeIngredButtonID = "topping"
-            //console.log("case 0 - knappID: "+ activeIngredButtonID);
             break;
         case 1:
             activeIngredButtonID = "ingred1"
-            //console.log("case 1 - knappID: "+ activeIngredButtonID);
             break;
         case 2:
             activeIngredButtonID = "ingred2"
-            //console.log("case 2 - knappID: "+ activeIngredButtonID);
             break;
         case 3:
             activeIngredButtonID = "ingred3"
-            //console.log("case 3 - knappID: "+ activeIngredButtonID);
             break;
         case 4:
             activeIngredButtonID = "ingred4"
-            //console.log("case 4 - knappID: "+ activeIngredButtonID);
             break;
         case 5:
             activeIngredButtonID = "ingred5"
-            //console.log("case 5 - knappID: "+ activeIngredButtonID);
             break;
         case 6:
             activeIngredButtonID = "baseIngred"
-            //console.log("case 6 - knappID: "+ activeIngredButtonID);
             break;            
     }
     return activeIngredButtonID;
-}
-
-// Används getFlagSrc?? -Ingrid
-function getFlagSrc(){ 
-    var flagSrc = 'images/gb_flagga.png';
-    console.log(flagSrc);
-    return 'images/gb_flagga.png';
 }
 
 function sendCurrentSuperOrderToVue() {
@@ -218,8 +172,6 @@ var vm = new Vue({
     created: function() {
         socket.on("orderNumber",function(orderNumber) {
             alert("Svenska: Tack för din beställning. Ditt ordernummer är: " + orderNumber +"              English: Thank you for your order. Your order number is: " + orderNumber); //Jag får inte uiLabels att funka med alert, så därför skrivs båda språk ut.
-            //          console.log(this.lang+" språk");
-            //  console.log(this.uiLabels.base);
             location.reload(); //Reset sidan
         });
     },
@@ -258,10 +210,9 @@ var vm = new Vue({
             }
         }, 
 
+        /*choosePreMadeDrinks: function(){ //To be implemented
 
-        choosePreMadeDrinks: function(){
-
-        },
+        },*/
 
         writeOutIngredients: function(aDrink){
             var aDrinksIngredient = {};
@@ -286,7 +237,6 @@ var vm = new Vue({
         },
 
         showTab: function (tab) {
-            //            console.log(this.ingredients[3].balance);
             console.log(tab)
             console.log(this.ingredients[0].stock);
             this.hideAllTabs();
@@ -316,8 +266,8 @@ var vm = new Vue({
                 this.showHelpAbortContainer = true;
                 this.showCartPage =true;
                 this.showTopBarButton = true;
-                if(this.checkIfMugIsFilled()){ //om true blir betalknapp grön.
-                    this.canPressPay=true; //betalknapp blir grön.
+                if(this.checkIfMugIsFilled()){
+                    this.canPressPay=true;
                 }
                 this.canPressCart=false; //varukorgsknapp blir grå.
                 if (currentSuperOrder.drinks[currentSuperOrder.activeDrink].type == "smoothie") { //är fer drycker ska kunna visas ska detta test öras i en loop på ett annat sätt.
@@ -355,10 +305,6 @@ var vm = new Vue({
             var activeIngred = currentSuperOrder.drinks[currentSuperOrder.activeDrink].ingredients[activeIngredIndex]; 
             var activeIngredButtonID = checkActiveIngredButton(activeIngredIndex, activeType);
             var activeType = currentSuperOrder.drinks[currentSuperOrder.activeDrink].type;
-            //console.log(activeType+": type");
-            //console.log(activeIngredIndex+": activeIngredIndex");
-            //console.log(activeIngred+": activeIngred");
-            //console.log(activeIngredButtonID+": activeIngredButtonID");
 
             if (activeIngredButtonID=="topping"){
                 this.toppingColor=activeIngred["hexColor"]; //sätter knappfärg på variabeln. Ändrar i updateMugColors();
@@ -470,7 +416,7 @@ var vm = new Vue({
             }
         },
 
-        resetMugButtons: function() { //Används inte nu, men behövs när fler drycker kan beställas. //en knapp som inte finns (bas i en juice) kan inte kalas på. -Ingrid
+        /*   resetMugButtons: function() { //Används inte nu, men behövs när fler drycker kan beställas. //en knapp som inte finns (bas i en juice) kan inte kalas på. -Ingrid
             this.base= "Base";
             this.ingredient1="Ingredient 1";
             this.ingredient2="Ingredient 2";
@@ -485,7 +431,7 @@ var vm = new Vue({
             document.getElementById("ingred4").style.borderTop = "3em solid lightgrey"; // byter knappfärg
             document.getElementById("ingred5").style.borderTop = "3em solid lightgrey"; // byter knappfärg
             document.getElementById("baseIngred").style.borderTop = "6.8em solid lightgrey"; // byter knappfärg
-        },
+        }, */
 
         updateMugColors: function(type) { // byter knappfärg på alla knappar i rätt sorts mugg - Ingrid
             document.getElementById("topping").style.backgroundColor = this.toppingColor;
@@ -504,7 +450,7 @@ var vm = new Vue({
         addDrinkToSuperorder: function(){
             alert("Svenska: Du har tryckt för att lägga till en dryck i ordern. Detta är tyvärr inte implementerat i denna version av hemsidan.           English: You wan't to add a drink to your order, but unfortunally this is not implented in this version of the webpage.");
         },
-        
+
         cantPlaceSuperOrder: function(){
             alert("Svenska: För att beställa måste du fylla drycken med ingredienser och lägga den i varukorgen           English: To order you need to fill the drink with ingredients and put it in the cart.");
         },
