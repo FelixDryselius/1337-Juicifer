@@ -491,7 +491,12 @@ var vm = new Vue({
             alert("Du har tryckt för att lägga till en dryck i ordern. Detta är tyvärr inte implementerat i denna version av hemsidan. \
 You wan't to add a drink to your order, but unfortunally this is not implented in this version of the webpage.");
         },
-
+                
+        cantPlaceSuperOrder: function(){
+            alert("Du behöver bestäma alla ingredienser i drycken och lägga den i varukorgen för att kunna göra en beställning. \
+                    You need to choose all the ingredients in the drink and put it in the cart to be able to  make an order.");
+        },
+        
         placeSuperOrder: function () {
             currentSuperOrder.orderTime = addTimeStamp(); //spara tiden orden sickas. Ligger i jucifer-main.
             //So that the Vue element is updated
